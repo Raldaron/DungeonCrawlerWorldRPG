@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dungeon Archanists' Cookbook</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <button id="sidebarToggle" class="sidebar-toggle">&#9776;</button> <!-- Move the toggle button outside the sidebar div -->
+  <div class="sidebar">
+    <!-- Unicode for menu icon -->
+    <ul>
+      <li id="cover" class="cover-button">Cover</li>
+      <li id="dungeonLore">Dungeon Lore</li>
+      <li id="theWorldDungeon">The World Dungeon</li>
+      <li id="theOverCity">The Over City</li>
+      <li id="theHuntingGrounds">The Hunting Grounds</li>
+      <li id="npcs">NPCs</li>
+      <li id="deities">Deities</li>
+      <li id="secretSocieties">Secret Societies</li>
+      <li id="factionWars">Faction Wars</li>
+      <li id="monsters">Monsters</li>
+      <li id="elites">Elites</li>
+      <li id="bosses">Bosses</li>
+      <li id="traps">Traps</li>
+      <li id="potions">Potions</li>
+      <li id="consumables">Consumables</li>
+      <li id="explosives">Explosives</li>
+      <li id="magicGear">Magic Gear</li>
+      <li id="crafting">Crafting</li>
+      <li id="loot">Loot</li>
+      <li id="poisons">Poisons</li>
+      <li id="ritualsAndCeremonies">Rituals and Ceremonies</li>
+      <li id="legendaryArtifacts">Legendary Artifacts</li>
+      <li id="personalCrawlerNotes">Personal Crawler Notes</li>
+    </ul>
+  </div>
+  <div class="content" id="content">
+    <div class="main-content">
+    </div>
+    <div class="comments-section">
+      <!-- Placeholder for comments for each section, initially hidden -->
+      <div id="comments-cover" class="comment" style="display: none;">
+      </div>
+      <div id="comments-dungeonLore" class="comment" style="display: none;">
+        <p><strong>Crawler John:</strong> The lore about the dragons is inaccurate!</p>
+      </div>
+      <div id="comments-theWorldDungeon" class="comment" style="display: none;">
+        <p><strong>Crawler Mike:</strong> There's a secret exit in the north wall not shown on maps.</p>
+      </div>
+      <div id="comments-theOverCity" class="comment" style="display: none;">
+        <p><strong>Crawler Lisa:</strong> The mayor has a hidden agenda linked to the underworld.</p>
+      </div>
+      <div id="comments-theHuntingGrounds" class="comment" style="display: none;">
+        <p><strong>Crawler Alex:</strong> Beware of the invisible traps laid throughout the area.</p>
+      </div>
+      <div id="comments-npcs" class="comment" style="display: none;">
+        <p><strong>Crawler Emma:</strong> The NPC Merek has crucial information for questers.</p>
+      </div>
+      <div id="comments-deities" class="comment" style="display: none;">
+        <p><strong>Crawler Bob:</strong> Praying at the hidden shrine grants a rare buff.</p>
+      </div>
+      <div id="comments-secretSocieties" class="comment" style="display: none;">
+        <p><strong>Crawler Olivia:</strong> The Order of the Silent has branches in unexpected places.</p>
+      </div>
+      <div id="comments-factionWars" class="comment" style="display: none;">
+        <p><strong>Crawler Ethan:</strong> The faction war is a front for the real conflict.</p>
+      </div>
+      <div id="comments-monsters" class="comment" style="display: none;">
+        <p><strong>Crawler Ava:</strong> Monsters respawn at double the rate during the night.</p>
+      </div>
+      <div id="comments-elites" class="comment" style="display: none;">
+        <p><strong>Crawler William:</strong> Elite creatures have weaknesses that are rarely documented.</p>
+      </div>
+      <div id="comments-bosses" class="comment" style="display: none;">
+        <p><strong>Crawler Sophia:</strong> Bosses can be baited into infighting, use it to your advantage.</p>
+      </div>
+      <div id="comments-traps" class="comment" style="display: none;">
+        <p><strong>Crawler James:</strong> The deadliest traps are often hidden in plain sight.</p>
+      </div>
+      <div id="comments-potions" class="comment" style="display: none;">
+        <p><strong>Crawler Charlotte:</strong> Mixing blue and red potions creates a powerful explosive.</p>
+      </div>
+      <div id="comments-consumables" class="comment" style="display: none;">
+        <p><strong>Crawler Lucas:</strong> Consumables from the eastern regions are more potent.</p>
+      </div>
+      <div id="comments-explosives" class="comment" style="display: none;">
+        <p><strong>Crawler Mia:</strong> Handle these with care, or you'll end up in pieces.</p>
+      </div>
+      <div id="comments-magicGear" class="comment" style="display: none;">
+        <p><strong>Crawler Amelia:</strong> Magic gear loses potency if not recharged under moonlight.</p>
+      </div>
+      <div id="comments-crafting" class="comment" style="display: none;">
+        <p><strong>Crawler Oliver:</strong> Crafting during a storm increases item quality.</p>
+      </div>
+      <div id="comments-loot" class="comment" style="display: none;">
+        <p><strong>Crawler Elijah:</strong> Loot is better when you're in a party of four or more.</p>
+      </div>
+      <div id="comments-poisons" class="comment" style="display: none;">
+        <p><strong>Crawler Isabella:</strong> Poisons can be crafted from common herbs found in the city.</p>
+      </div>
+      <div id="comments-ritualsAndCeremonies" class="comment" style="display: none;">
+        <p><strong>Crawler Logan:</strong> Ceremonies at midnight enhance the ritual's effects.</p>
+      </div>
+      <div id="comments-legendaryArtifacts" class="comment" style="display: none;">
+        <p><strong>Crawler Aiden:</strong> Artifacts must sometimes be activated at specific locations.</p>
+      </div>
+      <div id="comments-personalCrawlerNotes" class="comment" style="display: none;">
+        <p><strong>Crawler Harper:</strong> Always double-check your notes before entering the dungeon.</p>
+      </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
