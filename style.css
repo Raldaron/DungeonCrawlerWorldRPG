@@ -1,228 +1,339 @@
-@import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
-/* Base styles */
-body,
-html {
-  height: 100%;
-  margin: 0;
-  overflow: hidden; /* Hide overflow on the body to remove scrollbars */
-  font-family: "Libre Baskerville", serif;
-  background-color: #282a36;
-  color: #f8f8f2;
-  display: flex;
-  flex-direction: column; /* Stack sidebar and content on top of each other on mobile */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
 }
 
-/* Scrollbar styles for webkit browsers to make them thinner and less obtrusive */
-::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+.character-sheet {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-::-webkit-scrollbar-thumb {
-  background: #6272a4;
-  border-radius: 2px;
+.character-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-/* Always show vertical scrollbar for sidebar and content to avoid layout shift */
-.sidebar,
-.content {
-  scrollbar-width: thin;
-  scrollbar-color: #6272a4 #44475a;
+.character-name h2, .character-level p {
+    margin: 0;
 }
 
-/* Sidebar styles for mobile */
-.sidebar {
-  background-color: #44475a;
-  width: 100%; /* Full width on small screens */
-  padding: 10px;
-  box-sizing: border-box;
-  overflow-y: auto; /* Allow vertical scrolling */
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: thin; /* Firefox */
+.select-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
 }
 
-.sidebar h3 {
-  font-family: "League Spartan", sans-serif;
-  font-size: 0.9em; /* Smaller title font size */
+.select-container select {
+    flex: 1;
+    margin-right: 10px;
+    padding: 5px;
 }
 
-.sidebar ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.select-container select:last-child {
+    margin-right: 0;
 }
 
-.sidebar ul li {
-  cursor: pointer;
-  padding: 8px; /* Smaller padding for list items */
-  font-size: 0.85em; /* Smaller font size for list items */
-  border-radius: 4px;
-  transition: background-color 0.3s;
-  margin-bottom: 4px; /* Reduced space between items */
+.character-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
-/* ... other styles ... */
-
-@media (min-width: 361px) {
-  /* Styles for larger screens than 360px width */
-  body {
-    flex-direction: row; /* Layout sidebar and content side by side */
-  }
-
-  .sidebar {
-    width: 150px; /* Fixed sidebar width for larger screens */
-    height: 100vh; /* Set to full height of the viewport */
-    position: fixed; /* Fixed position to the side */
-    top: 0;
-    left: 0;
-    overflow-y: auto; /* Allow vertical scrolling */
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-widt8: thin; /* Firefox */
-     padding-top: 80px;
-  }
-
-  .content {
-    padding-left: 80px; /* Adjust as needed */
-    margin-right: 10px; 
-    margin-left: 250px; /* Add margin to not overlap the sidebar */
-    width: calc(100% - 250px); /* Adjust width considering sidebar */
-    height: 100vh; /* Set to full height of the viewport */
-    overflow-y: auto; /* Scrollable content */
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: thin; /* Firefox */
-    line-height: 1.6; /* Adjust the line height as needed */
-}
-  .content p {
-  line-height: 1.9; /* Adjust the line height as needed */
-  }
-
-  }
-}
-/* ... existing CSS ... */ 
-/* Sidebar styles */
-.sidebar {
-  /* ... other styles ... */
-  transition: width 0.3s ease; /* Smooth transition for sidebar toggle */
-   z-index: 998;
+.character-avatar img, .action img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
 }
 
-/* Style for when sidebar is collapsed */
-/* Sidebar toggle button style */
-.sidebar-toggle {
-  background: none;
-  border: none;
-  color: #f8f8f2;
-  font-size: 24px; /* Adjust size as needed */
-  cursor: pointer;
-  text-align: left;
-  padding: 10px;
-  margin-top: 10px; /* Adjust as needed */
-  display: block;
-  position: fixed; /* Fixed position to keep it always visible */
-  top: 10px; /* Adjust as needed */
-  left: 10px; /* Adjust as needed */
-  z-index: 999; /* Ensure it's above other content */
+.edit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
 }
 
-/* Collapsed sidebar styles */
-.sidebar.collapsed {
-  width: 0; /* Collapse the sidebar width */
-  padding: 0; /* Remove padding */
-  visibility: hidden; /* Hide sidebar */
+.edit-button:hover {
+    background-color: #0056b3;
 }
 
-/* Styles to handle the content area when sidebar is collapsed */
-.content.collapsed {
-  margin-left: 0; /* Remove margin when sidebar is collapsed */
-  padding-left: 60px; /* Add padding to compensate for collapsed sidebar width */
-  width: calc(100% - 60px); /* Adjust content width to fill the remaining space */
+.stats, .skills {
+    margin-bottom: 20px;
 }
 
-/* Add transition to sidebar and content for smooth collapsing effect */
-.sidebar,
-.content {
-  transition: margin-left 0.3s, width 0.3s, padding 0.3s, visibility 0.3s;
+.stat-category-container, .skills-container {
+    display: flex;
+    justify-content: space-between;
 }
 
-/* Full-width style for content when sidebar is collapsed */
-.content.full-width {
-  margin-left: 0; /* Content should start from the left edge */
+h2 {
+    margin-bottom: 10px;
 }
 
-/* Hiding the scrollbar when it's not in use, for WebKit browsers */
-.sidebar::-webkit-scrollbar,
-.content::-webkit-scrollbar {
-  width: 0;
-  background: transparent; /* make scrollbar transparent */
-}
-.button-container {
-  display: flex;
-  justify-content: left;
-  margin-top: 10px; /* Adjust margin as needed */
+h3 {
+    margin-bottom: 10px;
 }
 
-.yes-button,
-.no-button {
-  background-color: #6272a4;
-  color: #f8f8f2;
-  font-size: 16px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin: 0 5px; /* Add some spacing between the buttons */
+.stat-category, .skill-column, .action, .skill, .spell, .item, .quest, .hint {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
 }
 
-.yes-button:hover,
-.no-button:hover {
-  background-color: #44475a;
-}
-.comments-toggle {
-  font-size: 24px; /* adjust size as needed */
-  cursor: pointer;
-  position: absolute; /* Position it near the section header */
-  right: 10px; /* Right align inside the content area */
-  top: 10px; /* Adjust vertical position */
-}
-/* ... other styles ... */
-
-.comment {
-    font-family: "Libre Baskerville", serif;
-    font-size: 0.9em;
-    margin-left: 20px;
-    color: #666; /* Darker grey for comments */
+.stat-category, .skill-column {
+    flex: 1;
+    margin-right: 10px;
 }
 
-.author {
-    display: block;
-    font-style: italic;
-    font-size: smaller;
-    color: #888; /* Light grey for author citation */
-}
-.entry {
-    font-family: "Libre Baskerville", serif;
-    text-align: left; /* Ensures entries are left-aligned */
+.stat-category:last-child, .skill-column:last-child {
+    margin-right: 0;
 }
 
-.comment {
-    font-family: "Libre Baskerville", serif; /* Change font family to Libre Baskerville */
-    font-size: 0.9em;
-    text-align: right; /* Right-aligns comments */
-    margin-right: 20px; /* Adds some space on the right if needed */
-    color: #ffff; /* Darker grey for comments */
+.stat-category h3, .skill h4, .action h4, .skill h4, .spell h4, .item h4, .quest h4, .hint h4 {
+    margin: 0 0 5px 0;
 }
 
-.author {
-    display: block;
-    font-style: italic;
-    color: #888; /* Light grey for author citation */
+.stat, .skill {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    padding: 5px;
+    border-radius: 3px;
+    margin: 5px 0;
 }
-/* Continue prompt styles */
-.continue-prompt {
-    font-size: 2em; /* Larger font size for the prompt */
-    font-family: 'Cedarville Cursive', cursive; /* Apply Cedarville Cursive */
-    margin-top: 20px; /* Add some space before the prompt */
-    color: #f8f8f2; /* Ensuring text color is visible */
+
+.stat span, .skill span {
+    flex: 1;
 }
-    margin-top: 20px; /* Add some space before the prompt */
+
+.stat input, .skill input {
+    width: 50px;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.inventory {
+    margin-bottom: 20px;
+}
+
+.inventory-controls {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+#item-select {
+    flex-grow: 1;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+#add-item-button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#add-item-button:hover {
+    background-color: #0056b3;
+}
+
+.inventory-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.inventory-item {
+    flex: 1 1 100px;
+    margin: 5px;
+    text-align: center;
+    padding: 10px;
+    background-color: #e9e9e9;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.inventory-item:hover {
+    background-color: #d9d9d9;
+}
+
+.action-category {
+    margin-bottom: 10px;
+}
+
+.action-category .action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.remove-item-button {
+    margin-left: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.remove-item-button:hover {
+    background-color: darkred;
+}
+
+.action-detail {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+/* Styles for ability boxes */
+.abilities-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.ability {
+    width: 150px;
+    height: 100px;
+    margin: 10px;
+    perspective: 1000px;
+    cursor: pointer;
+    position: relative;
+}
+
+.ability-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s, z-index 0.6s;
+    transform-style: preserve-3d;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    z-index: 1;
+}
+
+.ability-front, .ability-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.ability-front {
+    background-color: #007bff;
+    color: white;
+}
+
+.ability-back {
+    background-color: #f9f9f9;
+    color: black;
+    transform: rotateY(180deg);
+}
+
+.ability.flipped .ability-inner {
+    transform: rotateY(180deg);
+    z-index: 2;
+}
+
+.ability.expanded {
+    width: 300px;
+    height: 350px;
+    z-index: 3;
+}
+
+.ability.expanded .ability-inner {
+    z-index: 4;
+}
+
+.character-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    flex: 1;
+    margin-right: 10px;
+}
+
+.stat-box label {
+    margin-bottom: 5px;
+}
+
+.stat-box input {
+    width: 60px;
+    text-align: center;
+}
+
+.stat-box:last-child {
+    margin-right: 0;
+}
+.character-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    flex: 1;
+    margin-right: 10px;
+}
+
+.stat-box label {
+    margin-bottom: 5px;
+}
+
+.stat-box input {
+    width: 60px;
+    text-align: center;
+}
+
+.stat-box:last-child {
+    margin-right: 0;
+}
+
+.stat-box:last-child {
+    margin-right: 0;
 }
