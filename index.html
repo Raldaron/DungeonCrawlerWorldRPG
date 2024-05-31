@@ -1,120 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dungeon Archanists' Cookbook</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&family=Libre+Baskerville:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Sheet</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <button id="sidebarToggle" class="sidebar-toggle">&#9776;</button> <!-- Move the toggle button outside the sidebar div -->
-  <div class="sidebar">
-    <!-- Unicode for menu icon -->
-    <ul>
-      <li id="cover" class="cover-button">Cover</li>
-      <li id="dungeonLore">Dungeon Lore</li>
-      <li id="theWorldDungeon">The World Dungeon</li>
-      <li id="theOverCity">The Over City</li>
-      <li id="theHuntingGrounds">The Hunting Grounds</li>
-      <li id="npcs">NPCs</li>
-      <li id="deities">Deities</li>
-      <li id="secretSocieties">Secret Societies</li>
-      <li id="factionWars">Faction Wars</li>
-      <li id="monsters">Monsters</li>
-      <li id="elites">Elites</li>
-      <li id="bosses">Bosses</li>
-      <li id="traps">Traps</li>
-      <li id="potions">Potions</li>
-      <li id="consumables">Consumables</li>
-      <li id="explosives">Explosives</li>
-      <li id="magicGear">Magic Gear</li>
-      <li id="crafting">Crafting</li>
-      <li id="loot">Loot</li>
-      <li id="poisons">Poisons</li>
-      <li id="ritualsAndCeremonies">Rituals and Ceremonies</li>
-      <li id="legendaryArtifacts">Legendary Artifacts</li>
-      <li id="personalCrawlerNotes">Personal Crawler Notes</li>
-    </ul>
-  </div>
-  <div class="content" id="content">
-    <div class="main-content">
-    </div>
-    <div class="comments-section">
-      <!-- Placeholder for comments for each section, initially hidden -->
-      <div id="comments-cover" class="comment" style="display: none;">
-      </div>
-      <div id="comments-dungeonLore" class="comment" style="display: none;">
-        <p><strong>Crawler John:</strong> The lore about the dragons is inaccurate!</p>
-      </div>
-      <div id="comments-theWorldDungeon" class="comment" style="display: none;">
-        <p><strong>Crawler Mike:</strong> There's a secret exit in the north wall not shown on maps.</p>
-      </div>
-      <div id="comments-theOverCity" class="comment" style="display: none;">
-        <p><strong>Crawler Lisa:</strong> The mayor has a hidden agenda linked to the underworld.</p>
-      </div>
-      <div id="comments-theHuntingGrounds" class="comment" style="display: none;">
-        <p><strong>Crawler Alex:</strong> Beware of the invisible traps laid throughout the area.</p>
-      </div>
-      <div id="comments-npcs" class="comment" style="display: none;">
-        <p><strong>Crawler Emma:</strong> The NPC Merek has crucial information for questers.</p>
-      </div>
-      <div id="comments-deities" class="comment" style="display: none;">
-        <p><strong>Crawler Bob:</strong> Praying at the hidden shrine grants a rare buff.</p>
-      </div>
-      <div id="comments-secretSocieties" class="comment" style="display: none;">
-        <p><strong>Crawler Olivia:</strong> The Order of the Silent has branches in unexpected places.</p>
-      </div>
-      <div id="comments-factionWars" class="comment" style="display: none;">
-        <p><strong>Crawler Ethan:</strong> The faction war is a front for the real conflict.</p>
-      </div>
-      <div id="comments-monsters" class="comment" style="display: none;">
-        <p><strong>Crawler Ava:</strong> Monsters respawn at double the rate during the night.</p>
-      </div>
-      <div id="comments-elites" class="comment" style="display: none;">
-        <p><strong>Crawler William:</strong> Elite creatures have weaknesses that are rarely documented.</p>
-      </div>
-      <div id="comments-bosses" class="comment" style="display: none;">
-        <p><strong>Crawler Sophia:</strong> Bosses can be baited into infighting, use it to your advantage.</p>
-      </div>
-      <div id="comments-traps" class="comment" style="display: none;">
-        <p><strong>Crawler James:</strong> The deadliest traps are often hidden in plain sight.</p>
-      </div>
-      <div id="comments-potions" class="comment" style="display: none;">
-        <p><strong>Crawler Charlotte:</strong> Mixing blue and red potions creates a powerful explosive.</p>
-      </div>
-      <div id="comments-consumables" class="comment" style="display: none;">
-        <p><strong>Crawler Lucas:</strong> Consumables from the eastern regions are more potent.</p>
-      </div>
-      <div id="comments-explosives" class="comment" style="display: none;">
-        <p><strong>Crawler Mia:</strong> Handle these with care, or you'll end up in pieces.</p>
-      </div>
-      <div id="comments-magicGear" class="comment" style="display: none;">
-        <p><strong>Crawler Amelia:</strong> Magic gear loses potency if not recharged under moonlight.</p>
-      </div>
-      <div id="comments-crafting" class="comment" style="display: none;">
-        <p><strong>Crawler Oliver:</strong> Crafting during a storm increases item quality.</p>
-      </div>
-      <div id="comments-loot" class="comment" style="display: none;">
-        <p><strong>Crawler Elijah:</strong> Loot is better when you're in a party of four or more.</p>
-      </div>
-      <div id="comments-poisons" class="comment" style="display: none;">
-        <p><strong>Crawler Isabella:</strong> Poisons can be crafted from common herbs found in the city.</p>
-      </div>
-      <div id="comments-ritualsAndCeremonies" class="comment" style="display: none;">
-        <p><strong>Crawler Logan:</strong> Ceremonies at midnight enhance the ritual's effects.</p>
-      </div>
-      <div id="comments-legendaryArtifacts" class="comment" style="display: none;">
-        <p><strong>Crawler Aiden:</strong> Artifacts must sometimes be activated at specific locations.</p>
-      </div>
-      <div id="comments-personalCrawlerNotes" class="comment" style="display: none;">
-        <p><strong>Crawler Harper:</strong> Always double-check your notes before entering the dungeon.</p>
-      </div>
+    <div class="character-sheet">
+        <header class="character-header">
+            <div class="character-name">
+                <h2>Rusty Shackleford</h2>
+            </div>
+            <div class="character-level">
+                <label for="level">Level:</label>
+                <input type="number" id="level" value="1" min="1" oninput="updateLevel()">
+            </div>
+        </header>
+        <section class="character-stats">
+            <div class="stat-box">
+                <label for="hp">HP</label>
+                <input type="number" id="hp" readonly>
+            </div>
+            <div class="stat-box">
+                <label for="mp">MP</label>
+                <input type="number" id="mp" readonly>
+            </div>
+            <div class="stat-box">
+                <label for="ar">Armor Rating</label>
+                <input type="number" id="ar" readonly>
+            </div>
+            <div class="stat-box">
+                <label for="ability-points">Ability Points</label>
+                <input type="number" id="ability-points" value="0">
+            </div>
+            <div class="stat-box">
+                <label for="stat-points">Stat Points</label>
+                <input type="number" id="stat-points" value="0" readonly>
+            </div>
+            <div class="stat-box">
+                <label for="skill-points">Skill Points</label>
+                <input type="number" id="skill-points" value="0" readonly>
+            </div>
+        </section>
+        <section class="select-container">
+            <select id="race-select">
+                <option value="">Select Race</option>
+                <!-- Race options will be populated dynamically -->
+            </select>
+            <select id="class-select">
+                <option value="">Select Class</option>
+                <!-- Class options will be populated dynamically -->
+            </select>
+        </section>
+        <section class="character-info">
+            <div class="character-avatar">
+                <img src="avatar-placeholder.png" alt="Avatar">
+            </div>
+            <button class="edit-button">Edit</button>
+        </section>
+        <section class="stats">
+            <h2>Stats</h2>
+            <div class="stat-category-container">
+                <div class="stat-category">
+                    <h3>Physical</h3>
+                    <div class="stat">
+                        <span>Strength</span>
+                        <input type="number" id="strength" value="10" oninput="distributeStatPoints()">
+                    </div>
+                    <div class="stat">
+                        <span>Dexterity</span>
+                        <input type="number" id="dexterity" value="10" oninput="distributeStatPoints()">
+                    </div>
+                    <div class="stat">
+                        <span>Stamina</span>
+                        <input type="number" id="stamina" value="10" oninput="updateDerivedStats(); distributeStatPoints()">
+                    </div>
+                </div>
+                <div class="stat-category">
+                    <h3>Mental</h3>
+                    <div class="stat">
+                        <span>Intelligence</span>
+                        <input type="number" id="intelligence" value="10" oninput="updateDerivedStats(); distributeStatPoints()">
+                    </div>
+                    <div class="stat">
+                        <span>Perception</span>
+                        <input type="number" id="perception" value="10" oninput="distributeStatPoints()">
+                    </div>
+                    <div class="stat">
+                        <span>Wit</span>
+                        <input type="number" id="wit" value="10" oninput="distributeStatPoints()">
+                    </div>
+                </div>
+                <div class="stat-category">
+                    <h3>Social</h3>
+                    <div class="stat">
+                        <span>Charisma</span>
+                        <input type="number" id="charisma" value="10" oninput="distributeStatPoints()">
+                    </div>
+                    <div class="stat">
+                        <span>Manipulation</span>
+                        <input type="number" id="manipulation" value="10" oninput="distributeStatPoints()">
+                    </div>
+                    <div class="stat">
+                        <span>Appearance</span>
+                        <input type="number" id="appearance" value="10" oninput="distributeStatPoints()">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="skills">
+            <h2>Skills</h2>
+            <div class="skills-container">
+                <div class="skill-column">
+                    <!-- First column of skills -->
+                    <div class="skill">
+                        <span>Insight</span>
+                        <input type="number" id="insight" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Performance</span>
+                        <input type="number" id="performance" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Intimidation</span>
+                        <input type="number" id="intimidation" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Leadership</span>
+                        <input type="number" id="leadership" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Persuasion</span>
+                        <input type="number" id="persuasion" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Sense Deception</span>
+                        <input type="number" id="sense-deception" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Streetwise</span>
+                        <input type="number" id="streetwise" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Melee</span>
+                        <input type="number" id="melee" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Pugilism</span>
+                        <input type="number" id="pugilism" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Sleight Of Hand</span>
+                        <input type="number" id="sleight-of-hand" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                </div>
+                <div class="skill-column">
+                    <!-- Second column of skills -->
+                    <div class="skill">
+                        <span>Stealth</span>
+                        <input type="number" id="stealth" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Athletics</span>
+                        <input type="number" id="athletics" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Dodge</span>
+                        <input type="number" id="dodge" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Ride</span>
+                        <input type="number" id="ride" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Parry</span>
+                        <input type="number" id="parry" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Archery</span>
+                        <input type="number" id="archery" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Firearms</span>
+                        <input type="number" id="firearms" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Awareness</span>
+                        <input type="number" id="awareness" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Search</span>
+                        <input type="number" id="search" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Animal Ken</span>
+                        <input type="number" id="animal-ken" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                </div>
+                <div class="skill-column">
+                    <!-- Third column of skills -->
+                    <div class="skill">
+                        <span>Survival</span>
+                        <input type="number" id="survival" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Scrounging</span>
+                        <input type="number" id="scrounging" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Crafting</span>
+                        <input type="number" id="crafting" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Repair</span>
+                        <input type="number" id="repair" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Sapper</span>
+                        <input type="number" id="sapper" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Nerd Lore</span>
+                        <input type="number" id="nerd-lore" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Medicine</span>
+                        <input type="number" id="medicine" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Technology</span>
+                        <input type="number" id="technology" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Disguise</span>
+                        <input type="number" id="disguise" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Escape Artistry</span>
+                        <input type="number" id="escape-artistry" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                    <div class="skill">
+                        <span>Vehicle Operation</span>
+                        <input type="number" id="vehicle-operation" value="1" oninput="distributeSkillPoints()">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="actions">
+            <h3>Actions</h3>
+            <div id="melee-actions" class="action-category">
+                <h4>Melee</h4>
+            </div>
+            <div id="magic-actions" class="action-category">
+                <h4>Magic</h4>
+            </div>
+        </section>
+        <section class="abilities">
+            <h3>Abilities</h3>
+            <div id="abilities-list" class="abilities-container">
+                <!-- Abilities will be added here dynamically -->
+            </div>
+        </section>
+        <section class="inventory">
+            <h3>Inventory</h3>
+            <div class="inventory-controls">
+                <select id="item-select">
+                    <option value="">Select an item</option>
+                </select>
+                <button id="add-item-button">Add Item</button>
+            </div>
+            <div id="inventory-list" class="inventory-list">
+                <!-- Inventory items will be added here dynamically -->
+            </div>
+        </section>
+        <section class="action-details">
+            <h3>Action Details</h3>
+            <div id="action-details-list">
+                <!-- Action details will be added here dynamically -->
+            </div>
+        </section>
+        <section class="quest-notes">
+            <h3>Current Quest Notes</h3>
+            <div class="quest">
+                <h4>The Dark Tower</h4>
+                <p>Retrieve the ancient artifact from the tower.</p>
+            </div>
+            <div class="hint">
+                <h4>Hint</h4>
+                <p>Watch for traps in the dungeon.</p>
+            </div>
+        </section>
     </div>
     <script src="script.js"></script>
 </body>
-
 </html>
