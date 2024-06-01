@@ -1,157 +1,348 @@
-document.addEventListener("DOMContentLoaded", function () {
-  const sidebarToggle = document.getElementById("sidebarToggle");
-  const sidebar = document.querySelector(".sidebar");
-  const content = document.querySelector(".content");
+document.addEventListener('DOMContentLoaded', () => {
+    let classes = {};
+    let races = {};
+    let items = []; // Define the items array
+    let statBaseValues = {};
+    let availableStatPoints = 0;
 
-  // Start with the sidebar collapsed
-  sidebar.classList.add("collapsed");
-  content.classList.add("full-width"); // Ensure this class exists in your CSS
-
-  sidebarToggle.addEventListener("click", function () {
-    sidebar.classList.toggle("collapsed");
-    content.classList.toggle("full-width"); // Ensure this class exists in your CSS
-  });
-
-  document.querySelectorAll(".sidebar ul li").forEach((item) => {
-    item.addEventListener("click", function () {
-      changeSection(this.id);
-      if (window.innerWidth < 361) {
-        sidebar.classList.add("collapsed");
-        content.classList.add("full-width");
-      }
-    });
-  });
-
-  showCover();
-});
-
-function changeSection(sectionId) {
-  const contentArea = document.querySelector(".content");
-  const sectionData = sectionContent[sectionId];
-
-  if (sectionData) {
-    contentArea.innerHTML = `<h1>${sectionData.title}</h1>${sectionData.text}`;
-  } else {
-    contentArea.innerHTML =
-      "<h1>Section Not Found</h1><p>No content available.</p>";
-  }
-
-  // Highlight the active section in the sidebar
-  const previousActive = document.querySelector(".sidebar ul li.active");
-  if (previousActive) {
-    previousActive.classList.remove("active");
-  }
-  document.getElementById(sectionId).classList.add("active");
-}
-
-function showCover() {
-  const contentArea = document.querySelector(".content");
-  contentArea.innerHTML = '<p class="cover-text"></p>';
-
-  const fullText =
-    "Hello, Crawler.<br><br>" +
-    "As you’re about to find, this is a very special book.<br><br>" +
-    "If you’re reading these words, it means this book has found its way into your hands for one purpose and one purpose only.<br><br>" +
-    "Together, we will burn it all to the ground.";
-
-  typeWriter(
-    fullText,
-    contentArea.querySelector(".cover-text"),
-    false,
-    showContinuePrompt
-  );
-}
-
-function typeWriter(text, element, isSlow, callback) {
-  let i = 0;
-  let speed = isSlow ? 200 : 50; // Slower for 'Continue?' prompt
-
-  (function type() {
-    if (i < text.length) {
-      if (text.substring(i, i + 4) === "<br>") {
-        element.innerHTML += "<br>";
-        i += 4;
-      } else {
-        element.innerHTML += text.charAt(i);
-        i++;
-      }
-      setTimeout(type, speed);
-    } else if (callback) {
-      callback();
-    }
-  })();
-}
-
-function showContinuePrompt() {
-  const contentArea = document.querySelector(".content");
-  const continuePrompt = document.createElement("p");
-  continuePrompt.classList.add("continue-prompt");
-  contentArea.appendChild(continuePrompt);
-
-  const promptText = "Wont You Join Us?<br>";
-  typeWriter(promptText, continuePrompt, true, function () {
-    // Create button container
-    const buttonContainer = document.createElement("div");
-    buttonContainer.classList.add("button-container");
-
-    // Create 'Yes' button
-    const yesButton = document.createElement("button");
-    yesButton.innerText = "Yes";
-    yesButton.classList.add("yes-button");
-    yesButton.onclick = continueStory;
-
-    // Create 'No' button
-    const noButton = document.createElement("button");
-    noButton.innerText = "No";
-    noButton.classList.add("no-button");
-    noButton.onclick = function () {
-      alert("No was clicked.");
+    const statElements = {
+        strength: document.getElementById('strength'),
+        dexterity: document.getElementById('dexterity'),
+        stamina: document.getElementById('stamina'),
+        intelligence: document.getElementById('intelligence'),
+        perception: document.getElementById('perception'),
+        wit: document.getElementById('wit'),
+        charisma: document.getElementById('charisma'),
+        manipulation: document.getElementById('manipulation'),
+        appearance: document.getElementById('appearance')
     };
 
-    // Append buttons to the button container
-    buttonContainer.appendChild(yesButton);
-    buttonContainer.appendChild(noButton);
+    const statPointsElement = document.getElementById('stat-points');
 
-    // Append the button container to the content area
-    contentArea.appendChild(buttonContainer);
-  });
-}
+    function initializeStats() {
+        for (const stat in statElements) {
+            statElements[stat].value = 0; // Set all stats to 0 at initialization
+            statBaseValues[stat] = 0;
+        }
+        availableStatPoints = 60; // Set initial available stat points to 60
+        statPointsElement.value = availableStatPoints;
+    }
 
-function continueStory() {
-  const contentArea = document.querySelector(".content");
-  contentArea.innerHTML = '<p class="cover-text"></p>';
-  const cursorSpan = document.createElement("span");
-  cursorSpan.classList.add("cursor");
-  contentArea.querySelector(".cover-text").appendChild(cursorSpan);
+    function updateStatPoints() {
+        let usedStatPoints = 0;
+        for (const stat in statElements) {
+            usedStatPoints += parseInt(statElements[stat].value) - statBaseValues[stat];
+        }
+        statPointsElement.value = availableStatPoints - usedStatPoints;
+    }
 
-  const additionalText =
-    "The Dungeon Anarchist’s Cookbook<br>25th Edition<br><br>" +
-    "Potions, Explosives, Traps, Secret Societies, Dungeon Shortcuts, and more. Much more. " +
-    "This guide to creating chaos was originally generated into the system during the fifteenth season. " +
-    "It was awarded to the High Elf Crawler Porthus the Rogue on the ninth floor, disguised as a blank sketchbook. " +
-    "The fact you’re reading this indicates that this book and the knowledge within remains active in the code. " +
-    "It has been passed down from dungeon to dungeon. It is automatically generated after a set of predetermined conditions have been met. " +
-    "It will disappear from your inventory upon death or retirement where it will find its way to a worthy recipient in a future crawl.<br><br>" +
-    "There is only one price for access to these pages. You must pass your own knowledge on. " +
-    "In your messaging menu, you will find a scratchpad. If you’ve yet to discover this, it is a place to mentally write down recipes or thoughts or anything else you wish to recall. " +
-    "If you look now, you will find you have been given one extra page into your scratchpad. Anything you add to this second page will be included in the 25th edition of this book.<br><br>" +
-    "While the true contents of this guide are invisible to the showrunners and to the viewers, it is not invisible to the current System AI. " +
-    "There is nothing about owning this book, or the information hidden within that is against the rules. However, if the organization running this season begins to suspect that this book is more than it appears, " +
-    "or if you tell anyone about the existence of this book, the information within will erase, and you will forever lose access to the hidden text.<br><br>" +
-    "This is important. While this book’s contents may be invisible, your actions are not. You must become an actor. " +
-    "Every recipe, every secret, if utilized, must be presented to the outside world as if you are discovering this all on your own. How you do that is up to you. " +
-    "Do not spend too much time staring at these pages.";
+    function distributeStatPoints(stat) {
+        const newValue = parseInt(statElements[stat].value);
+        const oldValue = statBaseValues[stat];
+        const newAvailableStatPoints = availableStatPoints - (newValue - oldValue);
 
-  typeWriter(additionalText, contentArea.querySelector(".cover-text"), false);
-}
+        if (newAvailableStatPoints >= 0) {
+            statBaseValues[stat] = newValue;
+            availableStatPoints = newAvailableStatPoints;
+            updateStatPoints();
+        } else {
+            statElements[stat].value = oldValue; // Revert to old value if not enough points
+            alert('Not enough stat points available.');
+        }
+    }
 
-const sectionContent = {
-  monsters: {
-    title: "Monsters - Undead",
-    text: `
-            <p class="entry">A level 3 sapper’s table lets you infuse bombs. Soak a hobgoblin smoke curtain in a healing potion, let it dry, and it mass kills undead like you wouldn’t believe. <span class="author">&lt;Crawler Sinjin. 15th Edition&gt;</span></p>
-            <p class="comment">Confirmed. Works with bombs too but smoke works better. Doesn’t kill high-level undead, but they get mad. I use these to clear rooms of those invisible Swamp Wights. <span class="author">&lt;Comment added by Crawler Forkith 20th Edition&gt;</span></p>
-            <p class="entry">Vampires. We have vampires in my culture, but they are not the same as the ones here in the dungeon, though they are similar. My T’Ghee deck contains two vampiric forms. The Plague Bearer and the Blood Hunter. Both represent death. Both represent the end of days. But one is considered deliberate, thirst-based evil, and the other, the Plague Bearer, is a study on how one’s poor actions can ripple through time and become amplified and doom us all. The vampires here on this seventh floor are a combination of the two. It is strange that our traditions are so different yet the same. I have not met any fellow crawlers cursed with vampirism, but I have met my fair share of vampire mobs and NPCs. The monster ones cannot be reasoned with. They are fast. Faster than you think. They are insatiable. They are strong. Yet they are not mindless. In fact, I believe the curse of vampirism greatly increases their intelligence. They cast spells. They wish to surround themselves with protectors. Do not underestimate them. Do not rely solely on your own mythology to defeat them. My best advice is to avoid them, and if they’ve moved into an area you occupy, move away as quickly as you can. <span class="author">&lt;Note added by Crawler Allister. 13th Edition&gt;</span></p>`
-  }
-  // Additional sections as previously defined
-};
+    for (const stat in statElements) {
+        statElements[stat].addEventListener('input', () => distributeStatPoints(stat));
+    }
+
+    initializeStats();
+
+    const editButton = document.querySelector('.edit-button');
+    const characterName = document.querySelector('.character-name h2');
+    const addItemButton = document.getElementById('add-item-button');
+    const itemSelect = document.getElementById('item-select');
+    const inventoryList = document.getElementById('inventory-list');
+    const meleeActions = document.getElementById('melee-actions');
+    const magicActions = document.getElementById('magic-actions');
+    const actionDetailsList = document.getElementById('action-details-list');
+    const abilitiesList = document.getElementById('abilities-list');
+    const raceSelect = document.getElementById('race-select');
+    const classSelect = document.getElementById('class-select');
+    const derivedStatElements = {
+        hp: document.getElementById('hp'),
+        mp: document.getElementById('mp'),
+        ar: document.getElementById('ar')
+    };
+
+    const skillElements = {
+        insight: document.getElementById('insight'),
+        performance: document.getElementById('performance'),
+        intimidation: document.getElementById('intimidation'),
+        leadership: document.getElementById('leadership'),
+        persuasion: document.getElementById('persuasion'),
+        senseDeception: document.getElementById('sense-deception'),
+        streetwise: document.getElementById('streetwise'),
+        melee: document.getElementById('melee'),
+        pugilism: document.getElementById('pugilism'),
+        sleightOfHand: document.getElementById('sleight-of-hand'),
+        stealth: document.getElementById('stealth'),
+        athletics: document.getElementById('athletics'),
+        dodge: document.getElementById('dodge'),
+        ride: document.getElementById('ride'),
+        parry: document.getElementById('parry'),
+        archery: document.getElementById('archery'),
+        firearms: document.getElementById('firearms'),
+        awareness: document.getElementById('awareness'),
+        search: document.getElementById('search'),
+        animalKen: document.getElementById('animal-ken'),
+        survival: document.getElementById('survival'),
+        scrounging: document.getElementById('scrounging'),
+        crafting: document.getElementById('crafting'),
+        repair: document.getElementById('repair'),
+        sapper: document.getElementById('sapper'),
+        nerdLore: document.getElementById('nerd-lore'),
+        medicine: document.getElementById('medicine'),
+        technology: document.getElementById('technology'),
+        disguise: document.getElementById('disguise'),
+        escapeArtistry: document.getElementById('escape-artistry'),
+        vehicleOperation: document.getElementById('vehicle-operation')
+    };
+
+    let currentClass = null;
+    let currentRace = null;
+    let skillBaseValues = {};
+    let availableSkillPoints = parseInt(document.getElementById('skill-points').value);
+    let currentClassBuffs = {};
+    let currentRaceBuffs = {};
+    let currentClassAbilities = [];
+    let currentRaceAbilities = [];
+
+    for (const skill in skillElements) {
+        skillBaseValues[skill] = parseInt(skillElements[skill].value);
+    }
+
+    function adjustSkill(skill) {
+        const skillElement = skillElements[skill];
+        const newValue = parseInt(skillElement.value);
+        const oldValue = skillBaseValues[skill];
+        const cost = calculateSkillCost(oldValue, newValue);
+
+        if (cost > 0) {
+            if (cost <= availableSkillPoints) {
+                availableSkillPoints -= cost;
+                skillBaseValues[skill] = newValue;
+                document.getElementById('skill-points').value = availableSkillPoints;
+            } else {
+                alert('Not enough skill points available.');
+                skillElement.value = oldValue;
+            }
+        } else {
+            const refund = -cost;
+            availableSkillPoints += refund;
+            skillBaseValues[skill] = newValue;
+            document.getElementById('skill-points').value = availableSkillPoints;
+        }
+    }
+
+    function calculateSkillCost(oldValue, newValue) {
+        let cost = 0;
+        if (newValue > oldValue) {
+            for (let i = oldValue + 1; i <= newValue; i++) {
+                cost += i;
+            }
+        } else {
+            for (let i = newValue + 1; i <= oldValue; i++) {
+                cost -= i;
+            }
+        }
+        return cost;
+    }
+
+    for (const skill in skillElements) {
+        skillElements[skill].addEventListener('input', () => adjustSkill(skill));
+    }
+
+    document.getElementById('level').addEventListener('input', updateLevel);
+
+    function updateLevel() {
+        const level = parseInt(document.getElementById('level').value);
+
+        if (level === 1) {
+            availableStatPoints = 60; // Set initial available stat points to 60
+            for (const stat in statElements) {
+                statElements[stat].value = 0; // Set stats to 0
+                statBaseValues[stat] = 0;
+            }
+        } else {
+            const previousLevelStatPoints = (level - 2) * 2; // Calculate stat points for the previous level
+            const currentLevelStatPoints = (level - 1) * 2; // Calculate stat points for the current level
+            availableStatPoints += (currentLevelStatPoints - previousLevelStatPoints); // Add the difference to available stat points
+        }
+        document.getElementById('stat-points').value = availableStatPoints; // Update the display of available stat points
+
+        let skillPoints;
+        if (level <= 5) {
+            skillPoints = level * 6;
+        } else if (level <= 10) {
+            skillPoints = 5 * 6 + (level - 5) * 8;
+        } else if (level <= 15) {
+            skillPoints = 5 * 6 + 5 * 8 + (level - 10) * 10;
+        } else if (level <= 20) {
+            skillPoints = 5 * 6 + 5 * 8 + 5 * 10 + (level - 15) * 12;
+        } else {
+            skillPoints = 5 * 6 + 5 * 8 + 5 * 10 + 5 * 12 + (level - 20) * 14;
+        }
+        document.getElementById('skill-points').value = skillPoints; // Update the display of available skill points
+        availableSkillPoints = skillPoints;
+
+        for (const skill in skillElements) {
+            skillBaseValues[skill] = parseInt(skillElements[skill].value);
+        }
+        for (const stat in statElements) {
+            statBaseValues[stat] = parseInt(statElements[stat].value);
+        }
+    }
+
+    Promise.all([
+        fetch('classes.json').then(response => response.json()).then(data => classes = data),
+        fetch('races.json').then(response => response.json()).then(data => races = data)
+    ]).then(() => {
+        for (const className in classes) {
+            const option = document.createElement('option');
+            option.value = className;
+            option.textContent = className.charAt(0).toUpperCase() + className.slice(1);
+            classSelect.appendChild(option);
+        }
+
+        for (const raceName in races) {
+            const option = document.createElement('option');
+            option.value = raceName;
+            option.textContent = raceName.charAt(0).toUpperCase() + raceName.slice(1);
+            raceSelect.appendChild(option);
+        }
+    });
+
+    raceSelect.addEventListener('change', () => {
+        const selectedRace = raceSelect.value;
+        if (selectedRace) {
+            const raceData = races[selectedRace];
+            currentRaceBuffs = raceData.buffs; // Update current race buffs
+            currentRaceAbilities = raceData.abilities || []; // Update current race abilities
+            applyBuffs();
+            displayAbilities();
+        }
+    });
+
+    classSelect.addEventListener('change', () => {
+        const selectedClass = classSelect.value;
+        if (selectedClass) {
+            const classData = classes[selectedClass];
+            currentClassBuffs = classData.buff; // Update current class buffs
+            currentClassAbilities = classData.abilities || []; // Update current class abilities
+            applyBuffs();
+            displayAbilities();
+        }
+    });
+
+    function resetBuffs() {
+        for (const stat in statBaseValues) {
+            statElements[stat].value = statBaseValues[stat];
+        }
+    }
+
+    function applyBuffs() {
+        resetBuffs();
+        for (const stat in currentRaceBuffs) {
+            if (statElements[stat]) {
+                statElements[stat].value = parseInt(statElements[stat].value) + currentRaceBuffs[stat];
+            }
+        }
+        for (const stat in currentClassBuffs) {
+            if (statElements[stat]) {
+                statElements[stat].value = parseInt(statElements[stat].value) + currentClassBuffs[stat];
+            }
+        }
+    }
+
+    function displayAbilities() {
+        const abilitiesList = document.getElementById('abilities-list');
+        abilitiesList.innerHTML = '';
+        const allAbilities = [...currentRaceAbilities, ...currentClassAbilities];
+        allAbilities.forEach(ability => {
+            const abilityDiv = document.createElement('div');
+            abilityDiv.className = 'ability';
+            abilityDiv.innerHTML = `
+                <div class="ability-inner">
+                    <div class="ability-front">
+                        <h4>${ability.name}</h4>
+                    </div>
+                    <div class="ability-back">
+                        <h4>${ability.name}</h4>
+                        <p>${ability.description}</p>
+                        <p><strong>Effect:</strong> ${ability.effect}</p>
+                        <p><strong>Ability Point Cost:</strong> ${ability.cost}</p>
+                        <p><strong>Cooldown:</strong> ${ability.cooldown}</p>
+                    </div>
+                </div>
+            `;
+            abilitiesList.appendChild(abilityDiv);
+
+            abilityDiv.addEventListener('click', () => {
+                abilityDiv.classList.toggle('flipped');
+                abilityDiv.classList.toggle('expanded');
+            });
+        });
+    }
+
+    document.querySelector('.edit-button').addEventListener('click', () => {
+        const characterName = document.querySelector('.character-name h2');
+        const newName = prompt('Enter new character name:', characterName.textContent);
+        if (newName !== null && newName.trim() !== '') {
+            characterName.textContent = newName;
+        }
+    });
+
+    document.getElementById('add-item-button').addEventListener('click', () => {
+        const selectedItemName = document.getElementById('item-select').value;
+        const selectedItem = items.find(item => item.name.toLowerCase() === selectedItemName);
+
+        if (selectedItem) {
+            const itemDiv = document.createElement('div');
+            itemDiv.className = 'inventory-item';
+            itemDiv.textContent = selectedItem.name;
+            const removeButton = document.createElement('button');
+            removeButton.textContent = 'Remove';
+            removeButton.className = 'remove-item-button';
+            itemDiv.appendChild(removeButton);
+            document.getElementById('inventory-list').appendChild(itemDiv);
+
+            for (const [stat, value] of Object.entries(selectedItem.effects)) {
+                const statInput = document.getElementById(stat);
+                statInput.value = parseInt(statInput.value) + value;
+            }
+
+            for (const [category, actions] of Object.entries(selectedItem.actions)) {
+                actions.forEach(action => {
+                    const actionDiv = document.createElement('div');
+                    actionDiv.className = 'action';
+                    actionDiv.textContent = action;
+                    if (category === 'melee') {
+                        document.getElementById('melee-actions').appendChild(actionDiv);
+                    } else if (category === 'magic') {
+                        document.getElementById('magic-actions').appendChild(actionDiv);
+                    }
+                });
+            }
+
+            removeButton.addEventListener('click', () => {
+                itemDiv.remove();
+                for (const [stat, value] of Object.entries(selectedItem.effects)) {
+                    const statInput = document.getElementById(stat);
+                    statInput.value = parseInt(statInput.value) - value;
+                }
+            });
+        }
+    });
+
+    initializeStats();
+});
