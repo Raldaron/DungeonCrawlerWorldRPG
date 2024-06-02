@@ -1,0 +1,1023 @@
+{
+    "swashbuckler": {
+        "buff": { "charisma": 2 },
+        "abilities": [
+            {
+                "name": "Daring Strike",
+                "description": "Perform a flamboyant attack.",
+                "effect": "Deal an additional 1d6 damage and gain advantage on the next attack roll.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Charm Offensive",
+                "description": "Use charm to disarm an opponent.",
+                "effect": "Target must make a Charisma check or be charmed for 2 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "blizzardmancer": {
+        "buff": { "intelligence": 2 },
+        "abilities": [
+            {
+                "name": "Frost Nova",
+                "description": "Release a burst of cold energy.",
+                "effect": "Deal 2d6 cold damage to all enemies within a 10-foot radius and slow their movement by half for 2 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Ice Shield",
+                "description": "Create a protective barrier of ice.",
+                "effect": "Gain +2 to AC for 3 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "nimblefootEnforcer": {
+        "buff": { "dexterity": 2 },
+        "abilities": [
+            {
+                "name": "Acrobatic Assault",
+                "description": "Perform an acrobatic attack.",
+                "effect": "Gain advantage on the next attack roll and deal an additional 1d6 damage.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Stealth Strike",
+                "description": "Attack from the shadows.",
+                "effect": "Deal double damage on the next attack if made from stealth.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "bloodAssassin": {
+        "buff": { "dexterity": 2 },
+        "abilities": [
+            {
+                "name": "Blood Frenzy",
+                "description": "Enter a state of heightened attack.",
+                "effect": "Gain +2 to attack rolls and deal an additional 1d6 damage for 3 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Silent Kill",
+                "description": "Perform a lethal, silent attack.",
+                "effect": "Deal 3d6 damage, and the target must make a Stamina check or be stunned for 1 turn.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "fireSpiritualist": {
+        "buff": { "intelligence": 2 },
+        "abilities": [
+            {
+                "name": "Flame Burst",
+                "description": "Release a burst of fire.",
+                "effect": "Deal 2d6 fire damage to all enemies within a 10-foot radius.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Fire Shield",
+                "description": "Create a protective barrier of fire.",
+                "effect": "Gain +2 to AC and deal 1d6 fire damage to attackers for 3 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "boringOlFighter": {
+        "buff": { "strength": 2 },
+        "abilities": [
+          {
+            "name": "Overwhelming Strike",
+            "description": "A devastating attack that overwhelms the opponent.",
+            "effect": "Deal 3d6 additional damage and knock the target prone.",
+            "cost": 3,
+            "cooldown": "1 hour"
+          },
+          {
+            "name": "Unbreakable Defense",
+            "description": "Adopt an impenetrable defensive stance.",
+            "effect": "Gain +4 to AC for 3 turns.",
+            "cost": 3,
+            "cooldown": "1 hour"
+          },
+          {
+            "name": "Whirlwind Attack",
+            "description": "Attack all enemies in a 10-foot radius.",
+            "effect": "Deal 2d6 damage to all nearby enemies.",
+            "cost": 4,
+            "cooldown": "1 hour"
+          },
+          {
+            "name": "Battle Roar",
+            "description": "A roar that intimidates all nearby foes.",
+            "effect": "All enemies within 15 feet must make a Stamina check or be frightened for 2 turns.",
+            "cost": 2,
+            "cooldown": "1 hour"
+          }
+        ]
+      },
+      "forsakenAerialist": {
+        "buff": { "dexterity": 2 },
+        "abilities": [
+          {
+            "name": "Aerial Assault",
+            "description": "Perform an attack from above.",
+            "effect": "Deal 2d6 damage and gain advantage on the next attack roll.",
+            "cost": 3,
+            "cooldown": "1 hour"
+          },
+          {
+            "name": "Feather Fall",
+            "description": "Slow your descent to avoid damage.",
+            "effect": "Negate all fall damage and land silently.",
+            "cost": 2,
+            "cooldown": "1 hour"
+          }
+        ]
+      },
+      "childActor": {
+        "buff": { "charisma": 2 },
+        "abilities": [
+          {
+            "name": "Adorable Distraction",
+            "description": "Distract enemies with your charm.",
+            "effect": "All enemies within a 10-foot radius must make a Charisma check or be distracted for 2 turns.",
+            "cost": 2,
+            "cooldown": "1 hour"
+          },
+          {
+            "name": "Fake Tears",
+            "description": "Feign distress to manipulate others.",
+            "effect": "Target must make a Stamina check or be charmed for 3 turns.",
+            "cost": 3,
+            "cooldown": "1 hour"
+          }
+        ]
+      },
+    "knifeSharpener": {
+        "buff": { "dexterity": 2 },
+        "abilities": [
+            {
+                "name": "Sharpen Blade",
+                "description": "Enhance a weapon's edge.",
+                "effect": "Add +1 to damage rolls for the next 3 attacks.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Quick Strike",
+                "description": "Deliver a swift, precise attack.",
+                "effect": "Deal an additional 1d6 damage and gain advantage on the next attack roll.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "holisticHealer": {
+        "buff": { "wisdom": 2 },
+        "abilities": [
+            {
+                "name": "Healing Herbs",
+                "description": "Use natural remedies to heal.",
+                "effect": "Heal an ally for 2d8 HP.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Protective Aura",
+                "description": "Create a soothing, protective aura.",
+                "effect": "Gain +2 to AC and resistance to poison for 3 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "legatus": {
+        "buff": { "charisma": 2 },
+        "abilities": [
+            {
+                "name": "Inspiring Command",
+                "description": "Boost the morale of allies.",
+                "effect": "Allies within 30 feet gain +2 to attack rolls and saving throws for 3 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Tactical Maneuver",
+                "description": "Execute a strategic move.",
+                "effect": "Gain advantage on the next attack roll and +2 to AC for 3 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "shotgunMessenger": {
+        "buff": { "dexterity": 2 },
+        "abilities": [
+            {
+                "name": "Buckshot Blast",
+                "description": "Fire a spread of buckshot.",
+                "effect": "Deal 2d6 damage to all enemies in a 15-foot cone.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Quick Reload",
+                "description": "Rapidly reload your weapon.",
+                "effect": "Reload instantly and gain advantage on the next attack roll.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "shieldmaiden": {
+        "buff": { "strength": 2 },
+        "abilities": [
+            {
+                "name": "Shield Bash",
+                "description": "Use your shield to attack.",
+                "effect": "Deal 1d6 damage and stun the target for 1 turn.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Defensive Stance",
+                "description": "Enhance your defensive capabilities.",
+                "effect": "Gain +4 to AC for 3 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "santero": {
+        "buff": { "wisdom": 2 },
+        "abilities": [
+            {
+                "name": "Spiritual Guidance",
+                "description": "Call upon spirits for help.",
+                "effect": "Gain advantage on Lore checks for 3 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Curse of the Dead",
+                "description": "Place a curse on an enemy.",
+                "effect": "Target must make a Wisdom check or suffer disadvantage on attack rolls for 3 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "prodromoi": {
+        "buff": { "dexterity": 2 },
+        "abilities": [
+            {
+                "name": "Swift Scout",
+                "description": "Move quickly and silently.",
+                "effect": "Gain advantage on Perception and Stealth checks for 3 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Surprise Attack",
+                "description": "Strike from an unexpected angle.",
+                "effect": "Deal an additional 2d6 damage on next attack if the target is unaware.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "zuluWarrior": {
+        "buff": { "strength": 2 },
+        "abilities": [
+            {
+                "name": "Battle Cry",
+                "description": "Boost the morale of allies and intimidate enemies.",
+                "effect": "Allies gain +2 to attack rolls and enemies must make a Wisdom check or be frightened for 2 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Spear Throw",
+                "description": "Throw a spear with deadly precision.",
+                "effect": "Deal 2d6 damage to a target within 30 feet.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "spy": {
+        "buff": { "intelligence": 2 },
+        "abilities": [
+            {
+                "name": "Disguise",
+                "description": "Change appearance to blend in.",
+                "effect": "Gain advantage on Disguise checks for 3 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Infiltrate",
+                "description": "Gain access to restricted areas.",
+                "effect": "Gain advantage on Stealth and Persuasion checks for 3 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "gutRearranger": {
+        "buff": { "strength": 2 },
+        "abilities": [
+            {
+                "name": "Eviscerate",
+                "description": "Perform a devastating attack.",
+                "effect": "Deal 3d6 damage and the target must make a Stamina check or be stunned for 1 turn.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Intimidating Presence",
+                "description": "Intimidate nearby enemies.",
+                "effect": "Enemies within 10 feet must make a Wisdom check or be frightened for 2 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "bogatyr": {
+        "buff": { "strength": 2 },
+        "abilities": [
+            {
+                "name": "Heroic Charge",
+                "description": "Lead a charge into battle.",
+                "effect": "Move up to 30 feet and make a melee attack with +2 to hit and +2 damage.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Legendary Valor",
+                "description": "Inspire allies with your bravery.",
+                "effect": "Allies within 30 feet gain +2 to attack rolls and saving throws for 3 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "dBagGeek": {
+        "buff": { "intelligence": 2 },
+        "abilities": [
+            {
+                "name": "Gadget Master",
+                "description": "Use a gadget to solve a problem.",
+                "effect": "Gain advantage on Technology checks for 3 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Arcane Wit",
+                "description": "Use your quick thinking to outsmart enemies.",
+                "effect": "Gain advantage on Deception checks for 3 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "weatherEngineer": {
+        "buff": { "intelligence": 2 },
+        "abilities": [
+            {
+                "name": "Storm Call",
+                "description": "Summon a storm to strike enemies.",
+                "effect": "Deal 2d6 lightning damage to all enemies within a 15-foot radius.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Wind Gust",
+                "description": "Use wind to push back enemies.",
+                "effect": "Push enemies back 10 feet and they must make a Strength check or be knocked prone.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "freelancePsychiatrist": {
+        "buff": { "wisdom": 2 },
+        "abilities": [
+            {
+                "name": "Therapeutic Insight",
+                "description": "Provide mental support to an ally.",
+                "effect": "An ally gains advantage on their next saving throw and recovers 1d6 HP.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Mind Soothe",
+                "description": "Calm the mind of a distressed ally.",
+                "effect": "Remove one fear or confusion effect from an ally.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "poetLaureate": {
+        "buff": { "charisma": 2 },
+        "abilities": [
+            {
+                "name": "Inspiring Verse",
+                "description": "Boost allies' morale with a powerful poem.",
+                "effect": "Allies within 30 feet gain +2 to attack rolls and saving throws for 3 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Cutting Remark",
+                "description": "Dishearten an enemy with a biting comment.",
+                "effect": "Target must make a Wisdom check or suffer disadvantage on their next attack roll.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "sergeantAtArms": {
+        "buff": { "strength": 2 },
+        "abilities": [
+            {
+                "name": "Rallying Cry",
+                "description": "Strengthen resolve of allies with a powerful shout.",
+                "effect": "Allies within 30 feet gain +2 to attack rolls and +2 AC for 3 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Enforce Order",
+                "description": "Command an enemy to stand down.",
+                "effect": "Target must make a Charisma check or be stunned for 1 turn.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "imperialSoldier": {
+        "buff": { "strength": 2 },
+        "abilities": [
+            {
+                "name": "Disciplined Strike",
+                "description": "Deliver a precise, controlled attack.",
+                "effect": "Gain advantage on the next attack roll and deal an additional 1d6 damage.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Shield Formation",
+                "description": "Create a defensive stance with allies.",
+                "effect": "Allies within 10 feet gain +2 to AC for 3 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "ranger": {
+        "buff": { "dexterity": 2 },
+        "abilities": [
+            {
+                "name": "Hunter's Mark",
+                "description": "Mark a target for increased damage.",
+                "effect": "Gain advantage on attack rolls against the marked target for 3 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Trap Setting",
+                "description": "Set a trap to hinder enemies.",
+                "effect": "Targets must make a Dexterity check or be immobilized for 2 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "archer": {
+        "buff": { "dexterity": 2 },
+        "abilities": [
+            {
+                "name": "Precision Shot",
+                "description": "Make a highly accurate ranged attack.",
+                "effect": "Gain advantage on the next ranged attack roll and deal an additional 1d6 damage.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Rain of Arrows",
+                "description": "Shoot multiple arrows at once.",
+                "effect": "Deal 1d6 damage to up to three targets within a 10-foot radius.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "hammersmith": {
+        "buff": { "strength": 2 },
+        "abilities": [
+            {
+                "name": "Forge Strike",
+                "description": "Deliver a powerful hammer blow.",
+                "effect": "Deal double damage on next melee attack.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Armor Reinforcement",
+                "description": "Temporarily strengthen allies' armor.",
+                "effect": "Allies within 10 feet gain +2 to AC for 3 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "sacredPaladin": {
+        "buff": { "charisma": 2 },
+        "abilities": [
+            {
+                "name": "Divine Smite",
+                "description": "Infuse a melee attack with holy power.",
+                "effect": "Deal an additional 2d6 radiant damage on next melee attack.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Holy Shield",
+                "description": "Create a protective barrier.",
+                "effect": "Gain +2 to AC and resistance to necrotic damage for 3 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "glassCannon": {
+        "buff": { "intelligence": 2 },
+        "abilities": [
+            {
+                "name": "Arcane Blast",
+                "description": "Release a burst of magical energy.",
+                "effect": "Deal 2d6 force damage to all enemies within a 15-foot radius.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Frail but Deadly",
+                "description": "Increase damage output but lower defenses.",
+                "effect": "Deal an additional 1d6 damage on all attacks for 3 turns, but suffer -2 to AC.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "demigodAttendant": {
+        "buff": { "charisma": 2 },
+        "abilities": [
+            {
+                "name": "Divine Intervention",
+                "description": "Call upon the power of the demigod.",
+                "effect": "Gain +2 to all ability scores for 3 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Blessing of Power",
+                "description": "Empower an ally with divine energy.",
+                "effect": "An ally gains +2 to attack rolls and saving throws for 3 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "vapeShopCounterJockey": {
+        "buff": { "charisma": 2 },
+        "abilities": [
+            {
+                "name": "Mystical Vapors",
+                "description": "Create a cloud of healing mist.",
+                "effect": "Heal all allies within a 10-foot radius for 2d6 HP.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Calming Aroma",
+                "description": "Soothe and relax allies.",
+                "effect": "Allies gain advantage on saving throws for 3 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "pitFighter": {
+        "buff": { "strength": 2 },
+        "abilities": [
+            {
+                "name": "Arena Champion",
+                "description": "Fight with the skill of a seasoned gladiator.",
+                "effect": "Gain advantage on melee attack rolls for 3 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Crowd Pleaser",
+                "description": "Inspire fear or admiration in enemies.",
+                "effect": "Enemies within 10 feet must make a Wisdom check or be frightened for 2 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "legendaryDiva": {
+        "buff": { "charisma": 2 },
+        "abilities": [
+            {
+                "name": "Sonic Boom",
+                "description": "Release a powerful sonic attack.",
+                "effect": "Deal 2d6 thunder damage to all enemies within a 15-foot radius.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Inspiring Performance",
+                "description": "Boost allies' morale with a captivating performance.",
+                "effect": "Allies within 30 feet gain +2 to attack rolls and saving throws for 3 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "viperQueen": {
+        "buff": { "dexterity": 2 },
+        "abilities": [
+            {
+                "name": "Venomous Strike",
+                "description": "Deliver a poisonous attack.",
+                "effect": "Deal an additional 1d6 poison damage and poison the target for 2 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Snake Charmer",
+                "description": "Control serpents to fight by your side.",
+                "effect": "Summon a snake that deals 1d6 damage and can poison targets for 3 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "masterTelephonePsychic": {
+        "buff": { "charisma": 2 },
+        "abilities": [
+            {
+                "name": "Psychic Insight",
+                "description": "Predict the actions of an enemy.",
+                "effect": "Gain advantage on all attack rolls against a single target for 3 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Calm Mind",
+                "description": "Soothe an ally's mind.",
+                "effect": "Remove one fear or confusion effect from an ally.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "agonyUrchin": {
+        "buff": { "stamina": 2 },
+        "abilities": [
+            {
+                "name": "Pain Inducer",
+                "description": "Inflict debilitating pain on an enemy.",
+                "effect": "Target must make a Stamina check or suffer disadvantage on all rolls for 3 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Endure Agony",
+                "description": "Draw strength from pain.",
+                "effect": "Gain +2 to all ability scores for 3 turns when at less than half HP.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "feralCatBerserker": {
+        "buff": { "strength": 2 },
+        "abilities": [
+            {
+                "name": "Frenzied Claws",
+                "description": "Attack with wild ferocity.",
+                "effect": "Gain an additional melee attack and +2 to attack rolls for 3 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Cat Reflexes",
+                "description": "Dodge incoming attacks with feline agility.",
+                "effect": "Gain advantage on Dodge checks for 3 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "animalTestSubject": {
+        "buff": { "stamina": 2 },
+        "abilities": [
+            {
+                "name": "Experimental Mutation",
+                "description": "Temporarily gain a random beneficial mutation.",
+                "effect": "Roll a d6 to determine a temporary boost to Strength, Dexterity, or Stamina for 3 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Adaptive Resilience",
+                "description": "Quickly adapt to harmful conditions.",
+                "effect": "Gain resistance to a specific damage type (fire, cold, poison, etc.) for 3 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "rollerDerbyJammer": {
+        "buff": { "dexterity": 2 },
+        "abilities": [
+            {
+                "name": "Speed Boost",
+                "description": "Increase movement speed and agility.",
+                "effect": "Double movement speed and gain +2 to Dexterity for 3 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Rolling Strike",
+                "description": "Perform a high-speed attack.",
+                "effect": "Deal an additional 1d6 damage and knock the target prone.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "trebuchetCommander": {
+        "buff": { "intelligence": 2 },
+        "abilities": [
+            {
+                "name": "Catapult Strike",
+                "description": "Launch a heavy projectile at enemies.",
+                "effect": "Deal 3d6 damage to all enemies within a 15-foot radius.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Siege Tactics",
+                "description": "Improve the effectiveness of siege weapons.",
+                "effect": "Allies operating siege weapons gain +2 to attack rolls and damage for 3 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "riotForcesSupport": {
+        "buff": { "stamina": 2 },
+        "abilities": [
+            {
+                "name": "Shield Wall",
+                "description": "Form an impenetrable defensive line.",
+                "effect": "Gain +4 to AC and resistance to physical damage for 3 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Crowd Control",
+                "description": "Disperse enemies with force.",
+                "effect": "Deal 2d6 damage and push all enemies within a 10-foot radius back 10 feet.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "trickster": {
+        "buff": { "dexterity": 2 },
+        "abilities": [
+            {
+                "name": "Illusionary Disguise",
+                "description": "Create a convincing illusion.",
+                "effect": "Gain advantage on Disguise checks for 3 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Confounding Trick",
+                "description": "Confuse and mislead an enemy.",
+                "effect": "Target must make a Wisdom check or be confused for 2 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "warlock": {
+        "buff": { "intelligence": 2 },
+        "abilities": [
+            {
+                "name": "Eldritch Blast",
+                "description": "Release a blast of dark energy.",
+                "effect": "Deal 2d6 necrotic damage to a target.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Pact Boon",
+                "description": "Call upon the power of your patron.",
+                "effect": "Gain +2 to all ability scores for 3 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "windMage": {
+        "buff": { "intelligence": 2 },
+        "abilities": [
+            {
+                "name": "Gale Force",
+                "description": "Summon powerful winds to disrupt enemies.",
+                "effect": "Deal 2d6 damage and knock all enemies within a 10-foot radius prone.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Air Shield",
+                "description": "Create a protective barrier of wind.",
+                "effect": "Gain +2 to AC and resistance to ranged attacks for 3 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "jouster": {
+        "buff": { "strength": 2 },
+        "abilities": [
+            {
+                "name": "Lance Charge",
+                "description": "Perform a powerful mounted attack.",
+                "effect": "Deal 3d6 damage to a target and knock them prone.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Defensive Posture",
+                "description": "Use your mount to shield against attacks.",
+                "effect": "Gain +2 to AC and +2 to saving throws for 3 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "staunchBarrier": {
+        "buff": { "stamina": 2 },
+        "abilities": [
+            {
+                "name": "Immovable Object",
+                "description": "Stand firm against all attacks.",
+                "effect": "Gain +4 to AC and cannot be moved for 3 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Protective Shield",
+                "description": "Shield allies from harm.",
+                "effect": "Allies within 10 feet gain +2 to AC for 3 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "alleyCatBrawler": {
+        "buff": { "strength": 2 },
+        "abilities": [
+            {
+                "name": "Street Fighting",
+                "description": "Use dirty tactics to win.",
+                "effect": "Deal an additional 1d6 damage and target must make a Dexterity check or be stunned for 1 turn.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Grit and Grime",
+                "description": "Gain advantage on melee attack rolls for 3 turns.",
+                "effect": "Gain advantage on melee attack rolls for 3 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "firecracker": {
+        "buff": { "dexterity": 2 },
+        "abilities": [
+            {
+                "name": "Explosive Burst",
+                "description": "Create a burst of fiery explosions.",
+                "effect": "Deal 2d6 fire damage to all enemies within a 10-foot radius.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Blinding Flash",
+                "description": "Disorient enemies with a flash of light.",
+                "effect": "All enemies within a 10-foot radius must make a Wisdom check or be blinded for 2 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "footballHooligan": {
+        "buff": { "strength": 2 },
+        "abilities": [
+            {
+                "name": "Riot Charge",
+                "description": "Lead a chaotic charge into battle.",
+                "effect": "Deal 2d6 damage to all enemies in a 10-foot line and knock them prone.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Team Spirit",
+                "description": "Boost the morale and strength of allies.",
+                "effect": "Allies within 30 feet gain +2 to attack rolls and damage for 3 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "pterolykos": {
+        "buff": { "dexterity": 2 },
+        "abilities": [
+            {
+                "name": "Sky Hunt",
+                "description": "Attack from above with precision.",
+                "effect": "Gain advantage on the next attack roll and deal an additional 1d6 damage.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Aerial Assault",
+                "description": "Perform a devastating attack from the air.",
+                "effect": "Deal 3d6 damage to a target and knock them prone.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "nineTails": {
+        "buff": { "charisma": 2 },
+        "abilities": [
+            {
+                "name": "Mystic Illusion",
+                "description": "Create an illusion to confuse enemies.",
+                "effect": "Target must make a Wisdom check or be confused for 2 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Enchanted Foxfire",
+                "description": "Summon magical flames to attack.",
+                "effect": "Deal 2d6 fire damage to up to three targets within a 10-foot radius.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            }
+        ]
+    },
+    "pestExterminator": {
+        "buff": { "dexterity": 2 },
+        "abilities": [
+            {
+                "name": "Toxin Spray",
+                "description": "Release a cloud of toxic gas.",
+                "effect": "Deal 2d6 poison damage to all enemies within a 10-foot radius and poison them for 2 turns.",
+                "cost": 3,
+                "cooldown": "1 hour"
+            },
+            {
+                "name": "Trap Setting",
+                "description": "Set a trap to catch pests.",
+                "effect": "Targets must make a Dexterity check or be immobilized for 2 turns.",
+                "cost": 2,
+                "cooldown": "1 hour"
+            }
+        ]
+    }
+}

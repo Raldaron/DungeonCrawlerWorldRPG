@@ -1,0 +1,522 @@
+{
+  "Spunky Jeffery the Enchanted Nickel Sock of the Elderly Miser": {
+    "type": "Bludgeoning",
+    "melee": true,
+    "magical": true,
+    "handsRequired": "One-handed",
+    "damageType": "Bludgeoning",
+    "damageAmount": "1d6",
+    "rarity": "Legendary",
+    "requirements": {
+      "strength": 10,
+      "dexterity": 12
+    },
+    "statBuffs": {
+      "dexterity": 5,
+      "charisma": 5
+    },
+    "skillBuffs": {},
+    "uniqueAbilities": [
+      {
+        "name": "Incremental Damage",
+        "description": "This weapon's damage increases by 1.5% for every mob it kills that is no more than ten levels below your current level.",
+        "effect": "Increases damage by 238%"
+      },
+      {
+        "name": "Bonk Condition",
+        "description": "Has a 5% chance to inflict the Bonk condition.",
+        "effect": "5% chance to inflict Bonk"
+      },
+      {
+        "name": "Gold Burst",
+        "description": "All mobs killed by this weapon have a 20% chance to burst into a pile of gold coins upon death.",
+        "effect": "20% chance for gold burst"
+      }
+    ],
+    "spellAccess": [],
+    "hpBuffs": [],
+    "mpBuffs": []
+  },
+    "Toad Cudgel": {
+      "type": "Club",
+      "melee": true,
+      "magical": false,
+      "handsRequired": "One-handed",
+      "damageType": "Bludgeoning",
+      "damageAmount": "1d6",
+      "rarity": "Common",
+      "requirements": {},
+      "statBuffs": {},
+      "skillBuffs": {},
+      "uniqueAbilities": [],
+      "spellAccess": [],
+      "hpBuffs": [],
+      "mpBuffs": [],
+      "description": "Big stick for bonking. Bonk toad. Bonk mob. Bonk girlfriend and drag back to cave by hair."
+    },
+     "Enchanted War Gauntlet of the Exalted Grull": {
+      "type": "Gauntlet",
+      "melee": true,
+      "magical": true,
+      "handsRequired": "One-handed",
+      "damageType": "Bludgeoning/Piercing",
+      "damageAmount": "1d12",
+      "rarity": "Epic",
+      "requirements": {
+        "strength": 12,
+        "dexterity": 10
+      },
+      "statBuffs": {
+        "strength": 6,
+        "dexterity": 2
+      },
+      "skillBuffs": {
+        "Pugilism": 4,
+        "Melee": 3
+      },
+      "uniqueAbilities": [
+        {
+          "name": "Stun Chance",
+          "description": "2% chance to stun enemy upon a successful hit.",
+          "effect": "2% chance to stun"
+        },
+        {
+          "name": "Transformation",
+          "description": "Item is a wrist bracer that transforms into a spiked war gauntlet made of orcish steel when the hand is shaped into a fist or wields a hilted weapon for more than two seconds at a time. This item on its own does not negate the bare knuckle skill bonus. Warning: if you use this weapon to strike adherents of the war god Grull you have a 1.5% chance to transfigure your target into the deity himself. Trust me on this. You don't want to do that. A bigger redder WARNING. Remove this item before you jerk off.",
+          "effect": "Transforms into spiked gauntlet"
+        }
+      ],
+      "spellAccess": [],
+      "hpBuffs": [],
+      "mpBuffs": []
+    },
+    "The Street Sweeper": {
+      "type": "Chain",
+      "melee": true,
+      "magical": false,
+      "handsRequired": "Two-handed",
+      "damageType": "Bludgeoning",
+      "damageAmount": "1d10",
+      "rarity": "Uncommon",
+      "requirements": {
+        "strength": 12
+      },
+      "statBuffs": {},
+      "skillBuffs": {},
+      "uniqueAbilities": [
+        {
+          "name": "Entangle",
+          "description": "On a successful hit, can choose to wrap the chain impeding the target's next action.",
+          "effect": "Can entangle target"
+        }
+      ],
+      "spellAccess": [],
+      "hpBuffs": [],
+      "mpBuffs": [],
+      "description": "A heavy rusty chain that has seen better days but now serves as a formidable melee weapon. This length of corroded iron links once part of industrial machinery or perhaps a bygone era's forgotten defenses now carries an air of menace. Each link is thick and jagged with rust making every strike not only a bludgeoning force but also a tearing grating wound. When swung it emits a low eerie whistle hinting at the raw power and relentless history of its new purpose. In the hands of a determined crawler \"The Street Sweeper\" becomes an instrument of chaos capable of battering through defenses and leaving a trail of destruction in its wake."
+    },
+    "Arrow of Enthusiastic Double Gonorrhea": {
+      "type": "Arrow",
+      "melee": false,
+      "magical": true,
+      "handsRequired": "One-handed (when used with a bow)",
+      "damageType": "Piercing",
+      "damageAmount": "1d8",
+      "rarity": "Rare",
+      "requirements": {
+        "dexterity": 10,
+        "Archery": 3
+      },
+      "statBuffs": {},
+      "skillBuffs": {},
+      "uniqueAbilities": [
+        {
+          "name": "Enthusiastic Double Gonorrhea",
+          "description": "Upon a successful hit, the target must make a Stamina saving throw (DC 15) or be inflicted with Enthusiastic Double Gonorrhea. The disease causes the target's genitals to ignite with flames, dealing 1d4 fire damage every turn until the disease is cured. The target must spend an action to make another Constitution saving throw at the start of each of their turns to attempt to heal. The disease heals and reignites the afflicted area repeatedly. The only known cures are self-gelding or passing the disease to another creature.",
+          "effect": "Inflicts Enthusiastic Double Gonorrhea on hit"
+        }
+      ],
+      "spellAccess": [],
+      "hpBuffs": [],
+      "mpBuffs": [],
+      "description": "Arrow of Enthusiastic Double Gonorrhea. This is a regular arrow, but the tip is dipped in a poison that will inflict you with Enthusiastic Double Gonorrhea. Trust me on this. You don't want Enthusiastic Double Gonorrhea. It doesn't kill you, but you'll want it to. It sets your genitals aflame. Literally. And then it heals that area of your body over and over. The only way to remove the disease is to, uh, geld yourself. Or pass it on to someone else."
+    },
+    "Bolt of Ophiotaurus": {
+      "type": "Crossbow Bolt",
+      "melee": false,
+      "magical": true,
+      "handsRequired": "One-handed (when used with a crossbow)",
+      "damageType": "Piercing",
+      "damageAmount": "1d8",
+      "rarity": "Legendary",
+      "requirements": {
+        "dexterity": 12,
+        "Archery": 4
+      },
+      "statBuffs": {},
+      "skillBuffs": {},
+      "uniqueAbilities": [
+        {
+          "name": "Deity's Vulnerability",
+          "description": "If shot directly into the eye of a deity, the deity's invulnerability is paused for fifteen seconds.",
+          "effect": "Pauses deity's invulnerability for 15 seconds"
+        }
+      ],
+      "spellAccess": [],
+      "hpBuffs": [],
+      "mpBuffs": [],
+      "description": "The Bolt of Ophiotaurus. This is 1 of 100. This item acts as a regular crossbow bolt unless it is shot directly into the eye of a deity. Upon a successful strike to the god's eye, the deity's invulnerability pauses for fifteen seconds."
+    },
+    "Bolt of Petrify Rock Class": {
+      "type": "Crossbow Bolt",
+      "melee": false,
+      "magical": true,
+      "handsRequired": "One-handed (when used with a crossbow)",
+      "damageType": "Piercing",
+      "damageAmount": "1d8",
+      "rarity": "Rare",
+      "requirements": {
+        "dexterity": 10,
+        "Archery": 3
+      },
+      "statBuffs": {},
+      "skillBuffs": {},
+      "uniqueAbilities": [
+        {
+          "name": "Petrify Rock Class",
+          "description": "Upon impact, the target is imbued with the \"Petrified\" status condition. The bolt vanishes in a puff of smoke after impact.",
+          "effect": "Imbues Petrified status on rock-class targets"
+        }
+      ],
+      "spellAccess": [],
+      "hpBuffs": [],
+      "mpBuffs": [],
+      "description": "A Bolt of Petrify Rock Class is a crossbow bolt that imbues a rock-class target with the \"Petrified\" status condition. The bolt vanishes in a puff of smoke after impact. This type of bolt is more expensive than bolts designed to injure rock-class creatures."
+    },
+    "Snicker-Snack Claws": {
+      "type": "Claws",
+      "melee": true,
+      "magical": false,
+      "handsRequired": "One-handed (each)",
+      "damageType": "Slashing",
+      "damageAmount": "2d6",
+      "rarity": "Uncommon",
+      "requirements": {
+        "strength": 6,
+        "dexterity": 6
+      },
+      "statBuffs": {},
+      "skillBuffs": {},
+      "uniqueAbilities": [],
+      "spellAccess": [],
+      "hpBuffs": [],
+      "mpBuffs": [],
+      "description": "A pair of steel claws that are vaguely reminiscent of Wolverine's famous retractable weapons."
+    },
+    "Enchanted Repeating Crossbow of the Scavenger Mother of Mothers": {
+      "type": "Crossbow",
+      "melee": false,
+      "magical": true,
+      "handsRequired": "Two-handed",
+      "damageType": "Piercing",
+      "damageAmount": "2d10",
+      "rarity": "Legendary",
+      "requirements": {
+        "strength": 10,
+        "dexterity": 12,
+        "Archery": 5
+      },
+      "statBuffs": {
+        "dexterity": 10,
+        "strength": 10
+      },
+      "skillBuffs": {},
+      "uniqueAbilities": [
+        {
+          "name": "Enhanced Damage",
+          "description": "Your strength+level increases base damage 1.5X more than a standard crossbow.",
+          "effect": "1.5X base damage based on strength+level"
+        },
+        {
+          "name": "Birth Defect Spell",
+          "description": "Casts Birth Defect on monster types who generate or birth additional monsters.",
+          "effect": "Casts Birth Defect spell"
+        }
+      ],
+      "spellAccess": [
+        {
+          "name": "Birth Defect",
+          "description": "Inflicts a curse on monster types who generate or birth additional monsters, causing their offspring to be significantly weaker or deformed."
+        }
+      ],
+      "hpBuffs": [],
+      "mpBuffs": [],
+      "description": "This is a unique item. This is a repeating, ranged weapon. It has the buffet enchantment, meaning it will not run out of basic ammunition. You may load and fire additional ammunition types to use with this weapon, though any special bonuses will only apply to the stock ammunition. It is said that the long-forgotten goddess Nekhebit is both jealous and terrible. When the elf mothers chose to abandon Nekhebit and instead worship Apito, the Oak Goddess, it is written Nekhebit grew enraged. The mighty vulture goddess blamed the male-dominated high elf court for causing her worshippers to stray. As a result, she cursed their seed, thus creating what is today known as the Fae Diaspora. There are dozens of elf and fairy breeds, all of whom may trace their lineage back to the early high elf court, whose cursed offspring sowed the universe. This crossbow is rumored to have been given to Nekhebit's last warrior guardian as a gift for remaining true to her faith."
+    },
+    "Echo Hammer": {
+      "type": "Hammer",
+      "melee": true,
+      "magical": true,
+      "handsRequired": "Two-handed",
+      "damageType": "Bludgeoning",
+      "damageAmount": "2d6",
+      "rarity": "Uncommon",
+      "requirements": {
+        "strength": 14
+      },
+      "statBuffs": {},
+      "skillBuffs": {},
+      "uniqueAbilities": [
+        {
+          "name": "Sonic Boom",
+          "description": "On a successful hit, can choose to release a sonic boom to deafen the target, imposing a -2 penalty to their next action.",
+          "effect": "-2 penalty to target's next action"
+        }
+      ],
+      "spellAccess": [],
+      "hpBuffs": [],
+      "mpBuffs": []
+    },
+    "Ogre's Toothpick (a.k.a. Giant Club)": {
+      "type": "Club",
+      "melee": true,
+      "magical": false,
+      "handsRequired": "Two-handed",
+      "damageType": "Bludgeoning",
+      "damageAmount": "3d8",
+      "rarity": "Rare",
+      "requirements": {
+        "strength": 16
+      },
+      "statBuffs": {},
+      "skillBuffs": {},
+      "uniqueAbilities": [],
+      "spellAccess": [],
+      "hpBuffs": [],
+      "mpBuffs": []
+    },
+    "Meteor Maul": {
+      "type": "Maul",
+      "melee": true,
+      "magical": true,
+      "handsRequired": "Two-handed",
+      "damageType": "Bludgeoning",
+      "damageAmount": "2d12",
+      "rarity": "Epic",
+      "requirements": {
+        "strength": 18
+      },
+      "statBuffs": {
+        "strength": 3
+      },
+      "skillBuffs": {},
+      "uniqueAbilities": [
+        {
+          "name": "Impact Crater",
+          "description": "On a critical success, create a small crater, knocking down nearby enemies.",
+          "effect": "Creates crater and knocks down nearby enemies on crit"
+        }
+      ],
+      "spellAccess": [],
+      "hpBuffs": [],
+      "mpBuffs": []
+    },
+    "Pyromaniac Pixie Stick (Ember Wand)": {
+      "type": "Wand",
+      "melee": false,
+      "magical": true,
+      "handsRequired": "One-handed",
+      "damageType": "Fire",
+      "damageAmount": "1d10",
+      "rarity": "Rare",
+      "requirements": {
+        "intelligence": 10
+      },
+      "statBuffs": {},
+      "skillBuffs": {},
+      "uniqueAbilities": [
+        {
+          "name": "Flare Up",
+          "description": "Ignites flammable objects in the environment, potentially causing additional hazards.",
+          "effect": "Ignites flammable objects"
+        }
+      ],
+      "spellAccess": [],
+      "hpBuffs": [],
+      "mpBuffs": []
+    },
+      "Assassin's Kazoo (Echoing Flute Dagger)": {
+        "type": "Dagger",
+        "melee": true,
+        "magical": true,
+        "handsRequired": "One-handed",
+        "damageType": "Piercing", 
+        "damageAmount": "1d6",
+        "rarity": "Uncommon",
+        "requirements": {
+          "dexterity": 8
+        },
+        "statBuffs": {},
+        "skillBuffs": {},
+        "uniqueAbilities": [
+          {
+            "name": "Melodic Distraction",
+            "description": "After a successful attack, the wielder can play a tune to distract nearby enemies, giving allies a +1d10 advantage on their next action.",
+            "effect": "+1d10 to ally actions after hit"
+          }
+        ],
+        "spellAccess": [],
+        "hpBuffs": [],
+        "mpBuffs": []
+      },
+      "Bipolar Slingshot (Slingshot of Surprise)": {
+        "type": "Slingshot",
+        "melee": false,
+        "magical": true,
+        "handsRequired": "One-handed",
+        "damageType": "Bludgeoning",
+        "damageAmount": "1d8",
+        "rarity": "Uncommon",
+        "requirements": {
+          "dexterity": 10
+        },
+        "statBuffs": {},
+        "skillBuffs": {},
+        "uniqueAbilities": [
+          {
+            "name": "Surprise Strike",
+            "description": "On a roll of 10, the slingshot deals maximum damage and has a surprise effect, such as knocking the target prone.",
+            "effect": "Max damage and surprise effect on roll of 10"
+          }
+        ],
+        "spellAccess": [],
+        "hpBuffs": [],
+        "mpBuffs": []
+      },
+      "Antique Longbow (Tattered Longbow)": {
+        "type": "Longbow",
+        "melee": false,
+        "magical": false,
+        "handsRequired": "Two-handed",
+        "damageType": "Piercing",
+        "damageAmount": "1d8",
+        "rarity": "Common",
+        "requirements": {
+          "dexterity": 8
+        },
+        "statBuffs": {},
+        "skillBuffs": {},
+        "uniqueAbilities": [],
+        "spellAccess": [],
+        "hpBuffs": [],
+        "mpBuffs": []
+      },
+      "Hippie Beating Stick (Quartz-Embedded Staff)": {
+        "type": "Staff",
+        "melee": true,
+        "magical": true,
+        "handsRequired": "Two-handed",
+        "damageType": "Bludgeoning",
+        "damageAmount": "1d8",
+        "rarity": "Uncommon",
+        "requirements": {
+          "strength": 10
+        },
+        "statBuffs": {},
+        "skillBuffs": {},
+        "uniqueAbilities": [
+          {
+            "name": "Harmonize",
+            "description": "On a successful hit, calms the target, possibly ending their aggressive actions.",
+            "effect": "May calm target on hit"
+          }
+        ],
+        "spellAccess": [],
+        "hpBuffs": [],
+        "mpBuffs": []
+      },
+      "Tetanus Blade (Rusty Shortsword)": {
+        "type": "Shortsword",
+        "melee": true,
+        "magical": false,
+        "handsRequired": "One-handed",
+        "damageType": "Slashing",
+        "damageAmount": "1d6",
+        "rarity": "Common",
+        "requirements": {
+          "strength": 8
+        },
+        "statBuffs": {},
+        "skillBuffs": {},
+        "uniqueAbilities": [
+          {
+            "name": "Infection Risk",
+            "description": "On a damage roll of 8 or higher, the target may suffer a lingering disease effect.",
+            "effect": "Lingering disease on high damage rolls"
+          }
+        ],
+        "spellAccess": [],
+        "hpBuffs": [],
+        "mpBuffs": []
+      },
+      "9mm Handgun": {
+        "type": "Handgun",
+        "melee": false,
+        "magical": false,
+        "handsRequired": "One-handed",
+        "damageType": "Piercing",
+        "damageAmount": 16,
+        "rarity": "Common",
+        "requirements": {
+          "dexterity": 8
+        },
+        "statBuffs": {},
+        "skillBuffs": {},
+        "uniqueAbilities": [],
+        "spellAccess": [],
+        "hpBuffs": [],
+        "mpBuffs": []
+      },
+      "Hatchet": {
+        "type": "Axe",
+        "melee": true,
+        "magical": false,
+        "handsRequired": "One-handed",
+        "damageType": "Slashing",
+        "damageAmount": "1d6",
+        "rarity": "Common",
+        "requirements": {
+          "strength": 10
+        },
+        "statBuffs": {},
+        "skillBuffs": {},
+        "uniqueAbilities": [],
+        "spellAccess": [],
+        "hpBuffs": [],
+        "mpBuffs": []
+      },
+      "Bugspray/Lighter Combo": {
+        "type": "Improvised Weapon",
+        "melee": false,
+        "magical": false,
+        "handsRequired": "One-handed",
+        "damageType": "Fire",
+        "damageAmount": "1d6", 
+        "rarity": "Uncommon",
+        "requirements": {
+          "dexterity": 8
+        },
+        "statBuffs": {},
+        "skillBuffs": {},
+        "uniqueAbilities": [
+          {
+            "name": "Incendiary",
+            "description": "Can cause panic and disarray among weaker foes, possibly causing them to flee.",
+            "effect": "May cause weaker foes to flee"
+          }
+        ],
+        "spellAccess": [],
+        "hpBuffs": [],
+        "mpBuffs": []
+      }
+    }

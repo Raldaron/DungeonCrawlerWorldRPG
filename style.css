@@ -1,0 +1,403 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.character-sheet {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.character-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.character-name h2, .character-level p {
+    margin: 0;
+}
+
+.select-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.select-container select {
+    flex: 1;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+.select-container select:last-child {
+    margin-right: 0;
+}
+
+.character-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.character-avatar img, .action img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+}
+
+.edit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+}
+
+.stats, .skills {
+    margin-bottom: 20px;
+}
+
+.stat-category-container, .skills-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+h3 {
+    margin-bottom: 10px;
+}
+
+.stat-category, .skill-column, .action, .skill, .spell, .item, .quest, .hint {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.stat-category, .skill-column {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.stat-category:last-child, .skill-column:last-child {
+    margin-right: 0;
+}
+
+.stat-category h3, .skill h4, .action h4, .skill h4, .spell h4, .item h4, .quest h4, .hint h4 {
+    margin: 0 0 5px 0;
+}
+
+.stat, .skill {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f9f9f9;
+    padding: 5px;
+    border-radius: 3px;
+    margin: 5px 0;
+}
+
+.stat span, .skill span {
+    flex: 1;
+}
+
+.stat input, .skill input {
+    width: 50px;
+    text-align: center;
+    margin-left: 10px;
+}
+
+.inventory {
+    margin-bottom: 20px;
+}
+
+.inventory-controls {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+#item-select {
+    flex-grow: 1;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+#add-item-button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#add-item-button:hover {
+    background-color: #0056b3;
+}
+
+.inventory-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.inventory-item {
+    flex: 1 1 100px;
+    margin: 5px;
+    text-align: center;
+    padding: 10px;
+    background-color: #e9e9e9;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.inventory-item:hover {
+    background-color: #d9d9d9;
+}
+
+.action-category {
+    margin-bottom: 10px;
+}
+
+.action-category .action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.remove-item-button {
+    margin-left: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.remove-item-button:hover {
+    background-color: darkred;
+}
+
+.action-detail {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+}
+
+/* Styles for ability boxes */
+.abilities-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.ability {
+    width: 150px;
+    height: 100px;
+    margin: 10px;
+    perspective: 1000px;
+    cursor: pointer;
+    position: relative;
+}
+
+.ability-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.6s, z-index 0.6s;
+    transform-style: preserve-3d;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    z-index: 1;
+}
+
+.ability-front, .ability-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.ability-front {
+    background-color: #007bff;
+    color: white;
+}
+
+.ability-back {
+    background-color: #f9f9f9;
+    color: black;
+    transform: rotateY(180deg);
+}
+
+.ability.flipped .ability-inner {
+    transform: rotateY(180deg);
+    z-index: 2;
+}
+
+.ability.expanded {
+    width: 300px;
+    height: 350px;
+    z-index: 3;
+}
+
+.ability.expanded .ability-inner {
+    z-index: 4;
+}
+
+.character-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    flex: 1;
+    margin-right: 10px;
+}
+
+.stat-box label {
+    margin-bottom: 5px;
+}
+
+.stat-box input {
+    width: 60px;
+    text-align: center;
+}
+
+.stat-box:last-child {
+    margin-right: 0;
+}
+.character-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.stat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    flex: 1;
+    margin-right: 10px;
+}
+
+.stat-box label {
+    margin-bottom: 5px;
+}
+
+.stat-box input {
+    width: 60px;
+    text-align: center;
+}
+
+.stat-box:last-child {
+    margin-right: 0;
+}
+
+.stat-box:last-child {
+    margin-right: 0;
+}
+/* Existing styles */
+
+/* Wearables/Armor Inventory Section */
+.inventory-controls {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+#wearable-select {
+    flex-grow: 1;
+    margin-right: 10px;
+    padding: 5px;
+}
+
+#add-wearable-button {
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#add-wearable-button:hover {
+    background-color: #0056b3;
+}
+
+.inventory-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.inventory-item {
+    flex: 1 1 100px;
+    margin: 5px;
+    text-align: center;
+    padding: 10px;
+    background-color: #e9e9e9;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.inventory-item:hover {
+    background-color: #d9d9d9;
+}
+
+.equipped-wearable {
+    margin-bottom: 20px;
+}
+
+.remove-item-button, .equip-wearable-button {
+    margin-left: 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.remove-item-button:hover, .equip-wearable-button:hover {
+    background-color: darkred;
+}
