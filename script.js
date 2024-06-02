@@ -23,14 +23,21 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const statPointsElement = document.getElementById('stat-points');
+    const derivedStatElements = {
+        hp: document.getElementById('hp'),
+        mp: document.getElementById('mp'),
+        ar: document.getElementById('ar')
+    };
 
     function initializeStats() {
         for (const stat in statElements) {
-            statElements[stat].value = 0;
-            statBaseValues[stat] = 0;
+            statElements[stat].value = 10;  // Set default stat values
+            statBaseValues[stat] = 10;
         }
         availableStatPoints = 60;
         statPointsElement.value = availableStatPoints;
+        updateDerivedStats();
+        loadCharacterSheet();
     }
 
     function updateStatPoints() {
@@ -50,130 +57,96 @@ document.addEventListener('DOMContentLoaded', () => {
             statBaseValues[stat] = newValue;
             availableStatPoints = newAvailableStatPoints;
             updateStatPoints();
+            updateDerivedStats();
+            saveCharacterSheet();
         } else {
             statElements[stat].value = oldValue;
             alert('Not enough stat points available.');
         }
     }
 
+    function updateDerivedStats() {
+        const stamina = parseInt(statElements.stamina.value);
+        const intelligence = parseInt(statElements.intelligence.value);
+        
+        derivedStatElements.hp.value = stamina * 5;
+        derivedStatElements.mp.value = intelligence * 5;
+        saveCharacterSheet();
+    }
+
     for (const stat in statElements) {
         statElements[stat].addEventListener('input', () => distributeStatPoints(stat));
     }
 
-    initializeStats();
-
-    const editButton = document.querySelector('.edit-button');
     const characterName = document.querySelector('.character-name h2');
-    const addItemButton = document.getElementById('add-item-button');
-    const addWearableButton = document.getElementById('add-wearable-button');
-    const itemSelect = document.getElementById('item-select');
-    const wearableSelect = document.getElementById('wearable-select');
-    const inventoryList = document.getElementById('inventory-list');
-    const abilitiesList = document.getElementById('abilities-list');
-    const raceSelect = document.getElementById('race-select');
-    const classSelect = document.getElementById('class-select');
-    const weaponSelect = document.getElementById('weapon-select');
-    const weaponList = document.getElementById('weapon-list');
-    const addWeaponButton = document.getElementById('add-weapon-button');
-    const equippedWeaponDiv = document.getElementById('equipped-weapon');
-    const unequipWeaponButton = document.getElementById('unequip-weapon-button');
-    const weaponActionsList = document.getElementById('weapon-actions-list');
-    const derivedStatElements = {
-        hp: document.getElementById('hp'),
-        mp: document.getElementById('mp'),
-        ar: document.getElementById('ar')
-    };
+    const characterNameEditButton = document.querySelector('.character-name .edit-button');
 
-    const skillElements = {
-        insight: document.getElementById('insight'),
-        performance: document.getElementById('performance'),
-        intimidation: document.getElementById('intimidation'),
-        leadership: document.getElementById('leadership'),
-        persuasion: document.getElementById('persuasion'),
-        senseDeception: document.getElementById('sense-deception'),
-        streetwise: document.getElementById('streetwise'),
-        melee: document.getElementById('melee'),
-        pugilism: document.getElementById('pugilism'),
-        sleightOfHand: document.getElementById('sleight-of-hand'),
-        stealth: document.getElementById('stealth'),
-        athletics: document.getElementById('athletics'),
-        dodge: document.getElementById('dodge'),
-        ride: document.getElementById('ride'),
-        parry: document.getElementById('parry'),
-        archery: document.getElementById('archery'),
-        firearms: document.getElementById('firearms'),
-        awareness: document.getElementById('awareness'),
-        search: document.getElementById('search'),
-        animalKen: document.getElementById('animal-ken'),
-        survival: document.getElementById('survival'),
-        scrounging: document.getElementById('scrounging'),
-        crafting: document.getElementById('crafting'),
-        repair: document.getElementById('repair'),
-        sapper: document.getElementById('sapper'),
-        nerdLore: document.getElementById('nerd-lore'),
-        medicine: document.getElementById('medicine'),
-        technology: document.getElementById('technology'),
-        disguise: document.getElementById('disguise'),
-        escapeArtistry: document.getElementById('escape-artistry'),
-        vehicleOperation: document.getElementById('vehicle-operation')
-    };
+    characterNameEditButton.addEventListener('click', () => {
+        const newName = prompt('Enter new character name:', characterName.textContent);
+        if (newName) {
+            characterName.textContent = newName;
+            saveCharacterSheet();
+        }
+    });
 
-    let currentClass = null;
-    let currentRace = null;
-    let skillBaseValues = {};
-    let availableSkillPoints = parseInt(document.getElementById('skill-points').value);
-    let currentClassBuffs = {};
-    let currentRaceBuffs = {};
-    let currentClassAbilities = [];
-    let currentRaceAbilities = [];
-    let equippedWeapon = null;
-    let inventory = [];
-    let equippedWearables = [];
+    function saveCharacterSheet() {
+        const characterData = {
+            name: characterName.textContent,
+            level: document.getElementById('level').value,
+            stats: {},
+            derivedStats: {
+                hp: derivedStatElements.hp.value,
+                mp: derivedStatElements.mp.value,
+                ar: derivedStatElements.ar.value
+            },
+            statPoints: statPointsElement.value,
+            skillPoints: document.getElementById('skill-points').value,
+            inventory: inventory,
+            equippedWeapon: equippedWeapon ? equippedWeapon.name : null,
+            equippedWearables: equippedWearables.map(wearable => wearable.name)
+        };
 
-    for (const skill in skillElements) {
-        skillBaseValues[skill] = parseInt(skillElements[skill].value);
+        for (const stat in statElements) {
+            characterData.stats[stat] = statElements[stat].value;
+        }
+
+        localStorage.setItem('characterSheet', JSON.stringify(characterData));
     }
 
-    function adjustSkill(skill) {
-        const skillElement = skillElements[skill];
-        const newValue = parseInt(skillElement.value);
-        const oldValue = skillBaseValues[skill];
-        const cost = calculateSkillCost(oldValue, newValue);
-
-        if (cost > 0) {
-            if (cost <= availableSkillPoints) {
-                availableSkillPoints -= cost;
-                skillBaseValues[skill] = newValue;
-                document.getElementById('skill-points').value = availableSkillPoints;
-            } else {
-                alert('Not enough skill points available.');
-                skillElement.value = oldValue;
+    function loadCharacterSheet() {
+        const savedData = localStorage.getItem('characterSheet');
+        if (savedData) {
+            const characterData = JSON.parse(savedData);
+            characterName.textContent = characterData.name;
+            document.getElementById('level').value = characterData.level;
+            for (const stat in characterData.stats) {
+                statElements[stat].value = characterData.stats[stat];
+                statBaseValues[stat] = parseInt(characterData.stats[stat]);
             }
-        } else {
-            const refund = -cost;
-            availableSkillPoints += refund;
-            skillBaseValues[skill] = newValue;
-            document.getElementById('skill-points').value = availableSkillPoints;
+            derivedStatElements.hp.value = characterData.derivedStats.hp;
+            derivedStatElements.mp.value = characterData.derivedStats.mp;
+            derivedStatElements.ar.value = characterData.derivedStats.ar;
+            statPointsElement.value = characterData.statPoints;
+            document.getElementById('skill-points').value = characterData.skillPoints;
+            availableStatPoints = parseInt(characterData.statPoints);
+            loadInventory(characterData.inventory);
+            if (characterData.equippedWeapon) {
+                equipWeapon(weapons[characterData.equippedWeapon], characterData.equippedWeapon);
+            }
+            characterData.equippedWearables.forEach(wearableName => {
+                equipWearable(wearables.find(w => w.name === wearableName), wearableName);
+            });
         }
     }
 
-    function calculateSkillCost(oldValue, newValue) {
-        let cost = 0;
-        if (newValue > oldValue) {
-            for (let i = oldValue + 1; i <= newValue; i++) {
-                cost += i;
-            }
-        } else {
-            for (let i = newValue + 1; i <= oldValue; i++) {
-                cost -= i;
-            }
-        }
-        return cost;
+    function loadInventory(savedInventory) {
+        inventory = savedInventory || [];
+        updateInventoryDisplay();
     }
 
-    for (const skill in skillElements) {
-        skillElements[skill].addEventListener('input', () => adjustSkill(skill));
-    }
+    // Other existing functions for managing inventory, wearables, etc.
+
+    initializeStats();
 
     document.getElementById('level').addEventListener('input', updateLevel);
 
@@ -183,15 +156,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (level === 1) {
             availableStatPoints = 60;
             for (const stat in statElements) {
-                statElements[stat].value = 0;
-                statBaseValues[stat] = 0;
+                statElements[stat].value = 10;
+                statBaseValues[stat] = 10;
             }
         } else {
             const previousLevelStatPoints = (level - 2) * 2;
             const currentLevelStatPoints = (level - 1) * 2;
             availableStatPoints += (currentLevelStatPoints - previousLevelStatPoints);
         }
-        document.getElementById('stat-points').value = availableStatPoints;
+        statPointsElement.value = availableStatPoints;
 
         let skillPoints;
         if (level <= 5) {
@@ -214,8 +187,16 @@ document.addEventListener('DOMContentLoaded', () => {
         for (const stat in statElements) {
             statBaseValues[stat] = parseInt(statElements[stat].value);
         }
+        updateDerivedStats();
+        saveCharacterSheet();
     }
 
+    // Add event listeners to save character sheet data on change
+    document.querySelectorAll('input').forEach(input => {
+        input.addEventListener('change', saveCharacterSheet);
+    });
+
+    // Initialize data loading and saving
     Promise.all([
         fetch('classes.json').then(response => response.json()).then(data => classes = data),
         fetch('races.json').then(response => response.json()).then(data => races = data),
@@ -258,6 +239,8 @@ document.addEventListener('DOMContentLoaded', () => {
             option.textContent = wearable.itemName;
             wearableSelect.appendChild(option);
         });
+
+        loadCharacterSheet();
     }).catch(error => {
         console.error('Error loading data:', error);
     });
@@ -302,6 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 statElements[stat].value = parseInt(statElements[stat].value) + currentClassBuffs[stat];
             }
         }
+        updateDerivedStats();
     }
 
     function displayAbilities() {
@@ -407,6 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
         unequipWeaponButton.style.display = 'block';
         applyWeaponEffects(weapon);
         displayWeaponAction(weapon);
+        saveCharacterSheet();
     }
 
     function unequipWeapon() {
@@ -416,6 +401,7 @@ document.addEventListener('DOMContentLoaded', () => {
             equippedWeaponDiv.innerHTML = '<p>No weapon equipped.</p>';
             unequipWeaponButton.style.display = 'none';
             weaponActionsList.innerHTML = '';
+            saveCharacterSheet();
         }
     }
 
@@ -449,6 +435,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     unequipWeapon();
                 }
                 weaponDiv.remove();
+                saveCharacterSheet();
             });
         }
     });
@@ -509,6 +496,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 mpElement.value = parseInt(mpElement.value) + buff;
             }
         });
+        saveCharacterSheet();
     }
 
     function removeItemEffects(item) {
@@ -545,6 +533,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 mpElement.value = parseInt(mpElement.value) - buff;
             }
         });
+        saveCharacterSheet();
     }
 
     function useItem(item, itemName) {
@@ -556,6 +545,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 inventory.splice(itemIndex, 1);
             }
             updateInventoryDisplay();
+            saveCharacterSheet();
         }
     }
 
@@ -567,6 +557,7 @@ document.addEventListener('DOMContentLoaded', () => {
             inventory.push({ name: itemName, item: item, count: 1 });
         }
         updateInventoryDisplay();
+        saveCharacterSheet();
     }
 
     function updateInventoryDisplay() {
@@ -599,6 +590,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     inventory.splice(itemIndex, 1);
                 }
                 updateInventoryDisplay();
+                saveCharacterSheet();
             });
         });
     }
@@ -669,6 +661,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentArmorRating += (wearable.armorRating - baseArmorRating);
         }
         derivedStatElements.ar.value = currentArmorRating;
+        saveCharacterSheet();
     }
 
     function removeWearableEffects(wearable) {
@@ -710,6 +703,7 @@ document.addEventListener('DOMContentLoaded', () => {
             currentArmorRating -= (wearable.armorRating - baseArmorRating);
         }
         derivedStatElements.ar.value = currentArmorRating;
+        saveCharacterSheet();
     }
 
     function equipWearable(wearable, wearableName) {
@@ -734,6 +728,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         unequipButton.addEventListener('click', () => {
             unequipWearable(wearable, wearableDiv);
+            saveCharacterSheet();
         });
     }
 
@@ -741,6 +736,7 @@ document.addEventListener('DOMContentLoaded', () => {
         removeWearableEffects(wearable);
         equippedWearables = equippedWearables.filter(w => w.itemName !== wearable.itemName);
         wearableDiv.remove();
+        saveCharacterSheet();
     }
 
     addWearableButton.addEventListener('click', () => {
@@ -753,4 +749,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     initializeStats();
+
+
+
 });
