@@ -1,949 +1,719 @@
-document.addEventListener('DOMContentLoaded', () => {
-    let classes = {};
-    let races = {};
-    let weapons = {};
-    let items = [];
-    let wearables = [];
-    let statBaseValues = {};
-    let availableStatPoints = 0;
-    let availableSkillPoints = 0;
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        const raceSelect = document.getElementById('char-race');
+        const classSelect = document.getElementById('char-class');
 
-    const baseArmorRating = 10;
-    let currentArmorRating = baseArmorRating;
+        const races = await fetch('races.json').then(response => response.json());
+        const classes = await fetch('classes.json').then(response => response.json());
+        const uniqueAbilities = await fetch('uniqueAbilities.json').then(response => response.json());
+        const buffs = await fetch('buffs.json').then(response => response.json());
+        const spells = await fetch('spells.json').then(response => response.json());
 
-    const statElements = {
-        strength: document.getElementById('strength'),
-        dexterity: document.getElementById('dexterity'),
-        stamina: document.getElementById('stamina'),
-        intelligence: document.getElementById('intelligence'),
-        perception: document.getElementById('perception'),
-        wit: document.getElementById('wit'),
-        charisma: document.getElementById('charisma'),
-        manipulation: document.getElementById('manipulation'),
-        appearance: document.getElementById('appearance')
+        populateSelectOptions(raceSelect, races);
+        populateSelectOptions(classSelect, classes);
+
+        raceSelect.addEventListener('change', () => updateRace(races));
+        classSelect.addEventListener('change', () => updateClass(classes));
+
+        window.races = races;
+        window.classes = classes;
+        window.uniqueAbilities = uniqueAbilities;
+        window.buffs = buffs;
+        window.spells = spells;
+
+        attachEditableFields();
+        populateSkills();
+        document.getElementById('skill-points').innerText = '25'; // Set initial skill points to 25
+    } catch (error) {
+        console.error('Error loading data:', error);
+    }
+    document.getElementById('add-to-inventory-btn').addEventListener('click', openSearchModal);
+    document.getElementById('open-inventory-btn').addEventListener('click', openInventoryModal);
+    document.getElementById('item-search').addEventListener('input', searchItems);
+
+    loadInventory();
+});
+
+let inventory = [];
+let items = ["Sword", "Shield", "Potion", "Helmet", "Armor", "Boots", "Ring", "Amulet", "Bow", "Arrow"]; // Example items
+
+function openSearchModal() {
+    document.getElementById('search-modal').style.display = 'block';
+}
+
+function closeSearchModal() {
+    document.getElementById('search-modal').style.display = 'none';
+}
+
+function searchItems() {
+    const searchTerm = document.getElementById('item-search').value.toLowerCase();
+    const resultsContainer = document.getElementById('search-results');
+    resultsContainer.innerHTML = '';
+
+    const filteredItems = items.filter(item => item.toLowerCase().includes(searchTerm));
+    filteredItems.forEach(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.textContent = item;
+        itemDiv.addEventListener('click', () => {
+            addToInventory(item);
+            closeSearchModal();
+        });
+        resultsContainer.appendChild(itemDiv);
+    });
+}
+
+function addToInventory(itemName) {
+    const existingItem = inventory.find(item => item.name === itemName);
+    if (existingItem) {
+        existingItem.quantity++;
+    } else {
+        inventory.push({ name: itemName, quantity: 1 });
+    }
+    saveInventory();
+    updateInventoryDisplay();
+}
+
+function openInventoryModal() {
+    document.getElementById('inventory-modal').style.display = 'block';
+    updateInventoryDisplay();
+}
+
+function closeInventoryModal() {
+    document.getElementById('inventory-modal').style.display = 'none';
+}
+
+function updateInventoryDisplay() {
+    const inventoryItemsContainer = document.getElementById('inventory-items');
+    inventoryItemsContainer.innerHTML = '';
+
+    inventory.sort((a, b) => a.name.localeCompare(b.name));
+    inventory.forEach(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.classList.add('inventory-item');
+        itemDiv.innerHTML = `
+            <span>${item.name} (x${item.quantity})</span>
+            <button onclick="increaseQuantity('${item.name}')">+</button>
+            <button onclick="decreaseQuantity('${item.name}')">-</button>
+        `;
+        inventoryItemsContainer.appendChild(itemDiv);
+    });
+}
+
+function increaseQuantity(itemName) {
+    const item = inventory.find(item => item.name === itemName);
+    if (item) {
+        item.quantity++;
+        saveInventory();
+        updateInventoryDisplay();
+    }
+}
+
+function decreaseQuantity(itemName) {
+    const item = inventory.find(item => item.name === itemName);
+    if (item && item.quantity > 0) {
+        item.quantity--;
+        if (item.quantity === 0) {
+            inventory = inventory.filter(invItem => invItem.name !== itemName);
+        }
+        saveInventory();
+        updateInventoryDisplay();
+    }
+}
+
+function saveInventory() {
+    localStorage.setItem('inventory', JSON.stringify(inventory));
+}
+
+function loadInventory() {
+    const savedInventory = localStorage.getItem('inventory');
+    if (savedInventory) {
+        inventory = JSON.parse(savedInventory);
+    }
+    updateInventoryDisplay();
+}
+
+function attachEditableFields() {
+    document.querySelectorAll('.stat span').forEach(span => {
+        span.ondblclick = () => editField(span);
+    });
+
+    document.querySelectorAll('.skill span').forEach(span => {
+        span.ondblclick = () => editField(span);
+    });
+}
+
+function updateRace(races) {
+    const selectedRaceName = document.getElementById('char-race').value;
+    const selectedRace = races[selectedRaceName];
+    const selectedClassName = document.getElementById('char-class').value;
+    const selectedClass = window.classes[selectedClassName];
+
+    // Remove bonuses from the previously selected race
+    const previousRaceName = window.previousSelectedRace;
+    if (previousRaceName && previousRaceName !== selectedRaceName) {
+        const previousRace = races[previousRaceName];
+        if (previousRace) {
+            removeRaceBonuses(previousRace);
+        }
+    }
+
+    if (!selectedRace) {
+        clearRaceInfo();
+        return;
+    }
+
+    displayRaceInfo(selectedRaceName, selectedRace);
+
+    applyRaceBonuses(selectedRace);
+    applyClassBonuses(selectedClass);
+
+    updateDerivedStats();
+
+    // Store the currently selected race for future reference
+    window.previousSelectedRace = selectedRaceName;
+}
+
+function removeRaceBonuses(previousRace) {
+    if (previousRace) {
+        removeStatBonuses(previousRace.statBonus);
+        removeArApBonuses(previousRace.statBonus);
+        removeSkillBonuses(previousRace.skillBonus);
+        removeUniqueAbilities(previousRace.uniqueAbilities);
+    }
+}
+
+function editField(element) {
+    const currentText = element.innerText;
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.value = currentText;
+    input.onblur = () => {
+        element.innerText = input.value;
+        element.style.display = 'block';
+        input.remove();
+        updateDerivedStats();
     };
+    input.onkeypress = (e) => {
+        if (e.key === 'Enter') {
+            input.blur();
+        }
+    };
+    element.style.display = 'none';
+    element.parentNode.insertBefore(input, element);
+    input.focus();
+}
+
+function populateSkills() {
+    const skills = [
+        'Awareness', 'Empathy', 'Artistry', 'Intimidation', 'Persuasion', 'Close Combat', 'Sense Deception', 'Streetwise',
+        'Sleight of hand', 'Stealth', 'Animal Ken', 'Athletics', 'Crafting', 'Disguise', 'Dodge', 'Escape Artistry',
+        'Lore', 'Arcana', 'Medicine', 'Firearms', 'Archery', 'Repair', 'Electronics', 'Gadgets', 'Ride', 'Sapper',
+        'Scrounging', 'Search', 'Survival', 'Technology', 'Tradecraft', 'Vehicle Operation', 'Investigation'
+    ];
+
+    const skillColumns = document.querySelectorAll('.skill-column');
+    const numColumns = skillColumns.length;
+
+    skills.sort().forEach((skill, index) => {
+        const columnIndex = index % numColumns;
+        const skillElement = document.createElement('div');
+        skillElement.classList.add('skill');
+        skillElement.innerHTML = `
+            <p>${skill}:</p>
+            <span id="${skill.replace(/\s/g, '-').toLowerCase()}" ondblclick="editField(this)"></span>
+        `;
+        skillColumns[columnIndex].appendChild(skillElement);
+    });
+
+    attachEditableFields();
+}
+
+function populateSelectOptions(selectElement, data) {
+    selectElement.innerHTML = '<option value="">Select an option</option>';
+    Object.keys(data).forEach(key => {
+        const option = document.createElement('option');
+        option.value = key;
+        option.textContent = key;
+        selectElement.appendChild(option);
+    });
+}
+
+function displayRaceInfo(raceName, race) {
+    const raceInfoContainer = document.getElementById('selected-race');
+    if (raceInfoContainer) {
+        raceInfoContainer.remove();
+    }
+    const newRaceInfoContainer = document.createElement('div');
+    newRaceInfoContainer.id = 'selected-race';
+    newRaceInfoContainer.innerHTML = `
+        <h2 onclick="openRaceModal('${raceName}')">${raceName}</h2>
+    `;
+    document.querySelector('.character-info').appendChild(newRaceInfoContainer);
+}
+
+function clearRaceInfo() {
+    const raceInfoContainer = document.getElementById('selected-race');
+    if (raceInfoContainer) {
+        raceInfoContainer.remove();
+    }
+}
+
+function displayBuffs(buffs) {
+    const buffContainer = document.querySelector('.buff-container');
+    buffContainer.innerHTML = '';
+
+    if (!buffs || buffs.length === 0) return;
+
+    buffs.forEach(buff => {
+        const buffElement = document.createElement('div');
+        buffElement.classList.add('buff');
+        buffElement.innerHTML = `
+            <p>${buff}</p>
+            <span>${window.buffs[buff] ? window.buffs[buff].description : 'Description not available'}</span>
+        `;
+        buffContainer.appendChild(buffElement);
+    });
+}
+
+function openRaceModal(raceName) {
+    const race = window.races[raceName];
+    const modalContent = document.getElementById('race-modal-content');
+    modalContent.querySelector('#race-modal-title').innerText = raceName;
+    modalContent.querySelector('#race-modal-description').innerText = race.description;
+    modalContent.querySelector('#race-modal-lore').innerText = race.loreElements.join(' ');
+    modalContent.querySelector('#race-modal-stat-bonuses').innerText = JSON.stringify(race.statBonus);
+    modalContent.querySelector('#race-modal-skill-bonuses').innerText = JSON.stringify(race.skillBonus);
+    document.getElementById('race-modal').style.display = 'block';
+}
+
+function applyClassBonuses(selectedClass) {
+    if (selectedClass) {
+        applyStatBonuses(selectedClass.statBonus);
+        applyArApBonuses(selectedClass.statBonus);
+        applyHpMpBonuses(selectedClass.hpBonus, selectedClass.mpBonus);
+        applySkillBonuses(selectedClass.skillBonus);
+        displayUniqueAbilities(selectedClass.uniqueAbilities);
+        displayBuffs(selectedClass.buffs);
+        displaySpells(selectedClass.spells);
+    }
+}
+
+function updateClass(classes) {
+    const selectedClassName = document.getElementById('char-class').value;
+    const selectedClass = classes[selectedClassName];
+    const selectedRaceName = document.getElementById('char-race').value;
+    const selectedRace = window.races[selectedRaceName];
+
+    if (!selectedClass) return;
+
+    // Reset stats to base values
+    resetCharacterSheet();
+
+    // Apply race and class bonuses
+    applyRaceBonuses(selectedRace);
+    applyClassBonuses(selectedClass);
+
+    updateDerivedStats();
+}
+
+function applyHpMpBonuses(hpBonus, mpBonus) {
+    const hpElement = document.getElementById('hp');
+    const mpElement = document.getElementById('mp');
+
+    if (hpBonus) {
+        const baseHp = parseInt(hpElement.innerText);
+        const bonusHp = parseInt(hpBonus.replace(/\D/g, ''));
+        hpElement.innerText = baseHp + bonusHp;
+    }
+
+    if (mpBonus) {
+        const baseMp = parseInt(mpElement.innerText);
+        const bonusMp = parseInt(mpBonus.replace(/\D/g, ''));
+        mpElement.innerText = baseMp + bonusMp;
+    }
+}
+
+function applyRaceBonuses(selectedRace) {
+    if (selectedRace) {
+        applyStatBonuses(selectedRace.statBonus);
+        applyArApBonuses(selectedRace.statBonus);
+        applySkillBonuses(selectedRace.skillBonus);
+        displayUniqueAbilities(selectedRace.uniqueAbilities);
+    }
+}
+
+function updateClass(classes) {
+    const selectedClassName = document.getElementById('char-class').value;
+    const selectedClass = classes[selectedClassName];
+    const selectedRaceName = document.getElementById('char-race').value;
+    const selectedRace = window.races[selectedRaceName];
+
+    // Remove bonuses from the previously selected class
+    const previousClassName = window.previousSelectedClass;
+    if (previousClassName && previousClassName !== selectedClassName) {
+        const previousClass = classes[previousClassName];
+        if (previousClass) {
+            removeClassBonuses(previousClass);
+        }
+    }
+
+    if (!selectedClass) return;
+
+    // Reset stats to base values
+    resetCharacterSheet();
+
+    // Apply race and class bonuses
+    applyRaceBonuses(selectedRace);
+    applyClassBonuses(selectedClass);
+
+    updateDerivedStats();
+
+    // Store the currently selected class for future reference
+    window.previousSelectedClass = selectedClassName;
+}
+
+function removeClassBonuses(previousClass) {
+    if (previousClass) {
+        removeStatBonuses(previousClass.statBonus);
+        removeArApBonuses(previousClass.statBonus);
+        removeHpMpBonuses(previousClass.hpBonus, previousClass.mpBonus);
+        removeSkillBonuses(previousClass.skillBonus);
+        removeUniqueAbilities(previousClass.uniqueAbilities);
+        removeBuffs(previousClass.buffs);
+        removeSpells(previousClass.spells);
+    }
+}
+
+function removeStatBonuses(statBonus) {
+    for (const stat in statBonus) {
+        if (stat === 'ar' || stat === 'ap') continue;
+        const statElement = document.getElementById(stat);
+        if (statElement) {
+            statElement.innerText = parseInt(statElement.innerText) - parseInt(statBonus[stat]);
+        }
+    }
+}
+
+function removeArApBonuses(statBonus) {
+    const arElement = document.getElementById('ar');
+    const apElement = document.getElementById('ap');
+
+    if (statBonus.ar) {
+        arElement.innerText = parseInt(arElement.innerText) - parseInt(statBonus.ar);
+    }
+    if (statBonus.ap) {
+        apElement.innerText = parseInt(apElement.innerText) - parseInt(statBonus.ap);
+    }
+}
+
+function removeHpMpBonuses(hpBonus, mpBonus) {
+    const hpElement = document.getElementById('hp');
+    const mpElement = document.getElementById('mp');
+
+    if (hpBonus) {
+        hpElement.innerText = parseInt(hpElement.innerText) - parseInt(hpBonus.replace(/\D/g, ''));
+    }
+    if (mpBonus) {
+        mpElement.innerText = parseInt(mpElement.innerText) - parseInt(mpBonus.replace(/\D/g, ''));
+    }
+}
+
+function removeSkillBonuses(skillBonus) {
+    for (const skill in skillBonus) {
+        const skillElement = document.getElementById(skill.replace(/\s/g, '-').toLowerCase());
+        if (skillElement) {
+            skillElement.innerText = parseInt(skillElement.innerText) - parseInt(skillBonus[skill]);
+        }
+    }
+}
+
+function displaySpells(spells) {
+    const spellContainer = document.querySelector('.spell-container');
+    spellContainer.innerHTML = '';
+
+    if (!spells || spells.length === 0) return;
+
+    spells.forEach(spell => {
+        const spellElement = document.createElement('div');
+        spellElement.classList.add('spell');
+        spellElement.innerHTML = `
+            <p onclick="openSpellModal('${spell}')">${spell}</p>
+        `;
+        spellContainer.appendChild(spellElement);
+    });
+}
+
+function openSpellModal(spellName) {
+    const spell = window.spells[spellName];
+    const modalContent = document.getElementById('spell-modal-content');
+    modalContent.querySelector('#spell-modal-title').innerText = spellName;
+    modalContent.querySelector('#spell-modal-description').innerText = spell.description;
+    modalContent.querySelector('#spell-modal-effect').innerText = spell.effect;
+    modalContent.querySelector('#spell-modal-cost').innerText = spell.manaCost;
+    document.getElementById('spell-modal').style.display = 'block';
+}
+
+function openBuffsModal() {
+    const selectedRaceName = document.getElementById('char-race').value;
+    const selectedRace = window.races[selectedRaceName];
+    const selectedClassName = document.getElementById('char-class').value;
+    const selectedClass = window.classes[selectedClassName];
+
+    const buffsListElement = document.getElementById('buffs-list');
+    buffsListElement.innerHTML = '';
+
+    const activeBuffs = [];
+
+    if (selectedRace && selectedRace.buffs) {
+        activeBuffs.push(...selectedRace.buffs);
+    }
+
+    if (selectedClass && selectedClass.buffs) {
+        activeBuffs.push(...selectedClass.buffs);
+    }
+
+    if (activeBuffs.length > 0) {
+        activeBuffs.forEach(buffName => {
+            const buff = window.buffs[buffName];
+            if (buff) {
+                const buffDiv = document.createElement('div');
+                buffDiv.classList.add('buff-info');
+
+                const buffNameElement = document.createElement('h3');
+                buffNameElement.classList.add('buff-name');
+                buffNameElement.textContent = buffName;
+                buffDiv.appendChild(buffNameElement);
+
+                const buffDescElement = document.createElement('p');
+                buffDescElement.classList.add('buff-description');
+                buffDescElement.textContent = `Description: ${buff.description}`;
+                buffDiv.appendChild(buffDescElement);
+
+                const buffEffectElement = document.createElement('p');
+                buffEffectElement.classList.add('buff-effect');
+                buffEffectElement.textContent = `Effect: ${buff.effect}`;
+                buffDiv.appendChild(buffEffectElement);
+
+                if (buff.scaling) {
+                    const buffScalingElement = document.createElement('p');
+                    buffScalingElement.classList.add('buff-scaling');
+                    buffScalingElement.textContent = `Scaling: ${buff.scaling}`;
+                    buffDiv.appendChild(buffScalingElement);
+                }
+
+                buffsListElement.appendChild(buffDiv);
+            }
+        });
+    } else {
+        buffsListElement.innerHTML = '<li>No active buffs.</li>';
+    }
+
+    document.getElementById('buffs-modal').style.display = 'block';
+}
+
+function displayUniqueAbilities(abilities) {
+    let abilitiesContainer = document.querySelector('.ability-container');
+
+    if (!abilitiesContainer) {
+        const abilitiesSection = document.createElement('section');
+        abilitiesSection.classList.add('abilities');
+        abilitiesSection.innerHTML = `
+            <h2>Unique Abilities</h2>
+            <div class="ability-container"></div>
+        `;
+        document.querySelector('.container').appendChild(abilitiesSection);
+        abilitiesContainer = abilitiesSection.querySelector('.ability-container');
+    }
+
+    abilitiesContainer.innerHTML = '';
+
+    if (!abilities || abilities.length === 0) return;
+
+    abilities.forEach(ability => {
+        const abilityElement = document.createElement('div');
+        abilityElement.classList.add('ability');
+        abilityElement.innerHTML = `
+            <p>${ability}</p>
+            <span onclick="openAbilityModal('${ability}')">Details</span>
+        `;
+        abilitiesContainer.appendChild(abilityElement);
+    });
+}
+
+function openAbilityModal(abilityName) {
+    const ability = window.uniqueAbilities[abilityName];
+    const modalContent = document.getElementById('ability-modal-content');
+    modalContent.querySelector('#ability-modal-title').innerText = abilityName;
+    modalContent.querySelector('#ability-modal-description').innerText = ability.description;
+    modalContent.querySelector('#ability-modal-effect').innerText = ability.effect;
+    modalContent.querySelector('#ability-modal-range').innerText = ability.range || 'N/A';
+    modalContent.querySelector('#ability-modal-cost').innerText = ability.abilityPointCost;
+    modalContent.querySelector('#ability-modal-cooldown').innerText = ability.cooldown;
+    document.getElementById('ability-modal').style.display = 'block';
+}
+
+function resetCharacterSheet() {
+    document.querySelectorAll('.stat span').forEach(span => {
+        if (span.id === 'ar') {
+            span.innerText = '10';
+        } else if (span.id === 'ap') {
+            span.innerText = '0';
+        } else {
+            span.innerText = '1';
+        }
+    });
+
+    document.querySelectorAll('.skill span').forEach(span => {
+        span.innerText = '0';
+    });
+
+    // Reset HP and MP
+    document.getElementById('hp').innerText = '0';
+    document.getElementById('mp').innerText = '0';
+
+    // Clear unique abilities section
+    const abilitiesContainer = document.querySelector('.ability-container');
+    if (abilitiesContainer) {
+        abilitiesContainer.innerHTML = '';
+    }
+
+    // Clear buffs section
+    const buffContainer = document.querySelector('.buff-container');
+    if (buffContainer) {
+        buffContainer.innerHTML = '';
+    }
+
+    // Clear spells section
+    const spellContainer = document.querySelector('.spell-container');
+    if (spellContainer) {
+        spellContainer.innerHTML = '';
+    }
+
+    // Reset level, stat points, and skill points
+    document.getElementById('char-level').innerText = '1';
+    document.getElementById('stat-points').innerText = '60';
+    document.getElementById('skill-points').innerText = '25';
+}
+
+function displayRaceInfo(raceName, race) {
+    const raceInfoContainer = document.getElementById('selected-race');
+    if (raceInfoContainer) {
+        raceInfoContainer.remove();
+    }
+    const newRaceInfoContainer = document.createElement('div');
+    newRaceInfoContainer.id = 'selected-race';
+    newRaceInfoContainer.innerHTML = `
+        <h2>${raceName}</h2>
+        <p>${race.description}</p>
+        <button onclick="openRaceModal('${raceName}')">More Info</button>
+    `;
+    document.querySelector('.character-info').appendChild(newRaceInfoContainer);
+}
+
+function applyArApBonuses(statBonus) {
+    const arElement = document.getElementById('ar');
+    const apElement = document.getElementById('ap');
+
+    if (statBonus.ar) {
+        arElement.innerText = parseInt(arElement.innerText) + parseInt(statBonus.ar);
+    }
+    if (statBonus.ap) {
+        apElement.innerText = parseInt(apElement.innerText) + parseInt(statBonus.ap);
+    }
+}
+
+function applyStatBonuses(statBonus) {
+    for (const stat in statBonus) {
+        if (stat === 'ar' || stat === 'ap') continue;
+        const statElement = document.getElementById(stat);
+        if (statElement) {
+            statElement.innerText = parseInt(statElement.innerText) + parseInt(statBonus[stat]);
+        }
+    }
+}
+
+function applySkillBonuses(skillBonus) {
+    for (const skill in skillBonus) {
+        const skillElement = document.getElementById(skill);
+        if (skillElement) {
+            skillElement.innerText = parseInt(skillElement.innerText) + parseInt(skillBonus[skill]);
+        }
+    }
+}
+
+function openRaceModal(name) {
+    const race = window.races[name];
+    const modalContent = document.getElementById('race-modal-content');
+    modalContent.querySelector('#race-modal-title').innerText = name;
+    modalContent.querySelector('#race-modal-description').innerText = race.description;
+    modalContent.querySelector('#race-modal-lore').innerText = race.loreElements.join(' ');
+    modalContent.querySelector('#race-modal-stat-bonuses').innerText = JSON.stringify(race.statBonus);
+    modalContent.querySelector('#race-modal-skill-bonuses').innerText = JSON.stringify(race.skillBonus);
+    document.getElementById('race-modal').style.display = 'block';
+}
+
+function closeModal() {
+    document.querySelectorAll('.modal').forEach(modal => {
+        modal.style.display = 'none';
+    });
+}
+
+function incrementLevel() {
+    const levelElement = document.getElementById('char-level');
+    let currentLevel = parseInt(levelElement.innerText);
+    currentLevel += 1;
+    levelElement.innerText = currentLevel;
 
     const statPointsElement = document.getElementById('stat-points');
     const skillPointsElement = document.getElementById('skill-points');
 
-    function saveData() {
-        const data = {
-            statBaseValues,
-            availableStatPoints,
-            availableSkillPoints,
-            currentArmorRating,
-            skillBaseValues,
-            currentClass,
-            currentRace,
-            currentClassBuffs,
-            currentRaceBuffs,
-            currentClassAbilities,
-            currentRaceAbilities,
-            equippedWeapon,
-            inventory,
-            equippedWearables
-        };
-        localStorage.setItem('characterData', JSON.stringify(data));
+    let statPoints = parseInt(statPointsElement.innerText);
+    let skillPoints = parseInt(skillPointsElement.innerText);
+
+    statPoints += 2;
+    skillPoints += getSkillPointsForLevel(currentLevel);
+
+    statPointsElement.innerText = statPoints;
+    skillPointsElement.innerText = skillPoints;
+}
+
+function decrementLevel() {
+    const levelElement = document.getElementById('char-level');
+    let currentLevel = parseInt(levelElement.innerText);
+    if (currentLevel > 1) {
+        currentLevel -= 1;
+        levelElement.innerText = currentLevel;
+
+        const statPointsElement = document.getElementById('stat-points');
+        const skillPointsElement = document.getElementById('skill-points');
+
+        let statPoints = parseInt(statPointsElement.innerText);
+        let skillPoints = parseInt(skillPointsElement.innerText);
+
+        statPoints -= 2;
+        skillPoints -= getSkillPointsForLevel(currentLevel + 1);
+
+        statPointsElement.innerText = statPoints;
+        skillPointsElement.innerText = skillPoints;
     }
+}
 
-    function loadData() {
-        const data = JSON.parse(localStorage.getItem('characterData'));
-        if (data) {
-            statBaseValues = data.statBaseValues;
-            availableStatPoints = data.availableStatPoints;
-            availableSkillPoints = data.availableSkillPoints;
-            currentArmorRating = data.currentArmorRating;
-            skillBaseValues = data.skillBaseValues;
-            currentClass = data.currentClass;
-            currentRace = data.currentRace;
-            currentClassBuffs = data.currentClassBuffs;
-            currentRaceBuffs = data.currentRaceBuffs;
-            currentClassAbilities = data.currentClassAbilities;
-            currentRaceAbilities = data.currentRaceAbilities;
-            equippedWeapon = data.equippedWeapon;
-            inventory = data.inventory;
-            equippedWearables = data.equippedWearables;
+function getSkillPointsForLevel(level) {
+    if (level >= 21) return 14;
+    if (level >= 16) return 12;
+    if (level >= 11) return 10;
+    if (level >= 6) return 8;
+    return 6;
+}
 
-            for (const stat in statElements) {
-                statElements[stat].value = statBaseValues[stat];
-            }
-            statPointsElement.value = availableStatPoints;
-            skillPointsElement.value = availableSkillPoints;
+function updateDerivedStats() {
+    const stamina = parseInt(document.getElementById('stamina').innerText);
+    const intelligence = parseInt(document.getElementById('intelligence').innerText);
+    const hpElement = document.getElementById('hp');
+    const mpElement = document.getElementById('mp');
 
-            applyBuffs();
-            updateDerivedStats();
-            updateInventoryDisplay();
-            updateWearablesDisplay();
-            if (equippedWeapon) {
-                displayWeaponAction(equippedWeapon);
-                equippedWeaponDiv.innerHTML = `<p>${equippedWeapon.weaponName}</p>`;
-                unequipWeaponButton.style.display = 'block';
-            }
-        }
-    }
+    hpElement.innerText = stamina * 5;
+    mpElement.innerText = intelligence * 5;
+}
 
-    function initializeStats() {
-        for (const stat in statElements) {
-            statElements[stat].value = 0;
-            statBaseValues[stat] = 0;
-        }
-        availableStatPoints = 60;
-        availableSkillPoints = 25;
-        statPointsElement.value = availableStatPoints;
-        skillPointsElement.value = availableSkillPoints;
-    }
-
-    function updateStatPoints() {
-        let usedStatPoints = 0;
-        for (const stat in statElements) {
-            usedStatPoints += parseInt(statElements[stat].value) - statBaseValues[stat];
-        }
-        statPointsElement.value = availableStatPoints - usedStatPoints;
-        saveData();
-    }
-
-    function distributeStatPoints(stat) {
-        const newValue = parseInt(statElements[stat].value);
-        const oldValue = statBaseValues[stat];
-        const newAvailableStatPoints = availableStatPoints - (newValue - oldValue);
-
-        if (newAvailableStatPoints >= 0) {
-            statBaseValues[stat] = newValue;
-            availableStatPoints = newAvailableStatPoints;
-            updateStatPoints();
-        } else {
-            statElements[stat].value = oldValue;
-            alert('Not enough stat points available.');
-        }
-    }
-
-    function updateDerivedStats() {
-        const staminaValue = parseInt(statElements.stamina.value);
-        const intelligenceValue = parseInt(statElements.intelligence.value);
-
-        derivedStatElements.hp.value = staminaValue * 5; // HP = Stamina * 5
-        derivedStatElements.mp.value = intelligenceValue * 5; // MP = Intelligence * 5
-        saveData();
-    }
-
-    for (const stat in statElements) {
-        statElements[stat].addEventListener('input', () => {
-            distributeStatPoints(stat);
-            updateDerivedStats(); // Ensure this is called whenever stats are updated
-        });
-    }
-
-    initializeStats();
-
-    const editButton = document.querySelector('.edit-button');
-    const characterName = document.querySelector('.character-name h2');
-    const addItemButton = document.getElementById('add-item-button');
-    const addWearableButton = document.getElementById('add-wearable-button');
-    const itemSelect = document.getElementById('item-select');
-    const wearableSelect = document.getElementById('wearable-select');
-    const inventoryList = document.getElementById('inventory-list');
-    const abilitiesList = document.getElementById('abilities-list');
-    const raceSelect = document.getElementById('race-select');
-    const classSelect = document.getElementById('class-select');
-    const weaponSelect = document.getElementById('weapon-select');
-    const weaponList = document.getElementById('weapon-list');
-    const addWeaponButton = document.getElementById('add-weapon-button');
-    const equippedWeaponDiv = document.getElementById('equipped-weapon');
-    const unequipWeaponButton = document.getElementById('unequip-weapon-button');
-    const weaponActionsList = document.getElementById('weapon-actions-list');
-    const derivedStatElements = {
-        hp: document.getElementById('hp'),
-        mp: document.getElementById('mp'),
-        ar: document.getElementById('ar')
-    };
-
-    const skillElements = {
-        insight: document.getElementById('insight'),
-        performance: document.getElementById('performance'),
-        intimidation: document.getElementById('intimidation'),
-        leadership: document.getElementById('leadership'),
-        persuasion: document.getElementById('persuasion'),
-        senseDeception: document.getElementById('sense-deception'),
-        streetwise: document.getElementById('streetwise'),
-        melee: document.getElementById('melee'),
-        pugilism: document.getElementById('pugilism'),
-        sleightOfHand: document.getElementById('sleight-of-hand'),
-        stealth: document.getElementById('stealth'),
-        athletics: document.getElementById('athletics'),
-        dodge: document.getElementById('dodge'),
-        ride: document.getElementById('ride'),
-        parry: document.getElementById('parry'),
-        archery: document.getElementById('archery'),
-        firearms: document.getElementById('firearms'),
-        awareness: document.getElementById('awareness'),
-        search: document.getElementById('search'),
-        animalKen: document.getElementById('animal-ken'),
-        survival: document.getElementById('survival'),
-        scrounging: document.getElementById('scrounging'),
-        crafting: document.getElementById('crafting'),
-        repair: document.getElementById('repair'),
-        sapper: document.getElementById('sapper'),
-        nerdLore: document.getElementById('nerd-lore'),
-        medicine: document.getElementById('medicine'),
-        technology: document.getElementById('technology'),
-        disguise: document.getElementById('disguise'),
-        escapeArtistry: document.getElementById('escape-artistry'),
-        vehicleOperation: document.getElementById('vehicle-operation')
-    };
-
-    let currentClass = null;
-    let currentRace = null;
-    let skillBaseValues = {};
-    let currentClassBuffs = {};
-    let currentRaceBuffs = {};
-    let currentClassAbilities = [];
-    let currentRaceAbilities = [];
-    let equippedWeapon = null;
-    let inventory = [];
-    let equippedWearables = [];
-
-    for (const skill in skillElements) {
-        skillBaseValues[skill] = parseInt(skillElements[skill].value);
-    }
-
-    editButton.addEventListener('click', () => {
-        // Create an input field for editing the name
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.value = characterNameElement.textContent;
-        input.id = 'character-name-input';
-
-        // Replace the character name element with the input field
-        characterNameElement.replaceWith(input);
-        input.focus();
-
-        // Save the new name on blur (when clicking outside the input)
-        input.addEventListener('blur', () => {
-            saveCharacterName(input.value);
-        });
-
-        // Save the new name on Enter key press
-        input.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter') {
-                saveCharacterName(input.value);
-            }
-        });
-    });
-
-    function saveCharacterName(newName) {
-        // Replace the input field with the updated character name
-        const nameElement = document.createElement('h2');
-        nameElement.id = 'character-name';
-        nameElement.textContent = newName;
-
-        const input = document.getElementById('character-name-input');
-        input.replaceWith(nameElement);
-
-        // Save the new name to localStorage
-        const data = JSON.parse(localStorage.getItem('characterData')) || {};
-        data.characterName = newName;
-        localStorage.setItem('characterData', JSON.stringify(data));
-    }
-
-    function loadCharacterName() {
-        const data = JSON.parse(localStorage.getItem('characterData'));
-        if (data && data.characterName) {
-            characterNameElement.textContent = data.characterName;
-        }
-    }
-
-    loadCharacterName();
-
-    function adjustSkill(skill) {
-        const skillElement = skillElements[skill];
-        const newValue = parseInt(skillElement.value);
-        const oldValue = skillBaseValues[skill];
-        const cost = calculateSkillCost(oldValue, newValue);
-
-        if (cost > 0) {
-            if (cost <= availableSkillPoints) {
-                availableSkillPoints -= cost;
-                skillBaseValues[skill] = newValue;
-                skillPointsElement.value = availableSkillPoints;
-            } else {
-                alert('Not enough skill points available.');
-                skillElement.value = oldValue;
-            }
-        } else {
-            const refund = -cost;
-            availableSkillPoints += refund;
-            skillBaseValues[skill] = newValue;
-            skillPointsElement.value = availableSkillPoints;
-        }
-        saveData();
-    }
-
-    function calculateSkillCost(oldValue, newValue) {
-        let cost = 0;
-        if (newValue > oldValue) {
-            for (let i = oldValue + 1; i <= newValue; i++) {
-                cost += i;
-            }
-        } else {
-            for (let i = oldValue - 1; i >= newValue; i--) {
-                cost += i;
-            }
-        }
-        return cost;
-    }
-
-    for (const skill in skillElements) {
-        skillElements[skill].addEventListener('input', () => adjustSkill(skill));
-    }
-
-    document.getElementById('level').addEventListener('input', updateLevel);
-
-    function updateLevel() {
-        const level = parseInt(document.getElementById('level').value);
-
-        if (level === 1) {
-            availableStatPoints = 60;
-            availableSkillPoints = 25;
-            for (const stat in statElements) {
-                statElements[stat].value = 0;
-                statBaseValues[stat] = 0;
-            }
-        } else {
-            const previousLevelStatPoints = (level - 2) * 2;
-            const currentLevelStatPoints = (level - 1) * 2;
-            availableStatPoints += (currentLevelStatPoints - previousLevelStatPoints);
-
-            let skillPoints;
-            if (level <= 5) {
-                skillPoints = 25 + (level - 1) * 6; // Starting skill points 25 + 6 per level up to level 5
-            } else if (level <= 10) {
-                skillPoints = 25 + 5 * 6 + (level - 5) * 8;
-            } else if (level <= 15) {
-                skillPoints = 25 + 5 * 6 + 5 * 8 + (level - 10) * 10;
-            } else if (level <= 20) {
-                skillPoints = 25 + 5 * 6 + 5 * 8 + 5 * 10 + (level - 15) * 12;
-            } else {
-                skillPoints = 25 + 5 * 6 + 5 * 8 + 5 * 10 + 5 * 12 + (level - 20) * 14;
-            }
-            availableSkillPoints = skillPoints;
-        }
-
-        document.getElementById('stat-points').value = availableStatPoints;
-        document.getElementById('skill-points').value = availableSkillPoints;
-
-        for (const skill in skillElements) {
-            skillBaseValues[skill] = parseInt(skillElements[skill].value);
-        }
-        for (const stat in statElements) {
-            statBaseValues[stat] = parseInt(statElements[stat].value);
-        }
-
-               // Apply buffs and update derived stats after leveling up
-               applyBuffs();
-               updateDerivedStats();
-               saveData();
-           }
-       
-           Promise.all([
-               fetch('classes.json').then(response => response.json()).then(data => classes = data),
-               fetch('races.json').then(response => response.json()).then(data => races = data),
-               fetch('weapons.json').then(response => response.json()).then(data => weapons = data),
-               fetch('items.json').then(response => response.json()).then(data => items = data),
-               fetch('wearables.json').then(response => response.json()).then(data => wearables = data)
-           ]).then(() => {
-               // Populate the dropdowns
-               for (const className in classes) {
-                   const option = document.createElement('option');
-                   option.value = className;
-                   option.textContent = className.charAt(0).toUpperCase() + className.slice(1);
-                   classSelect.appendChild(option);
-               }
-       
-               for (const raceName in races) {
-                   const option = document.createElement('option');
-                   option.value = raceName;
-                   option.textContent = raceName.charAt(0).toUpperCase() + raceName.slice(1);
-                   raceSelect.appendChild(option);
-               }
-       
-               for (const weaponName in weapons) {
-                   const option = document.createElement('option');
-                   option.value = weaponName;
-                   option.textContent = weaponName;
-                   weaponSelect.appendChild(option);
-               }
-       
-               items.forEach(item => {
-                   const option = document.createElement('option');
-                   option.value = item.itemName;
-                   option.textContent = item.itemName;
-                   itemSelect.appendChild(option);
-               });
-       
-               wearables.forEach(wearable => {
-                   const option = document.createElement('option');
-                   option.value = wearable.itemName;
-                   option.textContent = wearable.itemName;
-                   wearableSelect.appendChild(option);
-               });
-       
-               // Load data from localStorage if it exists
-               loadData();
-           }).catch(error => {
-               console.error('Error loading data:', error);
-           });
-       
-           raceSelect.addEventListener('change', () => {
-               const selectedRace = raceSelect.value;
-               if (selectedRace) {
-                   const raceData = races[selectedRace];
-                   currentRaceBuffs = raceData.buffs;
-                   currentRaceAbilities = raceData.abilities || [];
-                   applyBuffs();
-                   displayAbilities();
-                   saveData();
-               }
-           });
-       
-           classSelect.addEventListener('change', () => {
-               const selectedClass = classSelect.value;
-               if (selectedClass) {
-                   const classData = classes[selectedClass];
-                   currentClassBuffs = classData.buff;
-                   currentClassAbilities = classData.abilities || [];
-                   applyBuffs();
-                   displayAbilities();
-                   saveData();
-               }
-           });
-       
-           function resetBuffs() {
-               for (const stat in statBaseValues) {
-                   statElements[stat].value = statBaseValues[stat];
-               }
-           }
-       
-           function applyBuffs() {
-               resetBuffs();
-               for (const stat in currentRaceBuffs) {
-                   if (statElements[stat]) {
-                       statElements[stat].value = parseInt(statElements[stat].value) + currentRaceBuffs[stat];
-                   }
-               }
-               for (const stat in currentClassBuffs) {
-                   if (statElements[stat]) {
-                       statElements[stat].value = parseInt(statElements[stat].value) + currentClassBuffs[stat];
-                   }
-               }
-               saveData();
-           }
-       
-           function displayAbilities() {
-               const abilitiesList = document.getElementById('abilities-list');
-               abilitiesList.innerHTML = '';
-               const allAbilities = [...currentRaceAbilities, ...currentClassAbilities];
-               allAbilities.forEach(ability => {
-                   const abilityDiv = document.createElement('div');
-                   abilityDiv.className = 'ability';
-                   abilityDiv.innerHTML = `
-                       <div class="ability-inner">
-                           <div class="ability-front">
-                               <h4>${ability.name}</h4>
-                           </div>
-                           <div class="ability-back">
-                               <h4>${ability.name}</h4>
-                               <p>${ability.description}</p>
-                               <p><strong>Effect:</strong> ${ability.effect}</p>
-                           </div>
-                       </div>
-                   `;
-                   abilitiesList.appendChild(abilityDiv);
-       
-                   abilityDiv.addEventListener('click', () => {
-                       abilityDiv.classList.toggle('flipped');
-                       abilityDiv.classList.toggle('expanded');
-                   });
-               });
-               saveData();
-           }
-       
-           function applyWeaponEffects(weapon) {
-               for (const [stat, value] of Object.entries(weapon.statBuffs)) {
-                   const statElement = document.getElementById(stat);
-                   if (statElement) {
-                       statElement.value = parseInt(statElement.value) + value;
-                   }
-               }
-       
-               weapon.weaponAbilities.forEach(ability => {
-                   const abilityDiv = document.createElement('div');
-                   abilityDiv.className = 'ability';
-                   abilityDiv.innerHTML = `
-                       <div class="ability-inner">
-                           <div class="ability-front">
-                               <h4>${ability.abilityName}</h4>
-                           </div>
-                           <div class="ability-back">
-                               <h4>${ability.abilityName}</h4>
-                               <p>${ability.description}</p>
-                               <p><strong>Effect:</strong> ${ability.effect}</p>
-                           </div>
-                       </div>
-                   `;
-                   abilitiesList.appendChild(abilityDiv);
-       
-                   abilityDiv.addEventListener('click', () => {
-                       abilityDiv.classList.toggle('flipped');
-                       abilityDiv.classList.toggle('expanded');
-                   });
-               });
-               saveData();
-           }
-       
-           function removeWeaponEffects(weapon) {
-               for (const [stat, value] of Object.entries(weapon.statBuffs)) {
-                   const statElement = document.getElementById(stat);
-                   if (statElement) {
-                       statElement.value = parseInt(statElement.value) - value;
-                   }
-               }
-       
-               const abilityElements = abilitiesList.getElementsByClassName('ability');
-               while (abilityElements.length > 0) {
-                   abilityElements[0].remove();
-               }
-               saveData();
-           }
-       
-           function displayWeaponAction(weapon) {
-               weaponActionsList.innerHTML = `
-                   <div class="action">
-                       <h4>Attack with ${weapon.weaponName}</h4>
-                       <p>Type: ${weapon.weaponType}</p>
-                       <p>Damage: ${weapon.damageAmount} (${weapon.damageType})</p>
-                       <p>Range: ${weapon.meleeRanged === 'Melee' ? 'Melee' : 'Ranged'}</p>
-                       ${weapon.weaponAbilities.length ? `<p>Unique Abilities: ${weapon.weaponAbilities.map(ability => `<strong>${ability.abilityName}</strong>: ${ability.description}`).join('<br>')}</p>` : ''}
-                   </div>
-               `;
-               saveData();
-           }
-       
-           function equipWeapon(weapon, weaponName) {
-               if (equippedWeapon) {
-                   removeWeaponEffects(equippedWeapon);
-               }
-               equippedWeapon = weapon;
-               equippedWeaponDiv.innerHTML = `<p>${weaponName}</p>`;
-               unequipWeaponButton.style.display = 'block';
-               applyWeaponEffects(weapon);
-               displayWeaponAction(weapon);
-               saveData();
-           }
-       
-           function unequipWeapon() {
-               if (equippedWeapon) {
-                   removeWeaponEffects(equippedWeapon);
-                   equippedWeapon = null;
-                   equippedWeaponDiv.innerHTML = '<p>No weapon equipped.</p>';
-                   unequipWeaponButton.style.display = 'none';
-                   weaponActionsList.innerHTML = '';
-               }
-               saveData();
-           }
-       
-           addWeaponButton.addEventListener('click', () => {
-               const selectedWeaponName = weaponSelect.value;
-               const selectedWeapon = weapons[selectedWeaponName];
-       
-               if (selectedWeapon) {
-                   const weaponDiv = document.createElement('div');
-                   weaponDiv.className = 'inventory-item';
-                   weaponDiv.textContent = selectedWeaponName;
-       
-                   const equipButton = document.createElement('button');
-                   equipButton.textContent = 'Equip';
-                   equipButton.className = 'equip-weapon-button';
-                   weaponDiv.appendChild(equipButton);
-       
-                   weaponList.appendChild(weaponDiv);
-       
-                   equipButton.addEventListener('click', () => {
-                       equipWeapon(selectedWeapon, selectedWeaponName);
-                   });
-       
-                   weaponDiv.addEventListener('click', () => {
-                       weaponDiv.classList.toggle('flipped');
-                       if (weaponDiv.classList.contains('flipped')) {
-                           const requirements = Object.entries(selectedWeapon.statSkillRequirements)
-                               .filter(([_, value]) => value > 0)
-                               .map(([stat, value]) => `${stat}: ${value}`)
-                               .join(', ');
-       
-                           const statBuffs = Object.entries(selectedWeapon.statBuffs)
-                               .filter(([_, value]) => value > 0)
-                               .map(([stat, value]) => `${stat}: ${value}`)
-                               .join(', ');
-       
-                           const skillBuffs = Object.entries(selectedWeapon.skillBuffs)
-                               .filter(([_, value]) => value > 0)
-                               .map(([skill, value]) => `${skill}: ${value}`)
-                               .join(', ');
-       
-                           const uniqueAbilities = selectedWeapon.weaponAbilities
-                               .map(ability => `<strong>${ability.abilityName}</strong>`)
-                               .join(', ');
-       
-                           weaponDiv.innerHTML = `
-                               <div class="inventory-item-front">
-                                   <h4>${selectedWeaponName}</h4>
-                                   <button class="equip-weapon-button">Equip</button>
-                               </div>
-                               <div class="inventory-item-back">
-                                   <p>${selectedWeapon.description}</p>
-                                   ${requirements ? `<p>Requirements: ${requirements}</p>` : ''}
-                                   ${statBuffs ? `<p>Stat Buffs: ${statBuffs}</p>` : ''}
-                                   ${skillBuffs ? `<p>Skill Buffs: ${skillBuffs}</p>` : ''}
-                                   ${uniqueAbilities ? `<p>Unique Abilities: ${uniqueAbilities}</p>` : ''}
-                               </div>
-                           `;
-                           const newEquipButton = weaponDiv.querySelector('.equip-weapon-button');
-                           newEquipButton.addEventListener('click', () => {
-                               equipWeapon(selectedWeapon, selectedWeaponName);
-                           });
-                       } else {
-                           weaponDiv.innerHTML = `
-                               <h4>${selectedWeaponName}</h4>
-                               <button class="equip-weapon-button">Equip</button>
-                           `;
-                           const newEquipButton = weaponDiv.querySelector('.equip-weapon-button');
-                           newEquipButton.addEventListener('click', () => {
-                               equipWeapon(selectedWeapon, selectedWeaponName);
-                           });
-                       }
-                   });
-               }
-           });
-       
-           unequipWeaponButton.addEventListener('click', () => {
-               unequipWeapon();
-           });
-       
-           function applyItemEffects(item) {
-               for (const [stat, value] of Object.entries(item.statBuffs)) {
-                   const statElement = document.getElementById(stat);
-                   if (statElement) {
-                       statElement.value = parseInt(statElement.value) + value;
-                   }
-               }
-       
-               for (const [skill, value] of Object.entries(item.skillBuffs)) {
-                   const skillElement = document.getElementById(skill);
-                   if (skillElement) {
-                       skillElement.value = parseInt(skillElement.value) + value;
-                   }
-               }
-       
-               item.uniqueAbilities.forEach(ability => {
-                   const abilityDiv = document.createElement('div');
-                   abilityDiv.className = 'ability';
-                   abilityDiv.innerHTML = `
-                       <div class="ability-inner">
-                           <div class="ability-front">
-                               <h4>${ability.name}</h4>
-                           </div>
-                           <div class="ability-back">
-                               <h4>${ability.name}</h4>
-                               <p>${ability.description}</p>
-                               <p><strong>Effect:</strong> ${ability.effect}</p>
-                           </div>
-                       </div>
-                   `;
-                   abilitiesList.appendChild(abilityDiv);
-       
-                   abilityDiv.addEventListener('click', () => {
-                       abilityDiv.classList.toggle('flipped');
-                       abilityDiv.classList.toggle('expanded');
-                   });
-               });
-       
-               // Apply HP and MP buffs
-               item.hpBuffs.forEach(buff => {
-                   const hpElement = document.getElementById('hp');
-                   if (hpElement) {
-                       hpElement.value = parseInt(hpElement.value) + buff;
-                   }
-               });
-       
-               item.mpBuffs.forEach(buff => {
-                   const mpElement = document.getElementById('mp');
-                   if (mpElement) {
-                       mpElement.value = parseInt(mpElement.value) + buff;
-                   }
-               });
-               saveData();
-           }
-       
-           function removeItemEffects(item) {
-               for (const [stat, value] of Object.entries(item.statBuffs)) {
-                   const statElement = document.getElementById(stat);
-                   if (statElement) {
-                       statElement.value = parseInt(statElement.value) - value;
-                   }
-               }
-       
-               for (const [skill, value] of Object.entries(item.skillBuffs)) {
-                   const skillElement = document.getElementById(skill);
-                   if (skillElement) {
-                       skillElement.value = parseInt(skillElement.value) - value;
-                   }
-               }
-       
-               const abilityElements = abilitiesList.getElementsByClassName('ability');
-               while (abilityElements.length > 0) {
-                   abilityElements[0].remove();
-               }
-       
-               // Remove HP and MP buffs
-               item.hpBuffs.forEach(buff => {
-                   const hpElement = document.getElementById('hp');
-                   if (hpElement) {
-                       hpElement.value = parseInt(hpElement.value) - buff;
-                   }
-               });
-       
-               item.mpBuffs.forEach(buff => {
-                   const mpElement = document.getElementById('mp');
-                   if (mpElement) {
-                       mpElement.value = parseInt(mpElement.value) - buff;
-                   }
-               });
-               saveData();
-           }
-       
-           function useItem(item, itemName) {
-               const itemIndex = inventory.findIndex(i => i.name === itemName);
-               if (itemIndex !== -1) {
-                   applyItemEffects(item);
-                   inventory[itemIndex].count--;
-                   if (inventory[itemIndex].count <= 0) {
-                       inventory.splice(itemIndex, 1);
-                   }
-                   updateInventoryDisplay();
-               }
-           }
-       
-           function addItemToInventory(item, itemName) {
-               const existingItemIndex = inventory.findIndex(i => i.name === itemName);
-               if (existingItemIndex !== -1) {
-                   inventory[existingItemIndex].count++;
-               } else {
-                   inventory.push({ name: itemName, item: item, count: 1 });
-               }
-               updateInventoryDisplay();
-               saveData();
-           }
-       
-           function updateInventoryDisplay() {
-               inventoryList.innerHTML = '';
-               inventory.forEach(({ name, item, count }) => {
-                   const itemDiv = document.createElement('div');
-                   itemDiv.className = 'inventory-item';
-                   itemDiv.textContent = `${name} (x${count})`;
-       
-                   const useButton = document.createElement('button');
-                   useButton.textContent = 'Use';
-                   useButton.className = 'use-item-button';
-                   itemDiv.appendChild(useButton);
-       
-                   inventoryList.appendChild(itemDiv);
-       
-                   useButton.addEventListener('click', () => {
-                       useItem(item, name);
-                   });
-       
-                   const removeButton = document.createElement('button');
-                   removeButton.textContent = 'Remove';
-                   removeButton.className = 'remove-item-button';
-                   itemDiv.appendChild(removeButton);
-       
-                   removeButton.addEventListener('click', () => {
-                       removeItemEffects(item);
-                       const itemIndex = inventory.findIndex(i => i.name === name);
-                       if (itemIndex !== -1) {
-                           inventory.splice(itemIndex, 1);
-                       }
-                       updateInventoryDisplay();
-                   });
-               });
-           }
-       
-           addItemButton.addEventListener('click', () => {
-               const selectedItemName = itemSelect.value;
-               const selectedItem = items.find(item => item.itemName === selectedItemName);
-       
-               if (selectedItem) {
-                   addItemToInventory(selectedItem, selectedItemName);
-               }
-           });
-       
-           function applyWearableEffects(wearable) {
-               for (const [stat, value] of Object.entries(wearable.statBuffs)) {
-                   const statElement = document.getElementById(stat);
-                   if (statElement) {
-                       statElement.value = parseInt(statElement.value) + value;
-                   }
-               }
-       
-               for (const [skill, value] of Object.entries(wearable.skillBuffs)) {
-                   const skillElement = document.getElementById(skill);
-                   if (skillElement) {
-                       skillElement.value = parseInt(skillElement.value) + value;
-                   }
-               }
-       
-               wearable.uniqueAbilities.forEach(ability => {
-                   const abilityDiv = document.createElement('div');
-                   abilityDiv.className = 'ability';
-                   abilityDiv.innerHTML = `
-                       <div class="ability-inner">
-                           <div class="ability-front">
-                               <h4>${ability.name}</h4>
-                           </div>
-                           <div class="ability-back">
-                               <h4>${ability.name}</h4>
-                               <p>${ability.description}</p>
-                               <p><strong>Effect:</strong> ${ability.effect}</p>
-                           </div>
-                       </div>
-                   `;
-                   abilitiesList.appendChild(abilityDiv);
-       
-                   abilityDiv.addEventListener('click', () => {
-                       abilityDiv.classList.toggle('flipped');
-                       abilityDiv.classList.toggle('expanded');
-                   });
-               });
-       
-               // Apply HP and MP buffs
-               wearable.hpBuffs.forEach(buff => {
-                   const hpElement = document.getElementById('hp');
-                   if (hpElement) {
-                       hpElement.value = parseInt(hpElement.value) + buff;
-                   }
-               });
-       
-               wearable.mpBuffs.forEach(buff => {
-                   const mpElement = document.getElementById('mp');
-                   if (mpElement) {
-                       mpElement.value = parseInt(mpElement.value) + buff;
-                   }
-               });
-       
-               if (wearable.armorRating > baseArmorRating) {
-                   currentArmorRating += (wearable.armorRating - baseArmorRating);
-               }
-               derivedStatElements.ar.value = currentArmorRating;
-               saveData();
-           }
-       
-           function removeWearableEffects(wearable) {
-               for (const [stat, value] of Object.entries(wearable.statBuffs)) {
-                   const statElement = document.getElementById(stat);
-                   if (statElement) {
-                       statElement.value = parseInt(statElement.value) - value;
-                   }
-               }
-       
-               for (const [skill, value] of Object.entries(wearable.skillBuffs)) {
-                   const skillElement = document.getElementById(skill);
-                   if (skillElement) {
-                       skillElement.value = parseInt(skillElement.value) - value;
-                   }
-               }
-       
-               const abilityElements = abilitiesList.getElementsByClassName('ability');
-               while (abilityElements.length > 0) {
-                   abilityElements[0].remove();
-               }
-       
-               // Remove HP and MP buffs
-               wearable.hpBuffs.forEach(buff => {
-                   const hpElement = document.getElementById('hp');
-                   if (hpElement) {
-                       hpElement.value = parseInt(hpElement.value) - buff;
-                   }
-               });
-       
-               wearable.mpBuffs.forEach(buff => {
-                   const mpElement = document.getElementById('mp');
-                   if (mpElement) {
-                       mpElement.value = parseInt(mpElement.value) - buff;
-                   }
-               });
-       
-               if (wearable.armorRating > baseArmorRating) {
-                   currentArmorRating -= (wearable.armorRating - baseArmorRating);
-               }
-               derivedStatElements.ar.value = currentArmorRating;
-               saveData();
-           }
-       
-           function equipWearable(wearable, wearableName) {
-            // Check if the item is already equipped
-            if (equippedWearables.find(w => w.itemName === wearableName)) {
-                alert("This item is already equipped.");
-                return;
-            }
-    
-            // Add the wearable to the equipped wearables list
-            equippedWearables.push(wearable);
-            applyWearableEffects(wearable);
-            updateWearablesDisplay();
-            saveData();
-        }
-    
-        function unequipWearable(wearable, wearableDiv) {
-            removeWearableEffects(wearable);
-            equippedWearables = equippedWearables.filter(w => w.itemName !== wearable.itemName);
-            wearableDiv.remove();
-            updateWearablesDisplay();
-            saveData();
-        }
-    
-        function updateWearablesDisplay() {
-            const wearablesList = document.getElementById('wearables-list');
-            wearablesList.innerHTML = ''; // Clear the list to prevent duplicates
-    
-            equippedWearables.forEach(wearable => {
-                const wearableDiv = document.createElement('div');
-                wearableDiv.className = 'inventory-item';
-                wearableDiv.textContent = wearable.itemName;
-    
-                const unequipButton = document.createElement('button');
-                unequipButton.textContent = 'Unequip';
-                unequipButton.className = 'unequip-wearable-button';
-                wearableDiv.appendChild(unequipButton);
-    
-                wearablesList.appendChild(wearableDiv);
-    
-                unequipButton.addEventListener('click', () => {
-                    unequipWearable(wearable, wearableDiv);
-                });
-            });
-        }
-    
-        addWearableButton.addEventListener('click', () => {
-            const selectedWearableName = wearableSelect.value;
-            const selectedWearable = wearables.find(wearable => wearable.itemName === selectedWearableName);
-    
-            if (selectedWearable) {
-                equipWearable(selectedWearable, selectedWearableName);
-            }
-        });
-    
-        initializeStats();
-        updateDerivedStats();
-    });
-       
-              
-       
+updateDerivedStats();

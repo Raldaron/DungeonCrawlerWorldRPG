@@ -1,0 +1,12 @@
+{
+  "Feather Fall": {
+    "description": "Reduces falling damage for a party member.",
+    "manaCost": 5,
+    "effect": "Reduces the damage taken from a fall by half for one party member."
+  },
+  "Explosive Decoy": {
+    "description": "Creates a fake explosive device that detonates, causing a 10-foot radius explosion.",
+    "manaCost": 5,
+    "effect": "Creates a decoy that explodes after 1 turn, dealing 2d6 fire damage to all creatures within a 10-foot radius."
+  }
+}

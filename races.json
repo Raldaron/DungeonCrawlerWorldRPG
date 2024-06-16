@@ -1,762 +1,120 @@
 {
-  "Pocket Kuma": {
-      "buffs": { "charisma": 2 },
-      "abilities": [
-          {
-              "name": "Berserk Rage",
-              "description": "Enter a state of increased physical prowess.",
-              "effect": "Gain +2 to Strength and Stamina for 3 turns.",
-              "abilityPointCost": 3,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Healing Factor",
-              "description": "Accelerate natural healing.",
-              "effect": "Regenerate 5 HP per turn for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Saccathian": {
-      "buffs": { "intelligence": 2 },
-      "abilities": [
-          {
-              "name": "Stealth Mastery",
-              "description": "Become nearly invisible in shadows.",
-              "effect": "Gain advantage on Stealth checks for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Precision Strike",
-              "description": "Deliver a precise attack.",
-              "effect": "Deal double damage on next attack.",
-              "abilityPointCost": 3,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Rat Hooligan": {
-      "buffs": { "dexterity": 2 },
-      "abilities": [
-          {
-              "name": "Quick Escape",
-              "description": "Instantly disengage from combat.",
-              "effect": "Move up to 30 feet away without provoking attacks of opportunity.",
-              "abilityPointCost": 1,
-              "cooldown": "1 turn"
-          },
-          {
-              "name": "Sneak Attack",
-              "description": "Deal extra damage when attacking from stealth.",
-              "effect": "Add 2d6 damage to next attack from stealth.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Nullian": {
-      "buffs": { "intelligence": 2 },
-      "abilities": [
-          {
-              "name": "Arcane Knowledge",
-              "description": "Gain insight into magical phenomena.",
-              "effect": "Gain advantage on Lore checks related to magic.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Spell Resistance",
-              "description": "Temporarily resist spells.",
-              "effect": "Gain advantage on saving throws against spells for 3 turns.",
-              "abilityPointCost": 3,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Caprid": {
-      "buffs": { "strength": 2 },
-      "abilities": [
-          {
-              "name": "Charge",
-              "description": "Rush towards an enemy with great force.",
-              "effect": "Move up to 30 feet and make a melee attack with +2 to hit and +2 damage.",
-              "abilityPointCost": 2,
-              "cooldown": "1 turn"
-          },
-          {
-              "name": "Sturdy Defense",
-              "description": "Fortify your defenses.",
-              "effect": "Gain +2 to AC for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Naga": {
-      "buffs": { "dexterity": 2 },
-      "abilities": [
-          {
-              "name": "Venomous Bite",
-              "description": "Deliver a poisonous bite.",
-              "effect": "Deal 1d6 poison damage and poison the target for 2 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Stealthy Movement",
-              "description": "Move silently and unseen.",
-              "effect": "Gain advantage on Stealth checks for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Forsoothed": {
-      "buffs": { "charisma": 2 },
-      "abilities": [
-          {
-              "name": "Silver Tongue",
-              "description": "Persuade others with ease.",
-              "effect": "Gain advantage on Persuasion checks for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Deceptive Charm",
-              "description": "Manipulate others.",
-              "effect": "Target must make a Stamina check or be charmed for 2 turns.",
-              "abilityPointCost": 3,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Skyfowl": {
-      "buffs": { "perception": 2 },
-      "abilities": [
-          {
-              "name": "Aerial View",
-              "description": "Gain a bird's eye view of the battlefield.",
-              "effect": "Gain advantage on Perception checks for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Precision Shot",
-              "description": "Make a precise ranged attack.",
-              "effect": "Deal double damage on next ranged attack.",
-              "abilityPointCost": 3,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Bugbear": {
-      "buffs": { "stamina": 2 },
-      "abilities": [
-          {
-              "name": "Intimidating Roar",
-              "description": "Frighten nearby enemies.",
-              "effect": "Enemies within 10 feet must make a Stamina check or be frightened for 2 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Mighty Swing",
-              "description": "Deliver a powerful melee attack.",
-              "effect": "Deal double damage on next melee attack.",
-              "abilityPointCost": 3,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-    "Succubus": {
-      "buffs": { "charisma": 2 },
-      "abilities": [
-        {
-          "name": "Seductive Charm",
-          "description": "Enthrall others with your beauty and charm.",
-          "effect": "Target must make a Stamina check or be charmed for 3 turns.",
-          "abilityPointCost": 3,
-          "cooldown": "1 hour"
-        },
-        {
-          "name": "Life Drain",
-          "description": "Siphon life force from your target.",
-          "effect": "Deal 1d6 necrotic damage and heal for the same amount.",
-          "abilityPointCost": 2,
-          "cooldown": "1 hour"
-        }
-      ]
-    },
-    "Tigran": {
-      "buffs": { "strength": 2 },
-      "abilities": [
-        {
-          "name": "Predatory Strike",
-          "description": "Unleash a powerful attack.",
-          "effect": "Gain +2 to Strength and deal 2d6 slashing damage on the next attack.",
-          "abilityPointCost": 3,
-          "cooldown": "1 hour"
-        },
-        {
-          "name": "Camouflage",
-          "description": "Blend into your surroundings.",
-          "effect": "Gain advantage on Stealth checks for 3 turns.",
-          "abilityPointCost": 2,
-          "cooldown": "1 hour"
-        }
-      ]
-    },
-    "Human": {
-      "buffs": { "intelligence": 1, "strength": 1 },
-      "abilities": [
-        {
-          "name": "Versatile Skill",
-          "description": "Adapt to various situations with ease.",
-          "effect": "Gain +1 to any skill of your choice for 3 turns.",
-          "abilityPointCost": 2,
-          "cooldown": "1 hour"
-        },
-        {
-          "name": "Survival Instinct",
-          "description": "Enhance your physical resilience.",
-          "effect": "Gain +2 to Stamina for 3 turns.",
-          "abilityPointCost": 2,
-          "cooldown": "1 hour"
-        }
-      ]
-    }, 
   "Incubus": {
-      "buffs": { "charisma": 2 },
-      "abilities": [
-          {
-              "name": "Seductive Gaze",
-              "description": "Charm an enemy with a glance.",
-              "effect": "Target must make a Stamina check or be charmed for 2 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Life Drain",
-              "description": "Drain life force from an enemy.",
-              "effect": "Deal 1d6 necrotic damage and heal for the same amount.",
-              "abilityPointCost": 3,
-              "cooldown": "1 hour"
-          }
-      ]
+    "description": "Ah, the Incubus. Also known as the Gigachad of the Over City, these dusky gray-skinned, horned hunks with forked tails and bat-like wings are the bad boys of the demon world. They’ll sweep you off your feet, show you a night on the town, and leave you with nothing but a hangover and a set of stunningly sensuous footprints. Low alcohol tolerance, but who's counting drinks when you're that good-looking?",
+    "loreElements": [
+      "The Incubi are the favored offspring of Lilith, created from her essence to be the perfect seducers. They serve as her emissaries in the mortal realm, tasked with spreading her influence through temptation and desire. In return, they receive her blessings, which enhance their natural charisma and physical prowess.",
+      "Long ago, the Incubi were embroiled in the Seduction Wars, a series of conflicts between the various demon factions over control of mortal souls. Their unmatched allure and ability to manipulate dreams made them formidable opponents, leading to their eventual dominance in the realm of temptation."
+    ],
+    "statBonus": {
+      "strength": "+2",
+      "dexterity": "+3",
+      "stamina": "+1",
+      "intelligence": "+1",
+      "perception": "+2",
+      "wit": "+1",
+      "charisma": "+5",
+      "manipulation": "+8",
+      "appearance": "+5",
+      "ar": "+1",
+      "ap": "+1"
+    },
+    "skillBonus": {
+      "persuasion": "+3",
+      "stealth": "+2",
+      "empathy": "+2"
+    },
+    "uniqueAbilities": [
+      "Seductive Aura"
+    ],
+    "buffs": [
+      "Night's Embrace",
+      "Fire Resistance"
+    ]
   },
-  "Changeling": {
-      "buffs": { "dexterity": 2 },
-      "abilities": [
-          {
-              "name": "Shapeshift",
-              "description": "Change appearance to blend in.",
-              "effect": "Gain advantage on Disguise checks for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Mimic Voice",
-              "description": "Imitate the voice of another.",
-              "effect": "Gain advantage on Deception checks for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          }
-      ]
+  "Tigran": {
+    "description": "Picture a humanoid, now add stripes, fur, and feline grace, and boom: you've got the Tigran. These orange, furry, tiger-like beings are for those who like their RPG characters with a side of whiskers and a penchant for naps in the sun. Quick, agile, and often found lounging in the most inconvenient places, Tigrans bring a blend of elegance and lethargy to any adventuring party.",
+    "loreElements": [
+      "Tigrans were once the elite hunters in their home jungles, revered and feared by all.",
+      "Known for their keen senses and unmatched agility, they have a natural disdain for water and anything that messes with their fur."
+    ],
+    "statBonus": {
+      "strength": "+2",
+      "dexterity": "+4",
+      "stamina": "+2",
+      "intelligence": "+1",
+      "perception": "+3",
+      "wit": "+2",
+      "charisma": "+1",
+      "manipulation": "+1",
+      "appearance": "+2",
+      "ar": "+1",
+      "ap": "+1"
+    },
+    "skillBonus": {
+      "acrobatics": "+3",
+      "stealth": "+4",
+      "survival": "+2",
+      "awareness": "+2"
+    },
+    "uniqueAbilities": [
+      "Feline Agility"
+    ],
+    "buffs": [
+      "Predator's Strike",
+      "Enhanced Senses"
+    ]
   },
-  "Porsuk": {
-      "buffs": { "stamina": 2 },
-      "abilities": [
-          {
-              "name": "Street Smarts",
-              "description": "Navigate urban environments with ease.",
-              "effect": "Gain advantage on Streetwise checks for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Survivor's Instinct",
-              "description": "Endure harsh conditions.",
-              "effect": "Gain advantage on Survival checks for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          }
-      ]
+  "Primal": {
+    "description": "The Primals are the progenitors, the first known species to conquer the universe. They are the boogiemen of the cosmos. Nobody knows what they looked like or anything about them other than that they spread across the galaxy, and then one day, they just vanished.",
+    "loreElements": [],
+    "statBonus": {
+      "strength": "-1",
+      "dexterity": "-1",
+      "stamina": "-1",
+      "intelligence": "-1",
+      "perception": "-1",
+      "wit": "-1",
+      "charisma": "-1",
+      "manipulation": "-1",
+      "appearance": "-1",
+      "ar": "+1",
+      "ap": "+1"
+    },
+    "skillBonus": {},
+    "uniqueAbilities": [],
+    "buffs": [
+      "Ancient Knowledge",
+      "Versatile Evolution"
+    ]
   },
-  "Orc": {
-      "buffs": { "strength": 2 },
-      "abilities": [
-          {
-              "name": "Battle Fury",
-              "description": "Enter a state of rage.",
-              "effect": "Gain +2 to Strength and Stamina for 3 turns.",
-              "abilityPointCost": 3,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "War Cry",
-              "description": "Intimidate enemies with a shout.",
-              "effect": "Enemies within 10 feet must make a Stamina check or be frightened for 2 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Zebani": {
-      "buffs": { "strength": 2 },
-      "abilities": [
-          {
-              "name": "Infernal Strike",
-              "description": "Deliver a powerful, fiery attack.",
-              "effect": "Deal 1d6 fire damage on next melee attack.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Demonic Resilience",
-              "description": "Resist physical damage.",
-              "effect": "Gain resistance to physical damage for 3 turns.",
-              "abilityPointCost": 3,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Doppelgänger": {
-      "buffs": { "intelligence": 2 },
-      "abilities": [
-          {
-              "name": "Shapeshift",
-              "description": "Assume the appearance of another.",
-              "effect": "Gain advantage on Disguise checks for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Espionage",
-              "description": "Gather information discreetly.",
-              "effect": "Gain advantage on Stealth checks for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Gondii": {
-      "buffs": { "charisma": 2 },
-      "abilities": [
-          {
-              "name": "Persuasive Charm",
-              "description": "Convince others with ease.",
-              "effect": "Gain advantage on Persuasion checks for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Manipulative Tactics",
-              "description": "Influence others subtly.",
-              "effect": "Gain advantage on Manipulation checks for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Fairy": {
-      "buffs": { "dexterity": 2 },
-      "abilities": [
-          {
-              "name": "Magical Flight",
-              "description": "Fly swiftly and avoid attacks.",
-              "effect": "Gain advantage on Dodge checks for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Illusionary Magic",
-              "description": "Create deceptive illusions.",
-              "effect": "Gain advantage on Stealth checks for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Kuhli": {
-      "buffs": { "charisma": 2 },
-      "abilities": [
-          {
-              "name": "Charming Aura",
-              "description": "Influence those around you.",
-              "effect": "Gain advantage on Persuasion checks for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Manipulative Gaze",
-              "description": "Control others with a look.",
-              "effect": "Target must make a Stamina check or be charmed for 2 turns.",
-              "abilityPointCost": 3,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Cretin": {
-      "buffs": { "stamina": 2 },
-      "abilities": [
-          {
-              "name": "Resilient Hide",
-              "description": "Reduce incoming damage.",
-              "effect": "Gain resistance to physical damage for 3 turns.",
-              "abilityPointCost": 3,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Brutal Strike",
-              "description": "Deliver a devastating blow.",
-              "effect": "Deal double damage on next melee attack.",
-              "abilityPointCost": 3,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Infiltrator": {
-      "buffs": { "dexterity": 2 },
-      "abilities": [
-          {
-              "name": "Silent Movement",
-              "description": "Move without making a sound.",
-              "effect": "Gain advantage on Stealth checks for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Espionage Expertise",
-              "description": "Gather intelligence discreetly.",
-              "effect": "Gain advantage on Perception checks for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Cat Girl": {
-      "buffs": { "dexterity": 2 },
-      "abilities": [
-          {
-              "name": "Nimble Reflexes",
-              "description": "Evade attacks with agility.",
-              "effect": "Gain advantage on Dodge checks for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Charming Purr",
-              "description": "Influence others with a soft purr.",
-              "effect": "Gain advantage on Persuasion checks for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Crest": {
-      "buffs": { "intelligence": 2 },
-      "abilities": [
-          {
-              "name": "Arcane Mastery",
-              "description": "Cast spells with increased potency.",
-              "effect": "Gain advantage on Spellcasting checks for 3 turns.",
-              "abilityPointCost": 3,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Mystic Knowledge",
-              "description": "Understand ancient lore.",
-              "effect": "Gain advantage on Lore checks for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Igneous": {
-      "buffs": { "strength": 2 },
-      "abilities": [
-          {
-              "name": "Magma Strike",
-              "description": "Infuse attacks with molten lava.",
-              "effect": "Deal an additional 1d6 fire damage on next melee attack.",
-              "abilityPointCost": 3,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Stone Skin",
-              "description": "Harden skin to reduce damage.",
-              "effect": "Gain resistance to physical damage for 3 turns.",
-              "abilityPointCost": 3,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Bune": {
-      "buffs": { "intelligence": 2 },
-      "abilities": [
-          {
-              "name": "Draconic Knowledge",
-              "description": "Tap into ancient dragon lore.",
-              "effect": "Gain advantage on Lore checks related to dragons for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Fire Breath",
-              "description": "Breathe fire on enemies.",
-              "effect": "Deal 2d6 fire damage in a cone.",
-              "abilityPointCost": 3,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Crocodilian": {
-      "buffs": { "strength": 2 },
-      "abilities": [
-          {
-              "name": "Swamp Ambush",
-              "description": "Strike from the water with surprise.",
-              "effect": "Gain advantage on Stealth checks when in water for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Powerful Jaws",
-              "description": "Deliver a crushing bite.",
-              "effect": "Deal an additional 1d8 damage on next melee attack.",
-              "abilityPointCost": 3,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Vampire": {
-      "buffs": { "stamina": 2 },
-      "abilities": [
-          {
-              "name": "Blood Drain",
-              "description": "Siphon life from an enemy.",
-              "effect": "Deal 1d6 necrotic damage and heal for the same amount.",
-              "abilityPointCost": 3,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Vampiric Charm",
-              "description": "Charm an enemy with a gaze.",
-              "effect": "Target must make a Stamina check or be charmed for 2 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Yenk": {
-      "buffs": { "manipulation": 2 },
-      "abilities": [
-          {
-              "name": "Deceptive Tactics",
-              "description": "Influence others with cunning.",
-              "effect": "Gain advantage on Manipulation checks for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Silent Step",
-              "description": "Move without making a sound.",
-              "effect": "Gain advantage on Stealth checks for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Shade Gnoll": {
-      "buffs": { "dexterity": 2 },
-      "abilities": [
-          {
-              "name": "Shadow Strike",
-              "description": "Attack from the shadows.",
-              "effect": "Gain advantage on next melee attack from stealth.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Dark Vision",
-              "description": "See in complete darkness.",
-              "effect": "Gain advantage on Perception checks in darkness for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Coal Engine": {
-      "buffs": { "stamina": 2 },
-      "abilities": [
-          {
-              "name": "Endless Endurance",
-              "description": "Resist fatigue and exhaustion.",
-              "effect": "Gain resistance to fatigue effects for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Heavy Strike",
-              "description": "Deliver a powerful attack.",
-              "effect": "Deal double damage on next melee attack.",
-              "abilityPointCost": 3,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Skin Skelly": {
-      "buffs": { "stamina": 2 },
-      "abilities": [
-          {
-              "name": "Undead Resilience",
-              "description": "Resist physical damage.",
-              "effect": "Gain resistance to physical damage for 3 turns.",
-              "abilityPointCost": 3,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Bone Smash",
-              "description": "Deliver a crushing blow.",
-              "effect": "Deal an additional 1d8 damage on next melee attack.",
-              "abilityPointCost": 3,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Sasquatch": {
-      "buffs": { "stealth": 2 },
-      "abilities": [
-          {
-              "name": "Camouflage",
-              "description": "Blend into natural surroundings.",
-              "effect": "Gain advantage on Stealth checks in forested or natural environments for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Massive Strength",
-              "description": "Use your immense strength to your advantage.",
-              "effect": "Gain +2 to Strength for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Intellect Hunter": {
-      "buffs": { "intelligence": 2 },
-      "abilities": [
-          {
-              "name": "Hunter's Insight",
-              "description": "Track and predict enemy movements.",
-              "effect": "Gain advantage on Investigation checks related to tracking for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Focused Mind",
-              "description": "Resist mental attacks.",
-              "effect": "Gain advantage on saving throws against mental effects for 3 turns.",
-              "abilityPointCost": 3,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Night Dwarfs": {
-      "buffs": { "intelligence": 2 },
-      "abilities": [
-          {
-              "name": "Dark Vision",
-              "description": "See perfectly in complete darkness.",
-              "effect": "Gain advantage on Perception checks in darkness for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Stonecunning",
-              "description": "Gain insight into stonework and underground structures.",
-              "effect": "Gain advantage on Engineering checks related to stonework for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Elf": {
-      "buffs": { "dexterity": 2 },
-      "abilities": [
-          {
-              "name": "Elven Agility",
-              "description": "Move with extraordinary grace and speed.",
-              "effect": "Gain advantage on Athletics checks for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Magic Affinity",
-              "description": "Enhance your spellcasting abilities.",
-              "effect": "Gain advantage on Spellcasting checks for 3 turns.",
-              "abilityPointCost": 3,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Setonix": {
-      "buffs": { "stamina": 2 },
-      "abilities": [
-          {
-              "name": "Resilient Physique",
-              "description": "Endure harsh conditions and recover quickly.",
-              "effect": "Gain resistance to environmental damage for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Quick Recovery",
-              "description": "Heal minor wounds rapidly.",
-              "effect": "Regain 5 HP per turn for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Grulke": {
-      "buffs": { "intelligence": 2 },
-      "abilities": [
-          {
-              "name": "Arcane Knowledge",
-              "description": "Tap into deep magical knowledge.",
-              "effect": "Gain advantage on Lore checks related to magic for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Mystic Shield",
-              "description": "Create a magical barrier for protection.",
-              "effect": "Gain +2 to AC for 3 turns.",
-              "abilityPointCost": 3,
-              "cooldown": "1 hour"
-          }
-      ]
-  },
-  "Arachnid": {
-      "buffs": { "dexterity": 2 },
-      "abilities": [
-          {
-              "name": "Web Walker",
-              "description": "Move effortlessly through webs and sticky environments.",
-              "effect": "Gain advantage on Athletics checks in webbed or sticky environments for 3 turns.",
-              "abilityPointCost": 2,
-              "cooldown": "1 hour"
-          },
-          {
-              "name": "Venomous Bite",
-              "description": "Deliver a toxic bite to your enemy.",
-              "effect": "Deal 1d6 poison damage and poison the target for 2 turns.",
-              "abilityPointCost": 3,
-              "cooldown": "1 hour"
-          }
-      ]
+  "Human": {
+    "description": "It’s a human. Dumbass. Your garden-variety bipedal mammal, known for their insatiable curiosity, remarkable adaptability, and baffling tendency to self-destruct. Humans are as diverse as they are numerous, capable of acts of great heroism and unspeakable stupidity. If you like playing the underdog who somehow manages to survive against all odds, humans are your best bet.",
+    "loreElements": [
+      "Humans are often the protagonists of their own stories, despite being hilariously underprepared for the dangers they face.",
+      "Their history is marked by endless wars, groundbreaking innovations, and an uncanny ability to make enemies."
+    ],
+    "statBonus": {
+      "strength": "+1",
+      "dexterity": "+1",
+      "stamina": "+1",
+      "intelligence": "+1",
+      "perception": "+1",
+      "wit": "+1",
+      "charisma": "+1",
+      "manipulation": "+1",
+      "appearance": "+1",
+      "ar": "+1",
+      "ap": "+1"
+    },
+    "skillBonus": {
+      "versatility": "+1 to any four skills of the player's choice"
+    },
+    "uniqueAbilities": [
+      "Adaptability"
+    ],
+    "buffs": [
+      "Indomitable Spirit",
+      "Resourcefulness"
+    ]
   }
 }

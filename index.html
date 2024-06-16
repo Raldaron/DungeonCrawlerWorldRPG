@@ -3,328 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Character Sheet</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Dungeon Crawler Carl Character Sheet</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="character-sheet">
-        <header class="character-header">
-            <div class="character-name">
-                <h2>Rusty Shackleford</h2>
-                <button class="edit-button">Edit</button>
-            </div>
-            <div class="character-level">
-                <label for="level">Level:</label>
-                <input type="number" id="level" value="1" min="1" oninput="updateLevel()">
-            </div>
+    <div class="container">
+        <header>
+            <h1>Character Sheet</h1>
         </header>
-        <section class="character-stats">
-            <div class="stat-box">
-                <label for="hp">HP</label>
-                <input type="number" id="hp" readonly>
+        <section class="character-info">
+            <div class="character-name">
+                <label for="char-name">Character Name:</label>
+                <input type="text" id="char-name" value="Character Name">
             </div>
-            <div class="stat-box">
-                <label for="mp">MP</label>
-                <input type="number" id="mp" readonly>
-            </div>
-            <div class="stat-box">
-                <label for="ar">Armor Rating</label>
-                <input type="number" id="ar" readonly>
-            </div>
-            <div class="stat-box">
-                <label for="ability-points">Ability Points</label>
-                <input type="number" id="ability-points" value="0">
-            </div>
-            <div class="stat-box">
-                <label for="stat-points">Stat Points</label>
-                <input type="number" id="stat-points" value="0" readonly>
-            </div>
-            <div class="stat-box">
-                <label for="skill-points">Skill Points</label>
-                <input type="number" id="skill-points" value="0" readonly>
+            <div class="character-details">
+                <div class="character-race">
+                    <label for="char-race">Race:</label>
+                    <select id="char-race"></select>
+                </div>
+                <div class="character-class">
+                    <label for="char-class">Class:</label>
+                    <select id="char-class"></select>
+                </div>
             </div>
         </section>
-        <section class="select-container">
-            <select id="race-select">
-                <option value="">Select Race</option>
-                <!-- Race options will be populated dynamically -->
-            </select>
-            <select id="class-select">
-                <option value="">Select Class</option>
-                <!-- Class options will be populated dynamically -->
-            </select>
+
+        <section class="main-stats">
+            <div class="row">
+                <div class="stat" data-stat="char-level">
+                    <p>Level</p>
+                    <span id="char-level">1</span>
+                    <button onclick="incrementLevel()">+</button>
+                    <button onclick="decrementLevel()">-</button>
+                </div>
+                <div class="stat" data-stat="stat-points">
+                    <p>Stat Points</p>
+                    <span id="stat-points">60</span>
+                </div>
+                <div class="stat" data-stat="skill-points">
+                    <p>Skill Points</p>
+                    <span id="skill-points">6</span>
+                </div>
+            </div>
+            
+            <div class="row spaced-row">
+                <div class="stat" data-stat="hp">
+                    <p>HP</p>
+                    <span id="hp">0</span>
+                </div>
+                <div class="stat" data-stat="mp">
+                    <p>MP</p>
+                    <span id="mp">0</span>
+                </div>
+                <div class="stat" data-stat="ar">
+                    <p>AR</p>
+                    <span id="ar">10</span>
+                </div>
+                <div class="stat" data-stat="ap">
+                    <p>AP</p>
+                    <span id="ap">0</span>
+                </div>
+            </div>
+        </section>
+        <section class="main-stats">
+            <!-- ... existing code ... -->
+            <button id="active-buffs-btn" onclick="openBuffsModal()">Active Buffs</button>
+        </section>
+        <section class="abilities">
+            <h2>Unique Abilities</h2>
+            <div class="ability-container">
+                <!-- Abilities will be dynamically populated by JavaScript -->
+            </div>
         </section>
         <section class="stats">
             <h2>Stats</h2>
-            <div class="stat-category-container">
-                <div class="stat-category">
-                    <h3>Physical</h3>
-                    <div class="stat">
-                        <span>Strength</span>
-                        <input type="number" id="strength" value="10" oninput="distributeStatPoints()">
-                    </div>
-                    <div class="stat">
-                        <span>Dexterity</span>
-                        <input type="number" id="dexterity" value="10" oninput="distributeStatPoints()">
-                    </div>
-                    <div class="stat">
-                        <span>Stamina</span>
-                        <input type="number" id="stamina" value="10" oninput="updateDerivedStats(); distributeStatPoints()">
-                    </div>
+            <div class="stat-container">
+                <div class="stat" data-stat="strength">
+                    <p>Strength</p>
+                    <span id="strength">1</span>
                 </div>
-                <div class="stat-category">
-                    <h3>Mental</h3>
-                    <div class="stat">
-                        <span>Intelligence</span>
-                        <input type="number" id="intelligence" value="10" oninput="updateDerivedStats(); distributeStatPoints()">
-                    </div>
-                    <div class="stat">
-                        <span>Perception</span>
-                        <input type="number" id="perception" value="10" oninput="distributeStatPoints()">
-                    </div>
-                    <div class="stat">
-                        <span>Wit</span>
-                        <input type="number" id="wit" value="10" oninput="distributeStatPoints()">
-                    </div>
+                <div class="stat" data-stat="dexterity">
+                    <p>Dexterity</p>
+                    <span id="dexterity">1</span>
                 </div>
-                <div class="stat-category">
-                    <h3>Social</h3>
-                    <div class="stat">
-                        <span>Charisma</span>
-                        <input type="number" id="charisma" value="10" oninput="distributeStatPoints()">
-                    </div>
-                    <div class="stat">
-                        <span>Manipulation</span>
-                        <input type="number" id="manipulation" value="10" oninput="distributeStatPoints()">
-                    </div>
-                    <div class="stat">
-                        <span>Appearance</span>
-                        <input type="number" id="appearance" value="10" oninput="distributeStatPoints()">
-                    </div>
+                <div class="stat" data-stat="stamina">
+                    <p>Stamina</p>
+                    <span id="stamina">1</span>
+                </div>
+                <div class="stat" data-stat="intelligence">
+                    <p>Intelligence</p>
+                    <span id="intelligence">1</span>
+                </div>
+                <div class="stat" data-stat="perception">
+                    <p>Perception</p>
+                    <span id="perception">1</span>
+                </div>
+                <div class="stat" data-stat="wit">
+                    <p>Wit</p>
+                    <span id="wit">1</span>
+                </div>
+                <div class="stat" data-stat="charisma">
+                    <p>Charisma</p>
+                    <span id="charisma">1</span>
+                </div>
+                <div class="stat" data-stat="manipulation">
+                    <p>Manipulation</p>
+                    <span id="manipulation">1</span>
+                </div>
+                <div class="stat" data-stat="appearance">
+                    <p>Appearance</p>
+                    <span id="appearance">1</span>
                 </div>
             </div>
         </section>
+
         <section class="skills">
             <h2>Skills</h2>
-            <div class="skills-container">
+            <div class="skill-container">
                 <div class="skill-column">
-                    <!-- First column of skills -->
-                    <div class="skill">
-                        <span>Animal Ken</span>
-                        <input type="number" id="animal-ken" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Archery</span>
-                        <input type="number" id="archery" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Athletics</span>
-                        <input type="number" id="athletics" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Awareness</span>
-                        <input type="number" id="awareness" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Crafting</span>
-                        <input type="number" id="crafting" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Disguise</span>
-                        <input type="number" id="disguise" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Dodge</span>
-                        <input type="number" id="dodge" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Escape Artistry</span>
-                        <input type="number" id="escape-artistry" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Firearms</span>
-                        <input type="number" id="firearms" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Insight</span>
-                        <input type="number" id="insight" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Intimidation</span>
-                        <input type="number" id="intimidation" value="1" oninput="distributeSkillPoints()">
-                    </div>
+                    <!-- Column 1 -->
                 </div>
                 <div class="skill-column">
-                    <!-- Second column of skills -->
-                    <div class="skill">
-                        <span>Leadership</span>
-                        <input type="number" id="leadership" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Medicine</span>
-                        <input type="number" id="medicine" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Melee</span>
-                        <input type="number" id="melee" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Nerd Lore</span>
-                        <input type="number" id="nerd-lore" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Parry</span>
-                        <input type="number" id="parry" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Performance</span>
-                        <input type="number" id="performance" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Persuasion</span>
-                        <input type="number" id="persuasion" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Pugilism</span>
-                        <input type="number" id="pugilism" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Repair</span>
-                        <input type="number" id="repair" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Ride</span>
-                        <input type="number" id="ride" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Sapper</span>
-                        <input type="number" id="sapper" value="1" oninput="distributeSkillPoints()">
-                    </div>
+                    <!-- Column 2 -->
                 </div>
                 <div class="skill-column">
-                    <!-- Third column of skills -->
-                                        <div class="skill">
-                        <span>Scrounging</span>
-                        <input type="number" id="scrounging" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Search</span>
-                        <input type="number" id="search" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Sense Deception</span>
-                        <input type="number" id="sense-deception" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Sleight Of Hand</span>
-                        <input type="number" id="sleight-of-hand" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Stealth</span>
-                        <input type="number" id="stealth" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Streetwise</span>
-                        <input type="number" id="streetwise" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Survival</span>
-                        <input type="number" id="survival" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Technology</span>
-                        <input type="number" id="technology" value="1" oninput="distributeSkillPoints()">
-                    </div>
-                    <div class="skill">
-                        <span>Vehicle Operation</span>
-                        <input type="number" id="vehicle-operation" value="1" oninput="distributeSkillPoints()">
-                    </div>
+                    <!-- Column 3 -->
+                </div>
+                <div class="skill-column">
+                    <!-- Column 4 -->
                 </div>
             </div>
-         </section>
-         <section class="abilities">
-            <h3>Abilities</h3>
-            <div id="abilities-list" class="abilities-container">
-                <!-- Abilities will be added here dynamically -->
+        </section>
+        <section class="spells">
+            <h2>Spells</h2>
+            <div class="spell-container">
+                <!-- Spells will be dynamically populated by JavaScript -->
             </div>
         </section>
-        <section class="wearables">
-            <h3>Wearables/Armor Inventory</h3>
-            <div class="inventory-controls">
-                <select id="wearable-select">
-                    <option value="">Select a wearable</option>
-                </select>
-                <button id="add-wearable-button">Add Wearable</button>
-            </div>
-            <div id="wearable-list" class="inventory-list">
-                <!-- Inventory wearables will be added here dynamically -->
-            </div>
-        </section>
-        
-        <!-- Equipped Wearables Section -->
-        <section class="equipped-wearable">
-            <h3>Equipped Wearable</h3>
-            <div id="equipped-wearable">
-                <p>No wearable equipped.</p>
-            </div>
-            <button id="unequip-wearable-button" style="display:none;">Unequip Wearable</button>
-        </section>
-        <section class="inventory">
-            <h3>Inventory</h3>
-            <div class="inventory-controls">
-                <select id="item-select">
-                    <option value="">Select an item</option>
-                </select>
-                <button id="add-item-button">Add Item</button>
-            </div>
-            <div id="inventory-list" class="inventory-list">
-                <!-- Inventory items will be added here dynamically -->
-            </div>
-            
-            <div id="wearables-list" class="inventory-list">
-                <!-- Wearable items will be added here dynamically -->
-            </div>
-                   
-            <!-- Weapon Inventory Section -->
-            <h3>Weapon Inventory</h3>
-            <button id="add-weapon-button">Add Weapon</button>
-            <select id="weapon-select">
-                <option value="">Select a weapon</option>
-                <!-- Weapon options will be populated dynamically -->
-            </select>
-            <div id="weapon-list" class="inventory-list">
-                <!-- Inventory weapons will be added here dynamically -->
-            </div>
-        </section>
+</section>
+<section class="inventory">
+    <h2>Inventory</h2>
+    <button id="add-to-inventory-btn">Add to Inventory</button>
+    <button id="open-inventory-btn">Open Inventory</button>
+</section>
+</div>
 
-        <!-- Equipped Weapon Section -->
-        <section class="equipped-weapon">
-            <h3>Equipped Weapon</h3>
-            <div id="equipped-weapon">
-                <p>No weapon equipped.</p>
-            </div>
-            <button id="unequip-weapon-button" style="display:none;">Unequip Weapon</button>
-        </section>
+<div id="inventory-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeInventoryModal()">&times;</span>
+        <h2>Inventory</h2>
+        <div id="inventory-items"></div>
+    </div>
+</div>
 
-        <!-- Weapon Actions Section -->
-        <section class="weapon-actions">
-            <h3>Weapon Actions</h3>
-            <div id="weapon-actions-list">
-                <!-- Weapon actions will be added here dynamically -->
-            </div>
-        </section>
-        <section class="quest-notes">
-            <h3>Current Quest Notes</h3>
-            <div class="quest">
-                <h4>The Dark Tower</h4>
-                <p>Retrieve the ancient artifact from the tower.</p>
-            </div>
-            <div class="hint">
-                <h4>Hint</h4>
-                <p>Watch for traps in the dungeon.</p>
-            </div>
+<div id="search-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeSearchModal()">&times;</span>
+        <h2>Add Item to Inventory</h2>
+        <input type="text" id="item-search" placeholder="Search for items...">
+        <div id="search-results"></div>
+    </div>
+</div>
+        <section class="notes">
+            <h2>Current Quest Notes</h2>
+            <textarea id="quest-notes" placeholder="Enter notes here..."></textarea>
         </section>
     </div>
+
+    <div id="race-modal" class="modal">
+        <div class="modal-content" id="race-modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="race-modal-title"></h2>
+            <p id="race-modal-description"></p>
+            <h3>Lore</h3>
+            <p id="race-modal-lore"></p>
+            <h3>Stat Bonuses</h3>
+            <p id="race-modal-stat-bonuses"></p>
+            <h3>Skill Bonuses</h3>
+            <p id="race-modal-skill-bonuses"></p>
+        </div>
+    </div>
+
+    <div id="ability-modal" class="modal">
+        <div class="modal-content" id="ability-modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="ability-modal-title"></h2>
+            <p id="ability-modal-description"></p>
+            <h3>Effect</h3>
+            <p id="ability-modal-effect"></p>
+            <h3>Range</h3>
+            <p id="ability-modal-range"></p>
+            <h3>Ability Point Cost</h3>
+            <p id="ability-modal-cost"></p>
+            <h3>Cooldown</h3>
+            <p id="ability-modal-cooldown"></p>
+        </div>
+    </div>
+    
+    <div id="buffs-modal" class="modal">
+        <div class="modal-content" id="buffs-modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Active Buffs</h2>
+            <ul id="buffs-list"></ul>
+        </div>
+    </div>
+
+    <div id="spell-modal" class="modal">
+        <div class="modal-content" id="spell-modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="spell-modal-title"></h2>
+            <p id="spell-modal-description"></p>
+            <h3>Effect</h3>
+            <p id="spell-modal-effect"></p>
+            <h3>Mana Cost</h3>
+            <p id="spell-modal-cost"></p>
+        </div>
+    </div>
+
+    <div id="race-modal" class="modal">
+        <div class="modal-content" id="race-modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="race-modal-title"></h2>
+            <p id="race-modal-description"></p>
+            <h3>Lore</h3>
+            <p id="race-modal-lore"></p>
+            <h3>Stat Bonuses</h3>
+            <p id="race-modal-stat-bonuses"></p>
+            <h3>Skill Bonuses</h3>
+            <p id="race-modal-skill-bonuses"></p>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

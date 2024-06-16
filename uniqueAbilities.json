@@ -1,0 +1,77 @@
+{
+  "Seductive Aura": {
+    "description": "Your mere presence makes hearts race and minds fog.",
+    "effect": "Once per encounter, you can charm one humanoid creature within 30 feet. The target must succeed on a Wit saving throw (DC = 10 + your Charisma modifier) or be charmed by you for 1d4 turns.",
+    "range": "30 feet",
+    "abilityPointCost": 3,
+    "cooldown": "Once per encounter"
+  },
+  "Feline Agility": {
+    "description": "You move with the grace and speed of a tiger.",
+    "effect": "Once per encounter, you can double your movement speed for one turn.",
+    "abilityPointCost": 2,
+    "cooldown": "Once per encounter"
+  },
+  "Adaptability": {
+    "description": "Humans are known for their ability to adapt to any situation.",
+    "effect": "Once per encounter, you can reroll any skill check, attack roll, or saving throw. You must use the new roll.",
+    "abilityPointCost": 1,
+    "cooldown": "Once per encounter"
+  },
+  "Sky's the Limit": {
+    "type": "Activated",
+    "description": "The aerialist performs a series of flips and twists, confusing enemies and gaining an advantage.",
+    "effect": "Gain +4 to AC and advantage on Dexterity saving throws for 1 minute.",
+    "range": "Self",
+    "abilityPointCost": 3,
+    "cooldown": "1 hour",
+    "scaling": "Increases AC bonus by +1 for every 3 additional levels."
+  },
+  "Death-Defying Leap": {
+    "type": "Activated",
+    "description": "The aerialist makes a daring leap to escape or engage enemies.",
+    "effect": "Move up to 60 feet in a straight line, ignoring difficult terrain and avoiding opportunity attacks.",
+    "range": "Self",
+    "abilityPointCost": 2,
+    "cooldown": "1 turn",
+    "scaling": "Distance increases by 10 feet for every 2 additional levels."
+  },
+  "Indomitable Will": {
+    "type": "Activated",
+    "description": "The fighter's sheer willpower enables them to shrug off effects that would hinder others.",
+    "effect": "Gain advantage on all saving throws for 1 minute.",
+    "range": "Self",
+    "abilityPointCost": 3,
+    "cooldown": "1 hour",
+    "scaling": "Duration increases by 1 round for every 2 additional levels."
+  },
+  "Chaos Unleashed": {
+    "type": "Activated",
+    "description": "The anarchist creates a chaotic distraction, causing confusion among enemies.",
+    "effect": "All enemies within 30 feet must make a Wit saving throw or be confused for 1 minute.",
+    "range": "30 feet",
+    "abilityPointCost": 4,
+    "cooldown": "1 hour",
+    "scaling": "Increase range by 5 feet for every 3 additional levels."
+  },
+  "Guardian's Stand": {
+    "type": "Activated",
+    "description": "The Shield Maiden plants her shield, creating a protective barrier around her allies.",
+    "effect": "Allies within 20 feet gain +4 to AC and resistance to all damage types for 1 minute.",
+    "range": "20 feet",
+    "abilityPointCost": 5,
+    "cooldown": "1 hour",
+    "scaling": "Increases AC bonus by +1 for every 3 additional levels."
+  },
+  "Shield Bash": {
+    "type": "Activated",
+    "description": "The Shield Maiden strikes with her shield, stunning enemies.",
+    "effect": "Deals 1d8 bludgeoning damage and the target must make a Constitution saving throw or be stunned for 1 round.",
+    "range": "Melee",
+    "damage": "1d8",
+    "damageType": "Bludgeoning",
+    "abilityPointCost": 2,
+    "cooldown": "1 turn",
+    "scaling": "Damage increases by 1d8 for every 2 additional levels."
+  }
+}

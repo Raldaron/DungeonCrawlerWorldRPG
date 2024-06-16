@@ -1,0 +1,44 @@
+{
+  "Night's Embrace": {
+    "description": "As a creature of the night, shadows and darkness are your allies.",
+    "effect": "Gain darkvision up to 60 feet. Additionally, you have advantage on Stealth checks made in dim light or darkness."
+  },
+  "Predator's Strike": {
+    "description": "Your claws and fangs are deadly weapons.",
+    "effect": "You can make unarmed strikes using your claws, dealing 1d6 slashing damage. Additionally, you have advantage on attack rolls against creatures that haven’t taken a turn in the combat yet."
+  },
+  "Ancient Knowledge": {
+    "description": "As a Primal, you possess knowledge of skills long forgotten by other races.",
+    "effect": "All higher-tier skills are unlocked and can be trained to level 20."
+  },
+  "Versatile Evolution": {
+    "description": "Your body can adapt to a wide range of environments and situations.",
+    "effect": "Gain proficiency in one additional skill of your choice at the start of each floor."
+  },
+  "Indomitable Spirit": {
+    "description": "Humans possess an unyielding spirit and determination.",
+    "effect": "You have advantage on saving throws against being frightened or charmed."
+  },
+  "Resourcefulness": {
+    "description": "Humans gain an extra skill point at every even level."
+  },
+  "Enhanced Senses": {
+    "description": "Tigrans have advantage on Perception checks that rely on smell or hearing."
+  },
+  "Fire Resistance": {
+    "description": "Incubi have a natural resistance to fire, reducing fire damage by 50%."
+  },
+  "Ancient Resilience": {
+    "description": "Primals have a natural resistance to environmental hazards. They take 50% less damage from natural sources such as extreme temperatures, poisonous plants, and natural disasters."
+  },
+  "Steadfast Strike": {
+    "description": "The fighter's relentless training allows them to deliver powerful blows consistently.",
+    "effect": "Gain +2 to melee attack rolls.",
+    "scaling": "Increases to +3 at level 10 and +4 at level 20."
+  },
+  "Anarchist's Resolve": {
+    "description": "The anarchist's defiance fuels their resilience in battle.",
+    "effect": "Gain +2 to all saving throws when outnumbered.",
+    "scaling": "Increases to +3 at level 10 and +4 at level 20."
+  }
+}
