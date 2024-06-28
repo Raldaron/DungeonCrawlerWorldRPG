@@ -8,5 +8,24 @@
     "description": "Creates a fake explosive device that detonates, causing a 10-foot radius explosion.",
     "manaCost": 5,
     "effect": "Creates a decoy that explodes after 1 turn, dealing 2d6 fire damage to all creatures within a 10-foot radius."
+  },
+  "Flame": {
+    "description": "Creates a fake explosive device that detonates, causing a 10-foot radius explosion.",
+    "manaCost": 5,
+    "effect": "Creates a decoy that explodes after 1 turn, dealing 2d6 fire damage to all creatures within a 10-foot radius."
+  },
+  "Protective Shell": {
+    "description": "Picture yourself in high school. Now picture all the girls who would never get anywhere near you. It’s kind of like that, but on purpose. A favorite of frontline tanks and castle guards, the expensive and rare Protective Shell spell shields the caster and anyone within the sphere from a mob’s physical presence or physical attacks. This spell does not protect against magic or against non-corporeal entities. Unlike the more popular Shield Spell, this spell does not move with you. This spell’s area of effect remains static once cast, unimpeded by your physical surroundings. So if you use this spell only when you really, really need it, you’re probably only delaying the inevitable by a few seconds.",
+    "manaCost": "This is an item-based spell. This spell does not require mana to cast. If you unequip the associated item, you will lose access to this spell. The cooldown will not reset.",
+    "effect": "Shields the caster and anyone within the sphere from a mob’s physical presence or physical attacks.",
+    "target": "3-meter radius sphere centered around the right hand of caster + 50 centimeters of radius per level of Intelligence.",
+    "duration": "5 seconds + 1 second per level of spell. (Current Duration: 20 seconds.) Requires 30-hour cooldown."
+  },
+  "Tripper": {
+    "description": "A lot of people say crawlers who use this spell are chickenshit cowards. But then again, those same people are sitting at home covered in Cheeto mud watching this show while wearing pajamas. This spell automatically triggers all passage, motion, heat, and weight-based traps in a certain radius.",
+    "manaCost": "This is an item-based spell. This spell does not require mana to cast. If you unequip the associated item, you will lose access to this spell. The cooldown will not reset.",
+    "effect": "This spell is one of those good news, bad news situations. If you have your intelligence high enough, you can automagically trigger every trap in the quadrant with the snap of the finger. Blades will fall. Bombs will explode. Electrodes will zap. It’s great fun. Here’s the catch. This triggers the traps. It doesn’t disarm them. If you don’t know why that might be bad, then you’re probably gonna die anyway, so I wouldn’t worry about it.",
+    "target": "a 10-meter radius sphere centered around the right hand of caster + 10 meters of radius per level of Intelligence.",
+    "duration": "instantaneous."
   }
 }

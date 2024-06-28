@@ -40,5 +40,86 @@
     "description": "The anarchist's defiance fuels their resilience in battle.",
     "effect": "Gain +2 to all saving throws when outnumbered.",
     "scaling": "Increases to +3 at level 10 and +4 at level 20."
+  },
+  "Coin Burst": {
+    "description": "All mobs killed with this weapon have a 20% chance to burst into a pile of gold coins upon death.",
+    "effect": "The number of coins is equal to the (value of the items in their inventory) + (level x 10)."
+  },
+  "Buffet Enchantment": {
+    "description": "The crossbow will not run out of basic ammunition.",
+    "effect": "Additional ammunition types can be loaded and fired, though special bonuses apply only to the stock ammunition."
+  },
+  "Fae Fury": {
+    "description": "For every female in your party, up to thirty, this items damage and firing speed is increased.",
+    "effect": "Add an extra attack per round per female member of the party. Add 1d12 per female member of the party."
+  },
+  "Incremental Damage": {
+    "description": "This weapons damage increases by 1.5% for every mob it kills that is no more than 10 levels below the current wielders level.",
+    "effect": "Current upgrade: 238% damage increase."
+  },
+  "Bonked": {
+    "description": "Has a 5% chance to inflict Bonked on any mob struck with this weapon.",
+    "effect": "Inflicts Bonked status."
+  },
+  "Echo Boom": {
+    "description": "Enemies hit by the hammer have a 10% chance to be stunned for one round due to the deafening noise.",
+    "effect": "10% chance to stun for one round."
+  },
+  "Critical Gamble": {
+    "description": "Every shot has a 50% chance to be a critical hit, dealing double damage.",
+    "effect": "50% chance to deal double damage."
+  },
+  "Infection": {
+    "description": "Successful hits have a 10% chance to inflict Tetanus, dealing 1d4 damage per round for 3 rounds.",
+    "effect": "10% chance to deal 1d4 damage per round for 3 rounds."
+  },
+  "Freeballing": {
+    "description": "And I’m freeeeee! Freeee Ballling! Usually reserved for monk classes and those too soused to reliably dress themselves, recipients of this benefit receive an additional 100% damage bonus to all attacks that originate below the waist. In addition, all skills that originate from below the waist train 20% faster. But as the name implies, this benefit allows only a single layer of armor or clothing to cover your crotch area. And since you’re already wearing these, it looks like you won’t be getting trousers anytime soon.",
+    "effect": "100% additional bonus damage and 20% additional experience for all attacks that originate below the waist"
+  },
+  "ManaGenita's Favor": {
+    "description": "Removes automatic hostility by worshippers of Mana Genita."
+  },
+  "Enhanced Mob Detection": {
+    "description": "Increased ability to detect mobs on the map."
+  },
+  "Upgradeable": {
+    "description": "This base stat upgrade increases by +1 for every compatible patch that is added to this jacket."
+  },
+  "Back Patch Bonus": {
+    "description": "If an eligible Back Patch is added, this benefit is doubled."
+  },
+  "Explosive Expertise": {
+    "description": "+50% range and accuracy for all thrown explosives."
+  },
+  "Regeneration": {
+    "description": "The wearer of this shirt gains +7 to the Regeneration buff."
+  },
+  "Melee Immunity": {
+    "description": "All melee-based damage debuffs such as Stun, Knockback, Disarm, and Out-of-Breath are negated."
+  },
+  "PotionMaster": {
+    "description": "50% reduction to potion cooldown"
+  },
+  "PoisonImmunity": {
+    "description": "Protection from poison"
+  },
+  "Steady Drinker": {
+    "description": "Negates the dexterity debuff when inebriated"
+  },
+  "Minor Fire Resistance": {
+    "description": "+15% Fire Resistance"
+  },
+  "Environmental Protection": {
+    "description": "Protects the eyes from a variety of environmental hazards, including magic-based attacks that render the user blind."
+  },
+  "Enhanced Vision": {
+    "description": "Enhances all dark vision effects. Allows for heat vision and other visible-light viewing options."
+  },
+  "Spell Focus": {
+    "description": "Any energy-based spell that originates from the ocular region is caught and focused by these goggles, which allows for multiple combat and targeting options."
+  },
+  "Sepsis Debuff": {
+    "description": "All attacks, including magical attacks, now have a 15% chance to inflict the Sepsis debuff."
   }
 }

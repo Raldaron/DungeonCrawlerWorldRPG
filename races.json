@@ -1,120 +1,179 @@
 {
-  "Incubus": {
-    "description": "Ah, the Incubus. Also known as the Gigachad of the Over City, these dusky gray-skinned, horned hunks with forked tails and bat-like wings are the bad boys of the demon world. They’ll sweep you off your feet, show you a night on the town, and leave you with nothing but a hangover and a set of stunningly sensuous footprints. Low alcohol tolerance, but who's counting drinks when you're that good-looking?",
-    "loreElements": [
-      "The Incubi are the favored offspring of Lilith, created from her essence to be the perfect seducers. They serve as her emissaries in the mortal realm, tasked with spreading her influence through temptation and desire. In return, they receive her blessings, which enhance their natural charisma and physical prowess.",
-      "Long ago, the Incubi were embroiled in the Seduction Wars, a series of conflicts between the various demon factions over control of mortal souls. Their unmatched allure and ability to manipulate dreams made them formidable opponents, leading to their eventual dominance in the realm of temptation."
-    ],
-    "statBonus": {
-      "strength": "+2",
-      "dexterity": "+3",
-      "stamina": "+1",
-      "intelligence": "+1",
-      "perception": "+2",
-      "wit": "+1",
-      "charisma": "+5",
-      "manipulation": "+8",
-      "appearance": "+5",
-      "ar": "+1",
-      "ap": "+1"
+    "Incubus": {
+        "description": "Ah, the Incubus. Also known as the Gigachad of the Over City, these dusky gray-skinned, horned hunks with forked tails and bat-like wings are the bad boys of the demon world. They'll sweep you off your feet, show you a night on the town, and leave you with nothing but a hangover and a set of stunningly sensuous footprints. Low alcohol tolerance, but who's counting drinks when you're that good-looking?",
+        "loreElements": [
+            "The Incubi are the favored offspring of Lilith, created from her essence to be the perfect seducers. They serve as her emissaries in the mortal realm, tasked with spreading her influence through temptation and desire. In return, they receive her blessings, which enhance their natural charisma and physical prowess.",
+            "Long ago, the Incubi were embroiled in the Seduction Wars, a series of conflicts between the various demon factions over control of mortal souls. Their unmatched allure and ability to manipulate dreams made them formidable opponents, leading to their eventual dominance in the realm of temptation."
+        ],
+        "statBonus": {
+            "strength": 2,
+            "dexterity": 3,
+            "stamina": 1,
+            "intelligence": 1,
+            "perception": 2,
+            "wit": 1,
+            "charisma": 5,
+            "manipulation": 8,
+            "appearance": 5,
+            "ar": 1,
+            "ap": 1
+        },
+        "skillBonus": {
+            "persuasion": 3,
+            "stealth": 2,
+            "empathy": 2
+        },
+        "uniqueAbilities": [
+            {
+                "name": "Seductive Aura",
+                "description": "Your mere presence makes hearts race and minds fog.",
+                "effect": "Once per encounter, you can charm one humanoid creature within 30 feet. The target must succeed on a Wit saving throw (DC = 10 + your Charisma modifier) or be charmed by you for 1d4 turns.",
+                "range": "30 feet",
+                "abilityPointCost": 3,
+                "cooldown": "Once per encounter"
+            }
+        ],
+        "buffs": [
+            {
+                "name": "Night's Embrace",
+                "description": "As a creature of the night, shadows and darkness are your allies.",
+                "effect": "Gain darkvision up to 60 feet. Additionally, you have advantage on Stealth checks made in dim light or darkness."
+            },
+            {
+                "name": "Fire Resistance",
+                "description": "Incubi have a natural resistance to fire, reducing fire damage by 50%.",
+                "effect": "Reduces fire damage taken by 50%."
+            }
+        ]
     },
-    "skillBonus": {
-      "persuasion": "+3",
-      "stealth": "+2",
-      "empathy": "+2"
+    "Tigran": {
+        "description": "Picture a humanoid, now add stripes, fur, and feline grace, and boom: you've got the Tigran. These orange, furry, tiger-like beings are for those who like their RPG characters with a side of whiskers and a penchant for naps in the sun. Quick, agile, and often found lounging in the most inconvenient places, Tigrans bring a blend of elegance and lethargy to any adventuring party.",
+        "loreElements": [
+            "Tigrans were once the elite hunters in their home jungles, revered and feared by all.",
+            "Known for their keen senses and unmatched agility, they have a natural disdain for water and anything that messes with their fur."
+        ],
+        "statBonus": {
+            "strength": 2,
+            "dexterity": 4,
+            "stamina": 2,
+            "intelligence": 1,
+            "perception": 3,
+            "wit": 2,
+            "charisma": 1,
+            "manipulation": 1,
+            "appearance": 2,
+            "ar": 1,
+            "ap": 1
+        },
+        "skillBonus": {
+            "acrobatics": 3,
+            "stealth": 4,
+            "survival": 2,
+            "awareness": 2
+        },
+        "uniqueAbilities": [
+            {
+                "name": "Feline Agility",
+                "description": "You move with the grace and speed of a tiger.",
+                "effect": "Once per encounter, you can double your movement speed for one turn.",
+                "abilityPointCost": 2,
+                "cooldown": "Once per encounter"
+            }
+        ],
+        "buffs": [
+            {
+                "name": "Predator's Strike",
+                "description": "Your claws and fangs are deadly weapons.",
+                "effect": "You can make unarmed strikes using your claws, dealing 1d6 slashing damage. Additionally, you have advantage on attack rolls against creatures that haven\u2019t taken a turn in the combat yet."
+            },
+            {
+                "name": "Enhanced Senses",
+                "description": "Tigrans have advantage on Perception checks that rely on smell or hearing.",
+                "effect": "You have advantage on Perception checks that rely on smell or hearing."
+            }
+        ]
     },
-    "uniqueAbilities": [
-      "Seductive Aura"
-    ],
-    "buffs": [
-      "Night's Embrace",
-      "Fire Resistance"
-    ]
-  },
-  "Tigran": {
-    "description": "Picture a humanoid, now add stripes, fur, and feline grace, and boom: you've got the Tigran. These orange, furry, tiger-like beings are for those who like their RPG characters with a side of whiskers and a penchant for naps in the sun. Quick, agile, and often found lounging in the most inconvenient places, Tigrans bring a blend of elegance and lethargy to any adventuring party.",
-    "loreElements": [
-      "Tigrans were once the elite hunters in their home jungles, revered and feared by all.",
-      "Known for their keen senses and unmatched agility, they have a natural disdain for water and anything that messes with their fur."
-    ],
-    "statBonus": {
-      "strength": "+2",
-      "dexterity": "+4",
-      "stamina": "+2",
-      "intelligence": "+1",
-      "perception": "+3",
-      "wit": "+2",
-      "charisma": "+1",
-      "manipulation": "+1",
-      "appearance": "+2",
-      "ar": "+1",
-      "ap": "+1"
+    "Primal": {
+        "description": "The Primals are the progenitors, the first known species to conquer the universe. They are the boogiemen of the cosmos. Nobody knows what they looked like or anything about them other than that they spread across the galaxy, and then one day, they just vanished.",
+        "loreElements": [
+            "Primals are shrouded in mystery, their true nature and origins lost to time.",
+            "Their sudden disappearance has led to countless theories and myths across the universe."
+        ],
+        "statBonus": {
+            "strength": -1,
+            "dexterity": -1,
+            "stamina": -1,
+            "intelligence": -1,
+            "perception": -1,
+            "wit": -1,
+            "charisma": -1,
+            "manipulation": -1,
+            "appearance": -1,
+            "ar": 1,
+            "ap": 1
+        },
+        "skillBonus": {},
+        "uniqueAbilities": [],
+        "buffs": [
+            {
+                "name": "Ancient Knowledge",
+                "description": "As a Primal, you possess knowledge of skills long forgotten by other races.",
+                "effect": "All higher-tier skills are unlocked and can be trained to level 20."
+            },
+            {
+                "name": "Versatile Evolution",
+                "description": "Your body can adapt to a wide range of environments and situations.",
+                "effect": "Gain proficiency in one additional skill of your choice at the start of each floor."
+            },
+            {
+                "name": "Ancient Resilience",
+                "description": "Primals have a natural resistance to environmental hazards. They take 50% less damage from natural sources such as extreme temperatures, poisonous plants, and natural disasters.",
+                "effect": "Take 50% less damage from natural sources such as extreme temperatures, poisonous plants, and natural disasters."
+            }
+        ]
     },
-    "skillBonus": {
-      "acrobatics": "+3",
-      "stealth": "+4",
-      "survival": "+2",
-      "awareness": "+2"
-    },
-    "uniqueAbilities": [
-      "Feline Agility"
-    ],
-    "buffs": [
-      "Predator's Strike",
-      "Enhanced Senses"
-    ]
-  },
-  "Primal": {
-    "description": "The Primals are the progenitors, the first known species to conquer the universe. They are the boogiemen of the cosmos. Nobody knows what they looked like or anything about them other than that they spread across the galaxy, and then one day, they just vanished.",
-    "loreElements": [],
-    "statBonus": {
-      "strength": "-1",
-      "dexterity": "-1",
-      "stamina": "-1",
-      "intelligence": "-1",
-      "perception": "-1",
-      "wit": "-1",
-      "charisma": "-1",
-      "manipulation": "-1",
-      "appearance": "-1",
-      "ar": "+1",
-      "ap": "+1"
-    },
-    "skillBonus": {},
-    "uniqueAbilities": [],
-    "buffs": [
-      "Ancient Knowledge",
-      "Versatile Evolution"
-    ]
-  },
-  "Human": {
-    "description": "It’s a human. Dumbass. Your garden-variety bipedal mammal, known for their insatiable curiosity, remarkable adaptability, and baffling tendency to self-destruct. Humans are as diverse as they are numerous, capable of acts of great heroism and unspeakable stupidity. If you like playing the underdog who somehow manages to survive against all odds, humans are your best bet.",
-    "loreElements": [
-      "Humans are often the protagonists of their own stories, despite being hilariously underprepared for the dangers they face.",
-      "Their history is marked by endless wars, groundbreaking innovations, and an uncanny ability to make enemies."
-    ],
-    "statBonus": {
-      "strength": "+1",
-      "dexterity": "+1",
-      "stamina": "+1",
-      "intelligence": "+1",
-      "perception": "+1",
-      "wit": "+1",
-      "charisma": "+1",
-      "manipulation": "+1",
-      "appearance": "+1",
-      "ar": "+1",
-      "ap": "+1"
-    },
-    "skillBonus": {
-      "versatility": "+1 to any four skills of the player's choice"
-    },
-    "uniqueAbilities": [
-      "Adaptability"
-    ],
-    "buffs": [
-      "Indomitable Spirit",
-      "Resourcefulness"
-    ]
-  }
+    "Human": {
+        "description": "It's a human. Dumbass. Your garden-variety bipedal mammal, known for their insatiable curiosity, remarkable adaptability, and baffling tendency to self-destruct. Humans are as diverse as they are numerous, capable of acts of great heroism and unspeakable stupidity. If you like playing the underdog who somehow manages to survive against all odds, humans are your best bet.",
+        "loreElements": [
+            "Humans are often the protagonists of their own stories, despite being hilariously underprepared for the dangers they face.",
+            "Their history is marked by endless wars, groundbreaking innovations, and an uncanny ability to make enemies."
+        ],
+        "statBonus": {
+            "strength": 1,
+            "dexterity": 1,
+            "stamina": 1,
+            "intelligence": 1,
+            "perception": 1,
+            "wit": 1,
+            "charisma": 1,
+            "manipulation": 1,
+            "appearance": 1,
+            "ar": 1,
+            "ap": 1
+        },
+        "skillBonus": {
+            "versatility": 1
+        },
+        "uniqueAbilities": [
+            {
+                "name": "Adaptability",
+                "description": "Humans are known for their ability to adapt to any situation.",
+                "effect": "Once per encounter, you can reroll any skill check, attack roll, or saving throw. You must use the new roll.",
+                "abilityPointCost": 1,
+                "cooldown": "Once per encounter"
+            }
+        ],
+        "buffs": [
+            {
+                "name": "Indomitable Spirit",
+                "description": "Humans possess an unyielding spirit and determination.",
+                "effect": "You have advantage on saving throws against being frightened or charmed."
+            },
+            {
+                "name": "Resourcefulness",
+                "description": "Humans gain an extra skill point at every even level.",
+                "effect": "Gain an extra skill point at every even level."
+            }
+        ]
+    }
 }
