@@ -10,15 +10,6 @@
     <div class="container">
         <header>
             <h1>Character Sheet</h1>
-            <div id="loginForm">
-                <input type="email" id="emailInput" placeholder="Email">
-                <input type="password" id="passwordInput" placeholder="Password">
-                <button id="loginButton">Login</button>
-                <button id="registerButton">Register</button>
-              </div>
-              <div id="characterSheet" style="display: none;">
-                <!-- Your existing character sheet HTML goes here -->
-              </div>
         </header>
         <section class="character-info">
             <div class="character-name">
@@ -75,6 +66,7 @@
             </div>
         </section>
         <section class="main-stats">
+            <!-- ... existing code ... -->
             <button id="active-buffs-btn" onclick="openBuffsModal()">Active Buffs</button>
         </section>
         <section class="abilities">
@@ -152,35 +144,81 @@
                 <!-- Spells will be dynamically populated by JavaScript -->
             </div>
         </section>
-        <section class="equipment">
-            <h2>Equipment</h2>
-            <div class="equipment-grid">
-                <!-- Equipment slots will be dynamically populated by JavaScript -->
-            </div>
-        </section>
-        <section class="inventory">
-            <h2>Inventory</h2>
-            <button id="add-to-inventory-btn">Add to Inventory</button>
-            <button id="open-inventory-btn">Open Inventory</button>
-        </section>
-        <div id="unique-abilities">
-            <!-- Unique abilities will be dynamically populated -->
-          </div>
-          
-          <div id="buffs">
-            <!-- Buffs will be dynamically populated -->
-          </div>
-          
-          <div id="spells">
-            <!-- Spells will be dynamically populated -->
-          </div>
+</section>
+<section class="equipment">
+    <h2>Equipment</h2>
+    <div class="equipment-grid">
+        <div class="equipment-slot" data-slot="utility" data-count="9">
+            <h3>Utility (9)</h3>
+            <div class="item-list"></div>
+        </div>
+        <div class="equipment-slot" data-slot="primary-weapon" data-count="2">
+            <h3>Primary Weapon (2)</h3>
+            <div class="item-list"></div>
+        </div>
+        <div class="equipment-slot" data-slot="secondary-weapon" data-count="2">
+            <h3>Secondary Weapon (2)</h3>
+            <div class="item-list"></div>
+        </div>
+        <div class="equipment-slot" data-slot="headgear" data-count="1">
+            <h3>Headgear (1)</h3>
+            <div class="item-list"></div>
+        </div>
+        <div class="equipment-slot" data-slot="face-accessory" data-count="1">
+            <h3>Face Accessory (1)</h3>
+            <div class="item-list"></div>
+        </div>
+        <div class="equipment-slot" data-slot="neck" data-count="1">
+            <h3>Neck (1)</h3>
+            <div class="item-list"></div>
+        </div>
+        <div class="equipment-slot" data-slot="shoulders" data-count="1">
+            <h3>Shoulders (1)</h3>
+            <div class="item-list"></div>
+        </div>
+        <div class="equipment-slot" data-slot="torso" data-count="1">
+            <h3>Torso (1)</h3>
+            <div class="item-list"></div>
+        </div>
+        <div class="equipment-slot" data-slot="arms" data-count="1">
+            <h3>Arms (1)</h3>
+            <div class="item-list"></div>
+        </div>
+        <div class="equipment-slot" data-slot="hands" data-count="1">
+            <h3>Hands (1)</h3>
+            <div class="item-list"></div>
+        </div>
+    </div>
+</section>
+<section class="inventory">
+    <h2>Inventory</h2>
+    <button id="add-to-inventory-btn">Add to Inventory</button>
+    <button id="open-inventory-btn">Open Inventory</button>
+</section>
+</div>
+
+<div id="inventory-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeInventoryModal()">&times;</span>
+        <h2>Inventory</h2>
+        <div id="inventory-items"></div>
+    </div>
+</div>
+
+<div id="search-modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeSearchModal()">&times;</span>
+        <h2>Add Item to Inventory</h2>
+        <input type="text" id="item-search" placeholder="Search for items...">
+        <div id="search-results"></div>
+    </div>
+</div>
         <section class="notes">
             <h2>Current Quest Notes</h2>
             <textarea id="quest-notes" placeholder="Enter notes here..."></textarea>
         </section>
     </div>
 
-    <!-- Modals -->
     <div id="race-modal" class="modal">
         <div class="modal-content" id="race-modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
@@ -189,19 +227,25 @@
             <h3>Lore</h3>
             <p id="race-modal-lore"></p>
             <h3>Stat Bonuses</h3>
-            <ul id="race-modal-stat-bonuses"></ul>
+            <p id="race-modal-stat-bonuses"></p>
             <h3>Skill Bonuses</h3>
-            <ul id="race-modal-skill-bonuses"></ul>
-            <h3>Unique Abilities</h3>
-            <ul id="race-modal-abilities"></ul>
-            <h3>Buffs</h3>
-            <ul id="race-modal-buffs"></ul>
+            <p id="race-modal-skill-bonuses"></p>
         </div>
     </div>
 
     <div id="ability-modal" class="modal">
         <div class="modal-content" id="ability-modal-content">
-            <!-- Content will be dynamically populated -->
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="ability-modal-title"></h2>
+            <p id="ability-modal-description"></p>
+            <h3>Effect</h3>
+            <p id="ability-modal-effect"></p>
+            <h3>Range</h3>
+            <p id="ability-modal-range"></p>
+            <h3>Ability Point Cost</h3>
+            <p id="ability-modal-cost"></p>
+            <h3>Cooldown</h3>
+            <p id="ability-modal-cooldown"></p>
         </div>
     </div>
     
@@ -225,44 +269,23 @@
         </div>
     </div>
 
-    <div id="inventory-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeInventoryModal()">&times;</span>
-            <h2>Inventory</h2>
-            <div id="inventory-items"></div>
-        </div>
-    </div>
-
-    <div id="search-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeSearchModal()">&times;</span>
-            <h2>Add Item to Inventory</h2>
-            <input type="text" id="item-search" placeholder="Search for items...">
-            <div id="search-results"></div>
+    <div id="race-modal" class="modal">
+        <div class="modal-content" id="race-modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="race-modal-title"></h2>
+            <p id="race-modal-description"></p>
+            <h3>Lore</h3>
+            <p id="race-modal-lore"></p>
+            <h3>Stat Bonuses</h3>
+            <p id="race-modal-stat-bonuses"></p>
+            <h3>Skill Bonuses</h3>
+            <p id="race-modal-skill-bonuses"></p>
         </div>
     </div>
 
     <div id="equipment-modal" class="modal">
         <div class="modal-content">
             <!-- Content will be dynamically populated -->
-        </div>
-    </div>
-
-    <div id="class-modal" class="modal">
-        <div class="modal-content" id="class-modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="class-modal-title"></h2>
-            <p id="class-modal-description"></p>
-            <h3>Stat Bonuses</h3>
-            <ul id="class-modal-stat-bonuses"></ul>
-            <h3>Skill Bonuses</h3>
-            <ul id="class-modal-skill-bonuses"></ul>
-            <h3>Unique Abilities</h3>
-            <ul id="class-modal-abilities"></ul>
-            <h3>Buffs</h3>
-            <ul id="class-modal-buffs"></ul>
-            <h3>Spells</h3>
-            <ul id="class-modal-spells"></ul>
         </div>
     </div>
 
