@@ -5,8 +5,8 @@ html {
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
-    background-color: #222;
-    color: #fff;
+    background-color: #fff;
+    color: #333;
     overflow-y: auto;
     height: 100%;
     width: 100%;
@@ -15,10 +15,10 @@ html {
 .container {
     width: 90%;
     max-width: 720px;
-    background-color: #1f1f1f;
+    background-color: #fff;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 header {
@@ -28,7 +28,7 @@ header {
 
 header h1 {
     font-size: 24px;
-    color: #ff5722;
+    color: #333;
 }
 
 section {
@@ -38,12 +38,12 @@ section {
 label {
     display: block;
     margin-bottom: 5px;
-    color: #ff5722;
+    color: #333;
 }
 
 button {
     cursor: pointer;
-    color: #ff5722;
+    color: #333;
     margin: 10px 0;
     background: none;
     border: none;
@@ -62,10 +62,10 @@ button {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    border: none;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #2a2a2a;
-    color: #ffffff;
+    background-color: #fff;
+    color: #333;
     box-sizing: border-box;
 }
 
@@ -101,27 +101,29 @@ button {
 .main-stats .stat {
     width: 22%;
     margin-bottom: 10px;
-    background-color: #2a2a2a;
+    background-color: #fff;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
+    border: 1px solid #ccc;
 }
 
 .stat {
     width: 25%;
     margin-bottom: 10px;
-    background-color: #2a2a2a;
+    background-color: #fff;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
     cursor: pointer;
+    border: 1px solid #ccc;
 }
 
 .stat p,
 .skill p {
     margin: 0;
     font-size: 12px;
-    color: #ff5722;
+    color: #333;
 }
 
 .stat span,
@@ -129,7 +131,7 @@ button {
     display: block;
     margin-top: 5px;
     font-size: 16px;
-    color: #ffffff;
+    color: #333;
 }
 
 .stat[ondblclick],
@@ -141,7 +143,7 @@ button {
     margin-top: 5px;
     padding: 5px 10px;
     font-size: 12px;
-    background-color: #ff5722;
+    background-color: #333;
     color: #fff;
     border: none;
     border-radius: 3px;
@@ -149,7 +151,7 @@ button {
 }
 
 button:hover {
-    background-color: #e64a19;
+    background-color: #555;
 }
 
 .points p {
@@ -159,9 +161,9 @@ button:hover {
 }
 
 h2 {
-    color: #ff5722;
+    color: #333;
     font-size: 20px;
-    border-bottom: 2px solid #ff5722;
+    border-bottom: 2px solid #333;
     padding-bottom: 5px;
     margin-bottom: 10px;
 }
@@ -180,33 +182,31 @@ textarea {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .modal-content {
-    background-color: #252525;
+    background-color: #fff;
     margin: 5% auto;
     padding: 20px;
     border: 1px solid #888;
     width: 80%;
-    /* Increased from previous value */
     max-width: 800px;
-    /* Added max-width for very large screens */
     max-height: 90vh;
-    /* Maximum height of 90% of the viewport height */
     overflow-y: auto;
-    /* Allows scrolling if content is too long */
 }
 
 .modal-content h2,
 .modal-content h3 {
     font-size: 16px;
     margin: 10px 0;
+    color: #333;
 }
 
 .modal-content p {
     font-size: 14px;
     margin: 5px 0;
+    color: #333;
 }
 
 .close {
@@ -228,7 +228,7 @@ textarea {
     width: 100px;
     height: 150px;
     margin: 5px;
-    background-color: #444;
+    background-color: #fff;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -238,6 +238,7 @@ textarea {
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.6s;
+    border: 1px solid #ccc;
 }
 
 .ability-card.flipped,
@@ -247,7 +248,7 @@ textarea {
 
 .ability-card p,
 .trait-card p {
-    color: #fff;
+    color: #333;
     margin: 0;
     padding: 10px;
     backface-visibility: hidden;
@@ -260,9 +261,9 @@ textarea {
     height: 100%;
     top: 0;
     left: 0;
-    background-color: #555;
+    background-color: #eee;
     border-radius: 10px;
-    color: #fff;
+    color: #333;
     transform: rotateY(180deg);
     backface-visibility: hidden;
     padding: 10px;
@@ -295,6 +296,7 @@ textarea {
 .skill p {
     margin: 0;
     flex: 0 0 auto;
+    color: #333;
 }
 
 .skill span {
@@ -302,6 +304,7 @@ textarea {
     text-align: right;
     padding-left: 10px;
     cursor: pointer;
+    color: #333;
 }
 
 @media (max-width: 800px) {
@@ -331,31 +334,32 @@ textarea {
 .ability {
     width: 25%;
     margin-bottom: 10px;
-    background-color: #2a2a2a;
+    background-color: #fff;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
     cursor: pointer;
+    border: 1px solid #ccc;
 }
 
 .ability p {
     margin: 0;
     font-size: 12px;
-    color: #ff5722;
+    color: #333;
 }
 
 .ability span {
     display: block;
     margin-top: 5px;
     font-size: 16px;
-    color: #ffffff;
+    color: #333;
 }
 
 #active-buffs-btn {
     margin-top: 10px;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #ff5722;
+    background-color: #333;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -364,11 +368,12 @@ textarea {
 }
 
 #active-buffs-btn:hover {
-    background-color: #e64a19;
+    background-color: #555;
 }
 
 .buff-name {
     font-weight: bold;
+    color: #333;
 }
 
 .buff-container,
@@ -382,16 +387,17 @@ textarea {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
-    background-color: #2a2a2a;
+    background-color: #fff;
     padding: 10px;
     border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 .buff p,
 .spell p {
     margin: 0;
     font-size: 14px;
-    color: #ff5722;
+    color: #333;
     flex: 0 0 auto;
 }
 
@@ -399,7 +405,7 @@ textarea {
 .spell span {
     margin: 0;
     font-size: 14px;
-    color: #ffffff;
+    color: #333;
     flex: 1;
     text-align: right;
     padding-left: 10px;
@@ -418,24 +424,25 @@ textarea {
 .spell {
     width: 25%;
     margin-bottom: 10px;
-    background-color: #2a2a2a;
+    background-color: #fff;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
     cursor: pointer;
+    border: 1px solid #ccc;
 }
 
 .spell p {
     margin: 0;
     font-size: 12px;
-    color: #ff5722;
+    color: #333;
 }
 
 .spell span {
     display: block;
     margin-top: 5px;
     font-size: 16px;
-    color: #ffffff;
+    color: #333;
 }
 
 .inventory {
@@ -443,9 +450,9 @@ textarea {
 }
 
 .inventory h2 {
-    color: #ff5722;
+    color: #333;
     font-size: 20px;
-    border-bottom: 2px solid #ff5722;
+    border-bottom: 2px solid #333;
     padding-bottom: 5px;
     margin-bottom: 10px;
 }
@@ -455,12 +462,12 @@ textarea {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 15px;
     padding: 15px;
-    color: #fff;
+    color: #333;
 }
 
 .inventory-item {
-    background-color: #2a2a2a;
-    border: 1px solid #444;
+    background-color: #fff;
+    border: 1px solid #ccc;
     border-radius: 5px;
     padding: 10px;
     display: flex;
@@ -471,14 +478,14 @@ textarea {
 .inventory-item span {
     font-weight: bold;
     margin-bottom: 5px;
-    color: #fff;
+    color: #333;
     word-wrap: break-word;
     font-size: 14px;
 }
 
 .inventory-item button {
     margin-top: 5px;
-    background-color: #ff5722;
+    background-color: #333;
     color: #fff;
     border: none;
     padding: 5px 10px;
@@ -487,7 +494,7 @@ textarea {
 }
 
 .inventory-item button:hover {
-    background-color: #e64a19;
+    background-color: #555;
 }
 
 .item-details {
@@ -496,7 +503,7 @@ textarea {
 
 .item-details p {
     margin: 5px 0;
-    color: #ffffff;
+    color: #333;
 }
 
 #search-modal {
@@ -508,11 +515,11 @@ textarea {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 #search-modal .modal-content {
-    background-color: #2a2a2a;
+    background-color: #fff;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
@@ -521,7 +528,7 @@ textarea {
 }
 
 #search-modal h2 {
-    color: #ff5722;
+    color: #333;
     margin-bottom: 10px;
 }
 
@@ -529,10 +536,10 @@ textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    border: none;
+    border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #444;
-    color: #fff;
+    background-color: #fff;
+    color: #333;
 }
 
 #search-results {
@@ -546,7 +553,7 @@ textarea {
 }
 
 #search-results div:hover {
-    background-color: #444;
+    background-color: #eee;
 }
 
 .actions {
@@ -554,29 +561,33 @@ textarea {
 }
 
 .attack-card {
-    background-color: #2a2a2a;
+    background-color: #fff;
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
+    border: 1px solid #ccc;
 }
 
 .attack-card h3 {
-    color: #ff5722;
+    color: #333;
     margin-bottom: 5px;
 }
 
 .attack-card p {
     margin: 5px 0;
+    color: #333;
 }
 
 .attack-card ul {
     margin: 5px 0;
     padding-left: 20px;
+    color: #333;
 }
 
 .weapon-name {
     word-wrap: break-word;
     hyphens: auto;
+    color: #333;
 }
 
 .equipment {
@@ -584,9 +595,9 @@ textarea {
 }
 
 .equipment h2 {
-    color: #ff5722;
+    color: #333;
     font-size: 20px;
-    border-bottom: 2px solid #ff5722;
+    border-bottom: 2px solid #333;
     padding-bottom: 5px;
     margin-bottom: 10px;
 }
@@ -598,27 +609,28 @@ textarea {
 }
 
 .equipment-slot {
-    background-color: #2a2a2a;
+    background-color: #fff;
     border-radius: 5px;
     padding: 10px;
+    border: 1px solid #ccc;
 }
 
 .equipment-slot h3 {
-    color: #ff5722;
+    color: #333;
     font-size: 16px;
     margin-bottom: 5px;
 }
 
 .item-list {
     min-height: 30px;
-    border: 1px dashed #444;
+    border: 1px dashed #ccc;
     border-radius: 3px;
     padding: 5px;
 }
 
 .equipment-item {
-    background-color: #444;
-    color: #313131;
+    background-color: #eee;
+    color: #333;
     padding: 5px;
     margin-bottom: 5px;
     border-radius: 3px;
@@ -626,7 +638,7 @@ textarea {
 }
 
 .equipment-item:hover {
-    background-color: #555;
+    background-color: #ddd;
 }
 
 .close-button {
@@ -647,7 +659,7 @@ textarea {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid #ccc;
 }
 
 .equipment-option:last-child {
@@ -667,33 +679,34 @@ textarea {
 }
 
 .attack-card {
-    background-color: #2a2a2a;
+    background-color: #fff;
     padding: 15px;
     margin-bottom: 15px;
     border-radius: 5px;
+    border: 1px solid #ccc;
 }
 
 .attack-card h3 {
     margin-top: 0;
-    color: #ff5722;
+    color: #333;
 }
 
 .ability-description b {
     font-weight: bold;
-    color: white;
+    color: #333;
 }
 
 .ability-description {
     white-space: pre-wrap;
     font-family: Arial, sans-serif;
-    color: white;
+    color: #333;
 }
 
 #ability-modal-description,
 #ability-modal-effect {
     white-space: pre-wrap;
     font-family: Arial, sans-serif;
-    color: white;
+    color: #333;
 }
 
 #ability-modal-description b,
@@ -704,18 +717,18 @@ textarea {
 #ability-modal-description,
 #ability-modal-effect {
     margin-bottom: 15px;
-    color: white;
+    color: #333;
 }
 
 #race-modal-content {
     color: #333;
-    background-color: #f5f5f5;
+    background-color: #fff;
     padding: 20px;
 }
 
 #race-modal-content h3 {
-    color: #1a1a1a;
-    border-bottom: 2px solid #1a1a1a;
+    color: #333;
+    border-bottom: 2px solid #333;
     padding-bottom: 5px;
     margin-top: 20px;
 }
@@ -727,7 +740,7 @@ textarea {
 }
 
 #race-modal-content li {
-    background-color: #e0e0e0;
+    background-color: #eee;
     padding: 15px;
     border-radius: 5px;
     margin-bottom: 15px;
@@ -737,12 +750,13 @@ textarea {
 #race-modal-content li p {
     margin: 0 0 10px 0;
     line-height: 1.5;
+    color: #333;
 }
 
 #race-modal-abilities .ability-name,
 #race-modal-buffs .buff-name {
     font-size: 1.2em;
-    color: #000;
+    color: #333;
     font-weight: bold;
     margin-bottom: 10px;
 }
@@ -755,11 +769,11 @@ textarea {
 
 .ability-effect, .buff-effect,
 .ability-cost, .ability-cooldown {
-    color: #1a1a1a;
+    color: #333;
 }
 
 #race-modal-content li strong {
-    color: #000;
+    color: #333;
     font-weight: 600;
 }
 
@@ -769,7 +783,7 @@ textarea {
 .ability-cost::before,
 .ability-cooldown::before {
     font-weight: bold;
-    color: #000;
+    color: #333;
 }
 
 .ability-effect::before,
