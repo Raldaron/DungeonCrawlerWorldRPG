@@ -10,6 +10,15 @@
     <div class="container">
         <header>
             <h1>Character Sheet</h1>
+            <div id="loginForm">
+                <input type="email" id="emailInput" placeholder="Email">
+                <input type="password" id="passwordInput" placeholder="Password">
+                <button id="loginButton">Login</button>
+                <button id="registerButton">Register</button>
+              </div>
+              <div id="characterSheet" style="display: none;">
+                <!-- Your existing character sheet HTML goes here -->
+              </div>
         </header>
         <section class="character-info">
             <div class="character-name">
@@ -154,6 +163,17 @@
             <button id="add-to-inventory-btn">Add to Inventory</button>
             <button id="open-inventory-btn">Open Inventory</button>
         </section>
+        <div id="unique-abilities">
+            <!-- Unique abilities will be dynamically populated -->
+          </div>
+          
+          <div id="buffs">
+            <!-- Buffs will be dynamically populated -->
+          </div>
+          
+          <div id="spells">
+            <!-- Spells will be dynamically populated -->
+          </div>
         <section class="notes">
             <h2>Current Quest Notes</h2>
             <textarea id="quest-notes" placeholder="Enter notes here..."></textarea>

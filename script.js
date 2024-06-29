@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             fetch('weapons.json').then(response => response.json()),
             fetch('armor.json').then(response => response.json()),
             fetch('explosives-ammunition-json.json').then(response => response.json())
-        ]);
+        ]);       
 
         // Initialize items with available data
         window.items = {
@@ -67,6 +67,201 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Error loading data:', error);
     }
 });
+
+import { auth, db } from './firebaseConfig.js';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut } from 'firebase/auth';
+import { doc, setDoc, getDoc } from 'firebase/firestore';
+
+// Authentication state observer
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    // User is signed in
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('characterSheet').style.display = 'block';
+    loadCharacterSheet(user.uid);
+  } else {
+    // User is signed out
+    document.getElementById('loginForm').style.display = 'block';
+    document.getElementById('characterSheet').style.display = 'none';
+  }
+});
+
+// Register new user
+document.getElementById('registerButton').addEventListener('click', () => {
+  const email = document.getElementById('emailInput').value;
+  const password = document.getElementById('passwordInput').value;
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Registered successfully
+      console.log('User registered:', userCredential.user);
+    })
+    .catch((error) => {
+      console.error('Registration error:', error);
+    });
+});
+
+// Login existing user
+document.getElementById('loginButton').addEventListener('click', () => {
+  const email = document.getElementById('emailInput').value;
+  const password = document.getElementById('passwordInput').value;
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Logged in successfully
+      console.log('User logged in:', userCredential.user);
+    })
+    .catch((error) => {
+      console.error('Login error:', error);
+    });
+});
+
+// Load character sheet data
+async function loadCharacterSheet(userId) {
+    const docRef = doc(db, 'characters', userId);
+    const docSnap = await getDoc(docRef);
+  
+    if (docSnap.exists()) {
+      const data = docSnap.data();
+      
+      // Basic Info
+      document.getElementById('char-name').value = data.name || '';
+      document.getElementById('char-race').value = data.race || '';
+      document.getElementById('char-class').value = data.class || '';
+  
+      // Stats
+      document.getElementById('strength').innerText = data.strength || 1;
+      document.getElementById('dexterity').innerText = data.dexterity || 1;
+      document.getElementById('stamina').innerText = data.stamina || 1;
+      document.getElementById('intelligence').innerText = data.intelligence || 1;
+      document.getElementById('perception').innerText = data.perception || 1;
+      document.getElementById('wit').innerText = data.wit || 1;
+      document.getElementById('charisma').innerText = data.charisma || 1;
+      document.getElementById('manipulation').innerText = data.manipulation || 1;
+      document.getElementById('appearance').innerText = data.appearance || 1;
+      document.getElementById('ar').innerText = data.ar || 10;
+      document.getElementById('ap').innerText = data.ap || 0;
+  
+      // Derived Stats
+      document.getElementById('hp').innerText = data.hp || 0;
+      document.getElementById('mp').innerText = data.mp || 0;
+  
+      // Skills
+      for (const [skillName, skillValue] of Object.entries(data.skills)) {
+        const skillElement = document.querySelector(`.skill p:contains("${skillName}:")`);
+        if (skillElement) {
+          skillElement.nextElementSibling.textContent = skillValue;
+        }
+      }
+  
+      // Inventory
+      inventory = data.inventory || [];
+      updateInventoryDisplay();
+  
+      // Equipment
+      for (const [slot, itemHtml] of Object.entries(data.equipment)) {
+        const slotElement = document.querySelector(`[data-slot="${slot}"] .item-list`);
+        if (slotElement) {
+          slotElement.innerHTML = itemHtml;
+        }
+      }
+  
+      // Notes
+      document.getElementById('quest-notes').value = data.notes || '';
+  
+      // Unique Abilities, Buffs, and Spells
+      // You'll need to implement functions to display these
+      displayUniqueAbilities(data.uniqueAbilities);
+      displayBuffs(data.buffs);
+      displaySpells(data.spells);
+  
+      updateDerivedStats();
+    } else {
+      console.log('No character sheet found for this user');
+    }
+  }
+
+// Save character sheet data
+async function saveCharacterSheet(userId) {
+    const characterData = {
+      // Basic Info
+      name: document.getElementById('char-name').value,
+      race: document.getElementById('char-race').value,
+      class: document.getElementById('char-class').value,
+  
+      // Stats
+      strength: parseInt(document.getElementById('strength').innerText),
+      dexterity: parseInt(document.getElementById('dexterity').innerText),
+      stamina: parseInt(document.getElementById('stamina').innerText),
+      intelligence: parseInt(document.getElementById('intelligence').innerText),
+      perception: parseInt(document.getElementById('perception').innerText),
+      wit: parseInt(document.getElementById('wit').innerText),
+      charisma: parseInt(document.getElementById('charisma').innerText),
+      manipulation: parseInt(document.getElementById('manipulation').innerText),
+      appearance: parseInt(document.getElementById('appearance').innerText),
+      ar: parseInt(document.getElementById('ar').innerText),
+      ap: parseInt(document.getElementById('ap').innerText),
+  
+      // Derived Stats
+      hp: parseInt(document.getElementById('hp').innerText),
+      mp: parseInt(document.getElementById('mp').innerText),
+  
+      // Skills
+      skills: {},
+  
+      // Inventory
+      inventory: inventory,
+  
+      // Equipment
+      equipment: {
+        head: document.querySelector('[data-slot="Head"] .item-list').innerHTML,
+        neck: document.querySelector('[data-slot="Neck"] .item-list').innerHTML,
+        shoulders: document.querySelector('[data-slot="Shoulders"] .item-list').innerHTML,
+        chest: document.querySelector('[data-slot="Chest"] .item-list').innerHTML,
+        back: document.querySelector('[data-slot="Back"] .item-list').innerHTML,
+        arms: document.querySelector('[data-slot="Arms"] .item-list').innerHTML,
+        hands: document.querySelector('[data-slot="Hands"] .item-list').innerHTML,
+        waist: document.querySelector('[data-slot="Waist"] .item-list').innerHTML,
+        legs: document.querySelector('[data-slot="Legs"] .item-list').innerHTML,
+        feet: document.querySelector('[data-slot="Feet"] .item-list').innerHTML,
+        leftHand: document.querySelector('[data-slot="Left Hand"] .item-list').innerHTML,
+        rightHand: document.querySelector('[data-slot="Right Hand"] .item-list').innerHTML,
+      },
+  
+      // Notes
+      notes: document.getElementById('quest-notes').value,
+  
+      // Unique Abilities, Buffs, and Spells
+      uniqueAbilities: [], // You'll need to implement a way to track these
+      buffs: [], // You'll need to implement a way to track these
+      spells: [], // You'll need to implement a way to track these
+    };
+  
+    // Populate skills
+    document.querySelectorAll('.skill').forEach(skillElement => {
+      const skillName = skillElement.querySelector('p').textContent.replace(':', '');
+      const skillValue = parseInt(skillElement.querySelector('span').textContent);
+      characterData.skills[skillName] = skillValue;
+    });
+  
+    try {
+      await setDoc(doc(db, 'characters', userId), characterData);
+      console.log('Character sheet saved successfully');
+    } catch (error) {
+      console.error('Error saving character sheet:', error);
+    }
+  }
+
+// Add a save button to your character sheet
+const saveButton = document.createElement('button');
+saveButton.textContent = 'Save Character';
+saveButton.addEventListener('click', () => {
+  const user = auth.currentUser;
+  if (user) {
+    saveCharacterSheet(user.uid);
+  } else {
+    console.log('No user logged in');
+  }
+});
+document.getElementById('characterSheet').appendChild(saveButton);
 
 function populateSelectOptions(selectElement, options) {
     selectElement.innerHTML = '<option value="">Select an option</option>';
