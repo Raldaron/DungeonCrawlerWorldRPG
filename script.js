@@ -45,8 +45,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         updateEquipmentHTML();
 
         // Load and set up skills
-        const skills = await fetch('skills.json').then(response => response.json());
-        setupSkills(skills);
+        populateSkills();
 
         // Initialize inventory
         window.inventory = [];
@@ -54,21 +53,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Set up notes autosave
         setupNotesAutosave();
 
-          // Load saved inventory
-          const savedInventory = localStorage.getItem('inventory');
-          if (savedInventory) {
-              inventory = JSON.parse(savedInventory);
-          }
-          updateInventoryDisplay();
-
         // Additional initialization code can be added here
 
     } catch (error) {
         console.error('Error loading data:', error);
     }
 });
-
-
 
 function populateSelectOptions(selectElement, options) {
     selectElement.innerHTML = '<option value="">Select an option</option>';
