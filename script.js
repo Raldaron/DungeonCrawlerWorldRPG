@@ -871,17 +871,29 @@ if (previousRace) {
 }
 }
 
+
 function editField(element) {
-const currentText = element.innerText;
-const input = document.createElement('input');
-input.type = 'text';
-input.value = currentText;
-input.onblur = () => {
-    element.innerText = input.value;
-    element.style.display = 'block';
-    input.remove();
-    updateDerivedStats();
-};
+    const currentText = element.innerText;
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.value = currentText;
+    input.onblur = () => {
+        const newValue = parseInt(input.value);
+        const oldValue = parseInt(currentText);
+        const change = newValue - oldValue;
+        
+        if (element.closest('.stat')) {
+            updateStatPoints(element, change);
+        } else if (element.closest('.skill')) {
+            updateSkillPoints(element, change);
+        } else {
+            element.innerText = input.value;
+        }
+        
+        element.style.display = 'block';
+        input.remove();
+        updateDerivedStats();
+    };
 input.onkeypress = (e) => {
     if (e.key === 'Enter') {
         input.blur();
