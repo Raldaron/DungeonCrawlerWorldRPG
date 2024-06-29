@@ -1,0 +1,218 @@
+{
+  "AstralPaw": {
+    "name": "Astral Paw",
+    "description": "Ever wanted to be a cosmic cat burglar? Well, meow's your chance! This spell lets you manipulate objects from afar like you're some kind of spectral kitten batting at a yarn ball of reality.",
+    "manaCost": 5,
+    "effect": "Lets you play grabby hands with anything under 50 lbs that you can see. Great for snagging loot or pantsing your enemies from a safe distance.",
+    "target": "100 ft range, line of sight required. No, squinting really hard doesn't extend the range.",
+    "duration": "Up to 5 minutes, or until you get distracted by a shiny object."
+  },
+  "BitchWhat": {
+    "name": "Bitch, What?",
+    "description": "The magical equivalent of 'Did I stutter?' This spell turns you into a walking, talking 'No U' card.",
+    "manaCost": 10,
+    "effect": "Makes you fireproof and about as responsive to blunt force as your ex's heart. Also cranks up your sass-o-meter by 50%. Use with caution, or don't. I'm not your mom.",
+    "target": "Self. Who else would you want to make this insufferable?",
+    "duration": "1 minute of pure, unadulterated attitude."
+  },
+  "LegionnairesOfTheDamned": {
+    "name": "Legionnaires of the Damned",
+    "description": "Because nothing says 'I'm a responsible summoner' like conjuring up a squad of eternally pissed-off ghost soldiers.",
+    "manaCost": 15,
+    "effect": "Summons 5 spectral warriors who are really, REALLY not happy about being here. They'll fight for you, but don't expect small talk.",
+    "target": "60 ft range. Any further and they might decide it's not worth the commute.",
+    "duration": "10 minutes, or until they unionize and demand better working conditions."
+  },
+  "ClockworkTriplicate": {
+    "name": "Clockwork Triplicate",
+    "description": "Ever wanted to be in three places at once? No? Well, tough luck, because that's exactly what this spell does.",
+    "manaCost": 12,
+    "effect": "Creates 3 robot duplicates of you. They can do tasks or explode. Sometimes both, if you're really unlucky.",
+    "target": "30 ft range. Any further and the warranty doesn't cover it.",
+    "duration": "Until destroyed or 1 hour. Whichever comes first, and let's face it, it's probably destruction."
+  },
+  "LaundryDay": {
+    "name": "Laundry Day",
+    "description": "For when you absolutely, positively need to strip someone of their dignity... and their armor.",
+    "manaCost": 8,
+    "effect": "Gradually strips an enemy of their armor over 3 rounds. It's like a magical striptease, but way less fun for the target.",
+    "target": "40 ft range. Close enough to see the look of confusion on their face.",
+    "duration": "3 rounds of increasingly embarrassing wardrobe malfunctions."
+  },
+  "MagicMissile": {
+    "name": "Magic Missile",
+    "description": "The Toyota Corolla of spells. It's not flashy, but it gets the job done.",
+    "manaCost": "1 per missile. It's like a magical vending machine of pain.",
+    "effect": "Fires magical darts that never miss. Each one deals 1d4+1 force damage. Intelligence modifier affects damage because, let's face it, even magic respects nerds.",
+    "target": "120 ft range. If you can't hit them from here, maybe consider a career change.",
+    "duration": "Instantaneous. Blink and you'll miss it. They won't, though."
+  },
+  "Mute": {
+    "name": "Mute",
+    "description": "Perfect for shutting up that one party member who won't stop quoting movies, or for making your enemies play the world's worst game of charades.",
+    "manaCost": 6,
+    "effect": "Silences a target, preventing them from casting spells or making loud noises. Does not, unfortunately, work on your own thoughts.",
+    "target": "50 ft range. Just far enough that you can't hear them cursing you out.",
+    "duration": "10 seconds of blissful silence."
+  },
+  "PuddleJumper": {
+    "name": "Puddle Jumper",
+    "description": "For when you need to make a dramatic exit but all you've got is a puddle and a dream.",
+    "manaCost": 7,
+    "effect": "Teleports caster and up to 3 allies to any visible location within range. May cause mild nausea and an inexplicable craving for lily pads.",
+    "target": "200 ft range. That's a lot of puddle to jump.",
+    "duration": "Instantaneous. One second you're here, the next you're over there wondering why your shoes are wet."
+  },
+  "Rigorous": {
+    "name": "Rigorous",
+    "description": "The magical equivalent of 'I'm rubber, you're glue'. Finally, a spell for the playground tactician in all of us.",
+    "manaCost": 5,
+    "effect": "Reflects the next debuff or negative spell back to the attacker. Does not, unfortunately, work on emotional damage.",
+    "target": "Self. Because sometimes the best defense is a good 'No U'.",
+    "duration": "Until triggered or 10 minutes. Whichever comes first, usually right after you forget you cast it."
+  },
+  "SecondChance": {
+    "name": "Second Chance",
+    "description": "Because sometimes your first chance went so badly, you need divine intervention to fix it.",
+    "manaCost": 20,
+    "effect": "Revives a fallen creature with 50% of their health for a brief period. Does not, unfortunately, revive their will to live.",
+    "target": "Touch. Hope you're not squeamish about poking dead things.",
+    "duration": "5 minutes of borrowed time. Use it wisely, or don't. It's not my second chance."
+  },
+  "Skedaddle": {
+    "name": "Skedaddle",
+    "description": "When you need to nope out of a situation faster than you can say 'It wasn't me'.",
+    "manaCost": 9,
+    "effect": "Allows caster to instantly teleport to a safe location they can see. Does not guarantee the location will stay safe after you arrive.",
+    "target": "Line of sight. If you can see it, you can flee to it.",
+    "duration": "Instantaneous. One moment you're in danger, the next you're in... probably still danger, but different danger."
+  },
+  "WallOfFire": {
+    "name": "Wall of Fire",
+    "description": "For when a regular wall just isn't antisocial enough.",
+    "manaCost": 10,
+    "effect": "Creates a wall of fire 20 ft long and 5 ft high, dealing 2d6 fire damage to anyone passing through. Great for barbecues, terrible for group hugs.",
+    "target": "50 ft range. Close enough to feel the heat, far enough to pretend it's not your fault.",
+    "duration": "2 minutes of toasty, toasty regret."
+  },
+  "Rubber": {
+    "name": "Rubber",
+    "description": "Turn your enemies' attacks into the equivalent of hitting you with a wet noodle. Equally effective against swords and harsh criticisms.",
+    "manaCost": 6,
+    "effect": "Target becomes rubbery, reducing physical damage taken by 50%. Does not, unfortunately, make you bouncy.",
+    "target": "Touch. Get ready to feel weirdly moist.",
+    "duration": "5 minutes of being basically a human stress ball."
+  },
+  "GetOutOfJail": {
+    "name": "Get Out of Jail",
+    "description": "The magical equivalent of a 'Get Out of Jail Free' card, but with 100% more chance of interdimensional shenanigans.",
+    "manaCost": 40,
+    "effect": "Teleports the caster out of confinement or bindings to a safe space they can see. Does not teleport away criminal records or regrets.",
+    "target": "500 ft range. If you can't find safety within 500 ft, maybe jail is the safer option.",
+    "duration": "Instantaneous. One second you're in chains, the next you're free and probably very, very lost."
+  },
+  "HealSpell": {
+    "name": "Heal Spell",
+    "description": "When kissing the boo-boo just won't cut it anymore.",
+    "manaCost": 2,
+    "effect": "Restores 20% of the target's maximum health. Warning: Does not heal emotional damage or bad fashion choices.",
+    "target": "Touch. Time to get uncomfortably close to your injured ally.",
+    "duration": "Instantaneous. Blink and you'll miss the miracle. They won't, though."
+  },
+  "HealCritter": {
+    "name": "Heal Critter",
+    "description": "For when you need to play magical veterinarian to your animal companion or that random squirrel you befriended.",
+    "manaCost": 3,
+    "effect": "Restores 30% of a pet or small animal's health. Does not work on large animals because, let's face it, they're probably trying to eat you.",
+    "target": "Touch. Hope you're good at petting angry, injured animals.",
+    "duration": "Instantaneous. One second they're hurt, the next they're ready to cause more trouble."
+  },
+  "Hole": {
+    "name": "Hole",
+    "description": "Create your own portable plot hole! Great for escaping tight spots or creating new, more exciting tight spots.",
+    "manaCost": 12,
+    "effect": "Creates a hole up to 2 ft in diameter through barriers less than 1 ft thick. Not responsible for any Looney Tunes-style mishaps.",
+    "target": "30 ft range. Any further and you're just digging your own grave.",
+    "duration": "5 minutes. Use it quick before reality patches itself."
+  },
+  "MinionArmy": {
+    "name": "Minion Army",
+    "description": "Summon your own personal flash mob of combatants! Great for battles, terrible for stealth missions.",
+    "manaCost": 18,
+    "effect": "Summons 20 minions with low health that engage enemies. Can distract or overwhelm foes. May also break into spontaneous dance numbers.",
+    "target": "100 ft range. Any further and they'll form a union and demand better working conditions.",
+    "duration": "30 minutes of chaotic, questionably helpful assistance."
+  },
+  "Torch": {
+    "name": "Torch",
+    "description": "For when you need a light and setting your party's wizard on fire is frowned upon.",
+    "manaCost": 2,
+    "effect": "Produces a floating light that follows the caster, illuminating a 20 ft radius. Does not, unfortunately, make you any brighter mentally.",
+    "target": "Self. Congratulations, you're now a human lighthouse.",
+    "duration": "1 hour of being slightly less likely to trip over your own feet in the dark."
+  },
+  "TwinkleToes": {
+    "name": "Twinkle Toes",
+    "description": "Turn your target into a graceful gazelle... or a clumsy elephant trying to be a graceful gazelle.",
+    "manaCost": 4,
+    "effect": "Enhances the target's agility and movement speed by 25%. Side effects may include spontaneous tap dancing and an irresistible urge to pirouette.",
+    "target": "Touch. Time to get handsy with your soon-to-be-graceful friend.",
+    "duration": "10 minutes of being marginally less likely to face-plant during combat."
+  },
+  "LoopDeLoop": {
+    "name": "Loop-de-Loop",
+    "description": "The magical equivalent of saying 'Tag, you're it!' but with more existential confusion.",
+    "manaCost": 5,
+    "effect": "Causes the target and the caster to switch places when triggered. Great for confusing enemies, terrible for maintaining a sense of object permanence.",
+    "target": "50 ft range. Any further and you risk leaving parts behind.",
+    "duration": "Instantaneous when triggered, but the confusion lasts much longer."
+  },
+  "BangBro": {
+    "name": "Bang Bro",
+    "description": "Create a harmless explosion that's all bang and no bite. Perfect for when you need a distraction or really want to annoy your neighbors.",
+    "manaCost": 6,
+    "effect": "Creates a loud, harmless explosion that distracts all enemies within a 30 ft radius. May cause temporary deafness and a strong desire to yell 'WHAT?'",
+    "target": "100 ft range. Far enough to pretend it wasn't you.",
+    "duration": "Instantaneous, but the ringing in everyone's ears lasts much longer."
+  },
+  "BlackNimbus": {
+    "name": "Black Nimbus",
+    "description": "Summon your own personal rain cloud of doom. Great for sneaking, terrible for your mood.",
+    "manaCost": 10,
+    "effect": "Covers an area of 30 ft radius in darkness, reducing visibility to near zero and making it hard for enemies to target allies. Also great for dramatic entrances.",
+    "target": "80 ft range. Any further and you're just making regular nighttime.",
+    "duration": "10 minutes of tactical gloominess."
+  },
+  "Fear": {
+    "name": "Fear",
+    "description": "Make your enemies scream like they just walked in on their parents... you know what, never mind.",
+    "manaCost": 8,
+    "effect": "Induces extreme fear in all enemies within a 30 ft radius, causing them to flee for the duration. Does not work on creatures without self-preservation instincts or teenagers.",
+    "target": "Self (30 ft radius). Hope you're not afraid of the dark, 'cause you're the epicenter of terror now, baby.",
+    "duration": "1 minute of pure, unadulterated panic. For them, not you. Hopefully."
+  },
+  "Ping": {
+    "name": "Ping",
+    "description": "The magical equivalent of shouting 'Marco!' and having everything shout 'Polo!' back at you.",
+    "manaCost": 4,
+    "effect": "Emits a pulse that detects and reveals all hidden or invisible entities within a 100 ft radius. Great for finding lost keys, terrible for maintaining any sense of privacy.",
+    "target": "Self. Hope you're ready to know WAY too much about your surroundings.",
+    "duration": "Instantaneous, but the awkwardness of knowing where everyone's hiding lasts much longer."
+  },
+  "ProtectiveShell": {
+    "name": "Protective Shell",
+    "description": "Encase yourself in a magical bubble. Great for protection, terrible for social interactions.",
+    "manaCost": 8,
+    "effect": "Creates a magical shell around the target that absorbs up to 20 points of damage. Does not protect against emotional damage or bad puns.",
+    "target": "Touch. Time to get up close and personal with your soon-to-be-shelled friend.",
+    "duration": "10 minutes of being slightly less squishy."
+  },
+  "Tripper": {
+    "name": "Tripper",
+    "description": "For when you want to turn the dungeon into a slapstick comedy routine.",
+    "manaCost": 5,
+    "effect": "Creates magical banana peels in a 30 ft radius, potentially damaging or incapacitating enemies. May also affect allies because magic doesn't discriminate against clumsiness.",
+    "target": "30 ft range. Close enough to enjoy the show, far enough to pretend it wasn't you.",
+    "duration": "Instantaneous, but the hilarity lasts until someone breaks a hip."
+  }
+}

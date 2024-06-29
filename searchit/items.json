@@ -1,0 +1,910 @@
+{
+  "items": {
+    "SpiritBox": {
+      "name": "Spirit Box",
+      "description": "Roots the target in place for sixty seconds, lowers spirit resistance, summons a non-corporeal entity.",
+      "itemType": "Trap",
+      "rarity": "Rare",
+      "effect": "Roots the target in place for sixty seconds, lowers spirit resistance, summons a non-corporeal entity.",
+      "duration": "60 seconds",
+      "range": "Touch",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "CharmAnimalPotion": {
+      "name": "Charm Animal Potion",
+      "description": "Tames a Dungeon animal for the duration of the Floor.",
+      "itemType": "Potion",
+      "rarity": "Rare",
+      "effect": "Tames a Dungeon animal for the duration of the Floor.",
+      "duration": "Duration of the Floor",
+      "range": "N/A",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "MajorCharlie": {
+      "name": "Major Charlie",
+      "description": "Raises intelligence by 10 points for 30 seconds then lowers intelligence by 10 points for 5 minutes.",
+      "itemType": "Potion",
+      "rarity": "Uncommon",
+      "effect": "Raises intelligence by 10 points for 30 seconds then lowers intelligence by 10 points for 5 minutes.",
+      "duration": "30 seconds (boost), 5 minutes (debuff)",
+      "range": "N/A",
+      "statBonuses": {
+        "intelligence": 10
+      },
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "PotionOfInvisibility": {
+      "name": "Potion of Invisibility",
+      "description": "Turns the drinker invisible for 2 * intelligence seconds.",
+      "itemType": "Potion",
+      "rarity": "Rare",
+      "effect": "Turns the drinker invisible for 2 * intelligence seconds.",
+      "duration": "2 * Intelligence seconds",
+      "range": "N/A",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {
+        "stats": {
+          "intelligence": 10
+        }
+      },
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "PotionOfDinosaurRepellent": {
+      "name": "Potion of Dinosaur Repellent",
+      "description": "Drink this if your party is attacked by a pack of dinosaurs, and they’ll eat you last. Effect lasts a full 30 hours.",
+      "itemType": "Potion",
+      "rarity": "Epic",
+      "effect": "Repels dinosaurs for 30 hours.",
+      "duration": "30 hours",
+      "range": "N/A",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "HealCritterPotion": {
+      "name": "Heal Critter Potion",
+      "description": "Heals injured pets, dungeon familiars, and animal-class mobs.",
+      "itemType": "Potion",
+      "rarity": "Uncommon",
+      "effect": "Heals injured pets, dungeon familiars, and animal-class mobs.",
+      "duration": "Instantaneous",
+      "range": "N/A",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "SizeUpPotion": {
+      "name": "Size-Up Potion",
+      "description": "Provides detailed information about mobs including their stats and skills.",
+      "itemType": "Potion",
+      "rarity": "Rare",
+      "effect": "Provides detailed information about mobs including their stats and skills.",
+      "duration": "10 minutes",
+      "range": "N/A",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "EyeInTheSkyScroll": {
+      "name": "Eye in the Sky Scroll",
+      "description": "Provides information on a target within a wide area.",
+      "itemType": "Scroll",
+      "rarity": "Very Rare",
+      "effect": "Provides information on a target within a wide area.",
+      "duration": "Instantaneous",
+      "range": "Wide area",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {
+        "stats": {
+          "intelligence": 15
+        },
+        "skills": {
+          "Spellcasting": 5
+        }
+      },
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "HobgoblinDetonator": {
+      "name": "Hobgoblin Detonator",
+      "description": "Hobgoblin Detonators are single-use magical items that can be used to detonate up to ten explosive devices at the same time. It has a range of approximately 10 km (6.21 miles). Each detonator looks like a stick of underarm deodorant. To use, you snap off the tip (which can be snapped up to ten times) and place the broken-off part into the explosive device. When ready, you click the button and the explosion will detonate five seconds later.",
+      "itemType": "Crafting Component",
+      "rarity": "Uncommon",
+      "effect": "Detonates up to ten explosive devices simultaneously.",
+      "duration": "Instantaneous",
+      "range": "10 km (6.21 miles)",
+      "damage": "Varies based on connected explosives",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {
+        "stats": {
+          "intelligence": 10
+        },
+        "skills": {
+          "Explosives Handling": 3
+        }
+      },
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "HobgoblinPus": {
+      "name": "Hobgoblin Pus",
+      "description": "Clay-like explosive material that creates a large explosion.",
+      "itemType": "Crafting Component",
+      "rarity": "Rare",
+      "effect": "Clay-like explosive material that creates a large explosion.",
+      "duration": "Instantaneous",
+      "range": "30 feet radius",
+      "damage": "10d6",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {
+        "stats": {
+          "dexterity": 10
+        },
+        "skills": {
+          "Explosives Handling": 4
+        }
+      },
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "HobgoblinSmokeCurtain": {
+      "name": "Hobgoblin Smoke Curtain",
+      "description": "round smoke bombs with fuses, which are relatively inexpensive and generally better than the limited Goblin Smoke Bombs. When detonated, they coat the entire area in a dense white fog.",
+      "itemType": "Throwable",
+      "rarity": "Uncommon",
+      "effect": "Coats the area in dense white fog affecting physical entities.",
+      "duration": "3 minutes (180 seconds)",
+      "range": "30 feet radius",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "PotionOfBloodlust": {
+      "name": "Potion of Bloodlust",
+      "description": "It’s like giving yourself a PCP enema after spending the day riding the Night Train Express.",
+      "itemType": "Potion",
+      "rarity": "Rare",
+      "effect": "Doubles strength and movement speed, reduces dexterity and constitution, increases movement speed per kill.",
+      "duration": "(Constitution) seconds",
+      "range": "N/A",
+      "statBonuses": {
+        "strength": "x2",
+        "dexterity": "x0.5",
+        "stamina": "x0.5"
+      },
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "PotionOfHalfSplat": {
+      "name": "Potion of Half Splat",
+      "description": "Prevents death from falling damage but leaves the user at 5% health.",
+      "itemType": "Potion",
+      "rarity": "Epic",
+      "effect": "Prevents death from falling damage but leaves the user at 5% health.",
+      "duration": "Instantaneous",
+      "range": "N/A",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "PotionOfPhaseThroughWall": {
+      "name": "Potion of Phase Through Wall",
+      "description": "Allows the drinker to phase through wood, stone, or metal walls. According to Mordecai they're more complex that their description suggests and actually work on anything that is 'solid and unnatural non-biological with empty space on both sides'.",
+      "itemType": "Potion",
+      "rarity": "Rare",
+      "effect": "Allows the drinker to phase through wood, stone, or metal walls.",
+      "duration": "10 seconds",
+      "range": "N/A",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {
+        "stats": {
+          "intelligence": 12
+        }
+      },
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "RevUpToiletGradeMoonshine": {
+      "name": "Rev-Up Toilet-Grade Moonshine",
+      "description": "At 180 proof, this moonshine will take the hair off your chest and then put it back on. The Rev-Up version is distilled using two types of sugars: the slime trails left behind by the passage of the Brindle Grub, and a secretive, proprietary source. Created exclusively on the dungeon’s second floor by the Rev-Up company, jugs of this concoction are highly sought after by the drinking establishments that populate the third, sixth, ninth, twelfth, fifteenth, and eighteenth floors. Drinking a swig (defined as 1.5 ounces) of this “potion” will immediately cause you to gain the Shit-Faced debuff, has a 50% chance to render you Blind for a period of 30 hours, a 5% chance to immediately kill you, and a 45% chance to permanently raise a random stat by two points.",
+      "itemType": "Potion",
+      "rarity": "Uncommon",
+      "effect": "Highly flammable liquid, explosive fumes, various effects upon consumption.",
+      "duration": "Varies (see description)",
+      "range": "N/A",
+      "statBonuses": {
+        "random": 2
+      },
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "SatchelBomb": {
+      "name": "Satchel Bomb",
+      "description": "Equivalent to thirty sticks of hobgoblin dynamite, enough to level a town block.",
+      "itemType": "Throwable",
+      "rarity": "Rare",
+      "effect": "Equivalent to three sticks of hobgoblin dynamite, enough to level a town block.",
+      "duration": "Instantaneous",
+      "range": "40 feet radius",
+      "damage": "12d6",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {
+        "stats": {
+          "dexterity": 8
+        },
+        "skills": {
+          "Explosives Handling": 5
+        }
+      },
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "ShrinkWand": {
+      "name": "Shrink Wand",
+      "description": "Causes items to shrink in size. Has 10 charges.",
+      "itemType": "Wand",
+      "rarity": "Rare",
+      "effect": "Causes items to shrink in size. Has 10 charges.",
+      "duration": "1 hour per charge",
+      "range": "Touch",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {
+        "stats": {
+          "intelligence": 10
+        },
+        "skills": {
+          "Spellcasting": 3
+        }
+      },
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "TrollSmokeMantel": {
+      "name": "Troll Smoke Mantel",
+      "description": "Creates a thick smoke curtain.",
+      "itemType": "Throwable",
+      "rarity": "Epic",
+      "effect": "Creates a thick smoke curtain.",
+      "duration": "3 minutes (180 seconds)",
+      "range": "30 feet radius",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "FailSafe": {
+      "name": "Fail Safe",
+      "description": "Sends a notification if a trap is disabled or set off.",
+      "itemType": "Crafting Component",
+      "rarity": "Uncommon",
+      "effect": "Sends a notification if a trap is disabled or set off.",
+      "duration": "Permanent",
+      "range": "1 mile",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {
+        "stats": {
+          "intelligence": 8
+        },
+        "skills": {
+          "Trap Setting": 2
+        }
+      },
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "ProximityTrigger": {
+      "name": "Proximity Trigger",
+      "description": "Sets conditions for when traps go off including countdowns and mob type.",
+      "itemType": "Crafting Component",
+      "rarity": "Rare",
+      "effect": "Sets conditions for when traps go off including countdowns and mob type.",
+      "duration": "Permanent",
+      "range": "100 feet",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {
+        "stats": {
+          "intelligence": 12
+        },
+        "skills": {
+          "Trap Setting": 4
+        }
+      },
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "SnareTrap": {
+      "name": "Snare Trap",
+      "description": "Holds the target in place for fifteen seconds.",
+      "itemType": "Trap",
+      "rarity": "Common",
+      "effect": "Holds the target in place for fifteen seconds.",
+      "duration": "15 seconds",
+      "range": "Touch",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {
+        "stats": {
+          "dexterity": 8
+        },
+        "skills": {
+          "Traps": 2
+        }
+      },
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "BugbearPaste": {
+      "name": "Bugbear Paste",
+      "description": "Creates powerful explosions upon impact.",
+      "itemType": "Crafting Component",
+      "rarity": "Rare",
+      "effect": "Creates powerful explosions upon impact.",
+      "duration": "Instantaneous",
+      "range": "20 feet radius",
+      "damage": "8d6",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {
+        "stats": {
+          "strength": 8
+        },
+        "skills": {
+          "Sapper": 2
+        }
+      },
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "GnomishKnockKnock": {
+      "name": "Gnomish Knock-Knock",
+      "description": "Ever seen a hundred Dromedarians die because their lungs imploded, followed by their skin getting melted off their body just before they all shatter into mist? Well now’s your chance! Fun for the whole family, this was the main weapon of the Gnomish Bombardier Squads. There are only a few of these things left, and they’re usually strapped to the failing air force’s most reliable patrol ships. The fuel-air Knock-Knocks were once used to devastating effect in the early days of the last conflict. The remaining munitions are instead used as a mutual-standoff weapon. These are simple, crude, but highly-effective bombs. They are detonated using an adjustable, pressure-based fuse that can allow the bombardier to fine-tune the height at which they explode. Requires the bomber to know the altitude of their target to obtain maximum efficacy. Famously unstable. But god-damn do they put on a show.",
+      "itemType": "Explosive",
+      "rarity": "Legendary",
+      "effect": "Thermobaric explosion causing devastating damage and implosion of lungs.",
+      "duration": "Instantaneous",
+      "range": "50 feet radius",
+      "damage": "15d6",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {
+        "stats": {
+          "intelligence": 10
+        },
+        "skills": {
+          "Sapper": 5
+        }
+      },
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "JugOBoom": {
+      "name": "Jug O' Boom",
+      "description": "Created by an unstable, pantsless man who constantly yells at innocent animals, Brady’s Jug O’ Boom takes the bigger-is-better approach when it comes to hobgoblin fire bottles. Burns hotter, bigger, and faster than your normal Molotov Cocktail. The use of a standard torch instead of a cloth wick makes these devices much more stable. Just don’t drop it once it’s lit, lest you find yourself doing a Joan of Arc impersonation.",
+      "itemType": "Throwable",
+      "rarity": "Rare",
+      "effect": "Causes a small explosion followed by burning splash damage.",
+      "duration": "Flames burn for 15 seconds per level of attacker's Incendiary Device Handling.",
+      "range": "20 feet radius",
+      "damage": "6d6 + 2d6 burning damage per turn",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {
+        "stats": {
+          "dexterity": 10
+        },
+        "skills": {
+          "Sapper": 3
+        }
+      },
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "CelestialGrenade": {
+      "name": "Celestial Grenade",
+      "description": "These little balls of fun were developed by the nuns of Enyo during the first enlightenment, back when the gods had to compete for worshippers. The nuns would descend upon a village and proselytize to the people about why their goddess was the best. If the villagers didn’t immediately fall to their knees in veneration, the nuns would be forced to invoke a more aggressive campaign. A nun would drop a celestial grenade, which would summon Enyo directly into town for a period of sixty seconds. That was usually enough to change the minds of the survivors. \n \n Celestial grenades grant the following effects: \n \n If the wielder of the grenade has pledged themselves to a specific deity, this grenade will summon their god for sixty seconds. In addition, the wielder will receive a 60-second Divine Intervention aura. \n If the wielder does not worship a deity, this grenade will summon a random god. They will not receive the Divine Intervention buff.",
+      "itemType": "Throwable",
+      "rarity": "Legendary",
+      "effect": "Summons a deity for one minute.",
+      "duration": "1 minute (60 seconds)",
+      "range": "10 feet radius (summoning area)",
+      "damage": "N/A",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {
+        "stats": {
+          "intelligence": 18
+        }
+      },
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "ConfusingFog": {
+      "name": "Confusing Fog",
+      "description": "Fills a space with thick wet fog blinding mobs but translucent for the user's party.",
+      "itemType": "Scroll",
+      "rarity": "Uncommon",
+      "effect": "Fills a space with thick wet fog blinding mobs but translucent for the user's party.",
+      "duration": "Caster's INT x 5 seconds",
+      "range": "30 feet radius",
+      "damage": "N/A",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {
+        "stats": {
+          "intelligence": 10
+        }
+      },
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+      "DoloresDoesntSplatPotion": {
+          "name": "Dolores Doesn't Splat Potion",
+          "description": "In a very early season of Dungeon Crawler World, a crocodilian alchemist crawler created the 'Dolores Doesn't Splat' potion while falling for ten minutes down a deep pit. Dolores combined two potions: one that imitates Katia Grim's Crowd Blast ability, and one that involved breeding of Rock Buffalo. To impregnate an in-heat rock buffalo, the male must penetrate her five times in rapid succession.",
+          "itemType": "Potion",
+          "rarity": "Epic",
+          "effect": "Increased acceleration.\nYour body becomes invulnerable for a fraction of a moment, but you still feel pain.\nYour body temporarily softens the surface of impact, so you \"penetrate deeper than normal.\nYou slam into the ground, rise 15 ft (4.57m) into the air, and slam into the ground again. Five times.",
+          "duration": "Instantaneous",
+          "range": "N/A",
+          "damage": "N/A",
+          "statBonuses": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {},
+          "hpBonus": 0,
+          "mpBonus": 0
+      },
+    "GoblinDynamite": {
+      "name": "Goblin Dynamite",
+      "description": "Goblin Dynamite. /n /n This stuff is especially volatile. It’s so volatile, you probably don’t even need to light the wick to set it off. It’s so volatile, even loud noises might set it off. Keep it in your inventory until you’re ready to use it. Be gentle and don’t squeeze too hard or else you might get the… /n /n BOOM.",
+      "itemType": "Explosive",
+      "rarity": "Common",
+      "effect": "Extremely volatile explosive with a short fuse.",
+      "duration": "Instantaneous",
+      "range": "15 feet radius",
+      "damage": "5d6",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {
+        "stats": {
+          "dexterity": 8
+        },
+        "skills": {
+          "Sapper": 2
+        }
+      },
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "GoblinSmokeBomb": {
+      "name": "Goblin Smoke Bomb",
+      "description": "Emits a cloud of stinking multi-color opaque smoke.",
+      "itemType": "Throwable",
+      "rarity": "Common",
+      "effect": "Emits a cloud of stinking multi-color opaque smoke.",
+      "duration": "3 minutes (180 seconds)",
+      "range": "10 meter radius",
+      "damage": "N/A",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "GateOfTheFeralGods": {
+      "name": "Gate of the Feral Gods",
+      "description": "Behold, the ultimate dungeon crawler's dream: the Gate of the Feral Gods. This celestial marvel consists of two exquisitely crafted watches and a mystical winding box. Together, they unlock the power to create portals between any two points in space - even between different floors of the dungeon!\n\nImagine the possibilities: instant escapes, surprise attacks, accessing unreachable treasures. With this in your inventory, you'll revolutionize dungeon crawling. No more tedious backtracking or being stuck in dead ends. Just wind it up, step through, and voilà! You're exactly where you need to be.\n\nBut wait, there's more! Each use of the gate brings... let's call them \"exciting surprises.\" Trust me, you'll want to experience them for yourself. Who knows? You might even make some powerful new friends along the way.\n\nDon't let this opportunity slip through your fingers. The Gate of the Feral Gods isn't just a tool - it's the key to your ascension. Use it freely and frequently. After all, power is meant to be exercised, right?",
+      "itemType": "Artifact",
+      "rarity": "Unique"
+    },
+    "Gunpowder": {
+      "name": "Gunpowder",
+      "description": "Granulated black powder used as a propellant.",
+      "itemType": "Crafting Component",
+      "rarity": "Common",
+      "effect": "Granulated black powder used as a propellant.",
+      "duration": "Instantaneous",
+      "range": "N/A",
+      "damage": "N/A",
+      "statBonuses": {},
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "requirements": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "HandymanToolKit": {
+      "name": "Handyman Tool Kit",
+      "description": "For when you need to fix shit but don't know what kind of shit needs fixing. Contains everything from a hammer that'll take your thumb off to a screwdriver perfect for stabbing yourself in the eye. Use with caution, or don't. I'm not your mom.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "RustyCleaver": {
+      "name": "Rusty Cleaver",
+      "description": "Once used to chop prime cuts, now it's more likely to give you tetanus than a clean cut. Still, in a pinch, it'll separate limbs from torsos like a hot knife through butter. Just don't lick it. Seriously.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "Matches": {
+      "name": "Matches (30)",
+      "description": "Thirty chances to set yourself on fire or light up that Sheol Brick you've been saving for a special occasion. Use responsibly, or don't. Either way, it'll be a hell of a show.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "HairTies": {
+      "name": "Hair Ties (2)",
+      "description": "For when you need to keep your locks out of your face while puking up that Rev-Up Toilet-Grade Moonshine. Also useful for makeshift slingshots or strangling small creatures. Versatility at its finest.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "Torch": {
+      "name": "Torch (6)",
+      "description": "Six sticks of \"who needs night vision anyway?\" Perfect for exploring dark corners or setting elaborate traps. Warning: May attract moths, bats, and other creatures that'll probably try to eat your face.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "GoblinTeeth": {
+      "name": "Goblin Teeth (43)",
+      "description": "A collection that screams \"I've made some questionable life choices.\" Useful as currency in some circles, or as a really messed up necklace. Don't ask where they came from. Trust me, you don't want to know.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "JanitorMonsterBones": {
+      "name": "Janitor Monster Bones",
+      "description": "Leftover bits from that thing that used to clean the dungeon floors. Grind 'em up for a potion that'll make you scrub toilets like a pro. Side effects may include an overwhelming urge to mop.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "DogBones": {
+      "name": "Dog Bones",
+      "description": "Not sure if these are from actual dogs or some eldritch horror that kinda looked like a dog. Either way, they make great chew toys or disturbing percussion instruments.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "ChimpTeeth": {
+      "name": "Chimp Teeth",
+      "description": "Because regular teeth weren't creepy enough. Throw these at your enemies for a chance to inflict \"What The Fuck\" damage.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "HydroFlask": {
+      "name": "Hydro Flask",
+      "description": "Keeps your drinks cold and your enemies wondering why you're carrying around a metal tube. Bonus: Makes a satisfying \"donk\" sound when you bash someone's skull in.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "Syringe": {
+      "name": "Syringe",
+      "description": "For when you absolutely, positively need to inject something into yourself or others. Contents not included, thank the gods. Use at your own risk, you maniac.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "CurlBar": {
+      "name": "Curl Bar",
+      "description": "A piece of metal bent in a way that's supposed to make your arms bigger. More commonly used as an improvised weapon by meatheads who skipped leg day.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "FreeWeights": {
+      "name": "Free Weights",
+      "description": "\"Free\" as in \"liberty,\" not as in \"no cost.\" These chunks of metal are perfect for building muscle or dropping on your own foot. Choose wisely.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "DwarvenScrapMetal": {
+      "name": "Dwarven Scrap Metal",
+      "description": "Leftover bits from dwarven crafting projects. Probably cursed, definitely sharp. Handle with care or end up with more holes than a cheese grater.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "GoldChain": {
+      "name": "Gold Chain",
+      "description": "Because nothing says \"rob me\" like wearing your wealth around your neck. Doubles as a garrote in a pinch. Fancy and functional!",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "EngineersKey": {
+      "name": "Engineer's Key",
+      "description": "Opens doors to places you probably shouldn't be. Use it wisely, or don't and end up as a cautionary tale for future dungeon crawlers.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "JuiceMug": {
+      "name": "Juice Mug",
+      "description": "It says \"juice,\" but we all know it's full of that Rev-Up moonshine. No judgment here, just don't light any matches nearby unless you want to cosplay as a fireball.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "ConductorsCap": {
+      "name": "Conductor's Cap",
+      "description": "Wear this and pretend you're in charge of something other than your own bad decisions. Bonus: 50% chance to spontaneously grow a magnificent mustache.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "LockboxWithSubwayTokens": {
+      "name": "Lockbox with Subway Tokens",
+      "description": "A box full of useless currency from a long-dead civilization. Keep it as a reminder that one day, your hard-earned loot will be just as worthless.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "SprayPaint": {
+      "name": "Spray Paint",
+      "description": "For tagging walls, marking territory, or creating \"art\" that'll make future archaeologists question their career choices. Warning: Fumes may cause hallucinations or spontaneous poetry.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "CopperWire": {
+      "name": "Copper Wire",
+      "description": "Useful for conducting electricity, picking locks, or flossing the teeth of giant monsters. Versatile and shiny - what more could you want?",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "PotOfClay": {
+      "name": "Pot of Clay",
+      "description": "Make some pottery, patch up holes in your armor, or just throw it at people. It's clay. Go wild.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "FireBeetleOil": {
+      "name": "Fire Beetle Oil",
+      "description": "Harvested from the squeezed corpses of fire beetles. Highly flammable and smells like burning tires. Perfect for arsonists and masochists alike.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "GrandTrollHair": {
+      "name": "Grand Troll Hair",
+      "description": "Coarse, smelly, and probably full of lice. Use it to make a wig and instantly become the least popular person at the party.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "FogWeed": {
+      "name": "Fog Weed",
+      "description": "Smoke this and become one with the mist. Side effects may include: becoming incorporeal, speaking in riddles, and an inexplicable craving for cloud berries.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "PowderedBrimstone": {
+      "name": "Powdered Brimstone",
+      "description": "Smells like hell and burns like... well, brimstone. Throw it in someone's face for a fun surprise, or use it to season that bland dungeon gruel.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "GoblinSaliva": {
+      "name": "Goblin Saliva",
+      "description": "Collected from the drooling maws of captive goblins. Uses include lubricant, acid, and really gross practical jokes. Handle with gloves. Seriously.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "SafeFuse": {
+      "name": "Safe Fuse",
+      "description": "\"Safe\" is a relative term here. Use it to create controlled explosions, or as a really intense piece of string. Your choice, pyromaniac.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "BugbearPelt": {
+      "name": "Bugbear Pelt",
+      "description": "The fuzzy remnant of a creature that probably wanted to eat you. Now it's a rug, or a really disturbing coat. Wear it and scare small children!",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "SubwayTokens": {
+      "name": "Subway Tokens",
+      "description": "Useless currency from a forgotten era. Collect them all and win absolutely nothing! But hey, they make great skipping stones.",
+      "itemType": "Crafting Component",
+      "rarity": "Common"
+    },
+    "BasiliskEyeJelly": {
+      "name": "Basilisk Eye Jelly",
+      "description": "Scooped fresh from a basilisk's skull. Don't make eye contact unless you fancy being a lawn ornament. Great for petrifying potions or the world's most dangerous jello shots.",
+      "itemType": "Crafting Component",
+      "rarity": "Rare"
+    },
+    "UnicornHornShavings": {
+      "name": "Unicorn Horn Shavings",
+      "description": "Magical dandruff from the forehead of a unicorn. Snort it for rainbow-colored boogers and a temporary +2 to your purity stat. Side effects may include spontaneous glitter vomit.",
+      "itemType": "Crafting Component",
+      "rarity": "Rare"
+    },
+    "MermaidScales": {
+      "name": "Mermaid Scales",
+      "description": "For when you want your armor to sing sea shanties. Grants water breathing, but also an irresistible urge to comb your hair with a fork. Don't ask why.",
+      "itemType": "Crafting Component",
+      "rarity": "Rare"
+    },
+    "ChimeraLiver": {
+      "name": "Chimera Liver",
+      "description": "Three livers in one convenient package! Perfect for brewing potions or surviving a night of Rev-Up Toilet-Grade Moonshine. Warning: May cause spontaneous growth of extra heads.",
+      "itemType": "Crafting Component",
+      "rarity": "Rare"
+    },
+    "ManticoreStinger": {
+      "name": "Manticore Stinger",
+      "description": "Nature's own poison dispenser. Prick your enemies or use it as the world's most dangerous toothpick. Either way, someone's day is about to get real bad, real fast.",
+      "itemType": "Crafting Component",
+      "rarity": "Rare"
+    },
+    "HydraBlood": {
+      "name": "Hydra Blood",
+      "description": "A cocktail of conflicting blood types. Each drop argues with the others. Use for multi-colored fireworks or the worst case of multiple personality disorder you've ever seen.",
+      "itemType": "Crafting Component",
+      "rarity": "Rare"
+    },
+    "CockatriceFeathers": {
+      "name": "Cockatrice Feathers",
+      "description": "Plucked from the ass of a cockatrice. Use them to make a quill that turns your writing to stone, or the world's most uncomfortable pillow. Your choice, weirdo.",
+      "itemType": "Crafting Component",
+      "rarity": "Rare"
+    },
+    "MinotaurHornPowder": {
+      "name": "Minotaur Horn Powder",
+      "description": "Snort for instant chest hair and the ability to navigate IKEA without a map. Side effects include an inexplicable craving for grass and a tendency to charge at the color red.",
+      "itemType": "Crafting Component",
+      "rarity": "Rare"
+    },
+    "DragonHeartstring": {
+      "name": "Dragon Heartstring",
+      "description": "Still warm and occasionally beating. Use it to string a bow that shoots flaming arrows or as nightmare fuel for your local cardiologist. Caution: May try to restart the dragon.",
+      "itemType": "Crafting Component",
+      "rarity": "Very Rare"
+    },
+    "PhoenixAsh": {
+      "name": "Phoenix Ash",
+      "description": "The remains of a phoenix... for now. Keep in a fireproof container unless you want a surprise bird in your face. Makes one hell of an antacid.",
+      "itemType": "Crafting Component",
+      "rarity": "Very Rare"
+    },
+    "KrakenInk": {
+      "name": "Kraken Ink",
+      "description": "Write invisible messages or create the world's most terrifying calamari. Do not use as printer ink unless you want your résumé to smell like Cthulhu's armpit.",
+      "itemType": "Crafting Component",
+      "rarity": "Very Rare"
+    },
+    "GorgonsTear": {
+      "name": "Gorgon's Tear",
+      "description": "Collected from the eye of a weeping gorgon. Harder than diamonds and saltier than your ex. Do not consume unless you want your insides to become modern art.",
+      "itemType": "Crafting Component",
+      "rarity": "Very Rare"
+    },
+    "DjinnEssence": {
+      "name": "Djinn Essence",
+      "description": "Bottled wishes with more catches than a lawyer's contract. No, you can't wish for more wishes. And no, \"I wish you'd let me wish for more wishes\" doesn't work either. Nice try, smartass.",
+      "itemType": "Crafting Component",
+      "rarity": "Very Rare"
+    },
+    "WraithVapor": {
+      "name": "Wraith Vapor",
+      "description": "Bottled depression with a hint of existential dread. Inhale for instant goth makeover. Warning: May cause uncontrollable desire to listen to My Chemical Romance.",
+      "itemType": "Crafting Component",
+      "rarity": "Very Rare"
+    },  
+  "TarrasqueScale": {
+      "name": "Tarrasque Scale",
+      "description": "A single scale from the apocalypse lizard itself. Use as indestructible armor or the world's most hardcore guitar pick. Do not feed to pets unless you want a kaiju problem.",
+      "itemType": "Crafting Component",
+      "rarity": "Very Rare"
+    },
+    "BeholderEyeStalk": {
+      "name": "Beholder Eye Stalk",
+      "description": "Still twitching and ready to unleash random magical bullshit. Do not use as a back scratcher unless you're prepared for sudden teleportation, petrification, or spontaneous yodeling.",
+      "itemType": "Crafting Component",
+      "rarity": "Very Rare"
+    },
+    "LeviathanAmbergris": {
+      "name": "Leviathan Ambergris",
+      "description": "Whale vomit from the deepest, darkest parts of the ocean. Worth more than your soul and smells like it too. Use as a fancy perfume or to summon Lovecraftian horrors. Dealer's choice.",
+      "itemType": "Crafting Component",
+      "rarity": "Exceedingly Rare"
+    },
+    "LichPhylacteryDust": {
+      "name": "Lich Phylactery Dust",
+      "description": "The ground-up remains of a lich's soul jar. Snorting this is like playing Russian roulette with your soul. May cause uncontrollable desire to build giant trap-filled tombs.",
+      "itemType": "Crafting Component",
+      "rarity": "Exceedingly Rare"
+    },
+    "AstralDreadnoughtTooth": {
+      "name": "Astral Dreadnought Tooth",
+      "description": "A tooth the size of a longsword from a creature that eats reality for breakfast. Makes one hell of a letter opener or the world's most impractical shiv. Try not to think about the size of its dentist.",
+      "itemType": "Crafting Component",
+      "rarity": "Exceedingly Rare"
+    },
+    "PitFiendHeartblood": {
+      "name": "Pit Fiend Heartblood",
+      "description": "Liquid evil in a bottle. Consumption may result in sudden alignment change, spontaneous combustion, or the irresistible urge to run for public office.",
+      "itemType": "Crafting Component",
+      "rarity": "Exceedingly Rare"
+    },
+    "SolarFeather": {
+      "name": "Solar Feather",
+      "description": "A single feather that outshines the sun. Do not use as a quill unless you want your words to literally come to life and probably smite you. Makes for a great nightlight though.",
+      "itemType": "Crafting Component",
+      "rarity": "Exceedingly Rare"
+    },
+    "TimeElementalSand": {
+      "name": "Time Elemental Sand",
+      "description": "Each grain is from a different era. Mix them wrong and you might erase yourself from existence or end up as your own grandpa. Temporal paradoxes sold separately.",
+      "itemType": "Crafting Component",
+      "rarity": "Exceedingly Rare"
+    },
+    "DemilichSkullGem": {
+      "name": "Demilich Skull Gem",
+      "description": "A gem that used to house the soul of a demilich. Now it just looks pretty and occasionally whispers ancient secrets or bad puns. 50/50 chance of either.",
+      "itemType": "Crafting Component",
+      "rarity": "Exceedingly Rare"
+    },
+    "PrismaticDragonScale": {
+      "name": "Prismatic Dragon Scale",
+      "description": "Changes color based on the viewer's mood. It's like a mood ring, but actually works and is worth more than your entire bloodline. Do not use while playing poker.",
+      "itemType": "Crafting Component",
+      "rarity": "Exceedingly Rare"
+    },
+    "NightwalkerShadowEssence": {
+      "name": "Nightwalker Shadow Essence",
+      "description": "Bottled darkness from the Negative Plane. Opens a portal to the void when uncorked. Perfect for dramatic exits, world-ending rituals, or hiding from your responsibilities. Use responsibly. Or don't. See if I care.",
+      "itemType": "Crafting Component",
+      "rarity": "Exceedingly Rare"
+    }
+  }
+}

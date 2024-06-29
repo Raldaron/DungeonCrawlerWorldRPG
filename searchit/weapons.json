@@ -1,0 +1,509 @@
+{
+  "weapons": {
+    "Xistera": {
+      "name": "Xistera",
+      "description": "Ever wanted to hurl something so fast it defies physics and common sense? Meet the Xistera, a weapon for those who think 'overkill' is just a word for amateurs. It's a curved throwing tool that's part ancient sport, part modern mayhem. Prepare to bend the laws of nature – and your enemies' spines.",
+      "itemType": "Weapon",
+      "weaponType": "Secondary-weapon",
+      "rarity": "Rare",
+      "meleeRanged": "Ranged",
+      "magicNonMagical": "Non-Magical",
+      "handsRequired": "One-handed",
+      "damageType": "Bludgeoning",
+      "damageAmount": "1d10",
+      "statBonuses": {
+        "dexterity": 4,
+        "perception": 2
+      },
+      "skillBonuses": {
+        "athletics": 3,
+        "sapper": 2
+      },
+      "uniqueAbilities": {
+        "curveShot": {
+          "description": "Allows the user to throw the weapon in a curve, hitting targets around corners or behind cover.",
+          "effect": "This ability can be used once per combat encounter.",
+          "abilityPointCost": 3,
+          "cooldown": "Once per combat encounter"
+        }
+      },
+      "buffs": {},
+      "spellsGranted": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "RepeatingCrossbowOfTheScavengerMother": {
+      "name": "Repeating Crossbow of the Scavenger Mother",
+      "description": "It is said that the long-forgotten goddess Nekhebit is both jealous and terrible. When the elf mothers chose to abandon Nekhebit and instead worship Apito, the Oak Goddess, it is written Nekhebit grew enraged. The mighty vulture goddess blamed the male-dominated high elf court for causing her worshippers to stray. As a result, she cursed their seed, thus creating what is today known as the Fae Diaspora. There are dozens of elf and fairy breeds, all of whom may trace their lineage back to the early high elf court, whose cursed offspring sowed the universe. This crossbow is rumored to have been given to Nekhebit's last warrior guardian as a gift for remaining true to her faith.",
+      "itemType": "Weapon",
+      "weaponType": "Crossbow",
+      "rarity": "Unique",
+      "meleeRanged": "Ranged",
+      "magicNonMagical": "Magical",
+      "handsRequired": "Two-handed",
+      "damageType": "Piercing",
+      "damageAmount": "1d12 (base damage)",
+      "statBonuses": {
+        "dexterity": 8,
+        "strength": 8
+      },
+      "skillBonuses": {
+        "archery": 4,
+        "awareness": 2
+      },
+      "uniqueAbilities": {},
+      "buffs": {
+        "Buffet Enchantment": {
+          "description": "The crossbow will not run out of basic ammunition.",
+          "effect": "Additional ammunition types can be loaded and fired, though special bonuses apply only to the stock ammunition."
+        },
+        "Fae Fury": {
+          "description": "For every female in your party, up to thirty, this items damage and firing speed is increased.",
+          "effect": "Add an extra attack per round per female member of the party. Add 1d12 per female member of the party."
+        }
+      },
+      "spellsGranted": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "SpunkyJeffersonTheEnchantedNickelSock": {
+      "name": "Spunky Jefferson the Enchanted Nickel Sock of the Elderly Miser",
+      "description": "Almost all cultures that use money have a story about the miser. The elderly solitary man who hoards his wealth and treats everybody around him like shit until he gets his comeuppance and then turns into a big pussy who gives all his money away. All cultures also have the equivalent of the spunk sock that sits underneath a teenage boy's bed. Jefferson is the lifeforce of such a miser who pissed off the spirit who'd come to show him the errors of his ways. He was cursed to inhabit a sock once owned by a kid named Tanner. The sock itself holds several USD worth of nickels. You swing it and bonk people with it. It's unusually effective more so than you might think.",
+      "itemType": "Weapon",
+      "weaponType": "Sapient Weapon",
+      "rarity": "Legendary",
+      "meleeRanged": "Melee",
+      "magicNonMagical": "Magical",
+      "handsRequired": "One-handed",
+      "damageType": "Bludgeoning",
+      "damageAmount": "1d4*2.38",
+      "statBonuses": {
+        "dexterity": 5
+      },
+      "skillBonuses": {
+        "melee": 3
+      },
+      "uniqueAbilities": {},
+      "buffs": {
+        "Incremental Damage": {
+          "description": "This weapon's damage increases by 1.5% for every mob it kills that is no more than 10 levels below the current wielder's level.",
+          "effect": "Current upgrade: 238% damage increase."
+        },
+        "Coin Burst": {
+          "description": "All mobs killed with this weapon have a 20% chance to burst into a pile of gold coins upon death.",
+          "effect": "The number of coins is equal to the (value of the items in their inventory) + (level x 10)."
+        },
+        "Bonked": {
+          "description": "Has a 5% chance to inflict Bonked on any mob struck with this weapon.",
+          "effect": "Inflicts Bonked status."
+        }
+      },
+      "spellsGranted": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "ToadCudgel": {
+      "name": "Toad Cudgel",
+      "description": "Big stick for bonking. Bonk toad. Bonk mob. Bonk girlfriend and drag back to cave by hair.",
+      "itemType": "Weapon",
+      "weaponType": "Club",
+      "rarity": "Ordinary",
+      "meleeRanged": "Melee",
+      "magicNonMagical": "Non-Magical",
+      "handsRequired": "One-handed",
+      "damageType": "Bludgeoning",
+      "damageAmount": "1d6",
+      "statBonuses": {
+        "strength": 1
+      },
+      "skillBonuses": {
+        "melee": 1
+      },
+      "uniqueAbilities": {},
+      "buffs": {},
+      "spellsGranted": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "SnickerSnackClaws": {
+      "name": "Snicker-Snack Claws",
+      "description": "Why throw a punch when you can throw three... simultaneously? These bad boys are the love children of a Swiss Army knife and a cat fight. Get ready to carve your initials into the dungeon walls – or into your enemies' hide if that's your thing.",
+      "itemType": "Weapon",
+      "weaponType": "Claws",
+      "rarity": "Rare",
+      "meleeRanged": "Melee",
+      "magicNonMagical": "Non-Magical",
+      "handsRequired": "Two-handed",
+      "damageType": "Slashing",
+      "damageAmount": "2d6",
+      "statBonuses": {
+        "dexterity": 2
+      },
+      "skillBonuses": {
+        "melee": 2,
+        "stealth": 2
+      },
+      "uniqueAbilities": {},
+      "buffs": {},
+      "spellsGranted": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "MeteorMaul": {
+      "name": "Meteor Maul",
+      "description": "It fell from the sky it's seen more action than your favorite streaming service and it's got a temper hotter than your shower when someone flushes the toilet.",
+      "itemType": "Weapon",
+      "weaponType": "Maul",
+      "rarity": "Very Rare",
+      "meleeRanged": "Melee",
+      "magicNonMagical": "Magical",
+      "handsRequired": "Two-handed",
+      "damageType": "Bludgeoning",
+      "damageAmount": "2d10",
+      "statBonuses": {
+        "strength": 2
+      },
+      "skillBonuses": {
+        "athletics": 2
+      },
+      "uniqueAbilities": {
+        "Meteor Strike": {
+          "description": "Once per day, slam the maul into the ground to create a shockwave that deals 6d10 damage to all enemies within 20 feet."
+        }
+      },
+      "buffs": {},
+      "spellsGranted": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "EchoHammer": {
+      "name": "Echo Hammer",
+      "description": "This hammer's so loud it's like the bell at the start of round one. Except there's no round two because your enemy's seeing stars.",
+      "itemType": "Weapon",
+      "weaponType": "Hammer",
+      "rarity": "Rare",
+      "meleeRanged": "Melee",
+      "magicNonMagical": "Non-Magical",
+      "handsRequired": "One-handed",
+      "damageType": "Bludgeoning",
+      "damageAmount": "1d10",
+      "statBonuses": {
+        "strength": 2
+      },
+      "skillBonuses": {
+        "melee": 2
+      },
+      "uniqueAbilities": {
+        "Echo Boom": {
+          "description": "Enemies hit by the hammer have a 10% chance to be stunned for one round due to the deafening noise.",
+          "effect": "10% chance to stun for one round."
+        }
+      },
+      "buffs": {},
+      "spellsGranted": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "OgresToothpick": {
+      "name": "Ogre's Toothpick (a.k.a. Giant Club)",
+      "description": "So you've decided subtlety's not your style? Swing this tree trunk and play whack-a-mole with anyone who side-eyes you.",
+      "itemType": "Weapon",
+      "weaponType": "Club",
+      "rarity": "Uncommon",
+      "meleeRanged": "Melee",
+      "magicNonMagical": "Non-Magical",
+      "handsRequired": "Two-handed",
+      "damageType": "Bludgeoning",
+      "damageAmount": "2d8",
+      "statBonuses": {
+        "strength": 3
+      },
+      "skillBonuses": {},
+      "uniqueAbilities": {},
+      "buffs": {},
+      "spellsGranted": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "StreetSweeper": {
+      "name": "Street Sweeper (Heavy Chain)",
+      "description": "The weapon of choice for the sophisticated thug. Swing it around to feel like a total badass or just to compensate for something.",
+      "itemType": "Weapon",
+      "weaponType": "Chain",
+      "rarity": "Rare",
+      "meleeRanged": "Melee",
+      "magicNonMagical": "Non-Magical",
+      "handsRequired": "Two-handed",
+      "damageType": "Bludgeoning",
+      "damageAmount": "2d6",
+      "statBonuses": {
+        "dexterity": 3
+      },
+      "skillBonuses": {
+        "melee": 2,
+        "intimidation": 3
+      },
+      "uniqueAbilities": {
+        "Chain Whirl": {
+          "description": "Allows the user to attack all enemies within 10 feet in a single round, dealing 1d6 damage to each.",
+          "effect": "Deals 2d12 damage to each enemy within 10 feet.",
+          "abilityPointCost": 3,
+          "cooldown": "Varies"
+        }
+      },
+      "buffs": {},
+      "spellsGranted": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "PyromaniacPixieStick": {
+      "name": "Pyromaniac Pixie Stick",
+      "description": "Ember Wand: wave it around set things on fire and then wait awkwardly while it reboots. It's the dial-up internet of wands.",
+      "itemType": "Weapon",
+      "weaponType": "Wand",
+      "rarity": "Uncommon",
+      "meleeRanged": "Ranged",
+      "magicNonMagical": "Magical",
+      "handsRequired": "One-handed",
+      "damageType": "Fire",
+      "damageAmount": "1d8",
+      "statBonuses": {
+        "intelligence": 3
+      },
+      "skillBonuses": {
+        "arcana": 2
+      },
+      "uniqueAbilities": {
+        "Flame Burst": {
+          "description": "Can cast a fireball that deals 3d6 fire damage with a 10-minute cooldown.",
+          "effect": "Deals 3d6 fire damage.",
+          "abilityPointCost": 3,
+          "cooldown": "10 minutes"
+        }
+      },
+      "buffs": {},
+      "spellsGranted": {
+        "Flame": {
+          "description": "Cast a simple flame spell."
+        }
+      },
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "AssassinsKazoo": {
+      "name": "Assassin's Kazoo (Echoing Flute Dagger)",
+      "description": "Stab them with the sharp end and serenade them with the handle. Because murder should always come with a soundtrack.",
+      "itemType": "Weapon",
+      "weaponType": "Dagger",
+      "rarity": "Rare",
+      "meleeRanged": "Melee",
+      "magicNonMagical": "Magical",
+      "handsRequired": "One-handed",
+      "damageType": "Piercing",
+      "damageAmount": "1d6",
+      "statBonuses": {
+        "dexterity": 3
+      },
+      "skillBonuses": {
+        "stealth": 2
+      },
+      "uniqueAbilities": {
+        "Echo Serenade": {
+          "description": "After a successful hit, can play a tune that causes nearby enemies to be distracted for one round.",
+          "effect": "Nearby enemies are distracted for one round.",
+          "abilityPointCost": 4,
+          "cooldown": "Varies"
+        }
+      },
+      "buffs": {},
+      "spellsGranted": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "BipolarSlingshot": {
+      "name": "Bipolar Slingshot",
+      "description": "The Slingshot of Surprise: half the time it's a critical hit the other half you're just flinging pebbles at giants. Good luck!",
+      "itemType": "Weapon",
+      "weaponType": "Slingshot",
+      "rarity": "Uncommon",
+      "meleeRanged": "Ranged",
+      "magicNonMagical": "Non-Magical",
+      "handsRequired": "One-handed",
+      "damageType": "Bludgeoning",
+      "damageAmount": "1d4",
+      "statBonuses": {
+        "dexterity": 2
+      },
+      "skillBonuses": {
+        "archery": 2
+      },
+      "uniqueAbilities": {},
+      "buffs": {
+        "Critical Gamble": {
+          "description": "Every shot has a 50% chance to be a critical hit, dealing double damage.",
+          "effect": "50% chance to deal double damage."
+        }
+      },
+      "spellsGranted": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "AntiqueLongbow": {
+      "name": "Antique Longbow",
+      "description": "This Tattered Longbow has seen better days like your grandpa's underwear. But hey it still shoots straight. Mostly.",
+      "itemType": "Weapon",
+      "weaponType": "Longbow",
+      "rarity": "Ordinary",
+      "meleeRanged": "Ranged",
+      "magicNonMagical": "Non-Magical",
+      "handsRequired": "Two-handed",
+      "damageType": "Piercing",
+      "damageAmount": "1d8",
+      "statBonuses": {
+        "dexterity": 1
+      },
+      "skillBonuses": {
+        "archery": 2
+      },
+      "uniqueAbilities": {},
+      "buffs": {},
+      "spellsGranted": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "HippieBeatingStick": {
+      "name": "Hippie Beating Stick (Quartz-Embedded Staff)",
+      "description": "For when you want to beat someone with the power of crystal healing. Feel the vibrations man.",
+      "itemType": "Weapon",
+      "weaponType": "Staff",
+      "rarity": "Uncommon",
+      "meleeRanged": "Melee",
+      "magicNonMagical": "Magical",
+      "handsRequired": "Two-handed",
+      "damageType": "Bludgeoning",
+      "damageAmount": "1d6",
+      "statBonuses": {
+        "charisma": 2
+      },
+      "skillBonuses": {
+        "crafting": 2
+      },
+      "uniqueAbilities": {
+        "Crystal Vibration": {
+          "description": "Can cast a healing aura that restores 1d6 HP to all allies within 10 feet once per hour.",
+          "effect": "Restores 1d6 HP to all allies within 10 feet.",
+          "abilityPointCost": 1,
+          "cooldown": "Once per hour"
+        }
+      },
+      "buffs": {},
+      "spellsGranted": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "TetanusBlade": {
+      "name": "Tetanus Blade (Rusty Shortsword)",
+      "description": "Rusty Shortsword? More like an emergency tetanus shot waiting to happen. Use at your own risk and make sure your will is up to date.",
+      "itemType": "Weapon",
+      "weaponType": "Shortsword",
+      "rarity": "Ordinary",
+      "meleeRanged": "Melee",
+      "magicNonMagical": "Non-Magical",
+      "handsRequired": "One-handed",
+      "damageType": "Slashing",
+      "damageAmount": "1d6",
+      "statBonuses": {
+        "strength": 1
+      },
+      "skillBonuses": {
+        "melee": 1
+      },
+      "uniqueAbilities": {},
+      "buffs": {
+        "Infection": {
+          "description": "Successful hits have a 10% chance to inflict Tetanus, dealing 1d4 damage per round for 3 rounds.",
+          "effect": "10% chance to deal 1d4 damage per round for 3 rounds."
+        }
+      },
+      "spellsGranted": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "NineMillimeterHandgun": {
+      "name": "9mm Handgun",
+      "description": "The 9mm Handgun: because sometimes diplomacy fails and you need to make your point with a bit more... finality. This little beauty is the perfect companion for late-night strolls through zombie-infested alleyways or for those awkward family reunions that could go south. Reliable with enough kick to remind you you're alive and compact enough to not ruin the lines of your outfit.",
+      "itemType": "Weapon",
+      "weaponType": "Handgun",
+      "rarity": "Uncommon",
+      "meleeRanged": "Ranged",
+      "magicNonMagical": "Non-Magical",
+      "handsRequired": "One-handed",
+      "damageType": "Piercing",
+      "damageAmount": "1d10",
+      "statBonuses": {
+        "dexterity": 3
+      },
+      "skillBonuses": {
+        "firearms": 1
+      },
+      "uniqueAbilities": {},
+      "buffs": {},
+      "spellsGranted": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "Hatchet": {
+      "name": "Hatchet",
+      "description": "Not just for chopping firewood or the occasional zombie apocalypse the Hatchet is your go-to for when problems need a more 'hands-on' solution. It's like a Swiss Army knife but for people who think subtlety is overrated. Also doubles as a tool for impromptu wilderness survival lessons or for those moments when you need to make a 'cutting' remark.",
+      "itemType": "Weapon",
+      "weaponType": "Axe",
+      "rarity": "Ordinary",
+      "meleeRanged": "Melee",
+      "magicNonMagical": "Non-Magical",
+      "handsRequired": "One-handed",
+      "damageType": "Slashing",
+      "damageAmount": "1d8",
+      "statBonuses": {
+        "strength": 2
+      },
+      "skillBonuses": {
+        "survival": 2
+      },
+      "uniqueAbilities": {},
+      "buffs": {},
+      "spellsGranted": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    },
+    "BugsprayLighterCombo": {
+      "name": "Bugspray/Lighter Combo",
+      "description": "Because why face your six-legged nightmares up close when you can incinerate them from a safe distance? It's the ultimate in pest control turning annoying bugs into a brief but spectacular fireworks show. Disclaimer: Not recommended for use on siblings no matter how much they bug you.",
+      "itemType": "Weapon",
+      "weaponType": "Improvised Weapon",
+      "rarity": "Uncommon",
+      "meleeRanged": "Ranged",
+      "magicNonMagical": "Non-Magical",
+      "handsRequired": "One-handed",
+      "damageType": "Fire",
+      "damageAmount": "1d6",
+      "statBonuses": {
+        "dexterity": 1
+      },
+      "skillBonuses": {
+        "survival": 2
+      },
+      "uniqueAbilities": {
+        "Incinerate": {
+          "description": "Sprays a stream of fire that deals 1d6 fire damage per round for 2 rounds.",
+          "effect": "Deals 1d6 fire damage per round for 2 rounds.",
+          "abilityPointCost": 2,
+          "cooldown": "Varies"
+        }
+      },
+      "buffs": {},
+      "spellsGranted": {},
+      "hpBonus": 0,
+      "mpBonus": 0
+    }
+  }
+}

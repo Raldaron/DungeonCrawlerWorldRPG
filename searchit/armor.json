@@ -1,0 +1,745 @@
+{
+    "armor": {
+        "EnchantedTiaraOfManaGenita": {
+            "name": "Enchanted Tiara of Mana Genita",
+            "description": "A crystal tiara fit for royalty. Made in honor of all the lost children of the world. Because nothing helps sooth the tears of grieving parents like watching someone else dress up all fancy.",
+            "itemType": "Armor",
+            "armorType": "Headgear",
+            "rarity": "Rare",
+            "armorRating": 1,
+            "tankModifier": 0,
+            "statBonuses": {
+                "intelligence": 3
+            },
+            "skillBonuses": {},
+            "uniqueAbilities": {},
+            "buffs": {
+                "ManaGenita's Favor": {
+                    "description": "Removes automatic hostility by worshippers of Mana Genita."
+                },
+                "Enhanced Mob Detection": {
+                    "description": "Increased ability to detect mobs on the map."
+                }
+            },
+            "spellsGranted": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "EnchantedSilverBraceletOfTheAbSolar": {
+            "name": "Enchanted Silver Bracelet of the Ab-solar",
+            "description": "AnD SO The lioN fEll iN lOVe WiTh The LaMB. I’m actually quite fond of the Twilight novels. Plus, I would never stoop so low as to disparage the work of an over-imaginative and obviously undersexed artist who managed to become a brazilianaire from barely-disguised erotica targeted at adolescent girls. However, I would like to take this opportunity to point out that your culture’s obsession with fictional underaged heroes was absolutely misguided. Paul Atreides was fifteen years old. Harry Potter was just eleven in the beginning of the first book. The kids from Stranger Things were all tweens. Kid ‘n Play were (portrayed to be) high schoolers when they threw that epic party. Fairy tales. Myths. Lies. Spoiler alert. Kids are all idiots, and when they’re forced into a life or death situation, they overwhelmingly make stupid decisions and get themselves killed. Like, almost right away. They’re like that rabbit you see sitting on the side of the road that decides to dart in front of your car at the worst possible moment. They’re so efficient at getting themselves squished, you can’t help but wonder if they're doing it on purpose. Go ahead. Complain. Tell me I’m wrong. Trust me on this one. I’ve done some pretty extensive and conclusive research on the matter. This apotropaic talisman looks like something a goth teenaged girl would shoplift from a Hot Topic. A girl who dreams about one day meeting a hundred-year-old predator and making him fall in love with her. Remember, it’s not a crime if he’s handsome or rich or looks like a teenager. Anyway, this bracelet imbues the following effects: • Protection against Vampirism. • Protection against Lycanthropy. • +25% Magical damage against all sapient undead.",
+            "itemType": "Armor",
+            "armorType": "Wrists",
+            "rarity": "Rare",
+            "armorRating": 1,
+            "tankModifier": 0,
+            "statBonuses": {},
+            "skillBonuses": {},
+            "uniqueAbilities": {},
+            "buffs": {
+                "Vampirism Protection": {
+                    "description": "Protection against Vampirism."
+                },
+                "Lycanthropy Protection": {
+                    "description": "Protection against Lycanthropy."
+                },
+                "Undead Slayer": {
+                    "description": "+25% Magical damage against all sapient undead."
+                }
+            },
+            "spellsGranted": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "EnchantedObsidianBraceletOfTheRaggleRouser": {
+            "name": "Enchanted Obsidian Bracelet of the Raggle Rouser",
+            "description": "This item has been upgraded three times. Warning: this item has a 50% chance to permanently break if it's upgraded again. This murky bracelet is light and kinda stylish if you're one of those sad sacks who always wears black and complains about how nobody ever understands you. It's made of obsidian glass, which is a type of rock that only forms under extreme, lava-based circumstances. And interestingly enough, this is what you'll turn into if you don't treat this item with the respect it deserves.",
+            "itemType": "Armor",
+            "armorType": "Wrists",
+            "rarity": "Exceedingly Rare",
+            "armorRating": 1,
+            "tankModifier": 0,
+            "statBonuses": {
+                "stamina": 8,
+                "dexterity": 5
+            },
+            "skillBonuses": {},
+            "uniqueAbilities": {},
+            "buffs": {
+                "Minor Fire Resistance": {
+                    "description": "+15% Fire Resistance"
+                }
+            },
+            "spellsGranted": {
+                "Fireball": {
+                    "manaCost": 10,
+                    "cooldown": "20 minutes"
+                }
+            },
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "EnchantedTiaraOfTheInebriatedDragonfly": {
+            "name": "Enchanted Tiara of the Inebriated Dragonfly",
+            "description": "There's a children's story out there about a dragonfly who gets so drunk that his wife won't let him come home, so he hovers in the air above their nest, waiting for her to go to sleep, so he can get to bed. The thing is, the wife knows he's out there, and she ain't moving. So the dragonfly either hovers all night or moves to the highest point, sitting on a leaf, overlooking his home, waiting for his wife to turn the light back on to signify he's out of the doghouse. This tiara has been made to honor that poor Dragonfly with the angry wife.",
+            "itemType": "Armor",
+            "armorType": "Headgear",
+            "rarity": "Rare",
+            "armorRating": 1,
+            "tankModifier": 0,
+            "statBonuses": {
+                "intelligence": 10
+            },
+            "skillBonuses": {
+                "hover": 10
+            },
+            "uniqueAbilities": {
+                "Hover": {
+                    "description": "Level 10 hover benefit (5 uses a day)"
+                }
+            },
+            "buffs": {
+                "PotionMaster": {
+                    "description": "50% reduction to potion cooldown"
+                },
+                "PoisonImmunity": {
+                    "description": "Protection from poison"
+                },
+                "Steady Drinker": {
+                    "description": "Negates the dexterity debuff when inebriated"
+                }
+            },
+            "spellsGranted": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "PrismIndustriesCapacitatingAndFocusingGoggles": {
+            "name": "Prism Industries Capacitating and Focusing Goggles",
+            "description": "Prism Industries Capacitating and Focusing Goggles. Special High-Fashion Edition. \"The Princess Lauren.\"",
+            "itemType": "Armor",
+            "armorType": "Face Accessory",
+            "rarity": "Unique",
+            "armorRating": 1,
+            "tankModifier": 0,
+            "statBonuses": {},
+            "skillBonuses": {},
+            "uniqueAbilities": {},
+            "buffs": {
+                "Environmental Protection": {
+                    "description": "Protects the eyes from a variety of environmental hazards, including magic-based attacks that render the user blind."
+                },
+                "Enhanced Vision": {
+                    "description": "Enhances all dark vision effects. Allows for heat vision and other visible-light viewing options."
+                },
+                "Spell Focus": {
+                    "description": "Any energy-based spell that originates from the ocular region is caught and focused by these goggles, which allows for multiple combat and targeting options."
+                }
+            },
+            "spellsGranted": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "EnchantedWrestlingBeltOfTheGreatGorgo": {
+            "name": "Enchanted Wrestling Belt of the Great Gorgo",
+            "description": "While you'll never be as amazing as the greatest, most beautiful wrestler of all time---Christopher Alan Pallies---you will look pretty snazzy when you wrap this bad boy around your waist.",
+            "itemType": "Armor",
+            "armorType": "Waist",
+            "rarity": "Rare",
+            "armorRating": 6,
+            "tankModifier": 0,
+            "statBonuses": {
+                "strength": 6,
+                "stamina": 6
+            },
+            "skillBonuses": {},
+            "uniqueAbilities": {
+                "Avalanche": {
+                    "description": "This ability is straightforward. If you hit a living creature with your body while you are moving, the force exerted upon that body will be as if they were hit by twice the mass. Your entire body must be moving for this benefit to activate. This benefit’s power will not translate to weapons. You might want to take this off if you plan on getting busy with someone. Especially if you’re the top.",
+                    "effect": "When you move at least 10 feet in a straight line towards a living creature and hit it with an unarmed strike or a slam attack (considered an unarmed strike for this purpose), the target takes additional damage equal to twice your Stamina score. Your entire body must be moving for this benefit to activate. This additional damage does not apply to weapon attacks. If you hit a creature with this attack, you can choose to push the creature up to 30 feet away from you if it is no more than two sizes larger than you. Once you use this feature, you cannot use it again until you finish a short or long rest.",
+                    "abilityPointCost": 8,
+                    "cooldown": "Once per day"
+                }
+            },
+            "buffs": {},
+            "spellsGranted": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "ApothecaryBeanie": {
+            "name": "Apothecary Beanie",
+            "description": "Appears to be a small, knitted beanie hat. It boosts all of the wearer's base stats by 3% and allows the wearer to cast the I Need My Personal Space Spell.",
+            "itemType": "Armor",
+            "armorType": "Headgear",
+            "rarity": "Uncommon",
+            "armorRating": 1,
+            "tankModifier": 0,
+            "statBonuses": {
+                "allStats": 0.03
+            },
+            "skillBonuses": {},
+            "uniqueAbilities": {},
+            "buffs": {},
+            "spellsGranted": {
+                "INeedMyPersonalSpace": {
+                    "manaCost": 5,
+                    "cooldown": "1 hour"
+                }
+            },
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "EnchantedBigBoiDaisyDukes": {
+            "name": "Enchanted BigBoi Daisy Dukes",
+            "description": "Size-altering and were-creatures, such as the BigBoi are required to wear enchanted, self-sizing items lest they wish to turn the dungeon into a nudist colony when they transform.",
+            "itemType": "Armor",
+            "armorType": "Legs",
+            "rarity": "Uncommon",
+            "armorRating": 3,
+            "tankModifier": 0,
+            "statBonuses": {
+                "stamina": 2,
+                "dexterity": 5,
+                "intelligence": 5
+            },
+            "skillBonuses": {},
+            "uniqueAbilities": {},
+            "buffs": {
+                "Freeballing": {
+                    "description": "And I’m freeeeee! Freeee Ballling! Usually reserved for monk classes and those too soused to reliably dress themselves, recipients of this benefit receive an additional 100% damage bonus to all attacks that originate below the waist. In addition, all skills that originate from below the waist train 20% faster. But as the name implies, this benefit allows only a single layer of armor or clothing to cover your crotch area. And since you’re already wearing these, it looks like you won’t be getting trousers anytime soon.",
+                    "effect": "100% additional bonus damage and 20% additional experience for all attacks that originate below the waist"
+                }
+            },
+            "spellsGranted": {
+                "Protective Shell": {
+                    "manaCost": 10,
+                    "cooldown": "20 minutes"
+                }
+            },
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "UpgradedBigBoiShorts": {
+            "name": "Upgraded BigBoi Shorts",
+            "description": "All right, you already know the description of this item. Something something Incredible Hulk, blah, blah, blah. Now you want to know how this item has been upgraded. Right? So here are the original benefits of these naughty little undies: + 2 to Stamina, Wearer may cast a level 15 Protective Shell once every 30 hours. That’s some good shit right there. But we can do better than that. Here’s a few additional benefits: + 5 to Dexterity, + 5 to Intelligence, + 5 to Stamina, + 6 AR, + The Freeballing Buff.",
+            "itemType": "Armor",
+            "armorType": "Legs",
+            "rarity": "Heirloom",
+            "armorRating": 6,
+            "tankModifier": 5,
+            "statBonuses": {
+                "stamina": 5,
+                "dexterity": 5,
+                "intelligence": 5
+            },
+            "skillBonuses": {},
+            "uniqueAbilities": {},
+            "buffs": {
+                "Freeballing": {
+                    "description": "And I’m freeeeee! Freeee Ballling! Usually reserved for monk classes and those too soused to reliably dress themselves, recipients of this benefit receive an additional 100% damage bonus to all attacks that originate below the waist. In addition, all skills that originate from below the waist train 20% faster. But as the name implies, this benefit allows only a single layer of armor or clothing to cover your crotch area. And since you’re already wearing these, it looks like you won’t be getting trousers anytime soon.",
+                    "effect": "100% additional bonus damage and 20% additional experience for all attacks that originate below the waist"
+                }
+            },
+            "spellsGranted": {
+                "Protective Shell": {
+                    "manaCost": 10,
+                    "cooldown": "20 minutes"
+                }
+            },
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "EnchantedAutoBucklerOfThePeachPit": {
+            "name": "Enchanted Auto Buckler of the Peach Pit",
+            "description": "Forms a metallic buckler on command. May be triggered via hotlist or by shaking your wrist like you’re thinking of your hot Aunt Lydia. This item is enchanted with Shatter.",
+            "itemType": "Armor",
+            "armorType": "Armguard/Buckler",
+            "rarity": "Rare",
+            "armorRating": 4,
+            "tankModifier": 5,
+            "statBonuses": {
+                "dexterity": 2,
+                "perception": 1
+            },
+            "skillBonuses": {
+                "block": 2,
+                "parry": 1
+            },
+            "uniqueAbilities": {
+                "AutoBucklerActivation": {
+                    "description": "Forms a metallic buckler on command or by shaking your wrist."
+                },
+                "ShatterEnchantment": {
+                    "description": "Any attack that lands upon the buckler has a 1.5% chance to disarm the opponent. If the opponent is disarmed, there is a 90% chance the weapon will drop to the ground, a 5% chance the weapon will break, and a 5% chance the weapon will be immediately transferred to your inventory."
+                }
+            },
+            "buffs": {
+                "QuickReflexes": {
+                    "description": "Increases the user’s reaction time, giving a +1 bonus to dodge checks."
+                }
+            },
+            "spellsGranted": {},
+            "hpBonus": 5,
+            "mpBonus": 2
+        },
+        "EnchantedCrownOfTheSepsisWhore": {
+            "name": "Enchanted Crown of the Sepsis Whore",
+            "description": "'Who’s a dirty girl? You’re a dirty girl! 'This is a Fleeting item! This is a Unique* item! Imbues wearer with +10 Intelligence, grants the user +10 to Manipulation. All attacks, including magical attacks, now have a 15% chance to inflict the Sepsis debuff. Warning! (Seriously though. I’m going to say this again. WARNING! Read this shit before you put it on.) Placing this crown upon your head permanently places you within the royal line of succession for the Blood Sultanate on the ninth floor of the world dungeon. Removing this item will not remove this status. Royal members of the Blood Sultanate will be required to slay the Sultan and all other members of the royal family before descending to the tenth floor. You’ll only want to wear this if you’re a blood-thirsty, raging psychopath.",
+            "itemType": "Armor",
+            "armorType": "Headgear",
+            "rarity": "Unique",
+            "armorRating": 1,
+            "tankModifier": 0,
+            "statBonuses": {
+                "intelligence": 10,
+                "manipulation": 10
+            },
+            "skillBonuses": {},
+            "uniqueAbilities": {},
+            "buffs": {
+                "Sepsis Debuff": {
+                    "description": "All attacks, including magical attacks, now have a 15% chance to inflict the Sepsis debuff.",
+                    "effect": "Debilitating mutations and reduced spawning rates.",
+                    "abilityPointCost": 8,
+                    "cooldown": "Varies"
+                }
+            },
+            "spellsGranted": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "DrakeaEnchantedKerchiefOfDisorder": {
+            "name": "Drakea's Enchanted Kerchief of Disorder",
+            "description": "This handy-dandy, versatile garment can be worn around the neck, in the hair, or on your face if you want to cosplay as a cowboy robbing a bank.",
+            "itemType": "Armor",
+            "armorType": "Face Accessory",
+            "rarity": "Uncommon",
+            "armorRating": 1,
+            "tankModifier": 0,
+            "statBonuses": {},
+            "skillBonuses": {
+                "Detect Trap": 5
+            },
+            "uniqueAbilities": {
+                "Remote Detonator": {
+                    "description": "If you’re one of those explodey guys, I bet you use a lot of Hobgoblin Pus or Troll Boom-Boom Paste to make your bombs pop. Those days are now over. This benefit allows you to magically remote-detonate any explosive that has been designated by you. This benefit offers multiple physical and interface-based triggering options when combined with a Sapper’s table.",
+                    "effect": "When using a Sapper’s Table, you gain access to the following physical and interface-based triggering options for any explosive you have designated: \n \n <b>Physical Triggering Options:</b> \n \n <b>Timed Detonation:</b> Set a timer on the explosive to detonate after a specified duration. \n \n <b>Pressure Plate:</b> Detonate the explosive when a certain amount of weight or pressure is applied. \n \n <b>Tripwire:</b> Rig a tripwire to detonate the explosive when disturbed. \n \n <b>Proximity Sensor:</b> Set the explosive to detonate when a creature or object enters a specified radius. \n \n <b>Interface-Based Triggering Options:</b> \n \n <b>Magical Remote Control:</b> Use a magical remote control to trigger the explosive from a distance. \n \n <b>Telepathic Link:</b> Establish a telepathic link to trigger the explosive mentally. \n \n <b>Arcane Signal:</b> Activate the explosive using a specific magical gesture or incantation. \n \n <b>Rune Activation:</b> Use a magical interface to activate a special rune on the explosive. \n \n <b>Special Note:</b> The range for remote triggering options is up to 120 feet, unless otherwise specified by the DM."
+                }
+            },
+            "buffs": {},
+            "spellsGranted": {
+                "Tripper": {
+                    "manaCost": 5,
+                    "cooldown": "1 hour"
+                }
+            },
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "EnchantedAnarchistsBattleRattle": {
+            "name": "Enchanted Anarchist's Battle Rattle",
+            "description": "This sleeveless jacket in its current form only offers meager protections compared to some other items of this caliber. However, its ability to host as many upgrade patches as you can fit makes this one of the best, most upgradeable protection items in the game.",
+            "itemType": "Armor",
+            "armorType": "Shoulders",
+            "rarity": "Rare",
+            "armorRating": 5,
+            "tankModifier": 2,
+            "statBonuses": {
+                "intelligence": 1,
+                "manipulation": 1,
+                "wit": 1,
+                "dexterity": 1,
+                "stamina": 1,
+                "strength": 1,
+                "charisma": 1,
+                "appearance": 1,
+                "perception": 1
+            },
+            "skillBonuses": {},
+            "uniqueAbilities": {},
+            "buffs": {
+                "Upgradeable": {
+                    "description": "This base stat upgrade increases by +1 for every compatible patch that is added to this jacket."
+                },
+                "Back Patch Bonus": {
+                    "description": "If an eligible Back Patch is added, this benefit is doubled."
+                },
+                "Explosive Expertise": {
+                    "description": "+50% range and accuracy for all thrown explosives."
+                }
+            },
+            "spellsGranted": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "EnchantedFaeScaleQuadrupedCrupperOfTheFleet": {
+            "name": "Enchanted Fae Scale Quadruped Crupper of the Fleet",
+            "description": "Light and flexible, this scale armor is made from Fae Steel. While not as strong as Elven mail or even good Orcish steel, it's the strongest alloy that fairy folk can wear.",
+            "itemType": "Armor",
+            "armorType": "Waist",
+            "rarity": "Rare",
+            "armorRating": 6,
+            "tankModifier": 5,
+            "statBonuses": {
+                "dexterity": 6
+            },
+            "skillBonuses": {},
+            "uniqueAbilities": {},
+            "buffs": {},
+            "spellsGranted": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "EnchantedNightgauntCloakOfStoutness": {
+            "name": "Enchanted Nightgaunt Cloak of Stoutness",
+            "description": "The wearer of this cloak gains +4 to Constitution and becomes resistant to poison and ice-based attacks. In addition, the cloak adds Anti-Piercing resistance to all worn armor. It also makes you look like a dollar store Batman.",
+            "itemType": "Armor",
+            "armorType": "Shoulders",
+            "rarity": "Rare",
+            "armorRating": 4,
+            "tankModifier": 0,
+            "statBonuses": {
+                "stamina": 4
+            },
+            "skillBonuses": {},
+            "uniqueAbilities": {},
+            "buffs": {
+                "Poison Resistance": {
+                    "description": "99% poison resistance"
+                },
+                "Ice Resistance": {
+                    "description": "99% ice resistance"
+                },
+                "Piercing Resistance": {
+                    "description": "50% piercing resistance"
+                }
+            },
+            "spellsGranted": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "EnchantedSpikedKneepadsOfTheShadeGnollRiotForces": {
+            "name": "Enchanted Spiked Kneepads of the Shade Gnoll Riot Forces",
+            "description": "Made of skin and fur and the spiky things from the back of Thorn Cadavers, these kneepads are both good protection and they're stylish. Stylish, that is, if your knees are cosplaying as hedgehogs.",
+            "itemType": "Armor",
+            "armorType": "Legs",
+            "rarity": "Uncommon",
+            "armorRating": 1,
+            "tankModifier": 0,
+            "statBonuses": {},
+            "skillBonuses": {},
+            "uniqueAbilities": {},
+            "buffs": {
+                "DamageReflect": {
+                    "description": "Adds 10% Damage Reflect to all equipped armor."
+                },
+                "MomentumCancel": {
+                    "description": "Cancels all Momentum-based attacks."
+                }
+            },
+            "spellsGranted": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "EnchantedTrollskinShirtOfPummeling": {
+            "name": "Enchanted Trollskin Shirt of Pummeling",
+            "description": "The shirt is also quite stylish. Maybe a little too stylish. Unlike most monster-skin apparel items, this shirt will not grant a negative reaction amongst trolls. In fact, lady trolls might just want to haul you away for some one-on-one time if they see you in this",
+            "itemType": "Armor",
+            "armorType": "Torso",
+            "rarity": "Exceedingly Rare",
+            "armorRating": 7,
+            "tankModifier": 0,
+            "statBonuses": {},
+            "skillBonuses": {},
+            "uniqueAbilities": {},
+            "buffs": {
+                "Regeneration": {
+                    "description": "The wearer of this shirt gains +7 to the Regeneration buff."
+                },
+                "Melee Immunity": {
+                    "description": "All melee-based damage debuffs such as Stun, Knockback, Disarm, and Out-of-Breath are negated."
+                }
+            },
+            "spellsGranted": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "EnchantedCollarCharmOfTheIfritBourgeoisie": {
+            "name": "Enchanted Collar Charm of the Ifrit Bourgeoisie",
+            "description": "A collar charm enchanted with the essence of the Ifrit Bourgeoisie, granting the wearer increased dexterity and intelligence, as well as a significant boost to their snitching abilities.",
+            "itemType": "Armor",
+            "armorType": "Neck",
+            "rarity": "Rare",
+            "armorRating": 0,
+            "tankModifier": 0,
+            "statBonuses": {
+                "dexterity": 2,
+                "intelligence": 4
+            },
+            "skillBonuses": {
+                "snitch": 10
+            },
+            "uniqueAbilities": {},
+            "buffs": {},
+            "spellsGranted": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "EnchantedNecklaceOfHauteBourgeoisie": {
+            "name": "Enchanted Necklace of Haute Bourgeoisie",
+            "description": "The second smallest of the chains of leadership, it is still considered a great honor to be the custodian of this burden. Each jewel encrusted upon this charm represents a settlement owned and controlled by the bearer. If one still maintains a settlement’s jewel upon the collapse of the level, the holder of this necklace will permanently receive a tax stipend every ten days from that settlement based on size and population. In addition, each gem will impart additional benefits based on the town.\n\nIn order to upgrade this necklace, one must first conquer a Large-sized Settlement. Upgraded necklaces will also upgrade all existing gems.\nOne Attached Gem:\nPoor Sapphire. Medium Skyfowl Settlement (Third Floor).\n+5 to Dexterity.\nTalon Strike (Level 5)\nTaxes received: 432 Gold every 10 days.\nMay you be a kind and just leader.",
+            "itemType": "Armor",
+            "armorType": "Neck",
+            "rarity": "Unique",
+            "armorRating": 0,
+            "tankModifier": 0,
+            "statBonuses": {
+                "dexterity": 5
+            },
+            "skillBonuses": {},
+            "uniqueAbilities": {
+                "TalonStrike": {
+                    "description": "Level 5 Talon Strike ability."
+                }
+            },
+            "buffs": {
+                "TaxStipend": {
+                    "description": "Taxes received: 432 Gold every 10 days from Medium Skyfowl Settlement."
+                }
+            },
+            "spellsGranted": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "EnchantedToeRingOfTheSplatterSkunk": {
+            "name": "Enchanted Toe Ring of the Splatter Skunk",
+            "description": "Imbues wearer with +3 Strength and gives +3 to the Powerful Strike buff. Also, it’s a toe ring. It’s probably uncomfortable and it makes you look like one of those hippie assholes who sit around in a field juggling and hula-hooping all day.",
+            "itemType": "Armor",
+            "armorType": "Feet",
+            "rarity": "Rare",
+            "armorRating": 0,
+            "tankModifier": 0,
+            "statBonuses": {
+                "strength": 3
+            },
+            "skillBonuses": {
+                "powerfulStrike": 3
+            },
+            "uniqueAbilities": {},
+            "buffs": {},
+            "spellsGranted": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "RockardsRingofSniping": {
+            "name": "Rockards Ring of Sniping",
+            "description": "This amber-stoned ring is named after Rockard, one of the dungeon’s most infamous crawlers. This orcish warrior was known for his uncanny ability to swoop in at the last moment and steal glory from other crawlers, gaining the best loot and experience. Everybody hated him. It was great! Fun fact. This guy led his season’s top 10 list until he was knifed in his sleep by his own mother. Luckily for you, crawlers can’t be killed by other crawlers in saferooms anymore. A shame, really. Wearing this ring imbues the following benefits: The Ripe Benefit. The Loaded Benefit.",
+            "itemType": "Armor",
+            "rarity": "Rare",
+            "armorType": "Fingers",
+            "uniqueAbilities": {
+                "Ripe": {
+                    "description": "Enhances the wearer's ability to land the finishing blow on any target, granting a bonus to damage dealt to enemies below 20% health. The bonus increases with the wearer's Dexterity stat, adding a sense of urgency to every encounter.",
+                    "effect": "60 feet",
+                    "abilityPointCost": 2,
+                    "cooldown": "1 turn"
+                },
+                "Loaded": {
+                    "description": "Grants the wearer increased critical hit chance with ranged attacks, enhancing their sniping prowess. The chance of landing a critical hit increases based on the wearer's Perception stat, turning them into a deadly marksman. The total needed for a critical hit decreases by 1 for every level of perception over 10.",
+                    "effect": "600 feet",
+                    "abilityPointCost": 5,
+                    "cooldown": "4 turns"
+                }
+            }
+        },
+    "RingOfWaterBreathing": {
+        "name": "Ring of Water Breathing",
+        "description": "If you wear this ring, you can breathe underwater. You can still breathe on land, too. That makes you an amphibian. Did you know that all amphibians swallow their prey whole? That’s such an interesting fact.\n-1 Charisma",
+        "appearance": "A glowing blue ring that twinkles with little sparkles.",
+        "itemType": "Armor",
+        "armorType": "Fingers",
+        "rarity": "Uncommon",
+        "armorRating": 0,
+        "tankModifier": 0,
+        "statBonuses": {
+            "charisma": -1
+        },
+        "skillBonuses": {},
+        "uniqueAbilities": {
+            "WaterBreathing": {
+                "description": "Allows the wearer to breathe underwater."
+            }
+        },
+        "buffs": {},
+        "spellsGranted": {},
+        "hpBonus": 0,
+        "mpBonus": 0
+    },
+    "EnchantedPaupersRingOfTheSteadfastEmberus": {
+        "name": "Enchanted Paupers Ring of the Steadfast Emberus",
+        "description": "Ah, Emberus. Wholly sane, reasonable Emberus. I'm sure any jewelry that bears his name will be a perfectly fine, normal piece of magical gear.\nWhen working properly, this ring will remove most health-seeping and disease-based debuff effects. Has a variable numbing effect on various other debuff types. This will not remove the debuff itself. Too many active debuffs of any kind may temporarily mute or overheat this ring.\nWarning: This ring may only be worn by a worshipper of Emberus. This will turn into a cursed item if worn by a non-worshipper.\nWarning: This ring's true nature may only be seen by a worshipper of Emberus. It is disguised as an enchanted Strength ring.\nWarning: This ring has a debt attached to it. You may not sell this ring while this debt is attached. If you lose this ring, the loan payment will be accelerated. If you are expelled from the church while you are wearing this ring, the curse effect will activate.\nWarning: This ring carries a curse effect. Non-worshippers who attempt to wear this ring will find themselves infected with every debuff suffered by anyone within 50 meters of this ring. That's... that's a bad one.",
+        "itemType": "Armor",
+        "armorType": "Fingers",
+        "rarity": "Unique",
+        "armorRating": 0,
+        "tankModifier": 0,
+        "statBonuses": {},
+        "skillBonuses": {},
+        "uniqueAbilities": {
+            "RemoveDebuffs": {
+                "description": "Removes most health-seeping and disease-based debuff effects. Variable numbing effect on various other debuff types."
+            }
+        },
+        "buffs": {},
+        "spellsGranted": {},
+        "hpBonus": 0,
+        "mpBonus": 0
+    },
+    "EnchantedNippleRingOfTheSuperiorFireDemonsHandMaiden": {
+        "name": "Enchanted Nipple Ring of the Superior Fire Demon’s Hand Maiden",
+        "description": "This may only be equipped on a quadruped.\nThis may only be equipped on a female.\nAll nipple rings must be manually affixed the first time they are equipped.\nOh boy. Let me tell you about Superior fire demons. These bitches are crazy. Worse than the minor demons. I know, I know. That sounds chauvinistic and rude. You can’t get away with saying shit like that anymore. Here’s the thing. These bitches are godsdamned crazy. Full stop. You look that shit up in Wikipedia, and it’ll be the first line. It’ll say “These bitches are three pugs short of a grumble.” It’s not an opinion, but an absolute fact.\nWe have a whole matriarchal hierarchy of demons who exist and fight and vie for control of the fifteenth level, and these Superior Demon nutjobs are always causing the most chaos, which is saying a lot.\nYou got the lesser demons, who are generally normal, though I wouldn’t break up with one over text or call her fat or anything like that. Then you got the more powerful minor demons. Those bitches are something else, but they’re nothing compared to Superior fire demons. These ladies are so batshit, the demon lords and queens require all of them to be “chaperoned” by hellspawn familiars everywhere they go, whose job it is to protect them from each other and themselves. It’s Sheol’s version of a Xanax. Or maybe a restraining order.\nThese familiars need to be protected from the superior demons. This nipple ring is one of the items they utilize.\n\nWearing this nipple ring offers the following benefits:\nAllows the removal of cursed items.\nUser is impervious to natural fire.\nUser is impervious to lava attacks.\nUser is resistant to fire-based spells.\nUser will not lose health while inside Sheol.\nAll spells with a fire attack now deal (Intelligence)% more damage.\nAll demon worshippers are visible and marked on your map.\nUser may cast Bitch, What? Once a day.",
+        "appearance": "A glowing red nipple ring.",
+        "itemType": "Armor",
+        "armorType": "Accessory",
+        "rarity": "Unique",
+        "armorRating": 0,
+        "tankModifier": 0,
+        "statBonuses": {},
+        "skillBonuses": {},
+        "uniqueAbilities": {
+            "RemoveCursedItems": {
+                "description": "Allows the removal of cursed items."
+            },
+            "FireImmunity": {
+                "description": "User is impervious to natural fire."
+            },
+            "LavaImmunity": {
+                "description": "User is impervious to lava attacks."
+            },
+            "FireResistance": {
+                "description": "User is resistant to fire-based spells."
+            },
+            "SheolHealth": {
+                "description": "User will not lose health while inside Sheol."
+            },
+            "FireSpellBoost": {
+                "description": "All spells with a fire attack now deal (Intelligence)% more damage."
+            },
+            "DemonWorshipperDetection": {
+                "description": "All demon worshippers are visible and marked on your map."
+            },
+            "BitchWhat": {
+                "description": "User may cast Bitch, What? Once a day."
+            }
+        },
+        "buffs": {},
+        "spellsGranted": {},
+        "hpBonus": 0,
+        "mpBonus": 0
+    },
+    "EnchantedNightWyrmsRingOfDivineSuffering": {
+        "name": "Enchanted Night Wyrm's Ring of Divine Suffering",
+        "description": "A legendary ring imbued with the suffering of the Night Wyrm, offering unique and powerful abilities to its wearer.",
+        "itemType": "Armor",
+        "armorType": "Fingers",
+        "rarity": "Legendary",
+        "armorRating": 0,
+        "tankModifier": 0,
+        "statBonuses": {
+            "allStats": 2
+        },
+        "skillBonuses": {
+            "tracking": 3
+        },
+        "uniqueAbilities": {
+            "MarkedForDeath": {
+                "description": "Presents a list of all crawlers within map's range. Only crawlers with 100% health can be selected. Killing a marked crawler grants a permanent +1 stat point to the highest stat of the killed crawler. The +1 stat benefit increases by one for every three marks killed. Once a mark is set, the user cannot heal until the marked crawler is killed.",
+                "abilityPointCost": 0,
+                "cooldown": "5 hours on most floors, no cooldown on the 6th floor, 15-minute cooldown on the 9th floor"
+            }
+        },
+        "buffs": {},
+        "spellsGranted": {},
+        "hpBonus": 0,
+        "mpBonus": 0
+    },
+    "EnchantedNippleRingOfTheDefiler": {
+        "name": "Enchanted Nipple Ring of the Defiler",
+        "description": "A legendary nipple ring that marks the wearer for death by a god, granting unique abilities and buffs.",
+        "itemType": "Armor",
+        "armorType": "Accessory",
+        "rarity": "Legendary",
+        "armorRating": 0,
+        "tankModifier": 0,
+        "statBonuses": {},
+        "skillBonuses": {},
+        "uniqueAbilities": {},
+        "buffs": {
+            "ReligiousAffiliationDetection": {
+                "description": "Instantly know the religious affiliation of all nearby mobs and crawlers."
+            },
+            "ShrineDestruction": {
+                "description": "Allows the destruction of church shrines without further ill effects from deities."
+            },
+            "DamageBoost": {
+                "description": "+25% damage against all clerics."
+            }
+        },
+        "spellsGranted": {
+            "BlackNimbus": {
+                "type": "Involuntary Abjuration",
+                "cost": "Item Based",
+                "duration": "Instantaneous casting. Affected target will suffer the effects of this spell for (30 + [Caster’s Intelligence+Stamina] – [Target’s Intelligence/2]) Seconds.",
+                "cooldown": "Once Every Hour",
+                "target": "Single target",
+                "effect": "Has the same effect as wearing a shirt for the band Cattle Decapitation to church. Instantly removes target from the blessing of their deity and all associated buffs and effects. Will make it so target is unable to physically enter church or temple while the spell is in effect. Higher levels of this spell increase the possibility of forcing a smite upon the target."
+            }
+        },
+        "hpBonus": 0,
+        "mpBonus": 0
+    },
+    "EnchantedAnkletOfTheFallenOak": {
+        "name": "Enchanted Anklet of the Fallen Oak",
+        "description": "A rare anklet that grants the wearer increased dexterity and constitution, along with a melee skill buff.",
+        "itemType": "Armor",
+        "armorType": "Feet",
+        "rarity": "Rare",
+        "armorRating": 0,
+        "tankModifier": 0,
+        "statBonuses": {
+            "dexterity": 1,
+            "constitution": 1
+        },
+        "skillBonuses": {
+            "melee": 3
+        },
+        "uniqueAbilities": {},
+        "buffs": {},
+        "spellsGranted": {},
+        "hpBonus": 0,
+        "mpBonus": 0
+    },
+    "EnchantedToeRingOfTheLeprousBandit": {
+        "name": "Enchanted Toe Ring of the Leprous Bandit",
+        "description": "A unique toe ring that grants the wearer the ability to walk on non-horizontal surfaces and spread an active debuff to a target.",
+        "itemType": "Armor",
+        "armorType": "Feet",
+        "rarity": "Unique",
+        "armorRating": 0,
+        "tankModifier": 0,
+        "statBonuses": {},
+        "skillBonuses": {},
+        "uniqueAbilities": {
+            "StickyFeet": {
+                "description": "Temporarily walk barefoot on non-horizontal surfaces."
+            },
+            "SuperSpreader": {
+                "description": "Spread an active debuff to one target."
+            }
+        },
+        "buffs": {},
+        "spellsGranted": {},
+        "hpBonus": 0,
+        "mpBonus": 0
+    }
+}
+}
