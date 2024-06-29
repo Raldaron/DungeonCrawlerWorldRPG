@@ -1,6 +1,5 @@
 /* General Styles */
-body,
-html {
+body, html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -55,10 +54,7 @@ button:hover {
     text-decoration: underline;
 }
 
-input[type="text"],
-select,
-textarea,
-button {
+input[type="text"], select, textarea, button {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -75,17 +71,11 @@ button {
     margin-bottom: 10px;
 }
 
-.character-race,
-.character-class {
+.character-race, .character-class {
     width: 48%;
 }
 
-.main-stats,
-.stat-container,
-.skill-container,
-.ability-container,
-.buff-container,
-.trait-container {
+.main-stats, .stat-container, .skill-container, .ability-container, .buff-container, .trait-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -117,23 +107,20 @@ button {
     cursor: pointer;
 }
 
-.stat p,
-.skill p {
+.stat p, .skill p {
     margin: 0;
     font-size: 12px;
     color: #ff5722;
 }
 
-.stat span,
-.skill span {
+.stat span, .skill span {
     display: block;
     margin-top: 5px;
     font-size: 16px;
     color: #ffffff;
 }
 
-.stat[ondblclick],
-.skill[ondblclick] {
+.stat[ondblclick], .skill[ondblclick] {
     cursor: pointer;
 }
 
@@ -184,22 +171,17 @@ textarea {
 }
 
 .modal-content {
-    background-color: #252525;
-    margin: 5% auto;
-    padding: 20px;
+    background-color: #2b2b2b;
+    margin: 15% auto;
+    padding: 10px;
     border: 1px solid #888;
-    width: 80%;
-    /* Increased from previous value */
-    max-width: 800px;
-    /* Added max-width for very large screens */
-    max-height: 90vh;
-    /* Maximum height of 90% of the viewport height */
+    width: 90%;
+    max-width: 320px;
+    max-height: 80vh;
     overflow-y: auto;
-    /* Allows scrolling if content is too long */
 }
 
-.modal-content h2,
-.modal-content h3 {
+.modal-content h2, .modal-content h3 {
     font-size: 16px;
     margin: 10px 0;
 }
@@ -223,8 +205,7 @@ textarea {
     cursor: pointer;
 }
 
-.ability-card,
-.trait-card {
+.ability-card, .trait-card {
     width: 100px;
     height: 150px;
     margin: 5px;
@@ -240,21 +221,18 @@ textarea {
     transition: transform 0.6s;
 }
 
-.ability-card.flipped,
-.trait-card.flipped {
+.ability-card.flipped, .trait-card.flipped {
     transform: rotateY(180deg);
 }
 
-.ability-card p,
-.trait-card p {
+.ability-card p, .trait-card p {
     color: #fff;
     margin: 0;
     padding: 10px;
     backface-visibility: hidden;
 }
 
-.ability-card .back,
-.trait-card .back {
+.ability-card .back, .trait-card .back {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -371,13 +349,11 @@ textarea {
     font-weight: bold;
 }
 
-.buff-container,
-.spell-container {
+.buff-container, .spell-container {
     margin-bottom: 20px;
 }
 
-.buff,
-.spell {
+.buff, .spell {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -387,16 +363,14 @@ textarea {
     border-radius: 5px;
 }
 
-.buff p,
-.spell p {
+.buff p, .spell p {
     margin: 0;
     font-size: 14px;
     color: #ff5722;
     flex: 0 0 auto;
 }
 
-.buff span,
-.spell span {
+.buff span, .spell span {
     margin: 0;
     font-size: 14px;
     color: #ffffff;
@@ -450,40 +424,28 @@ textarea {
     margin-bottom: 10px;
 }
 
-#inventory-items {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 15px;
-    padding: 15px;
-    color: #fff;
-}
-
 .inventory-item {
     background-color: #2a2a2a;
-    border: 1px solid #444;
-    border-radius: 5px;
     padding: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    margin-bottom: 10px;
+    border-radius: 5px;
 }
 
 .inventory-item span {
+    font-size: 16px;
     font-weight: bold;
-    margin-bottom: 5px;
     color: #fff;
-    word-wrap: break-word;
-    font-size: 14px;
 }
 
 .inventory-item button {
-    margin-top: 5px;
+    margin-left: 10px;
+    padding: 5px 10px;
+    font-size: 14px;
     background-color: #ff5722;
     color: #fff;
     border: none;
-    padding: 5px 10px;
+    border-radius: 3px;
     cursor: pointer;
-    transition: background-color 0.3s;
 }
 
 .inventory-item button:hover {
@@ -496,7 +458,7 @@ textarea {
 
 .item-details p {
     margin: 5px 0;
-    color: #ffffff;
+    color: #ccc;
 }
 
 #search-modal {
@@ -578,7 +540,6 @@ textarea {
     word-wrap: break-word;
     hyphens: auto;
 }
-
 .equipment {
     margin-bottom: 20px;
 }
@@ -618,7 +579,7 @@ textarea {
 
 .equipment-item {
     background-color: #444;
-    color: #313131;
+    color: #fff;
     padding: 5px;
     margin-bottom: 5px;
     border-radius: 3px;
@@ -628,7 +589,6 @@ textarea {
 .equipment-item:hover {
     background-color: #555;
 }
-
 .close-button {
     background-color: #f44336;
     color: white;
@@ -680,20 +640,17 @@ textarea {
 
 .ability-description b {
     font-weight: bold;
-    color: white;
 }
 
 .ability-description {
     white-space: pre-wrap;
     font-family: Arial, sans-serif;
-    color: white;
 }
 
 #ability-modal-description,
 #ability-modal-effect {
     white-space: pre-wrap;
     font-family: Arial, sans-serif;
-    color: white;
 }
 
 #ability-modal-description b,
@@ -704,83 +661,4 @@ textarea {
 #ability-modal-description,
 #ability-modal-effect {
     margin-bottom: 15px;
-    color: white;
-}
-
-#race-modal-content {
-    color: #333;
-    background-color: #f5f5f5;
-    padding: 20px;
-}
-
-#race-modal-content h3 {
-    color: #1a1a1a;
-    border-bottom: 2px solid #1a1a1a;
-    padding-bottom: 5px;
-    margin-top: 20px;
-}
-
-#race-modal-content ul {
-    list-style-type: none;
-    padding-left: 0;
-    margin-top: 10px;
-}
-
-#race-modal-content li {
-    background-color: #e0e0e0;
-    padding: 15px;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-#race-modal-content li p {
-    margin: 0 0 10px 0;
-    line-height: 1.5;
-}
-
-#race-modal-abilities .ability-name,
-#race-modal-buffs .buff-name {
-    font-size: 1.2em;
-    color: #000;
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-.ability-description, .buff-description {
-    font-style: italic;
-    color: #333;
-    margin-bottom: 12px !important;
-}
-
-.ability-effect, .buff-effect,
-.ability-cost, .ability-cooldown {
-    color: #1a1a1a;
-}
-
-#race-modal-content li strong {
-    color: #000;
-    font-weight: 600;
-}
-
-/* Specific styles for effect, cost, and cooldown */
-.ability-effect::before,
-.buff-effect::before,
-.ability-cost::before,
-.ability-cooldown::before {
-    font-weight: bold;
-    color: #000;
-}
-
-.ability-effect::before,
-.buff-effect::before {
-    content: "Effect: ";
-}
-
-.ability-cost::before {
-    content: "Cost: ";
-}
-
-.ability-cooldown::before {
-    content: "Cooldown: ";
 }
