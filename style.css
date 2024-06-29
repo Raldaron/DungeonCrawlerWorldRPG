@@ -4,20 +4,24 @@ body, html {
     padding: 0;
     box-sizing: border-box;
     font-family: Arial, sans-serif;
-    background-color: #222;
-    color: #fff;
+    background-color: #f9f9f9;
+    color: #333;
     overflow-y: auto;
     height: 100%;
     width: 100%;
+    width: 8.5in;
+    height: 11in;
+    margin: auto;
 }
 
 .container {
     width: 90%;
-    max-width: 720px;
-    background-color: #1f1f1f;
+    max-width: 700px;
+    background-color: #ffffff;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
 }
 
 header {
@@ -27,7 +31,7 @@ header {
 
 header h1 {
     font-size: 24px;
-    color: #ff5722;
+    color: #4a90e2;
 }
 
 section {
@@ -46,7 +50,7 @@ section {
 .utility-slot {
     margin-bottom: 10px;
     padding: 10px;
-    background-color: #2a2a2a;
+    background-color: #f2f2f2;
     border-radius: 5px;
 }
 
@@ -64,31 +68,32 @@ section {
 label {
     display: block;
     margin-bottom: 5px;
-    color: #ff5722;
+    color: #4a90e2;
 }
 
 button {
     cursor: pointer;
-    color: #ff5722;
+    color: #ffffff;
     margin: 10px 0;
-    background: none;
+    background-color: #4a90e2;
     border: none;
     font-size: 16px;
     padding: 10px;
+    border-radius: 5px;
 }
 
 button:hover {
-    text-decoration: underline;
+    background-color: #357ab8;
 }
 
 input[type="text"], select, textarea, button {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    border: none;
+    border: 1px solid #ddd;
     border-radius: 5px;
-    background-color: #2a2a2a;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: #333;
     box-sizing: border-box;
 }
 
@@ -123,7 +128,7 @@ input[type="text"], select, textarea, button {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
-    background-color: #2a2a2a;
+    background-color: #e3f2fd;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
@@ -139,7 +144,7 @@ input[type="text"], select, textarea, button {
 .main-stats .stat {
     width: 22%;
     margin-bottom: 10px;
-    background-color: #2a2a2a;
+    background-color: #e3f2fd;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
@@ -148,7 +153,7 @@ input[type="text"], select, textarea, button {
 .stat {
     width: 25%;
     margin-bottom: 10px;
-    background-color: #2a2a2a;
+    background-color: #e3f2fd;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
@@ -158,14 +163,14 @@ input[type="text"], select, textarea, button {
 .stat p, .skill p {
     margin: 0;
     font-size: 12px;
-    color: #ff5722;
+    color: #4a90e2;
 }
 
 .stat span, .skill span {
     display: block;
     margin-top: 5px;
     font-size: 16px;
-    color: #ffffff;
+    color: #333;
 }
 
 .stat[ondblclick], .skill[ondblclick] {
@@ -176,7 +181,7 @@ button {
     margin-top: 5px;
     padding: 5px 10px;
     font-size: 12px;
-    background-color: #ff5722;
+    background-color: #4a90e2;
     color: #fff;
     border: none;
     border-radius: 3px;
@@ -184,7 +189,7 @@ button {
 }
 
 button:hover {
-    background-color: #e64a19;
+    background-color: #357ab8;
 }
 
 .points p {
@@ -194,9 +199,9 @@ button:hover {
 }
 
 h2 {
-    color: #ff5722;
+    color: #4a90e2;
     font-size: 20px;
-    border-bottom: 2px solid #ff5722;
+    border-bottom: 2px solid #4a90e2;
     padding-bottom: 5px;
     margin-bottom: 10px;
 }
@@ -215,11 +220,11 @@ textarea {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 .modal-content {
-    background-color: #2b2b2b;
+    background-color: #ffffff;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
@@ -238,7 +243,7 @@ textarea {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background-color: #2a2a2a;
+    background-color: #f2f2f2;
     margin-bottom: 5px;
     border-radius: 5px;
 }
@@ -262,10 +267,10 @@ textarea {
 }
 
 #equipment-modal h3 {
-    color: #ff5722;
+    color: #4a90e2;
     margin-top: 20px;
     margin-bottom: 10px;
-    border-bottom: 1px solid #ff5722;
+    border-bottom: 1px solid #4a90e2;
     padding-bottom: 5px;
 }
 
@@ -305,7 +310,7 @@ textarea {
     width: 100px;
     height: 150px;
     margin: 5px;
-    background-color: #444;
+    background-color: #e3f2fd;
     border-radius: 10px;
     display: flex;
     align-items: center;
@@ -322,7 +327,7 @@ textarea {
 }
 
 .ability-card p, .trait-card p {
-    color: #fff;
+    color: #333;
     margin: 0;
     padding: 10px;
     backface-visibility: hidden;
@@ -334,9 +339,9 @@ textarea {
     height: 100%;
     top: 0;
     left: 0;
-    background-color: #555;
+    background-color: #bbdefb;
     border-radius: 10px;
-    color: #fff;
+    color: #333;
     transform: rotateY(180deg);
     backface-visibility: hidden;
     padding: 10px;
@@ -405,7 +410,7 @@ textarea {
 .ability {
     width: 25%;
     margin-bottom: 10px;
-    background-color: #2a2a2a;
+    background-color: #e3f2fd;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
@@ -433,7 +438,7 @@ textarea {
 .ability p {
     margin: 0;
     font-size: 12px;
-    color: #ff5722;
+    color: #4a90e2;
 }
 
 .buff p, .ability p {
@@ -444,14 +449,14 @@ textarea {
     display: block;
     margin-top: 5px;
     font-size: 16px;
-    color: #ffffff;
+    color: #333;
 }
 
 #active-buffs-btn {
     margin-top: 10px;
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #ff5722;
+    background-color: #4a90e2;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -460,7 +465,7 @@ textarea {
 }
 
 #active-buffs-btn:hover {
-    background-color: #e64a19;
+    background-color: #357ab8;
 }
 
 .buff-name {
@@ -479,7 +484,7 @@ textarea {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
-    background-color: #2a2a2a;
+    background-color: #e3f2fd;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
@@ -488,7 +493,7 @@ textarea {
 
 .buff p, .spell p {
     font-size: 12px;
-    color: #ffffff;
+    color: #333;
     margin: 0;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -499,14 +504,14 @@ textarea {
 
 .buff h3, .ability h3 {
     font-size: 14px;
-    color: #ff5722;
+    color: #4a90e2;
     margin: 0 0 5px 0;
 }
 
 .buff span, .spell span {
     margin: 0;
     font-size: 14px;
-    color: #ffffff;
+    color: #333;
     flex: 1;
     text-align: right;
     padding-left: 10px;
@@ -543,7 +548,7 @@ textarea {
 .spell {
     width: 25%;
     margin-bottom: 10px;
-    background-color: #2a2a2a;
+    background-color: #e3f2fd;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
@@ -553,14 +558,14 @@ textarea {
 .spell p {
     margin: 0;
     font-size: 12px;
-    color: #ff5722;
+    color: #4a90e2;
 }
 
 .spell span {
     display: block;
     margin-top: 5px;
     font-size: 16px;
-    color: #ffffff;
+    color: #333;
 }
 
 .inventory {
@@ -568,15 +573,15 @@ textarea {
 }
 
 .inventory h2 {
-    color: #ff5722;
+    color: #4a90e2;
     font-size: 20px;
-    border-bottom: 2px solid #ff5722;
+    border-bottom: 2px solid #4a90e2;
     padding-bottom: 5px;
     margin-bottom: 10px;
 }
 
 .inventory-item {
-    background-color: #2a2a2a;
+    background-color: #e3f2fd;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
@@ -585,14 +590,14 @@ textarea {
 .inventory-item span {
     font-size: 16px;
     font-weight: bold;
-    color: #fff;
+    color: #333;
 }
 
 .inventory-item button {
     margin-left: 10px;
     padding: 5px 10px;
     font-size: 14px;
-    background-color: #ff5722;
+    background-color: #4a90e2;
     color: #fff;
     border: none;
     border-radius: 3px;
@@ -600,7 +605,7 @@ textarea {
 }
 
 .inventory-item button:hover {
-    background-color: #e64a19;
+    background-color: #357ab8;
 }
 
 .item-details {
@@ -609,7 +614,7 @@ textarea {
 
 .item-details p {
     margin: 5px 0;
-    color: #ccc;
+    color: #333;
 }
 
 #search-modal {
@@ -621,11 +626,11 @@ textarea {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
+    background-color: rgba(0, 0, 0, 0.1);
 }
 
 #search-modal .modal-content {
-    background-color: #2a2a2a;
+    background-color: #ffffff;
     margin: 15% auto;
     padding: 20px;
     border: 1px solid #888;
@@ -634,7 +639,7 @@ textarea {
 }
 
 #search-modal h2 {
-    color: #ff5722;
+    color: #4a90e2;
     margin-bottom: 10px;
 }
 
@@ -642,10 +647,10 @@ textarea {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
-    border: none;
+    border: 1px solid #ddd;
     border-radius: 5px;
-    background-color: #444;
-    color: #fff;
+    background-color: #ffffff;
+    color: #333;
 }
 
 #search-results {
@@ -659,7 +664,7 @@ textarea {
 }
 
 #search-results div:hover {
-    background-color: #444;
+    background-color: #f5f5f5;
 }
 
 .actions {
@@ -667,14 +672,14 @@ textarea {
 }
 
 .attack-card {
-    background-color: #2a2a2a;
+    background-color: #e3f2fd;
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
 }
 
 .attack-card h3 {
-    color: #ff5722;
+    color: #4a90e2;
     margin-bottom: 5px;
 }
 
@@ -696,9 +701,9 @@ textarea {
 }
 
 .equipment h2 {
-    color: #ff5722;
+    color: #4a90e2;
     font-size: 20px;
-    border-bottom: 2px solid #ff5722;
+    border-bottom: 2px solid #4a90e2;
     padding-bottom: 5px;
     margin-bottom: 10px;
 }
@@ -710,27 +715,27 @@ textarea {
 }
 
 .equipment-slot {
-    background-color: #2a2a2a;
+    background-color: #e3f2fd;
     border-radius: 5px;
     padding: 10px;
 }
 
 .equipment-slot h3 {
-    color: #ff5722;
+    color: #4a90e2;
     font-size: 16px;
     margin-bottom: 5px;
 }
 
 .item-list {
     min-height: 30px;
-    border: 1px dashed #444;
+    border: 1px dashed #333;
     border-radius: 3px;
     padding: 5px;
 }
 
 .equipment-item {
-    background-color: #444;
-    color: #fff;
+    background-color: #e3f2fd;
+    color: #333;
     padding: 5px;
     margin-bottom: 5px;
     border-radius: 3px;
@@ -738,10 +743,11 @@ textarea {
 }
 
 .equipment-item:hover {
-    background-color: #555;
+    background-color: #bbdefb;
 }
+
 .close-button {
-    background-color: #f44336;
+    background-color: #d32f2f;
     color: white;
     padding: 10px 15px;
     border: none;
@@ -750,7 +756,7 @@ textarea {
 }
 
 .close-button:hover {
-    background-color: #d32f2f;
+    background-color: #c62828;
 }
 
 .equipment-option {
@@ -758,7 +764,7 @@ textarea {
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    border-bottom: 1px solid #444;
+    border-bottom: 1px solid #ddd;
 }
 
 .equipment-option:last-child {
@@ -766,7 +772,7 @@ textarea {
 }
 
 .view-details-btn {
-    background-color: #4CAF50;
+    background-color: #4a90e2;
     color: white;
     padding: 5px 10px;
     border: none;
@@ -774,11 +780,11 @@ textarea {
 }
 
 .view-details-btn:hover {
-    background-color: #45a049;
+    background-color: #357ab8;
 }
 
 .attack-card {
-    background-color: #2a2a2a;
+    background-color: #e3f2fd;
     padding: 15px;
     margin-bottom: 15px;
     border-radius: 5px;
@@ -786,7 +792,7 @@ textarea {
 
 .attack-card h3 {
     margin-top: 0;
-    color: #ff5722;
+    color: #4a90e2;
 }
 
 .ability-description b {
@@ -815,7 +821,7 @@ textarea {
 }
 
 .view-details-btn {
-    background-color: #4CAF50;
+    background-color: #4a90e2;
     color: white;
     padding: 5px 10px;
     border: none;
@@ -824,5 +830,5 @@ textarea {
 }
 
 .view-details-btn:hover {
-    background-color: #45a049;
+    background-color: #357ab8;
 }

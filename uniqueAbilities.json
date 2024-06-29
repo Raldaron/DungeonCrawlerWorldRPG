@@ -128,8 +128,20 @@
     "abilityPointCost": 8,
     "cooldown": "Once per day"
   },
-    "Remote Detonator": {
-      "description": "If you’re one of those explodey guys, I bet you use a lot of Hobgoblin Pus or Troll Boom-Boom Paste to make your bombs pop. Those days are now over. This benefit allows you to magically remote-detonate any explosive that has been designated by you. This benefit offers multiple physical and interface-based triggering options when combined with a Sapper’s table.",
-      "effect": "When using a Sapper’s Table, you gain access to the following physical and interface-based triggering options for any explosive you have designated: \n \n <b>Physical Triggering Options:</b> \n \n <b>Timed Detonation:</b> Set a timer on the explosive to detonate after a specified duration. \n \n <b>Pressure Plate:</b> Detonate the explosive when a certain amount of weight or pressure is applied. \n \n <b>Tripwire:</b> Rig a tripwire to detonate the explosive when disturbed. \n \n <b>Proximity Sensor:</b> Set the explosive to detonate when a creature or object enters a specified radius. \n \n <b>Interface-Based Triggering Options:</b> \n \n <b>Magical Remote Control:</b> Use a magical remote control to trigger the explosive from a distance. \n \n <b>Telepathic Link:</b> Establish a telepathic link to trigger the explosive mentally. \n \n <b>Arcane Signal:</b> Activate the explosive using a specific magical gesture or incantation. \n \n <b>Rune Activation:</b> Use a magical interface to activate a special rune on the explosive. \n \n <b>Special Note:</b> The range for remote triggering options is up to 120 feet, unless otherwise specified by the DM."
+  "Remote Detonator": {
+    "description": "If you’re one of those explodey guys, I bet you use a lot of Hobgoblin Pus or Troll Boom-Boom Paste to make your bombs pop. Those days are now over. This benefit allows you to magically remote-detonate any explosive that has been designated by you. This benefit offers multiple physical and interface-based triggering options when combined with a Sapper’s table.",
+    "effect": "When using a Sapper’s Table, you gain access to the following physical and interface-based triggering options for any explosive you have designated: \n \n <b>Physical Triggering Options:</b> \n \n <b>Timed Detonation:</b> Set a timer on the explosive to detonate after a specified duration. \n \n <b>Pressure Plate:</b> Detonate the explosive when a certain amount of weight or pressure is applied. \n \n <b>Tripwire:</b> Rig a tripwire to detonate the explosive when disturbed. \n \n <b>Proximity Sensor:</b> Set the explosive to detonate when a creature or object enters a specified radius. \n \n <b>Interface-Based Triggering Options:</b> \n \n <b>Magical Remote Control:</b> Use a magical remote control to trigger the explosive from a distance. \n \n <b>Telepathic Link:</b> Establish a telepathic link to trigger the explosive mentally. \n \n <b>Arcane Signal:</b> Activate the explosive using a specific magical gesture or incantation. \n \n <b>Rune Activation:</b> Use a magical interface to activate a special rune on the explosive. \n \n <b>Special Note:</b> The range for remote triggering options is up to 120 feet, unless otherwise specified by the DM."
+  },
+  "Ripe": {
+    "description": "Enhances the wearer's ability to land the finishing blow on any target, granting a bonus to damage dealt to enemies below 20% health. The bonus increases with the wearer's Dexterity stat, adding a sense of urgency to every encounter.",
+    "effect": "60 feet",
+    "abilityPointCost": 2,
+    "cooldown": "1 turn"
+  },
+  "Loaded": {
+    "description": "Grants the wearer increased critical hit chance with ranged attacks, enhancing their sniping prowess. The chance of landing a critical hit increases based on the wearer's Perception stat, turning them into a deadly marksman. The total needed for a critical hit decreases by 1 for every level of perception over 10.",
+    "effect": "600 feet",
+    "abilityPointCost": 5,
+    "cooldown": "4 turns"
     }
   }

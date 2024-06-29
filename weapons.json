@@ -4,7 +4,7 @@
       "name": "Xistera",
       "description": "Ever wanted to hurl something so fast it defies physics and common sense? Meet the Xistera, a weapon for those who think 'overkill' is just a word for amateurs. It's a curved throwing tool that's part ancient sport, part modern mayhem. Prepare to bend the laws of nature – and your enemies' spines.",
       "itemType": "Weapon",
-      "weaponType": "Throwing Weapon",
+      "weaponType": "Secondary-weapon",
       "rarity": "Rare",
       "meleeRanged": "Ranged",
       "magicNonMagical": "Non-Magical",
@@ -17,7 +17,7 @@
       },
       "skillBonuses": {
         "athletics": 3,
-        "throwing": 2
+        "sapper": 2
       },
       "uniqueAbilities": {
         "curveShot": {
@@ -78,10 +78,10 @@
       "damageType": "Bludgeoning",
       "damageAmount": "1d4*2.38",
       "statBonuses": {
-        "dexterity": 10
+        "dexterity": 5
       },
       "skillBonuses": {
-        "closeCombat": 5
+        "melee": 3
       },
       "uniqueAbilities": {},
       "buffs": {
@@ -114,10 +114,10 @@
       "damageType": "Bludgeoning",
       "damageAmount": "1d6",
       "statBonuses": {
-        "strength": 2
+        "strength": 1
       },
       "skillBonuses": {
-        "closeCombat": 1
+        "melee": 1
       },
       "uniqueAbilities": {},
       "buffs": {},
@@ -137,10 +137,10 @@
       "damageType": "Slashing",
       "damageAmount": "2d6",
       "statBonuses": {
-        "dexterity": 4
+        "dexterity": 2
       },
       "skillBonuses": {
-        "closeCombat": 3,
+        "melee": 2,
         "stealth": 2
       },
       "uniqueAbilities": {},
@@ -161,10 +161,10 @@
       "damageType": "Bludgeoning",
       "damageAmount": "2d10",
       "statBonuses": {
-        "strength": 6
+        "strength": 2
       },
       "skillBonuses": {
-        "athletics": 3
+        "athletics": 2
       },
       "uniqueAbilities": {
         "Meteor Strike": {
@@ -188,10 +188,10 @@
       "damageType": "Bludgeoning",
       "damageAmount": "1d10",
       "statBonuses": {
-        "strength": 4
+        "strength": 2
       },
       "skillBonuses": {
-        "closeCombat": 2
+        "melee": 2
       },
       "uniqueAbilities": {
         "Echo Boom": {
@@ -216,11 +216,9 @@
       "damageType": "Bludgeoning",
       "damageAmount": "2d8",
       "statBonuses": {
-        "strength": 5
+        "strength": 3
       },
-      "skillBonuses": {
-        "closeCombat": 2
-      },
+      "skillBonuses": {},
       "uniqueAbilities": {},
       "buffs": {},
       "spellsGranted": {},
@@ -242,8 +240,8 @@
         "dexterity": 3
       },
       "skillBonuses": {
-        "closeCombat": 2,
-        "stealth": 1
+        "melee": 2,
+        "intimidation": 3
       },
       "uniqueAbilities": {
         "Chain Whirl": {
@@ -418,7 +416,7 @@
         "strength": 1
       },
       "skillBonuses": {
-        "closeCombat": 1
+        "melee": 1
       },
       "uniqueAbilities": {},
       "buffs": {
@@ -446,7 +444,7 @@
         "dexterity": 3
       },
       "skillBonuses": {
-        "firearms": 3
+        "firearms": 1
       },
       "uniqueAbilities": {},
       "buffs": {},

@@ -1,204 +1,204 @@
 {
     "Forsaken Aerialist": {
-        "description": "The Forsaken Aerialist once dazzled audiences with their breathtaking acrobatics and gravity-defying stunts. Now, having been cast aside, they use their aerial skills to outmaneuver foes and perform daring escapes. Their agility and showmanship make them masters of evasion and high-flying combat.",
-        "statBonus": {
-            "strength": 1,
-            "dexterity": 3,
-            "stamina": 2,
-            "intelligence": 1,
-            "perception": 2,
-            "wit": 1,
-            "charisma": 2,
-            "manipulation": 1,
-            "appearance": 2,
-            "ar": 1,
-            "ap": 1
+      "description": "The Forsaken Aerialist once dazzled audiences with their breathtaking acrobatics and gravity-defying stunts. Now, having been cast aside, they use their aerial skills to outmaneuver foes and perform daring escapes. Their agility and showmanship make them masters of evasion and high-flying combat.",
+      "loreElements": [], 
+      "statBonus": {
+        "strength": 1,
+        "dexterity": 3,
+        "stamina": 2,
+        "intelligence": 1,
+        "perception": 2,
+        "wit": 1,
+        "charisma": 2,
+        "manipulation": 1,
+        "appearance": 2,
+        "ar": 1,
+        "ap": 1
+      },
+      "skillBonus": {
+        "acrobatics": 5,
+        "athletics": 4,
+        "stealth": 3,
+        "performance": 2,
+        "awareness": 1
+      },
+      "uniqueAbilities": [
+        {
+          "name": "Sky's the Limit",
+          "description": "The aerialist performs a series of flips and twists, confusing enemies and gaining an advantage.",
+          "effect": "Gain +4 to AC and advantage on Dexterity saving throws for 1 minute.",
+          "abilityPointCost": 3,
+          "cooldown": "1 hour",
+          "type": "Activated",
+          "range": "Self",
+          "scaling": "Increases AC bonus by +1 for every 3 additional levels."
         },
-        "skillBonus": {
-            "acrobatics": 5,
-            "athletics": 4,
-            "stealth": 3,
-            "performance": 2,
-            "awareness": 1
-        },
-        "hpBonus": 10,
-        "mpBonus": 5,
-        "uniqueAbilities": [
-            {
-                "name": "Sky's the Limit",
-                "description": "The aerialist performs a series of flips and twists, confusing enemies and gaining an advantage.",
-                "effect": "Gain +4 to AC and advantage on Dexterity saving throws for 1 minute.",
-                "abilityPointCost": 3,
-                "cooldown": "1 hour",
-                "type": "Activated",
-                "range": "Self",
-                "scaling": "Increases AC bonus by +1 for every 3 additional levels."
-            },
-            {
-                "name": "Death-Defying Leap",
-                "description": "The aerialist makes a daring leap to escape or engage enemies.",
-                "effect": "Move up to 60 feet in a straight line, ignoring difficult terrain and avoiding opportunity attacks.",
-                "abilityPointCost": 2,
-                "cooldown": "1 turn",
-                "type": "Activated",
-                "range": "Self",
-                "scaling": "Distance increases by 10 feet for every 2 additional levels."
-            }
-        ],
-        "spells": [
-            {
-                "name": "Feather Fall",
-                "description": "Reduces falling damage for a party member.",
-                "effect": "Reduces the damage taken from a fall by half for one party member.",
-                "manaCost": 5
-            }
-        ]
+        {
+          "name": "Death-Defying Leap",
+          "description": "The aerialist makes a daring leap to escape or engage enemies.",
+          "effect": "Move up to 60 feet in a straight line, ignoring difficult terrain and avoiding opportunity attacks.",
+          "abilityPointCost": 2,
+          "cooldown": "1 turn",
+          "type": "Activated",
+          "range": "Self",
+          "scaling": "Distance increases by 10 feet for every 2 additional levels."
+        }
+      ],
+      "buffs": [], 
+      "spells": [
+        {
+          "name": "Feather Fall",
+          "description": "Reduces falling damage for a party member.",
+          "effect": "Reduces the damage taken from a fall by half for one party member.",
+          "manaCost": 5
+        }
+      ]
     },
     "Boring Ol' Fighter": {
-        "description": "The Boring Ol' Fighter is your classic, no-frills warrior. They rely on strength, endurance, and straightforward combat techniques. They might not have the flashiest moves, but they get the job done through sheer determination and skill.",
-        "statBonus": {
-            "strength": 3,
-            "dexterity": 1,
-            "stamina": 3,
-            "intelligence": 1,
-            "perception": 1,
-            "wit": 1,
-            "charisma": 1,
-            "manipulation": 1,
-            "appearance": 1,
-            "ar": 1,
-            "ap": 1
-        },
-        "skillBonus": {
-            "melee": 5,
-            "athletics": 4,
-            "tactics": 3,
-            "leadership": 2,
-            "survival": 1
-        },
-        "hpBonus": 20,
-        "mpBonus": 0,
-        "uniqueAbilities": [
-            {
-                "name": "Indomitable Will",
-                "description": "The fighter's sheer willpower enables them to shrug off effects that would hinder others.",
-                "effect": "Gain advantage on all saving throws for 1 minute.",
-                "abilityPointCost": 3,
-                "cooldown": "1 hour",
-                "type": "Activated",
-                "range": "Self",
-                "scaling": "Duration increases by 1 round for every 2 additional levels."
-            }
-        ],
-        "buffs": [
-            {
-                "name": "Steadfast Strike",
-                "description": "The fighter's relentless training allows them to deliver powerful blows consistently.",
-                "effect": "Gain +2 to melee attack rolls.",
-                "scaling": "Increases to +3 at level 10 and +4 at level 20."
-            }
-        ]
+      "description": "The Boring Ol' Fighter is your classic, no-frills warrior. They rely on strength, endurance, and straightforward combat techniques. They might not have the flashiest moves, but they get the job done through sheer determination and skill.",
+      "loreElements": [], 
+      "statBonus": {
+        "strength": 3,
+        "dexterity": 1,
+        "stamina": 3,
+        "intelligence": 1,
+        "perception": 1,
+        "wit": 1,
+        "charisma": 1,
+        "manipulation": 1,
+        "appearance": 1,
+        "ar": 1,
+        "ap": 1
+      },
+      "skillBonus": {
+        "melee": 5,
+        "athletics": 4,
+        "tactics": 3,
+        "leadership": 2,
+        "survival": 1
+      },
+      "uniqueAbilities": [
+        {
+          "name": "Indomitable Will",
+          "description": "The fighter's sheer willpower enables them to shrug off effects that would hinder others.",
+          "effect": "Gain advantage on all saving throws for 1 minute.",
+          "abilityPointCost": 3,
+          "cooldown": "1 hour",
+          "type": "Activated",
+          "range": "Self",
+          "scaling": "Duration increases by 1 round for every 2 additional levels."
+        }
+      ],
+      "buffs": [
+        {
+          "name": "Steadfast Strike",
+          "description": "The fighter's relentless training allows them to deliver powerful blows consistently.",
+          "effect": "Gain +2 to melee attack rolls.",
+          "scaling": "Increases to +3 at level 10 and +4 at level 20."
+        }
+      ],
+      "spells": []
     },
     "Compensated Anarchist": {
-        "description": "The Compensated Anarchist is a mercenary with a cause. They fight against oppression and corruption, but they're not above taking a hefty fee for their services. Their combat style is chaotic and unpredictable, making them a force to be reckoned with.",
-        "statBonus": {
-            "strength": 2,
-            "dexterity": 2,
-            "stamina": 2,
-            "intelligence": 2,
-            "perception": 1,
-            "wit": 2,
-            "charisma": 1,
-            "manipulation": 2,
-            "appearance": 1,
-            "ar": 1,
-            "ap": 1
-        },
-        "skillBonus": {
-            "firearms": 5,
-            "intimidation": 4,
-            "larceny": 3,
-            "streetwise": 2,
-            "deception": 1
-        },
-        "hpBonus": 15,
-        "mpBonus": 5,
-        "uniqueAbilities": [
-            {
-                "name": "Chaos Unleashed",
-                "description": "The anarchist creates a chaotic distraction, causing confusion among enemies.",
-                "effect": "All enemies within 30 feet must make a Wit saving throw or be confused for 1 minute.",
-                "abilityPointCost": 4,
-                "cooldown": "1 hour",
-                "type": "Activated",
-                "range": "30 feet",
-                "scaling": "Increase range by 5 feet for every 3 additional levels."
-            }
-        ],
-        "buffs": [
-            {
-                "name": "Anarchist's Resolve",
-                "description": "The anarchist's defiance fuels their resilience in battle.",
-                "effect": "Gain +2 to all saving throws when outnumbered.",
-                "scaling": "Increases to +3 at level 10 and +4 at level 20."
-            }
-        ],
-        "spells": [
-            {
-                "name": "Explosive Decoy",
-                "description": "Creates a fake explosive device that detonates, causing a 10-foot radius explosion.",
-                "effect": "Creates a decoy that explodes after 1 turn, dealing 2d6 fire damage to all creatures within a 10-foot radius.",
-                "manaCost": 5
-            }
-        ]
+      "description": "The Compensated Anarchist is a mercenary with a cause. They fight against oppression and corruption, but they're not above taking a hefty fee for their services. Their combat style is chaotic and unpredictable, making them a force to be reckoned with.",
+      "loreElements": [], 
+      "statBonus": {
+        "strength": 2,
+        "dexterity": 2,
+        "stamina": 2,
+        "intelligence": 2,
+        "perception": 1,
+        "wit": 2,
+        "charisma": 1,
+        "manipulation": 2,
+        "appearance": 1,
+        "ar": 1,
+        "ap": 1
+      },
+      "skillBonus": {
+        "firearms": 5,
+        "intimidation": 4,
+        "larceny": 3,
+        "streetwise": 2,
+        "deception": 1
+      },
+      "uniqueAbilities": [
+        {
+          "name": "Chaos Unleashed",
+          "description": "The anarchist creates a chaotic distraction, causing confusion among enemies.",
+          "effect": "All enemies within 30 feet must make a Wit saving throw or be confused for 1 minute.",
+          "abilityPointCost": 4,
+          "cooldown": "1 hour",
+          "type": "Activated",
+          "range": "30 feet",
+          "scaling": "Increase range by 5 feet for every 3 additional levels."
+        }
+      ],
+      "buffs": [
+        {
+          "name": "Anarchist's Resolve",
+          "description": "The anarchist's defiance fuels their resilience in battle.",
+          "effect": "Gain +2 to all saving throws when outnumbered.",
+          "scaling": "Increases to +3 at level 10 and +4 at level 20."
+        }
+      ],
+      "spells": [
+        {
+          "name": "Explosive Decoy",
+          "description": "Creates a fake explosive device that detonates, causing a 10-foot radius explosion.",
+          "effect": "Creates a decoy that explodes after 1 turn, dealing 2d6 fire damage to all creatures within a 10-foot radius.",
+          "manaCost": 5
+        }
+      ]
     },
     "Shield Maiden": {
-        "description": "The Shield Maiden is a warrior dedicated to protecting their allies. Wielding a shield with unparalleled skill, they can absorb blows meant for others and retaliate with powerful strikes. Their presence on the battlefield boosts the morale of their comrades.",
-        "statBonus": {
-            "strength": 2,
-            "dexterity": 1,
-            "stamina": 3,
-            "intelligence": 1,
-            "perception": 2,
-            "wit": 1,
-            "charisma": 2,
-            "manipulation": 1,
-            "appearance": 2,
-            "ar": 1,
-            "ap": 1
+      "description": "The Shield Maiden is a warrior dedicated to protecting their allies. Wielding a shield with unparalleled skill, they can absorb blows meant for others and retaliate with powerful strikes. Their presence on the battlefield boosts the morale of their comrades.",
+      "loreElements": [],
+      "statBonus": {
+        "strength": 2,
+        "dexterity": 1,
+        "stamina": 3,
+        "intelligence": 1,
+        "perception": 2,
+        "wit": 1,
+        "charisma": 2,
+        "manipulation": 1,
+        "appearance": 2,
+        "ar": 1,
+        "ap": 1
+      },
+      "skillBonus": {
+        "melee": 5,
+        "dodge": 4,
+        "leadership": 3,
+        "intimidation": 2,
+        "awareness": 1
+      },
+      "uniqueAbilities": [
+        {
+          "name": "Guardian's Stand",
+          "description": "The Shield Maiden plants her shield, creating a protective barrier around her allies.",
+          "effect": "Allies within 20 feet gain +4 to AC and resistance to all damage types for 1 minute.",
+          "abilityPointCost": 5,
+          "cooldown": "1 hour",
+          "type": "Activated",
+          "range": "20 feet",
+          "scaling": "Increases AC bonus by +1 for every 3 additional levels."
         },
-        "skillBonus": {
-            "melee": 5,
-            "dodge": 4,
-            "leadership": 3,
-            "intimidation": 2,
-            "awareness": 1
-        },
-        "hpBonus": 20,
-        "mpBonus": 5,
-        "uniqueAbilities": [
-            {
-                "name": "Guardian's Stand",
-                "description": "The Shield Maiden plants her shield, creating a protective barrier around her allies.",
-                "effect": "Allies within 20 feet gain +4 to AC and resistance to all damage types for 1 minute.",
-                "abilityPointCost": 5,
-                "cooldown": "1 hour",
-                "type": "Activated",
-                "range": "20 feet",
-                "scaling": "Increases AC bonus by +1 for every 3 additional levels."
-            },
-            {
-                "name": "Shield Bash",
-                "description": "The Shield Maiden strikes with her shield, stunning enemies.",
-                "effect": "Deals 1d8 bludgeoning damage and the target must make a Constitution saving throw or be stunned for 1 round.",
-                "abilityPointCost": 2,
-                "cooldown": "1 turn",
-                "type": "Activated",
-                "range": "Melee",
-                "damage": "1d8",
-                "damageType": "Bludgeoning",
-                "scaling": "Damage increases by 1d8 for every 2 additional levels."
-            }
-        ]
+        {
+          "name": "Shield Bash",
+          "description": "The Shield Maiden strikes with her shield, stunning enemies.",
+          "effect": "Deals 1d8 bludgeoning damage and the target must make a Constitution saving throw or be stunned for 1 round.",
+          "abilityPointCost": 2,
+          "cooldown": "1 turn",
+          "type": "Activated",
+          "range": "Melee",
+          "damage": "1d8",
+          "damageType": "Bludgeoning",
+          "scaling": "Damage increases by 1d8 for every 2 additional levels."
+        }
+      ],
+      "buffs": [], 
+      "spells": []
     }
 }

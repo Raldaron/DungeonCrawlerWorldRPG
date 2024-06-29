@@ -35,18 +35,18 @@
             "tankModifier": 0,
             "statBonuses": {},
             "skillBonuses": {},
-            "uniqueAbilities": {
-                "VampirismProtection": {
+            "uniqueAbilities": {},
+            "buffs": {
+                "Vampirism Protection": {
                     "description": "Protection against Vampirism."
                 },
-                "LycanthropyProtection": {
+                "Lycanthropy Protection": {
                     "description": "Protection against Lycanthropy."
                 },
-                "UndeadSlayer": {
+                "Undead Slayer": {
                     "description": "+25% Magical damage against all sapient undead."
                 }
             },
-            "buffs": {},
             "spellsGranted": {},
             "hpBonus": 0,
             "mpBonus": 0
@@ -95,7 +95,7 @@
             },
             "uniqueAbilities": {
                 "Hover": {
-                    "description": "Level 10 hover skill (5 uses a day)"
+                    "description": "Level 10 hover benefit (5 uses a day)"
                 }
             },
             "buffs": {
@@ -248,6 +248,39 @@
             "hpBonus": 0,
             "mpBonus": 0
         },
+        "EnchantedAutoBucklerOfThePeachPit": {
+            "name": "Enchanted Auto Buckler of the Peach Pit",
+            "description": "Forms a metallic buckler on command. May be triggered via hotlist or by shaking your wrist like you’re thinking of your hot Aunt Lydia. This item is enchanted with Shatter.",
+            "itemType": "Armor",
+            "armorType": "Armguard/Buckler",
+            "rarity": "Rare",
+            "armorRating": 4,
+            "tankModifier": 5,
+            "statBonuses": {
+                "dexterity": 2,
+                "perception": 1
+            },
+            "skillBonuses": {
+                "block": 2,
+                "parry": 1
+            },
+            "uniqueAbilities": {
+                "AutoBucklerActivation": {
+                    "description": "Forms a metallic buckler on command or by shaking your wrist."
+                },
+                "ShatterEnchantment": {
+                    "description": "Any attack that lands upon the buckler has a 1.5% chance to disarm the opponent. If the opponent is disarmed, there is a 90% chance the weapon will drop to the ground, a 5% chance the weapon will break, and a 5% chance the weapon will be immediately transferred to your inventory."
+                }
+            },
+            "buffs": {
+                "QuickReflexes": {
+                    "description": "Increases the user’s reaction time, giving a +1 bonus to dodge checks."
+                }
+            },
+            "spellsGranted": {},
+            "hpBonus": 5,
+            "mpBonus": 2
+        },
         "EnchantedCrownOfTheSepsisWhore": {
             "name": "Enchanted Crown of the Sepsis Whore",
             "description": "'Who’s a dirty girl? You’re a dirty girl! 'This is a Fleeting item! This is a Unique* item! Imbues wearer with +10 Intelligence, grants the user +10 to Manipulation. All attacks, including magical attacks, now have a 15% chance to inflict the Sepsis debuff. Warning! (Seriously though. I’m going to say this again. WARNING! Read this shit before you put it on.) Placing this crown upon your head permanently places you within the royal line of succession for the Blood Sultanate on the ninth floor of the world dungeon. Removing this item will not remove this status. Royal members of the Blood Sultanate will be required to slay the Sultan and all other members of the royal family before descending to the tenth floor. You’ll only want to wear this if you’re a blood-thirsty, raging psychopath.",
@@ -368,18 +401,18 @@
                 "stamina": 4
             },
             "skillBonuses": {},
-            "uniqueAbilities": {
-                "PoisonResistance": {
-                    "description": "100% poison resistance"
+            "uniqueAbilities": {},
+            "buffs": {
+                "Poison Resistance": {
+                    "description": "99% poison resistance"
                 },
-                "IceResistance": {
-                    "description": "100% ice resistance"
+                "Ice Resistance": {
+                    "description": "99% ice resistance"
                 },
-                "PiercingResistance": {
+                "Piercing Resistance": {
                     "description": "50% piercing resistance"
                 }
             },
-            "buffs": {},
             "spellsGranted": {},
             "hpBonus": 0,
             "mpBonus": 0
@@ -394,7 +427,8 @@
             "tankModifier": 0,
             "statBonuses": {},
             "skillBonuses": {},
-            "uniqueAbilities": {
+            "uniqueAbilities": {},
+            "buffs": {
                 "DamageReflect": {
                     "description": "Adds 10% Damage Reflect to all equipped armor."
                 },
@@ -402,7 +436,6 @@
                     "description": "Cancels all Momentum-based attacks."
                 }
             },
-            "buffs": {},
             "spellsGranted": {},
             "hpBonus": 0,
             "mpBonus": 0
@@ -429,6 +462,284 @@
             "spellsGranted": {},
             "hpBonus": 0,
             "mpBonus": 0
-        }
+        },
+        "EnchantedCollarCharmOfTheIfritBourgeoisie": {
+            "name": "Enchanted Collar Charm of the Ifrit Bourgeoisie",
+            "description": "A collar charm enchanted with the essence of the Ifrit Bourgeoisie, granting the wearer increased dexterity and intelligence, as well as a significant boost to their snitching abilities.",
+            "itemType": "Armor",
+            "armorType": "Neck",
+            "rarity": "Rare",
+            "armorRating": 0,
+            "tankModifier": 0,
+            "statBonuses": {
+                "dexterity": 2,
+                "intelligence": 4
+            },
+            "skillBonuses": {
+                "snitch": 10
+            },
+            "uniqueAbilities": {},
+            "buffs": {},
+            "spellsGranted": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "EnchantedNecklaceOfHauteBourgeoisie": {
+            "name": "Enchanted Necklace of Haute Bourgeoisie",
+            "description": "The second smallest of the chains of leadership, it is still considered a great honor to be the custodian of this burden. Each jewel encrusted upon this charm represents a settlement owned and controlled by the bearer. If one still maintains a settlement’s jewel upon the collapse of the level, the holder of this necklace will permanently receive a tax stipend every ten days from that settlement based on size and population. In addition, each gem will impart additional benefits based on the town.\n\nIn order to upgrade this necklace, one must first conquer a Large-sized Settlement. Upgraded necklaces will also upgrade all existing gems.\nOne Attached Gem:\nPoor Sapphire. Medium Skyfowl Settlement (Third Floor).\n+5 to Dexterity.\nTalon Strike (Level 5)\nTaxes received: 432 Gold every 10 days.\nMay you be a kind and just leader.",
+            "itemType": "Armor",
+            "armorType": "Neck",
+            "rarity": "Unique",
+            "armorRating": 0,
+            "tankModifier": 0,
+            "statBonuses": {
+                "dexterity": 5
+            },
+            "skillBonuses": {},
+            "uniqueAbilities": {
+                "TalonStrike": {
+                    "description": "Level 5 Talon Strike ability."
+                }
+            },
+            "buffs": {
+                "TaxStipend": {
+                    "description": "Taxes received: 432 Gold every 10 days from Medium Skyfowl Settlement."
+                }
+            },
+            "spellsGranted": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "EnchantedToeRingOfTheSplatterSkunk": {
+            "name": "Enchanted Toe Ring of the Splatter Skunk",
+            "description": "Imbues wearer with +3 Strength and gives +3 to the Powerful Strike buff. Also, it’s a toe ring. It’s probably uncomfortable and it makes you look like one of those hippie assholes who sit around in a field juggling and hula-hooping all day.",
+            "itemType": "Armor",
+            "armorType": "Feet",
+            "rarity": "Rare",
+            "armorRating": 0,
+            "tankModifier": 0,
+            "statBonuses": {
+                "strength": 3
+            },
+            "skillBonuses": {
+                "powerfulStrike": 3
+            },
+            "uniqueAbilities": {},
+            "buffs": {},
+            "spellsGranted": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "RockardsRingofSniping": {
+            "name": "Rockards Ring of Sniping",
+            "description": "This amber-stoned ring is named after Rockard, one of the dungeon’s most infamous crawlers. This orcish warrior was known for his uncanny ability to swoop in at the last moment and steal glory from other crawlers, gaining the best loot and experience. Everybody hated him. It was great! Fun fact. This guy led his season’s top 10 list until he was knifed in his sleep by his own mother. Luckily for you, crawlers can’t be killed by other crawlers in saferooms anymore. A shame, really. Wearing this ring imbues the following benefits: The Ripe Benefit. The Loaded Benefit.",
+            "itemType": "Armor",
+            "rarity": "Rare",
+            "armorType": "Fingers",
+            "uniqueAbilities": {
+                "Ripe": {
+                    "description": "Enhances the wearer's ability to land the finishing blow on any target, granting a bonus to damage dealt to enemies below 20% health. The bonus increases with the wearer's Dexterity stat, adding a sense of urgency to every encounter.",
+                    "effect": "60 feet",
+                    "abilityPointCost": 2,
+                    "cooldown": "1 turn"
+                },
+                "Loaded": {
+                    "description": "Grants the wearer increased critical hit chance with ranged attacks, enhancing their sniping prowess. The chance of landing a critical hit increases based on the wearer's Perception stat, turning them into a deadly marksman. The total needed for a critical hit decreases by 1 for every level of perception over 10.",
+                    "effect": "600 feet",
+                    "abilityPointCost": 5,
+                    "cooldown": "4 turns"
+                }
+            }
+        },
+    "RingOfWaterBreathing": {
+        "name": "Ring of Water Breathing",
+        "description": "If you wear this ring, you can breathe underwater. You can still breathe on land, too. That makes you an amphibian. Did you know that all amphibians swallow their prey whole? That’s such an interesting fact.\n-1 Charisma",
+        "appearance": "A glowing blue ring that twinkles with little sparkles.",
+        "itemType": "Armor",
+        "armorType": "Fingers",
+        "rarity": "Uncommon",
+        "armorRating": 0,
+        "tankModifier": 0,
+        "statBonuses": {
+            "charisma": -1
+        },
+        "skillBonuses": {},
+        "uniqueAbilities": {
+            "WaterBreathing": {
+                "description": "Allows the wearer to breathe underwater."
+            }
+        },
+        "buffs": {},
+        "spellsGranted": {},
+        "hpBonus": 0,
+        "mpBonus": 0
+    },
+    "EnchantedPaupersRingOfTheSteadfastEmberus": {
+        "name": "Enchanted Paupers Ring of the Steadfast Emberus",
+        "description": "Ah, Emberus. Wholly sane, reasonable Emberus. I'm sure any jewelry that bears his name will be a perfectly fine, normal piece of magical gear.\nWhen working properly, this ring will remove most health-seeping and disease-based debuff effects. Has a variable numbing effect on various other debuff types. This will not remove the debuff itself. Too many active debuffs of any kind may temporarily mute or overheat this ring.\nWarning: This ring may only be worn by a worshipper of Emberus. This will turn into a cursed item if worn by a non-worshipper.\nWarning: This ring's true nature may only be seen by a worshipper of Emberus. It is disguised as an enchanted Strength ring.\nWarning: This ring has a debt attached to it. You may not sell this ring while this debt is attached. If you lose this ring, the loan payment will be accelerated. If you are expelled from the church while you are wearing this ring, the curse effect will activate.\nWarning: This ring carries a curse effect. Non-worshippers who attempt to wear this ring will find themselves infected with every debuff suffered by anyone within 50 meters of this ring. That's... that's a bad one.",
+        "itemType": "Armor",
+        "armorType": "Fingers",
+        "rarity": "Unique",
+        "armorRating": 0,
+        "tankModifier": 0,
+        "statBonuses": {},
+        "skillBonuses": {},
+        "uniqueAbilities": {
+            "RemoveDebuffs": {
+                "description": "Removes most health-seeping and disease-based debuff effects. Variable numbing effect on various other debuff types."
+            }
+        },
+        "buffs": {},
+        "spellsGranted": {},
+        "hpBonus": 0,
+        "mpBonus": 0
+    },
+    "EnchantedNippleRingOfTheSuperiorFireDemonsHandMaiden": {
+        "name": "Enchanted Nipple Ring of the Superior Fire Demon’s Hand Maiden",
+        "description": "This may only be equipped on a quadruped.\nThis may only be equipped on a female.\nAll nipple rings must be manually affixed the first time they are equipped.\nOh boy. Let me tell you about Superior fire demons. These bitches are crazy. Worse than the minor demons. I know, I know. That sounds chauvinistic and rude. You can’t get away with saying shit like that anymore. Here’s the thing. These bitches are godsdamned crazy. Full stop. You look that shit up in Wikipedia, and it’ll be the first line. It’ll say “These bitches are three pugs short of a grumble.” It’s not an opinion, but an absolute fact.\nWe have a whole matriarchal hierarchy of demons who exist and fight and vie for control of the fifteenth level, and these Superior Demon nutjobs are always causing the most chaos, which is saying a lot.\nYou got the lesser demons, who are generally normal, though I wouldn’t break up with one over text or call her fat or anything like that. Then you got the more powerful minor demons. Those bitches are something else, but they’re nothing compared to Superior fire demons. These ladies are so batshit, the demon lords and queens require all of them to be “chaperoned” by hellspawn familiars everywhere they go, whose job it is to protect them from each other and themselves. It’s Sheol’s version of a Xanax. Or maybe a restraining order.\nThese familiars need to be protected from the superior demons. This nipple ring is one of the items they utilize.\n\nWearing this nipple ring offers the following benefits:\nAllows the removal of cursed items.\nUser is impervious to natural fire.\nUser is impervious to lava attacks.\nUser is resistant to fire-based spells.\nUser will not lose health while inside Sheol.\nAll spells with a fire attack now deal (Intelligence)% more damage.\nAll demon worshippers are visible and marked on your map.\nUser may cast Bitch, What? Once a day.",
+        "appearance": "A glowing red nipple ring.",
+        "itemType": "Armor",
+        "armorType": "Accessory",
+        "rarity": "Unique",
+        "armorRating": 0,
+        "tankModifier": 0,
+        "statBonuses": {},
+        "skillBonuses": {},
+        "uniqueAbilities": {
+            "RemoveCursedItems": {
+                "description": "Allows the removal of cursed items."
+            },
+            "FireImmunity": {
+                "description": "User is impervious to natural fire."
+            },
+            "LavaImmunity": {
+                "description": "User is impervious to lava attacks."
+            },
+            "FireResistance": {
+                "description": "User is resistant to fire-based spells."
+            },
+            "SheolHealth": {
+                "description": "User will not lose health while inside Sheol."
+            },
+            "FireSpellBoost": {
+                "description": "All spells with a fire attack now deal (Intelligence)% more damage."
+            },
+            "DemonWorshipperDetection": {
+                "description": "All demon worshippers are visible and marked on your map."
+            },
+            "BitchWhat": {
+                "description": "User may cast Bitch, What? Once a day."
+            }
+        },
+        "buffs": {},
+        "spellsGranted": {},
+        "hpBonus": 0,
+        "mpBonus": 0
+    },
+    "EnchantedNightWyrmsRingOfDivineSuffering": {
+        "name": "Enchanted Night Wyrm's Ring of Divine Suffering",
+        "description": "A legendary ring imbued with the suffering of the Night Wyrm, offering unique and powerful abilities to its wearer.",
+        "itemType": "Armor",
+        "armorType": "Fingers",
+        "rarity": "Legendary",
+        "armorRating": 0,
+        "tankModifier": 0,
+        "statBonuses": {
+            "allStats": 2
+        },
+        "skillBonuses": {
+            "tracking": 3
+        },
+        "uniqueAbilities": {
+            "MarkedForDeath": {
+                "description": "Presents a list of all crawlers within map's range. Only crawlers with 100% health can be selected. Killing a marked crawler grants a permanent +1 stat point to the highest stat of the killed crawler. The +1 stat benefit increases by one for every three marks killed. Once a mark is set, the user cannot heal until the marked crawler is killed.",
+                "abilityPointCost": 0,
+                "cooldown": "5 hours on most floors, no cooldown on the 6th floor, 15-minute cooldown on the 9th floor"
+            }
+        },
+        "buffs": {},
+        "spellsGranted": {},
+        "hpBonus": 0,
+        "mpBonus": 0
+    },
+    "EnchantedNippleRingOfTheDefiler": {
+        "name": "Enchanted Nipple Ring of the Defiler",
+        "description": "A legendary nipple ring that marks the wearer for death by a god, granting unique abilities and buffs.",
+        "itemType": "Armor",
+        "armorType": "Accessory",
+        "rarity": "Legendary",
+        "armorRating": 0,
+        "tankModifier": 0,
+        "statBonuses": {},
+        "skillBonuses": {},
+        "uniqueAbilities": {},
+        "buffs": {
+            "ReligiousAffiliationDetection": {
+                "description": "Instantly know the religious affiliation of all nearby mobs and crawlers."
+            },
+            "ShrineDestruction": {
+                "description": "Allows the destruction of church shrines without further ill effects from deities."
+            },
+            "DamageBoost": {
+                "description": "+25% damage against all clerics."
+            }
+        },
+        "spellsGranted": {
+            "BlackNimbus": {
+                "type": "Involuntary Abjuration",
+                "cost": "Item Based",
+                "duration": "Instantaneous casting. Affected target will suffer the effects of this spell for (30 + [Caster’s Intelligence+Stamina] – [Target’s Intelligence/2]) Seconds.",
+                "cooldown": "Once Every Hour",
+                "target": "Single target",
+                "effect": "Has the same effect as wearing a shirt for the band Cattle Decapitation to church. Instantly removes target from the blessing of their deity and all associated buffs and effects. Will make it so target is unable to physically enter church or temple while the spell is in effect. Higher levels of this spell increase the possibility of forcing a smite upon the target."
+            }
+        },
+        "hpBonus": 0,
+        "mpBonus": 0
+    },
+    "EnchantedAnkletOfTheFallenOak": {
+        "name": "Enchanted Anklet of the Fallen Oak",
+        "description": "A rare anklet that grants the wearer increased dexterity and constitution, along with a melee skill buff.",
+        "itemType": "Armor",
+        "armorType": "Feet",
+        "rarity": "Rare",
+        "armorRating": 0,
+        "tankModifier": 0,
+        "statBonuses": {
+            "dexterity": 1,
+            "constitution": 1
+        },
+        "skillBonuses": {
+            "melee": 3
+        },
+        "uniqueAbilities": {},
+        "buffs": {},
+        "spellsGranted": {},
+        "hpBonus": 0,
+        "mpBonus": 0
+    },
+    "EnchantedToeRingOfTheLeprousBandit": {
+        "name": "Enchanted Toe Ring of the Leprous Bandit",
+        "description": "A unique toe ring that grants the wearer the ability to walk on non-horizontal surfaces and spread an active debuff to a target.",
+        "itemType": "Armor",
+        "armorType": "Feet",
+        "rarity": "Unique",
+        "armorRating": 0,
+        "tankModifier": 0,
+        "statBonuses": {},
+        "skillBonuses": {},
+        "uniqueAbilities": {
+            "StickyFeet": {
+                "description": "Temporarily walk barefoot on non-horizontal surfaces."
+            },
+            "SuperSpreader": {
+                "description": "Spread an active debuff to one target."
+            }
+        },
+        "buffs": {},
+        "spellsGranted": {},
+        "hpBonus": 0,
+        "mpBonus": 0
     }
+}
 }

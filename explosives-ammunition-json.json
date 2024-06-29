@@ -1,6 +1,6 @@
 {
   "explosives": {
-    "ImpactDetonatedHobLobber": {
+    "Impact Detonated Hob Lobber": {
       "name": "Impact Detonated Hob-Lobber",
       "description": "The Impact Detonated Hob-Lobber is for when you absolutely, positively need something to go boom the moment it hits. Engineered with the precision of a catapult and the subtlety of a sledgehammer, this bad boy explodes on contact, turning enemies into a fine mist of regret and shrapnel.",
       "itemType": "Explosive",
@@ -26,7 +26,7 @@
       "skillBonuses": {},
       "uniqueAbilities": []
     },
-    "TimedFuseHobLobber": {
+    "Timed Fuse Hob Lobber": {
       "name": "Timed Fuse Hob-Lobber",
       "description": "The Timed Fuse Hob-Lobber is perfect for the patient bomber who enjoys watching their enemies' brief moment of realization before everything goes up in flames. Set the timer, lob it, and enjoy the fireworks from a safe distance.",
       "itemType": "Explosive",
@@ -56,7 +56,7 @@
       "skillBonuses": {},
       "uniqueAbilities": []
     },
-    "SolidStandardHobLobber": {
+    "Solid Standard Hob Lobber": {
       "name": "Solid Standard Hob-Lobber",
       "description": "For the traditionalist who believes that sometimes, simple is best. The Solid Standard Hob-Lobber delivers a powerful hit without the frills and explosions, making it ideal for those who prefer their projectiles solid and deadly.",
       "itemType": "Ammunition",
@@ -82,7 +82,7 @@
       "skillBonuses": {},
       "uniqueAbilities": []
     },
-    "StickyHobLobber": {
+    "Sticky Hob Lobber": {
       "name": "Sticky Hob-Lobber",
       "description": "The Sticky Hob-Lobber is for the sneaky demolitions expert who enjoys watching their enemies struggle in vain before meeting a fiery end. This adhesive grenade clings to any surface, including unfortunate enemies, and ensures they can't shake off their imminent doom. Perfect for those 'sticky' situations where a little extra explosive persuasion is needed.",
       "itemType": "Explosive",
@@ -116,5 +116,78 @@
       "skillBonuses": {},
       "uniqueAbilities": []
     }
+  },
+  "Arrow of Enthusiastic Double Gonorrhea": {
+    "itemName": "Arrow of Enthusiastic Double Gonorrhea",
+    "itemType": "Ammunition",
+    "effect": "Inflicts Enthusiastic Double Gonorrhea on the target.",
+    "duration": "Until cured",
+    "damage": "20d6 + Poison Effect",
+    "range": "N/A (depends on the bow)",
+    "rarity": "Rare",
+    "requirements": {
+      "stats": {
+        "dexterity": 10
+      },
+      "skills": {
+        "Archery": 3
+      }
+    },
+    "statBuffs": {},
+    "skillBuffs": {},
+    "uniqueAbilities": [
+      {}
+    ],
+    "hpBuffs": [],
+    "mpBuffs": []
+  },
+  "Bolt of Ophiotaurus": {
+    "itemName": "Bolt of Ophiotaurus",
+    "itemType": "Ammunition",
+    "effect": "Strips a deity of invulnerability for fifteen seconds when shot into their eye.",
+    "duration": "15 seconds",
+    "damage": "1d8",
+    "range": "N/A (depends on the crossbow)",
+    "rarity": "Legendary",
+    "requirements": {
+      "stats": {
+        "dexterity": 14
+      },
+      "skills": {
+        "Archery": 5
+      }
+    },
+    "statBuffs": {},
+    "skillBuffs": {},
+    "uniqueAbilities": [
+      {
+        "name": "Divine Strike",
+        "description": "Temporarily removes a deity's invulnerability."
+      }
+    ],
+    "hpBuffs": [],
+    "mpBuffs": []
+  },
+  "Bolt of Petrify Rock Class": {
+    "itemName": "Bolt of Petrify Rock Class",
+    "itemType": "Ammunition",
+    "effect": "Imbues a rock-class target with the \"Petrified\" status condition.",
+    "duration": "Permanent until cured",
+    "damage": "1d8",
+    "range": "N/A (depends on the crossbow)",
+    "rarity": "Epic",
+    "requirements": {
+      "stats": {
+        "dexterity": 12
+      },
+      "skills": {
+        "Archery": 4
+      }
+    },
+    "statBuffs": {},
+    "skillBuffs": {},
+    "uniqueAbilities": [],
+    "hpBuffs": [],
+    "mpBuffs": []
   }
 }

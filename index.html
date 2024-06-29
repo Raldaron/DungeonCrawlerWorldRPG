@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dungeon Crawler Carl Character Sheet</title>
+    <title>Character Sheet</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="container">
         <header>
@@ -45,7 +47,7 @@
                     <span id="skill-points">6</span>
                 </div>
             </div>
-            
+
             <div class="row spaced-row">
                 <div class="stat" data-stat="hp">
                     <p>HP</p>
@@ -66,14 +68,14 @@
             </div>
         </section>
         <section class="main-stats">
-            <!-- ... existing code ... -->
-            <button id="active-buffs-btn" onclick="openBuffsModal()">Active Buffs</button>
         </section>
         <section class="abilities">
             <h2>Unique Abilities</h2>
-            <div class="ability-container">
-                <!-- Abilities will be dynamically populated by JavaScript -->
-            </div>
+            <div class="ability-container"></div>
+        </section>
+        <section class="buffs">
+            <h2>Buffs</h2>
+            <div class="buff-container"></div>
         </section>
         <section class="actions">
             <h2>Actions</h2>
@@ -144,80 +146,169 @@
                 <!-- Spells will be dynamically populated by JavaScript -->
             </div>
         </section>
-</section>
-<section class="equipment">
-    <h2>Equipment</h2>
-    <div class="equipment-grid">
-        <div class="equipment-slot" data-slot="utility" data-count="9">
-            <h3>Utility (9)</h3>
-            <div class="item-list"></div>
-        </div>
-        <div class="equipment-slot" data-slot="primary-weapon" data-count="2">
-            <h3>Primary Weapon (2)</h3>
-            <div class="item-list"></div>
-        </div>
-        <div class="equipment-slot" data-slot="secondary-weapon" data-count="2">
-            <h3>Secondary Weapon (2)</h3>
-            <div class="item-list"></div>
-        </div>
-        <div class="equipment-slot" data-slot="headgear" data-count="1">
-            <h3>Headgear (1)</h3>
-            <div class="item-list"></div>
-        </div>
-        <div class="equipment-slot" data-slot="face-accessory" data-count="1">
-            <h3>Face Accessory (1)</h3>
-            <div class="item-list"></div>
-        </div>
-        <div class="equipment-slot" data-slot="neck" data-count="1">
-            <h3>Neck (1)</h3>
-            <div class="item-list"></div>
-        </div>
-        <div class="equipment-slot" data-slot="shoulders" data-count="1">
-            <h3>Shoulders (1)</h3>
-            <div class="item-list"></div>
-        </div>
-        <div class="equipment-slot" data-slot="torso" data-count="1">
-            <h3>Torso (1)</h3>
-            <div class="item-list"></div>
-        </div>
-        <div class="equipment-slot" data-slot="arms" data-count="1">
-            <h3>Arms (1)</h3>
-            <div class="item-list"></div>
-        </div>
-        <div class="equipment-slot" data-slot="hands" data-count="1">
-            <h3>Hands (1)</h3>
-            <div class="item-list"></div>
-        </div>
-    </div>
-</section>
-<section class="inventory">
-    <h2>Inventory</h2>
-    <button id="add-to-inventory-btn">Add to Inventory</button>
-    <button id="open-inventory-btn">Open Inventory</button>
-</section>
-</div>
-
-<div id="inventory-modal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeInventoryModal()">&times;</span>
-        <h2>Inventory</h2>
-        <div id="inventory-items"></div>
-    </div>
-</div>
-
-<div id="search-modal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeSearchModal()">&times;</span>
-        <h2>Add Item to Inventory</h2>
-        <input type="text" id="item-search" placeholder="Search for items...">
-        <div id="search-results"></div>
-    </div>
-</div>
-        <section class="notes">
-            <h2>Current Quest Notes</h2>
-            <textarea id="quest-notes" placeholder="Enter notes here..."></textarea>
+        </section>
+        <section class="utility">
+            <h2>Utility Slots</h2>
+            <div class="utility-grid">
+                <div class="utility-column">
+                    <div class="utility-slot" data-slot="utility-1">
+                        <div class="item-list"></div>
+                        <button class="increment">+</button>
+                        <button class="decrement">-</button>
+                    </div>
+                    <div class="utility-slot" data-slot="utility-2">
+                        <div class="item-list"></div>
+                        <button class="increment">+</button>
+                        <button class="decrement">-</button>
+                    </div>
+                    <div class="utility-slot" data-slot="utility-3">
+                        <div class="item-list"></div>
+                        <button class="increment">+</button>
+                        <button class="decrement">-</button>
+                    </div>
+                </div>
+                <div class="utility-column">
+                    <div class="utility-slot" data-slot="utility-4">
+                        <div class="item-list"></div>
+                        <button class="increment">+</button>
+                        <button class="decrement">-</button>
+                    </div>
+                    <div class="utility-slot" data-slot="utility-5">
+                        <div class="item-list"></div>
+                        <button class="increment">+</button>
+                        <button class="decrement">-</button>
+                    </div>
+                    <div class="utility-slot" data-slot="utility-6">
+                        <div class="item-list"></div>
+                        <button class="increment">+</button>
+                        <button class="decrement">-</button>
+                    </div>
+                </div>
+                <div class="utility-column">
+                    <div class="utility-slot" data-slot="utility-7">
+                        <div class="item-list"></div>
+                        <button class="increment">+</button>
+                        <button class="decrement">-</button>
+                    </div>
+                    <div class="utility-slot" data-slot="utility-8">
+                        <div class="item-list"></div>
+                        <button class="increment">+</button>
+                        <button class="decrement">-</button>
+                    </div>
+                    <div class="utility-slot" data-slot="utility-9">
+                        <div class="item-list"></div>
+                        <button class="increment">+</button>
+                        <button class="decrement">-</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="equipment">
+            <h2>Equipment</h2>
+            <div class="equipment-grid">
+                <div class="equipment-slot" data-slot="primary-weapon">
+                    <h3>Primary Weapon</h3>
+                    <div class="item-list"></div>
+                </div>
+                <div class="equipment-slot" data-slot="secondary-weapon">
+                    <h3>Secondary Weapon</h3>
+                    <div class="item-list"></div>
+                </div>
+                <div class="equipment-slot" data-slot="headgear">
+                    <h3>Headgear</h3>
+                    <div class="item-list"></div>
+                </div>
+                <div class="equipment-slot" data-slot="face-accessory">
+                    <h3>Face Accessory</h3>
+                    <div class="item-list"></div>
+                </div>
+                <div class="equipment-slot" data-slot="neck">
+                    <h3>Neck</h3>
+                    <div class="item-list"></div>
+                </div>
+                <div class="equipment-slot" data-slot="shoulders">
+                    <h3>Shoulders</h3>
+                    <div class="item-list"></div>
+                </div>
+                <div class="equipment-slot" data-slot="torso">
+                    <h3>Torso</h3>
+                    <div class="item-list"></div>
+                </div>
+                <div class="equipment-slot" data-slot="waist">
+                    <h3>Waist</h3>
+                    <div class="item-list"></div>
+                </div>
+                <div class="equipment-slot" data-slot="arms">
+                    <h3>Arms</h3>
+                    <div class="item-list"></div>
+                </div>
+                <div class="equipment-slot" data-slot="l-hand">
+                    <h3>L Hand</h3>
+                    <div class="item-list"></div>
+                </div>
+                <div class="equipment-slot" data-slot="r-hand">
+                    <h3>R Hand</h3>
+                    <div class="item-list"></div>
+                </div>
+                <div class="equipment-slot" data-slot="legs">
+                    <h3>Legs</h3>
+                    <div class="item-list"></div>
+                </div>
+                <div class="equipment-slot" data-slot="l-foot">
+                    <h3>L Foot</h3>
+                    <div class="item-list"></div>
+                </div>
+                <div class="equipment-slot" data-slot="r-foot">
+                    <h3>R Foot</h3>
+                    <div class="item-list"></div>
+                </div>
+                <div class="equipment-slot" data-slot="finger-1">
+                    <h3>Finger</h3>
+                    <div class="item-list"></div>
+                </div>
+                <div class="equipment-slot" data-slot="finger-2">
+                    <h3>Finger</h3>
+                    <div class="item-list"></div>
+                </div>
+                <div class="equipment-slot" data-slot="finger-3">
+                    <h3>Finger</h3>
+                    <div class="item-list"></div>
+                </div>
+                <div class="equipment-slot" data-slot="finger-4">
+                    <h3>Finger</h3>
+                    <div class="item-list"></div>
+                </div>
+            </div>
+        </section>
+            <section class="notes">
+                <h2>Current Quest Notes</h2>
+                <textarea id="quest-notes" placeholder="Enter notes here..."></textarea>
+            </section>
+        <section class="inventory">
+            <h2>Inventory</h2>
+            <button id="add-to-inventory-btn">Add to Inventory</button>
+            <button id="open-inventory-btn">Open Inventory</button>
         </section>
     </div>
+
+    
+    <div id="inventory-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeInventoryModal()">&times;</span>
+            <h2>Inventory</h2>
+            <div id="inventory-items"></div>
+        </div>
+    </div>
+
+    <div id="search-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSearchModal()">&times;</span>
+            <h2>Add Item to Inventory</h2>
+            <input type="text" id="item-search" placeholder="Search for items...">
+            <div id="search-results"></div>
+        </div>
+    </div>
+
 
     <div id="race-modal" class="modal">
         <div class="modal-content" id="race-modal-content">
@@ -230,6 +321,12 @@
             <p id="race-modal-stat-bonuses"></p>
             <h3>Skill Bonuses</h3>
             <p id="race-modal-skill-bonuses"></p>
+        </div>
+    </div>
+
+    <div id="item-details-modal" class="modal">
+        <div class="modal-content">
+            <!-- Content will be dynamically populated -->
         </div>
     </div>
 
@@ -249,11 +346,13 @@
         </div>
     </div>
     
-    <div id="buffs-modal" class="modal">
-        <div class="modal-content" id="buffs-modal-content">
+    <div id="buff-modal" class="modal">
+        <div class="modal-content" id="buff-modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Active Buffs</h2>
-            <ul id="buffs-list"></ul>
+            <h2 id="buff-modal-title"></h2>
+            <p id="buff-modal-description"></p>
+            <h3>Effect</h3>
+            <p id="buff-modal-effect"></p>
         </div>
     </div>
 
@@ -283,6 +382,12 @@
         </div>
     </div>
 
+    <div id="class-modal" class="modal">
+        <div class="modal-content" id="class-modal-content">
+            <!-- Content will be dynamically populated by JavaScript -->
+        </div>
+    </div>
+
     <div id="equipment-modal" class="modal">
         <div class="modal-content">
             <!-- Content will be dynamically populated -->
@@ -291,4 +396,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
