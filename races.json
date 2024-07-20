@@ -1,179 +1,669 @@
 {
-    "Incubus": {
-        "description": "Ah, the Incubus. Also known as the Gigachad of the Over City, these dusky gray-skinned, horned hunks with forked tails and bat-like wings are the bad boys of the demon world. They'll sweep you off your feet, show you a night on the town, and leave you with nothing but a hangover and a set of stunningly sensuous footprints. Low alcohol tolerance, but who's counting drinks when you're that good-looking?",
-        "loreElements": [
-            "The Incubi are the favored offspring of Lilith, created from her essence to be the perfect seducers. They serve as her emissaries in the mortal realm, tasked with spreading her influence through temptation and desire. In return, they receive her blessings, which enhance their natural charisma and physical prowess.",
-            "Long ago, the Incubi were embroiled in the Seduction Wars, a series of conflicts between the various demon factions over control of mortal souls. Their unmatched allure and ability to manipulate dreams made them formidable opponents, leading to their eventual dominance in the realm of temptation."
+    "human": {
+        "name": "Human",
+        "description": "It's a human. Dumbass. Your garden-variety bipedal mammal known for their insatiable curiosity remarkable adaptability and baffling tendency to self-destruct. Humans are as diverse as they are numerous capable of acts of great heroism and unspeakable stupidity. If you like playing the underdog who somehow manages to survive against all odds humans are your best bet.",
+        "vitalBonus": [
+            "Strength: +1",
+            "Dexterity: +1",
+            "Intelligence: +1"
         ],
-        "statBonus": {
-            "strength": 2,
-            "dexterity": 3,
-            "stamina": 1,
-            "intelligence": 1,
-            "perception": 2,
-            "wit": 1,
-            "charisma": 5,
-            "manipulation": 8,
-            "appearance": 5,
-            "ar": 1,
-            "ap": 1
-        },
-        "skillBonus": {
-            "persuasion": 3,
-            "stealth": 2,
-            "empathy": 2
-        },
-        "uniqueAbilities": [
-            {
-                "name": "Seductive Aura",
-                "description": "Your mere presence makes hearts race and minds fog.",
-                "effect": "Once per encounter, you can charm one humanoid creature within 30 feet. The target must succeed on a Wit saving throw (DC = 10 + your Charisma modifier) or be charmed by you for 1d4 turns.",
-                "range": "30 feet",
-                "abilityPointCost": 3,
-                "cooldown": "Once per encounter"
-            }
+        "skillBonus": [
+            "Survival: +2",
+            "Persuasion: +2",
+            "Athletics: +2"
         ],
-        "buffs": [
-            {
-                "name": "Night's Embrace",
-                "description": "As a creature of the night, shadows and darkness are your allies.",
-                "effect": "Gain darkvision up to 60 feet. Additionally, you have advantage on Stealth checks made in dim light or darkness."
-            },
-            {
-                "name": "Fire Resistance",
-                "description": "Incubi have a natural resistance to fire, reducing fire damage by 50%.",
-                "effect": "Reduces fire damage taken by 50%."
-            }
-        ]
+        "abilities": [
+            "Quick Learner",
+            "Adaptable Combat"
+        ],
+        "traits": [
+            "Versatile",
+            "Resilient"
+        ],
+        "lore": "Humans are known for their relentless drive and ambition. They have spread across countless worlds adapting to and thriving in a multitude of environments. Their history is filled with both triumphs and tragedies making them one of the most unpredictable races in the universe."
     },
-    "Tigran": {
-        "description": "Picture a humanoid, now add stripes, fur, and feline grace, and boom: you've got the Tigran. These orange, furry, tiger-like beings are for those who like their RPG characters with a side of whiskers and a penchant for naps in the sun. Quick, agile, and often found lounging in the most inconvenient places, Tigrans bring a blend of elegance and lethargy to any adventuring party.",
-        "loreElements": [
-            "Tigrans were once the elite hunters in their home jungles, revered and feared by all.",
-            "Known for their keen senses and unmatched agility, they have a natural disdain for water and anything that messes with their fur."
+    "arachnid": {
+        "name": "Arachnid",
+        "description": "Half-human half-tarantula and all nightmare fuel. Arachnids are as terrifying as they sound with the upper body of a human and the lower body of a giant spider. They are masters of ambush and entrapment spinning webs to ensnare their prey.",
+        "vitalBonus": [
+            "Dexterity: +3",
+            "Strength: +2",
+            "Perception: +1"
         ],
-        "statBonus": {
-            "strength": 2,
-            "dexterity": 4,
-            "stamina": 2,
-            "intelligence": 1,
-            "perception": 3,
-            "wit": 2,
-            "charisma": 1,
-            "manipulation": 1,
-            "appearance": 2,
-            "ar": 1,
-            "ap": 1
-        },
-        "skillBonus": {
-            "acrobatics": 3,
-            "stealth": 4,
-            "survival": 2,
-            "awareness": 2
-        },
-        "uniqueAbilities": [
-            {
-                "name": "Feline Agility",
-                "description": "You move with the grace and speed of a tiger.",
-                "effect": "Once per encounter, you can double your movement speed for one turn.",
-                "abilityPointCost": 2,
-                "cooldown": "Once per encounter"
-            }
+        "skillBonus": [
+            "Stealth: +3",
+            "Survival: +2",
+            "Athletics: +1"
         ],
-        "buffs": [
-            {
-                "name": "Predator's Strike",
-                "description": "Your claws and fangs are deadly weapons.",
-                "effect": "You can make unarmed strikes using your claws, dealing 1d6 slashing damage. Additionally, you have advantage on attack rolls against creatures that haven\u2019t taken a turn in the combat yet."
-            },
-            {
-                "name": "Enhanced Senses",
-                "description": "Tigrans have advantage on Perception checks that rely on smell or hearing.",
-                "effect": "You have advantage on Perception checks that rely on smell or hearing."
-            }
-        ]
+        "abilities": [
+            "Web Spin",
+            "Venomous Bite"
+        ],
+        "traits": [
+            "Wall Climbing",
+            "Poison Resistance"
+        ],
+        "lore": "Arachnids are often viewed with fear and revulsion their spider-like nature making them natural predators. They are typically found in dark web-filled caverns and ancient ruins where they hunt and weave their webs in peace."
     },
-    "Primal": {
-        "description": "The Primals are the progenitors, the first known species to conquer the universe. They are the boogiemen of the cosmos. Nobody knows what they looked like or anything about them other than that they spread across the galaxy, and then one day, they just vanished.",
-        "loreElements": [
-            "Primals are shrouded in mystery, their true nature and origins lost to time.",
-            "Their sudden disappearance has led to countless theories and myths across the universe."
+    "bugbear": {
+        "name": "Bugbear",
+        "description": "Bugbears are the mystery meat of the fantasy world\u2014big hairy and with a temperament that could charitably be described as \"volatile.\" These hulking brutes excel at ambushes and intimidation often found leading bands of lesser goblinoids.",
+        "vitalBonus": [
+            "Strength: +3",
+            "Stamina: +2",
+            "Dexterity: +1"
         ],
-        "statBonus": {
-            "strength": -1,
-            "dexterity": -1,
-            "stamina": -1,
-            "intelligence": -1,
-            "perception": -1,
-            "wit": -1,
-            "charisma": -1,
-            "manipulation": -1,
-            "appearance": -1,
-            "ar": 1,
-            "ap": 1
-        },
-        "skillBonus": {},
-        "uniqueAbilities": [],
-        "buffs": [
-            {
-                "name": "Ancient Knowledge",
-                "description": "As a Primal, you possess knowledge of skills long forgotten by other races.",
-                "effect": "All higher-tier skills are unlocked and can be trained to level 20."
-            },
-            {
-                "name": "Versatile Evolution",
-                "description": "Your body can adapt to a wide range of environments and situations.",
-                "effect": "Gain proficiency in one additional skill of your choice at the start of each floor."
-            },
-            {
-                "name": "Ancient Resilience",
-                "description": "Primals have a natural resistance to environmental hazards. They take 50% less damage from natural sources such as extreme temperatures, poisonous plants, and natural disasters.",
-                "effect": "Take 50% less damage from natural sources such as extreme temperatures, poisonous plants, and natural disasters."
-            }
-        ]
+        "skillBonus": [
+            "Close Combat: +3",
+            "Intimidation: +2",
+            "Stealth: +1"
+        ],
+        "abilities": [
+            "Brutal Ambush",
+            "Terror Roar"
+        ],
+        "traits": [
+            "Darkvision",
+            "Natural Armor"
+        ],
+        "lore": "Bugbears are known to be the shock troops of goblinoid armies often revered as champions in their savage societies. Their brute strength and natural ferocity make them both feared and respected in the darker corners of the world."
     },
-    "Human": {
-        "description": "It's a human. Dumbass. Your garden-variety bipedal mammal, known for their insatiable curiosity, remarkable adaptability, and baffling tendency to self-destruct. Humans are as diverse as they are numerous, capable of acts of great heroism and unspeakable stupidity. If you like playing the underdog who somehow manages to survive against all odds, humans are your best bet.",
-        "loreElements": [
-            "Humans are often the protagonists of their own stories, despite being hilariously underprepared for the dangers they face.",
-            "Their history is marked by endless wars, groundbreaking innovations, and an uncanny ability to make enemies."
+    "bune": {
+        "name": "Bune",
+        "description": "Ah the Bune because the universe looked at demons and said \"Let\u2019s make them even weirder.\" These frog-like demons are as unsettling as they are mysterious with an aura of the unknown and a croak that sends shivers down spines.",
+        "vitalBonus": [
+            "Dexterity: +3",
+            "Intelligence: +2",
+            "Stamina: +1"
         ],
-        "statBonus": {
-            "strength": 1,
-            "dexterity": 1,
-            "stamina": 1,
-            "intelligence": 1,
-            "perception": 1,
-            "wit": 1,
-            "charisma": 1,
-            "manipulation": 1,
-            "appearance": 1,
-            "ar": 1,
-            "ap": 1
-        },
-        "skillBonus": {
-            "versatility": 1
-        },
-        "uniqueAbilities": [
-            {
-                "name": "Adaptability",
-                "description": "Humans are known for their ability to adapt to any situation.",
-                "effect": "Once per encounter, you can reroll any skill check, attack roll, or saving throw. You must use the new roll.",
-                "abilityPointCost": 1,
-                "cooldown": "Once per encounter"
-            }
+        "skillBonus": [
+            "Stealth: +3",
+            "Arcana: +2",
+            "Investigation: +1"
         ],
-        "buffs": [
-            {
-                "name": "Indomitable Spirit",
-                "description": "Humans possess an unyielding spirit and determination.",
-                "effect": "You have advantage on saving throws against being frightened or charmed."
-            },
-            {
-                "name": "Resourcefulness",
-                "description": "Humans gain an extra skill point at every even level.",
-                "effect": "Gain an extra skill point at every even level."
-            }
-        ]
+        "abilities": [
+            "Hypnotic Croak",
+            "Demon Leap"
+        ],
+        "traits": [
+            "Poison Resistance",
+            "Amphibious"
+        ],
+        "lore": "Bunes are often found in swamps and other murky environments where their demonic nature and cunning make them dangerous adversaries and valuable allies in the darker corners of the world."
+    },
+    "caprid": {
+        "name": "Caprid",
+        "description": "Caprids are what happens when the universe decides that goats should walk upright and have a knack for stubbornness. These goat-like humanoids are hardy tenacious and possess an uncanny ability to climb almost anything making them the mountain's true masters.",
+        "vitalBonus": [
+            "Strength: +3",
+            "Stamina: +2",
+            "Dexterity: +1"
+        ],
+        "skillBonus": [
+            "Athletics: +3",
+            "Athletics: +2",
+            "Survival: +1"
+        ],
+        "abilities": [
+            "Mountain Mastery",
+            "Headbutt Charge"
+        ],
+        "traits": [
+            "Sure-Footed",
+            "Cold Resistance"
+        ],
+        "lore": "Caprids are often found in high-altitude settlements where their unique skills and traits are put to the best use. They worship mountain deities and are known for their fierce independence and community strength."
+    },
+    "changeling": {
+        "name": "Changeling",
+        "description": "Changelings are the ultimate plus-ones able to seamlessly fit into any situation. Their ability to mimic the appearance and mannerisms of others makes them invaluable spies diplomats and con artists. With a face for every occasion they can be anyone and everyone.",
+        "vitalBonus": [
+            "Dexterity: +3",
+            "Wit: +2",
+            "Charisma: +1"
+        ],
+        "skillBonus": [
+            "Deception: +3",
+            "Disguise: +2",
+            "Perception: +1"
+        ],
+        "abilities": [
+            "Shapechange",
+            "Mimic Voice"
+        ],
+        "traits": [
+            "Adaptive Physiology",
+            "Quick Study"
+        ],
+        "lore": "Changelings are often seen as wild cards in the political landscape able to tip the scales in any direction. Their elusive nature and unparalleled adaptability make them both highly sought after and deeply distrusted."
+    },
+    "coal engine": {
+        "name": "Coal Engine",
+        "description": "Because someone out there looked at a rock and said \"This should move.\" Coal Engines are sentient steampunk-esque constructs powered by coal and a desire to make everything around them dirty. They excel in endurance and strength plowing through obstacles like a locomotive on a mission.",
+        "vitalBonus": [
+            "Strength: +3",
+            "Stamina: +2",
+            "Intelligence: +1"
+        ],
+        "skillBonus": [
+            "Engineering: +3",
+            "Athletics: +2",
+            "Survival: +1"
+        ],
+        "abilities": [
+            "Steam Blast",
+            "Iron Fist"
+        ],
+        "traits": [
+            "Fire Resistance",
+            "Heavy Armor"
+        ],
+        "lore": "Coal Engines are remnants of a bygone industrial era often found in the depths of ancient factories or abandoned mines. Their creation is shrouded in mystery with many believing they were gifts from a forgotten god of industry."
+    },
+    "cretin": {
+        "name": "Cretin",
+        "description": "Not your average bouncer the Cretin are rock giants with a penchant for smashing things. These hulking rock-skinned beings are known for their incredible strength and durability making them natural protectors and fearsome warriors.",
+        "vitalBonus": [
+            "Strength: +3",
+            "Stamina: +2",
+            "Dexterity: +1"
+        ],
+        "skillBonus": [
+            "Close Combat: +3",
+            "Intimidation: +2",
+            "Athletics: +1"
+        ],
+        "abilities": [
+            "Earthquake Stomp",
+            "Boulder Throw"
+        ],
+        "traits": [
+            "Natural Armor",
+            "Damage Resistance"
+        ],
+        "lore": "Cretins are often found guarding ancient sites and treasures their loyalty and strength making them ideal protectors. They are believed to be the children of earth deities born from the mountains themselves."
+    },
+    "crocodilian": {
+        "name": "Crocodilian",
+        "description": "Imagine a creature that embodies the phrase \"you\u2019ll never see it coming\" then add a thousand teeth and a smile that could terrify a shark. Crocodilians are stealthy deadly and possess a toughness that rivals even the most armored knights.",
+        "vitalBonus": [
+            "Strength: +3",
+            "Stamina: +2",
+            "Dexterity: +1"
+        ],
+        "skillBonus": [
+            "Stealth: +3",
+            "Close Combat: +2",
+            "Survival: +1"
+        ],
+        "abilities": [
+            "Death Roll",
+            "Ambush Strike"
+        ],
+        "traits": [
+            "Water Camouflage",
+            "Natural Armor"
+        ],
+        "lore": "Crocodilians are often seen as the guardians of ancient waterways and hidden treasures. Their patience and lethality make them formidable protectors and fearsome predators."
+    },
+    "doppelg\u00e4nger": {
+        "name": "Doppelg\u00e4nger",
+        "description": "Doppelg\u00e4ngers are the Swiss Army knives of shapeshifters. Able to mimic not just the appearance but also the mannerisms and voice of any creature they observe these beings are the ultimate infiltrators. Their natural ability to adapt makes them both feared and indispensable.",
+        "vitalBonus": [
+            "Dexterity: +3",
+            "Intelligence: +2",
+            "Charisma: +1"
+        ],
+        "skillBonus": [
+            "Disguise: +3",
+            "Deception: +2",
+            "Perception: +1"
+        ],
+        "abilities": [
+            "Perfect Imitation",
+            "Shadow Step"
+        ],
+        "traits": [
+            "Mimicry",
+            "Ambidextrous"
+        ],
+        "lore": "Doppelg\u00e4ngers are often lone agents working for those who can afford their services. Their ability to blend in seamlessly makes them highly valuable in espionage and sabotage operations."
+    },
+    "elf": {
+        "name": "Elf",
+        "description": "Ah elves the runway models of the fantasy world. With their perfect hair ageless beauty and a tendency to look down on everyone (both literally and figuratively) elves are the pinnacle of grace and superiority in any fantasy setting.",
+        "vitalBonus": [
+            "Dexterity: +3",
+            "Intelligence: +2",
+            "Charisma: +1"
+        ],
+        "skillBonus": [
+            "Ranged Combat: +3",
+            "Stealth: +2",
+            "Arcana: +1"
+        ],
+        "abilities": [
+            "Elven Grace",
+            "Arcane Shot"
+        ],
+        "traits": [
+            "Night Vision",
+            "Fey Ancestry"
+        ],
+        "lore": "Elves are often associated with ancient mystical forests and revered for their connection to nature and magic. Their societies are known for their elaborate rituals and an air of superiority that often alienates them from other races."
+    },
+    "fairy": {
+        "name": "Fairy",
+        "description": "Fairies: not just the tiny winged beings of lore. These Fairies are sassy sparkly and often wield more power than their diminutive size would suggest. With a love for trickery and a natural affinity for magic they bring a touch of whimsy and a lot of chaos to any situation.",
+        "vitalBonus": [
+            "Dexterity: +3",
+            "Wit: +2",
+            "Charisma: +1"
+        ],
+        "skillBonus": [
+            "Arcana: +3",
+            "Stealth: +2",
+            "Persuasion: +1"
+        ],
+        "abilities": [
+            "Enchanted Dust",
+            "Fey Trickery"
+        ],
+        "traits": [
+            "Flight",
+            "Magic Resistance"
+        ],
+        "lore": "Fairies are often seen as the playful yet mischievous children of the forest gods. Their antics are well-known in folklore and their presence is both a blessing and a curse."
+    },
+    "gondii": {
+        "name": "Gondii",
+        "description": "Gondii the parasitic worms of the Valtay are as unsettling as they are clever. These small worm-like creatures can control their host's nervous system turning them into unsuspecting puppets. Masters of manipulation they are a race feared for their insidious methods.",
+        "vitalBonus": [
+            "Intelligence: +3",
+            "Dexterity: +2",
+            "Wit: +1"
+        ],
+        "skillBonus": [
+            "Medicine: +3",
+            "Stealth: +2",
+            "Persuasion: +1"
+        ],
+        "abilities": [
+            "Neural Overload",
+            "Parasitic Control"
+        ],
+        "traits": [
+            "Host Dependency",
+            "Mind Shield"
+        ],
+        "lore": "Gondii are often whispered about in fear their ability to take over and control other beings making them both fascinating and terrifying. They are believed to be agents of ancient and dark deities spreading chaos wherever they go."
+    },
+    "grulke": {
+        "name": "Grulke",
+        "description": "Who needs grace when you can have slime? Grulkes are oozing grotesque beings that revel in their own filth. With a body that\u2019s more jelly than solid they can squeeze through the tightest of spaces and leave a trail of sticky chaos in their wake.",
+        "vitalBonus": [
+            "Strength: +3",
+            "Stamina: +2",
+            "Dexterity: +1"
+        ],
+        "skillBonus": [
+            "Stealth: +3",
+            "Survival: +2",
+            "Athletics: +1"
+        ],
+        "abilities": [
+            "Acid Spit",
+            "Slime Trail"
+        ],
+        "traits": [
+            "Acid Resistance",
+            "Flexible Form"
+        ],
+        "lore": "Grulkes are often found in swamps and other dank environments their presence often heralding decay and disease. Despite their appearance they are resilient survivors thriving where others would falter."
+    },
+    "igneous": {
+        "name": "Igneous",
+        "description": "Ever wanted to be the person at the party who can literally light a room on fire? Meet the Igneous. These magma-blooded beings are as hot-headed as they come with a penchant for pyrotechnics and a body temperature that could melt steel.",
+        "vitalBonus": [
+            "Strength: +3",
+            "Stamina: +2",
+            "Dexterity: +1"
+        ],
+        "skillBonus": [
+            "Close Combat: +3",
+            "Intimidation: +2",
+            "Survival: +1"
+        ],
+        "abilities": [
+            "Magma Blast",
+            "Lava Surge"
+        ],
+        "traits": [
+            "Fire Resistance",
+            "Heat Aura"
+        ],
+        "lore": "Igneous beings are believed to be the offspring of ancient volcano gods their fiery temperaments and abilities making them both revered and feared in equal measure."
+    },
+    "incubus": {
+        "name": "Incubus",
+        "description": "Ah the Incubus. Also known as the Gigachad of the underworld. These devilishly handsome beings thrive on the essence of others particularly enjoying a good seduction. With charm oozing out of every pore and a tendency to leave a trail of broken hearts and empty wallets they are the ultimate social manipulators.",
+        "vitalBonus": [
+            "Charisma: +3",
+            "Dexterity: +2",
+            "Appearance: +5"
+        ],
+        "skillBonus": [
+            "Persuasion: +3",
+            "Deception: +2",
+            "Acrobatics: +1"
+        ],
+        "abilities": [
+            "Seductive Gaze",
+            "Dream Infiltration"
+        ],
+        "traits": [
+            "Charm Resistance",
+            "Infernal Heritage"
+        ],
+        "lore": "Incubi are often found weaving their way through the upper echelons of society gathering influence and followers. Their infernal origins make them both alluring and dangerous often acting as intermediaries for darker powers."
+    },
+    "infiltrator": {
+        "name": "Infiltrator",
+        "description": "The ultimate eavesdroppers. These aquatic brain-suckers are the nightmare of anyone with a secret. Infiltrators are masters of espionage and subterfuge able to blend into shadows and extract information with their mental prowess.",
+        "vitalBonus": [
+            "Intelligence: +3",
+            "Dexterity: +2",
+            "Perception: +1"
+        ],
+        "skillBonus": [
+            "Stealth: +3",
+            "Investigation: +2",
+            "Deception: +1"
+        ],
+        "abilities": [
+            "Mind Probe",
+            "Shadow Meld"
+        ],
+        "traits": [
+            "Water Breathing",
+            "Psychic Shield"
+        ],
+        "lore": "Infiltrators are often used by powerful factions to gather intelligence and execute covert operations. Their ability to slip through defenses and uncover hidden truths makes them both invaluable and feared."
+    },
+    "intellect hunter": {
+        "name": "Intellect Hunter",
+        "description": "Nothing says \"I've arrived\" quite like commanding an army of enslaved minds. Intellect Hunters are feared for their psychic abilities and their insatiable hunger for knowledge often extracting it directly from the minds of their victims.",
+        "vitalBonus": [
+            "Intelligence: +3",
+            "Wit: +2",
+            "Charisma: +1"
+        ],
+        "skillBonus": [
+            "Arcana: +3",
+            "Investigation: +2",
+            "Deception: +1"
+        ],
+        "abilities": [
+            "Mind Probe",
+            "Psychic Blast"
+        ],
+        "traits": [
+            "Psychic Resistance",
+            "Mental Fortitude"
+        ],
+        "lore": "Intellect Hunters are often found in ancient ruins or hidden enclaves where they pursue forbidden knowledge and expand their mental prowess. They are seen as both sages and threats their abilities making them formidable adversaries."
+    },
+    "naga": {
+        "name": "Naga",
+        "description": "The Naga with their cobra-headed elegance are the true epitome of looking down on you\u2014literally and figuratively. These serpent-like beings are known for their grace cunning and a venomous bite that can end most arguments swiftly.",
+        "vitalBonus": [
+            "Dexterity: +3",
+            "Intelligence: +2",
+            "Charisma: +1"
+        ],
+        "skillBonus": [
+            "Stealth: +3",
+            "Intimidation: +2",
+            "Acrobatics: +1"
+        ],
+        "abilities": [
+            "Venomous Strike",
+            "Hypnotic Gaze"
+        ],
+        "traits": [
+            "Poison Resistance",
+            "Infrared Vision"
+        ],
+        "lore": "Naga are often seen as the chosen of the snake gods revered and feared in equal measure. Their ability to manipulate and their lethal prowess make them formidable allies and terrifying foes."
+    },
+    "night dwarfs": {
+        "name": "Night Dwarfs",
+        "description": "What happens when dwarfs decide the sun is overrated? Night Dwarfs that's what. These subterranean beings thrive in darkness excelling in mining and crafting under the stars (or lack thereof).",
+        "vitalBonus": [
+            "Strength: +3",
+            "Stamina: +2",
+            "Dexterity: +1"
+        ],
+        "skillBonus": [
+            "Engineering: +3",
+            "Engineering: +2",
+            "Stealth: +1"
+        ],
+        "abilities": [
+            "Dark Vision",
+            "Stone Shape"
+        ],
+        "traits": [
+            "Night Vision",
+            "Stonecunning"
+        ],
+        "lore": "Night Dwarfs are often seen as the keepers of deep earth secrets their ability to navigate and manipulate underground environments making them invaluable in mining operations and subterranean expeditions."
+    },
+    "orc": {
+        "name": "Orc",
+        "description": "Orcs the pig-like mainstay of fantasy races. Known for their brute strength love of battle and surprisingly complex social structures. Despite their often brutish appearance orcs have a rich culture centered around honor strength and communal bonds.",
+        "vitalBonus": [
+            "Strength: +3",
+            "Stamina: +2",
+            "Dexterity: +1"
+        ],
+        "skillBonus": [
+            "Close Combat: +3",
+            "Intimidation: +2",
+            "Athletics: +1"
+        ],
+        "abilities": [
+            "Berserker Rage",
+            "War Cry"
+        ],
+        "traits": [
+            "Darkvision",
+            "Relentless Endurance"
+        ],
+        "lore": "Orcs are often found in clans with strict hierarchies and deep traditions. They are known to be formidable warriors and fearsome adversaries with a code of honor that binds them together."
+    },
+    "porsuk": {
+        "name": "Porsuk",
+        "description": "Porsuks are your friendly neighborhood badger-people known for their tenacity digging skills and general grumpiness. These burrowers are fiercely territorial and have a natural affinity for the earth making them excellent miners and formidable fighters.",
+        "vitalBonus": [
+            "Strength: +3",
+            "Stamina: +2",
+            "Perception: +1"
+        ],
+        "skillBonus": [
+            "Survival: +3",
+            "Survival: +2",
+            "Close Combat: +1"
+        ],
+        "abilities": [
+            "Burrow Blitz",
+            "Badger Rage"
+        ],
+        "traits": [
+            "Earth Sense",
+            "Natural Armor"
+        ],
+        "lore": "Porsuks are known to inhabit extensive underground networks fiercely protecting their homes and resources. Their society values strength and perseverance often worshipping deities of the earth and nature."
+    },
+    "primal": {
+        "name": "Primal",
+        "description": "The Primals are the progenitors the first known species to conquer the universe. They are the boogiemen of the cosmos. Nobody knows what they looked like or anything about them other than that they spread across the galaxy and then one day they just vanished.",
+        "vitalBonus": [
+            "Strength: -1",
+            "Dexterity: -1",
+            "Stamina: -1"
+        ],
+        "skillBonus": [
+            "Arcana: +3",
+            "Lore: +3",
+            "Intimidation: +2"
+        ],
+        "abilities": [
+            "Blank Slate",
+            "Ancestral Recall"
+        ],
+        "traits": [
+            "Ancient Knowledge",
+            "Dimensional Awareness"
+        ],
+        "lore": "The Primals are the stuff of legend their sudden disappearance leaving behind only relics and ruins. Scholars and adventurers alike seek their remnants hoping to unlock the secrets of their immense power and mysterious vanishing. Their influence is still felt in the ancient structures and forgotten technologies scattered across the galaxy."
+    },
+    "rat hooligan": {
+        "name": "Rat Hooligan",
+        "description": "The Rat Hooligans or Rat-kin are essentially what you get if you give a rat a shot of espresso and a penchant for kleptomania. These small nimble and perpetually twitchy beings thrive in urban environments where they can scavenge steal and sneak around to their heart's content.",
+        "vitalBonus": [
+            "Dexterity: +3",
+            "Wit: +2",
+            "Perception: +1"
+        ],
+        "skillBonus": [
+            "Stealth: +3",
+            "Sleight of Hand: +2",
+            "Acrobatics: +1"
+        ],
+        "abilities": [
+            "Scavenger's Delight",
+            "Rat's Escape"
+        ],
+        "traits": [
+            "Night Vision",
+            "Disease Resistance"
+        ],
+        "lore": "Rat Hooligans have a storied history in the underbellies of major cities often seen as the unseen rulers of the night. Their cunning and adaptability are legendary making them both feared and respected."
+    },
+    "saccathian": {
+        "name": "Saccathian",
+        "description": "Ah the Saccathians or \"Sacs\" if you're into brevity. Imagine a sentient cactus with a penchant for sarcasm and a deep hatred for anything resembling a lawnmower. These prickly fellows thrive in arid environments and have a natural knack for survival which is just as well because everyone wants to use them as pincushions.",
+        "vitalBonus": [
+            "Stamina: +3",
+            "Dexterity: +2",
+            "Intelligence: +1"
+        ],
+        "skillBonus": [
+            "Survival: +3",
+            "Stealth: +2",
+            "Athletics: +1"
+        ],
+        "abilities": [
+            "Needle Barrage",
+            "Desert Camouflage"
+        ],
+        "traits": [
+            "Resistance to Fire",
+            "Water Retention"
+        ],
+        "lore": "Saccathians are often considered the descendants of a long-forgotten desert deity. Their survival skills and resistance to harsh environments make them revered among desert tribes."
+    },
+    "sasquatch": {
+        "name": "Sasquatch",
+        "description": "Ever wanted to embody the essence of every blurry photograph ever taken? Enter the Sasquatch. These massive hairy humanoids are masters of camouflage and wilderness survival with a penchant for avoiding civilization and cameras alike.",
+        "vitalBonus": [
+            "Strength: +3",
+            "Stamina: +2",
+            "Dexterity: +1"
+        ],
+        "skillBonus": [
+            "Stealth: +3",
+            "Survival: +2",
+            "Athletics: +1"
+        ],
+        "abilities": [
+            "Forest Stride",
+            "Mighty Roar"
+        ],
+        "traits": [
+            "Natural Camouflage",
+            "Night Vision"
+        ],
+        "lore": "Sasquatches are often regarded as guardians of the wilderness believed to be ancient spirits of the forest by some cultures. Their elusive nature only adds to their mystique and the legends surrounding them."
+    },
+    "shade gnoll": {
+        "name": "Shade Gnoll",
+        "description": "Ever wondered who you call when a fantasy riot needs controlling? Shade Gnolls the grimdark version of gnolls step in with shadowy abilities and a penchant for brutality. These beings thrive in chaos and darkness making them excellent enforcers and deadly opponents.",
+        "vitalBonus": [
+            "Strength: +3",
+            "Dexterity: +2",
+            "Stamina: +1"
+        ],
+        "skillBonus": [
+            "Close Combat: +3",
+            "Intimidation: +2",
+            "Stealth: +1"
+        ],
+        "abilities": [
+            "Shadow Strike",
+            "Fear Howl"
+        ],
+        "traits": [
+            "Darkvision",
+            "Shadow Meld"
+        ],
+        "lore": "Shade Gnolls are often the shock troops in darker armies their ability to blend into shadows and strike fear into enemies making them invaluable in warfare and terror tactics."
+    },
+    "tigran": {
+        "name": "Tigran",
+        "description": "Picture a humanoid now add stripes fur and feline grace and boom: you've got the Tigran. These orange furry tiger-like beings are for those who like their RPG characters with a side of whiskers and a penchant for naps in the sun.",
+        "vitalBonus": [
+            "Strength: +2",
+            "Dexterity: +3",
+            "Stamina: +1"
+        ],
+        "skillBonus": [
+            "Close Combat: +1",
+            "Stealth: +3",
+            "Athletics: +2"
+        ],
+        "abilities": [
+            "Feral Leap",
+            "Apex Predator"
+        ],
+        "traits": [
+            "Night Vision",
+            "Keen Senses"
+        ],
+        "lore": "Known to be influenced by the God of Chaos Tigrans are often seen as unpredictable warriors. Their agility and strength make them formidable in both hunting and combat."
+    },
+    "vampire": {
+        "name": "Vampire",
+        "description": "Ah the classic bloodsucker with a real estate portfolio. Vampires are elegant immortal beings with a taste for the finer things in life\u2014and blood. With their supernatural abilities and charm they are both aristocrats and apex predators.",
+        "vitalBonus": [
+            "Charisma: +3",
+            "Dexterity: +2",
+            "Intelligence: +1"
+        ],
+        "skillBonus": [
+            "Persuasion: +3",
+            "Stealth: +2",
+            "Intimidation: +1"
+        ],
+        "abilities": [
+            "Blood Drain",
+            "Hypnotic Gaze"
+        ],
+        "traits": [
+            "Night Vision",
+            "Regeneration"
+        ],
+        "lore": "Vampires are often found in the upper echelons of society using their charm and power to manipulate and control. Their ancient lineage and abilities make them both revered and feared."
     }
 }

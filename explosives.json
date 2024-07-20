@@ -1,197 +1,32 @@
 {
-    "Bugbear Paste": {
-        "description": "Ever wonder what happens when you take the essence of a bugbear and squish it into a jar? You get Bugbear Paste, the go-to condiment for explosive sandwiches. It’s the secret sauce of destruction, ready to spice up your life—literally. Spread it on anything you want to disappear. Just don’t ask what’s in it. Trust me, you don’t want to know.",
-        "itemType": "Explosive",
-        "rarity": "Rare",
-        "effect": "Creates a powerful explosion on impact. Perfect for clearing obstacles, enemies, or just making a mess.",
-        "range": "30 feet",
-        "damage": "4d8",
-        "damageType": "Fire",
-        "radius": "15 feet",
-        "triggerMechanism": "Impact",
-        "skillRequirements": {
-            "sapper": 3
-        }
-    },
-    "Brady’s Jug O’ Boom": {
-        "description": "Created by an unstable, pantsless man who talks to a cat, Brady’s Jug O’ Boom takes the bigger-is-better approach to hobgoblin fire bottles. Burns hotter, bigger, and faster than your normal Molotov Cocktail. The use of a standard torch instead of a cloth wick makes these devices much more stable. Just don’t drop it once it’s lit, lest you find yourself doing a Joan of Arc impersonation.",
-        "itemType": "Incendiary Tossable",
-        "rarity": "Very Rare",
-        "effect": "When lit and tossed, results in a small explosion, followed by burning splash damage over a wide area. Flames will burn for 15 seconds per level of attacker’s level of Incendiary Device Handling.",
-        "range": "40 feet",
-        "damage": "3d6 + 2d4 fire damage over time",
-        "damageType": "Fire",
-        "radius": "20 feet",
-        "triggerMechanism": "Torch activation",
-        "skillRequirements": {
-            "sapper": 5
-        }
-    },
-    "Celestial Grenade": {
-        "description": "Developed by the nuns of Enyo during the first enlightenment, these little balls of fun would summon their goddess to convince villagers to convert. A nun would drop a celestial grenade, which would summon Enyo directly into town for sixty seconds. That was usually enough to change the minds of the survivors.",
-        "itemType": "Explosive",
-        "rarity": "Legendary",
-        "effect": "Summons the wielder’s deity for 60 seconds. If the wielder does not worship a deity, a random god is summoned. Grants a 60-second Divine Intervention aura.",
-        "range": "60 feet",
-        "damage": "4d8 divine",
-        "damageType": "Divine",
-        "radius": "30 feet",
-        "triggerMechanism": "Timed fuse"
-    },
-    "Gnomish Knock-Knock": {
-        "description": "Ever seen a hundred Dromedarians die because their lungs imploded, followed by their skin getting melted off their body just before they all shatter into mist? Well now’s your chance! Fun for the whole family, this was the main weapon of the Gnomish Bombardier Squads. Famously unstable. But god-damn do they put on a show.",
-        "itemType": "Fuel-air bomb",
-        "rarity": "Exceedingly Rare",
-        "effect": "Thermobaric Explosion causing massive area damage and overpressure effects.",
-        "range": "60 feet",
-        "damage": "6d10",
-        "damageType": "Bludgeoning",
-        "radius": "50 feet",
-        "triggerMechanism": "Pressure-based fuse",
-        "skillRequirements": {
-            "sapper": 7
-        }
-    },
-    "Goblin Dynamite": {
-        "description": "This stuff is especially volatile. It’s so volatile, you probably don’t even need to light the wick to set it off. It’s so volatile, even loud noises might set it off. Keep it in your inventory until you’re ready to use it. Be gentle and don’t squeeze too hard or else you might get the… BOOM!",
-        "itemType": "Explosive",
-        "rarity": "Ordinary",
-        "effect": "Creates an explosion on impact. Highly sensitive to movement and sound.",
-        "range": "20 feet",
-        "damage": "3d8",
-        "damageType": "Fire",
-        "radius": "10 feet",
-        "triggerMechanism": "Impact or loud noise",
-        "skillRequirements": {
-            "sapper": 2
+    "explosives": {
+        "GnomishKnock-Knock": {
+            "name": "Gnomish Knock-Knock",
+            "description": "Thermobaric explosion causing devastating damage and implosion of lungs.",
+            "itemType": "Explosive",
+            "rarity": "Legendary",
+            "effect": "Thermobaric explosion causing devastating damage and implosion of lungs.",
+            "duration": "Instantaneous",
+            "range": "50 feet radius",
+            "vitalBonus": {},
+            "skillBonus": {},
+            "abilities": {},
+            "hpBonus": 0,
+            "mpBonus": 0
         },
-        "statBonuses": {
-            "dexterity": 1
-        },
-        "skillBonuses": {
-            "stealth": 2
-        },
-        "uniqueAbilities": {
-            "sensitiveFuse": {
-                "description": "Highly reactive to environmental factors."
-            }
-        },
-        "buffs": {
-            "caution": {
-                "description": "Reduces chance of accidental detonation by 10%."
-            }
-        }
-    },
-    "Goblin Smoke Bomb": {
-        "description": "Emits a stinking cloud of billowing, multi-color smoke that lasts for three minutes before dispersing. Use to either confuse enemies or as a stage prop at a hair metal concert.",
-        "itemType": "Deflagration",
-        "rarity": "Uncommon",
-        "effect": "Opaque smoke over a 10-meter radius for 3 minutes.",
-        "range": "20 feet",
-        "damage": "None",
-        "damageType": "None",
-        "radius": "10 meters",
-        "triggerMechanism": "Impact",
-        "skillRequirements": {
-            "sapper": 1
-        }
-    },
-    "Satchel of Gunpowder": {
-        "description": "Gunpowder, also known as black powder or 'funpowder' to goblins, is a granulated black powder that deflagrates rather than detonates. First used in Earth warfare in 904 AD, it’s good at throwing metal but not at breaking rock or fortifications.",
-        "itemType": "Explosive",
-        "rarity": "Ordinary",
-        "effect": "Creates a deflagration explosion, throwing shrapnel.",
-        "range": "30 feet",
-        "damage": "3d6",
-        "damageType": "Fire",
-        "radius": "20 feet",
-        "triggerMechanism": "Timed fuse",
-        "skillRequirements": {
-            "sapper": 3
-        }
-    },
-    "Hobgoblin Detonator": {
-        "description": "Single-use magical items that can be used to detonate up to ten explosive devices at the same time. It has a range of approximately 10 km. Each detonator looks like a stick of underarm deodorant. To use, you snap off the tip and place it into the explosive device. Click the button and the explosion will detonate five seconds later.",
-        "itemType": "Explosive",
-        "rarity": "Very Rare",
-        "effect": "Detonates up to ten explosive devices remotely.",
-        "range": "10 km",
-        "damage": "N/A",
-        "damageType": "N/A",
-        "radius": "N/A",
-        "triggerMechanism": "Remote detonation",
-        "skillRequirements": {
-            "sapper": 6
-        }
-    },
-    "Hobgoblin Pus": {
-        "description": "Clay-like explosive material that can be detonated with an actual trigger to create a large explosion. More valuable and stable than Goblin Dynamite.",
-        "itemType": "Explosive",
-        "rarity": "Rare",
-        "effect": "Creates a large explosion on trigger.",
-        "range": "20 feet",
-        "damage": "4d8",
-        "damageType": "Fire",
-        "radius": "25 feet",
-        "triggerMechanism": "Remote trigger",
-        "skillRequirements": {
-            "sapper": 4
-        }
-    },
-    "Hobgoblin Smoke Curtains": {
-        "description": "Round smoke bombs with fuses, which are relatively inexpensive and generally better than the limited Goblin Smoke Bombs. When detonated, they coat the entire area in a dense white fog.",
-        "itemType": "Explosive",
-        "rarity": "Uncommon",
-        "effect": "Dense white fog over a wide area.",
-        "range": "30 feet",
-        "damage": "None",
-        "damageType": "None",
-        "radius": "20 meters",
-        "triggerMechanism": "Timed fuse",
-        "skillRequirements": {
-            "sapper": 2
-        }
-    },
-    "Rev-Up Toilet-Grade Moonshine": {
-        "description": "At 180 proof, this moonshine will take the hair off your chest and then put it back on. The Rev-Up version is distilled using two types of sugars: the slime trails left behind by the passage of the Brindle Grub, and a secretive, proprietary source. Jugs of this concoction are highly sought after by the drinking establishments across the dungeon.",
-        "itemType": "Accelerant",
-        "rarity": "Exceedingly Rare",
-        "effect": "Highly flammable liquid with explosive fumes.",
-        "range": "30 feet",
-        "damage": "2d6 + 2d4 fire damage",
-        "damageType": "Fire",
-        "radius": "15 feet",
-        "triggerMechanism": "Flame activation",
-        "skillRequirements": {
-            "sapper": 3
-        }
-    },
-    "Satchel Bomb": {
-        "description": "A little bag with leather handles containing explosive equivalent to 13 sticks of hobgoblin dynamite. Enough to level a block.",
-        "itemType": "Explosive",
-        "rarity": "Very Rare",
-        "effect": "Massive explosion capable of leveling a small area.",
-        "range": "30 feet",
-        "damage": "6d10",
-        "damageType": "Fire",
-        "radius": "50 feet",
-        "triggerMechanism": "Timed fuse",
-        "skillRequirements": {
-            "sapper": 5
-        }
-    },
-    "Troll Smoke Mantel": {
-        "description": "A smoke bomb set of twelve that costs 30,000 gold. When detonated, they coat the entire area in a dense white fog.",
-        "itemType": "Explosive",
-        "rarity": "Legendary",
-        "effect": "Dense white fog over a wide area.",
-        "range": "50 feet",
-        "damage": "None",
-        "damageType": "None",
-        "radius": "30 meters",
-        "triggerMechanism": "Timed fuse",
-        "skillRequirements": {
-            "sapper": 8
+        "GoblinDynamite": {
+            "name": "Goblin Dynamite",
+            "description": "Extremely volatile explosive with a short fuse.",
+            "itemType": "Explosive",
+            "rarity": "Common",
+            "effect": "Extremely volatile explosive with a short fuse.",
+            "duration": "Instantaneous",
+            "range": "15 feet radius",
+            "vitalBonus": {},
+            "skillBonus": {},
+            "abilities": {},
+            "hpBonus": 0,
+            "mpBonus": 0
         }
     }
 }

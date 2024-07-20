@@ -1,0 +1,88 @@
+{
+    "crafting_components": {
+        "BugbearPaste": {
+            "name": "Bugbear Paste",
+            "description": "Creates powerful explosions upon impact.",
+            "itemType": "Crafting Component",
+            "rarity": "Rare",
+            "effect": "Creates powerful explosions upon impact.",
+            "duration": "Instantaneous",
+            "range": "20 feet radius",
+            "vitalBonus": {},
+            "skillBonus": {},
+            "abilities": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "FailSafe": {
+            "name": "Fail Safe",
+            "description": "Sends a notification if a trap is disabled or set off.",
+            "itemType": "Crafting Component",
+            "rarity": "Uncommon",
+            "effect": "Sends a notification if a trap is disabled or set off.",
+            "duration": "Permanent",
+            "range": "1 mile",
+            "vitalBonus": {},
+            "skillBonus": {},
+            "abilities": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "Gunpowder": {
+            "name": "Gunpowder",
+            "description": "Granulated black powder used as a propellant.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Granulated black powder used as a propellant.",
+            "duration": "Instantaneous",
+            "range": "N/A",
+            "vitalBonus": {},
+            "skillBonus": {},
+            "abilities": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "HobgoblinDetonator": {
+            "name": "Hobgoblin Detonator",
+            "description": "Detonates up to ten explosive devices simultaneously.",
+            "itemType": "Crafting Component",
+            "rarity": "Uncommon",
+            "effect": "Detonates up to ten explosive devices simultaneously.",
+            "duration": "Instantaneous",
+            "range": "10 km (6.21 miles)",
+            "vitalBonus": {},
+            "skillBonus": {},
+            "abilities": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "HobgoblinPus": {
+            "name": "Hobgoblin Pus",
+            "description": "Clay-like explosive material that creates a large explosion.",
+            "itemType": "Crafting Component",
+            "rarity": "Rare",
+            "effect": "Clay-like explosive material that creates a large explosion.",
+            "duration": "Instantaneous",
+            "range": "30 feet radius",
+            "vitalBonus": {},
+            "skillBonus": {},
+            "abilities": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "ProximityTrigger": {
+            "name": "Proximity Trigger",
+            "description": "Sets conditions for when traps go off including countdowns and mob type.",
+            "itemType": "Crafting Component",
+            "rarity": "Rare",
+            "effect": "Sets conditions for when traps go off including countdowns and mob type.",
+            "duration": "Permanent",
+            "range": "100 feet",
+            "vitalBonus": {},
+            "skillBonus": {},
+            "abilities": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        }
+    }
+}

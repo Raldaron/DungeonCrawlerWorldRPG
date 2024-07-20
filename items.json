@@ -1,504 +1,83 @@
 {
   "items": {
-    "SpiritBox": {
-      "name": "Spirit Box",
-      "description": "Roots the target in place for sixty seconds, lowers spirit resistance, summons a non-corporeal entity.",
-      "itemType": "Trap",
-      "rarity": "Rare",
-      "effect": "Roots the target in place for sixty seconds, lowers spirit resistance, summons a non-corporeal entity.",
-      "duration": "60 seconds",
-      "range": "Touch",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {},
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "CharmAnimalPotion": {
-      "name": "Charm Animal Potion",
-      "description": "Tames a Dungeon animal for the duration of the Floor.",
-      "itemType": "Potion",
-      "rarity": "Rare",
-      "effect": "Tames a Dungeon animal for the duration of the Floor.",
-      "duration": "Duration of the Floor",
-      "range": "N/A",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {},
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "MajorCharlie": {
-      "name": "Major Charlie",
-      "description": "Raises intelligence by 10 points for 30 seconds then lowers intelligence by 10 points for 5 minutes.",
-      "itemType": "Potion",
-      "rarity": "Uncommon",
-      "effect": "Raises intelligence by 10 points for 30 seconds then lowers intelligence by 10 points for 5 minutes.",
-      "duration": "30 seconds (boost), 5 minutes (debuff)",
-      "range": "N/A",
-      "statBonuses": {
-        "intelligence": 10
+      "BugbearPaste": {
+          "name": "Bugbear Paste",
+          "description": "Creates powerful explosions upon impact.",
+          "itemType": "Crafting Component",
+          "rarity": "Rare",
+          "effect": "Creates powerful explosions upon impact.",
+          "duration": "Instantaneous",
+          "range": "20 feet radius",
+          "damage": "8d6",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {
+              "stats": {
+                  "strength": 8
+              },
+              "skills": {
+                  "Sapper": 2
+              }
+          },
+          "hpBonus": 0,
+          "mpBonus": 0
       },
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {},
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "PotionOfInvisibility": {
-      "name": "Potion of Invisibility",
-      "description": "Turns the drinker invisible for 2 * intelligence seconds.",
-      "itemType": "Potion",
-      "rarity": "Rare",
-      "effect": "Turns the drinker invisible for 2 * intelligence seconds.",
-      "duration": "2 * Intelligence seconds",
-      "range": "N/A",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {
-        "stats": {
-          "intelligence": 10
-        }
+      "CelestialGrenade": {
+          "name": "Celestial Grenade",
+          "description": "Summons a deity for one minute.",
+          "itemType": "Throwable",
+          "rarity": "Legendary",
+          "effect": "Summons a deity for one minute.",
+          "duration": "1 minute (60 seconds)",
+          "range": "10 feet radius (summoning area)",
+          "damage": "N/A",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {
+              "stats": {
+                  "intelligence": 18
+              }
+          },
+          "hpBonus": 0,
+          "mpBonus": 0
       },
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "PotionOfDinosaurRepellent": {
-      "name": "Potion of Dinosaur Repellent",
-      "description": "Repels dinosaurs for 30 hours.",
-      "itemType": "Potion",
-      "rarity": "Epic",
-      "effect": "Repels dinosaurs for 30 hours.",
-      "duration": "30 hours",
-      "range": "N/A",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {},
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "HealCritterPotion": {
-      "name": "Heal Critter Potion",
-      "description": "Heals injured pets, dungeon familiars, and animal-class mobs.",
-      "itemType": "Potion",
-      "rarity": "Uncommon",
-      "effect": "Heals injured pets, dungeon familiars, and animal-class mobs.",
-      "duration": "Instantaneous",
-      "range": "N/A",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {},
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "SizeUpPotion": {
-      "name": "Size-Up Potion",
-      "description": "Provides detailed information about mobs including their stats and skills.",
-      "itemType": "Potion",
-      "rarity": "Rare",
-      "effect": "Provides detailed information about mobs including their stats and skills.",
-      "duration": "10 minutes",
-      "range": "N/A",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {},
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "EyeInTheSkyScroll": {
-      "name": "Eye in the Sky Scroll",
-      "description": "Provides information on a target within a wide area.",
-      "itemType": "Scroll",
-      "rarity": "Very Rare",
-      "effect": "Provides information on a target within a wide area.",
-      "duration": "Instantaneous",
-      "range": "Wide area",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {
-        "stats": {
-          "intelligence": 15
-        },
-        "skills": {
-          "Spellcasting": 5
-        }
+      "CharmAnimalPotion": {
+          "name": "Charm Animal Potion",
+          "description": "Tames a Dungeon animal for the duration of the Floor.",
+          "itemType": "Potion",
+          "rarity": "Rare",
+          "effect": "Tames a Dungeon animal for the duration of the Floor.",
+          "duration": "Duration of the Floor",
+          "range": "N/A",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {},
+          "hpBonus": 0,
+          "mpBonus": 0
       },
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "HobgoblinDetonator": {
-      "name": "Hobgoblin Detonator",
-      "description": "Detonates up to ten explosive devices simultaneously.",
-      "itemType": "Crafting Component",
-      "rarity": "Uncommon",
-      "effect": "Detonates up to ten explosive devices simultaneously.",
-      "duration": "Instantaneous",
-      "range": "10 km (6.21 miles)",
-      "damage": "Varies based on connected explosives",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {
-        "stats": {
-          "intelligence": 10
-        },
-        "skills": {
-          "Explosives Handling": 3
-        }
+      "ConfusingFog": {
+          "name": "Confusing Fog",
+          "description": "Fills a space with thick wet fog blinding mobs but translucent for the user's party.",
+          "itemType": "Scroll",
+          "rarity": "Uncommon",
+          "effect": "Fills a space with thick wet fog blinding mobs but translucent for the user's party.",
+          "duration": "Caster's INT x 5 seconds",
+          "range": "30 feet radius",
+          "damage": "N/A",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {
+              "stats": {
+                  "intelligence": 10
+              }
+          },
+          "hpBonus": 0,
+          "mpBonus": 0
       },
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "HobgoblinPus": {
-      "name": "Hobgoblin Pus",
-      "description": "Clay-like explosive material that creates a large explosion.",
-      "itemType": "Crafting Component",
-      "rarity": "Rare",
-      "effect": "Clay-like explosive material that creates a large explosion.",
-      "duration": "Instantaneous",
-      "range": "30 feet radius",
-      "damage": "10d6",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {
-        "stats": {
-          "dexterity": 10
-        },
-        "skills": {
-          "Explosives Handling": 4
-        }
-      },
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "HobgoblinSmokeCurtain": {
-      "name": "Hobgoblin Smoke Curtain",
-      "description": "Coats the area in dense white fog affecting physical entities.",
-      "itemType": "Throwable",
-      "rarity": "Uncommon",
-      "effect": "Coats the area in dense white fog affecting physical entities.",
-      "duration": "3 minutes (180 seconds)",
-      "range": "30 feet radius",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {},
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "PotionOfBloodlust": {
-      "name": "Potion of Bloodlust",
-      "description": "Doubles strength and movement speed, reduces dexterity and constitution, increases movement speed per kill.",
-      "itemType": "Potion",
-      "rarity": "Rare",
-      "effect": "Doubles strength and movement speed, reduces dexterity and constitution, increases movement speed per kill.",
-      "duration": "(Constitution) seconds",
-      "range": "N/A",
-      "statBonuses": {
-        "strength": "x2",
-        "dexterity": "x0.5",
-        "stamina": "x0.5"
-      },
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {},
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "PotionOfHalfSplat": {
-      "name": "Potion of Half Splat",
-      "description": "Prevents death from falling damage but leaves the user at 5% health.",
-      "itemType": "Potion",
-      "rarity": "Epic",
-      "effect": "Prevents death from falling damage but leaves the user at 5% health.",
-      "duration": "Instantaneous",
-      "range": "N/A",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {},
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "PotionOfPhaseThroughWall": {
-      "name": "Potion of Phase Through Wall",
-      "description": "Allows the drinker to phase through wood, stone, or metal walls.",
-      "itemType": "Potion",
-      "rarity": "Rare",
-      "effect": "Allows the drinker to phase through wood, stone, or metal walls.",
-      "duration": "10 seconds",
-      "range": "N/A",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {
-        "stats": {
-          "intelligence": 12
-        }
-      },
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "RevUpToiletGradeMoonshine": {
-      "name": "Rev-Up Toilet-Grade Moonshine",
-      "description": "Highly flammable liquid, explosive fumes, various effects upon consumption.",
-      "itemType": "Potion",
-      "rarity": "Uncommon",
-      "effect": "Highly flammable liquid, explosive fumes, various effects upon consumption.",
-      "duration": "Varies (see description)",
-      "range": "N/A",
-      "statBonuses": {
-        "random": 2
-      },
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {},
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "SatchelBomb": {
-      "name": "Satchel Bomb",
-      "description": "Equivalent to three sticks of hobgoblin dynamite, enough to level a town block.",
-      "itemType": "Throwable",
-      "rarity": "Rare",
-      "effect": "Equivalent to three sticks of hobgoblin dynamite, enough to level a town block.",
-      "duration": "Instantaneous",
-      "range": "40 feet radius",
-      "damage": "12d6",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {
-        "stats": {
-          "dexterity": 8
-        },
-        "skills": {
-          "Explosives Handling": 5
-        }
-      },
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "ShrinkWand": {
-      "name": "Shrink Wand",
-      "description": "Causes items to shrink in size. Has 10 charges.",
-      "itemType": "Wand",
-      "rarity": "Rare",
-      "effect": "Causes items to shrink in size. Has 10 charges.",
-      "duration": "1 hour per charge",
-      "range": "Touch",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {
-        "stats": {
-          "intelligence": 10
-        },
-        "skills": {
-          "Spellcasting": 3
-        }
-      },
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "TrollSmokeMantel": {
-      "name": "Troll Smoke Mantel",
-      "description": "Creates a thick smoke curtain.",
-      "itemType": "Throwable",
-      "rarity": "Epic",
-      "effect": "Creates a thick smoke curtain.",
-      "duration": "3 minutes (180 seconds)",
-      "range": "30 feet radius",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {},
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "FailSafe": {
-      "name": "Fail Safe",
-      "description": "Sends a notification if a trap is disabled or set off.",
-      "itemType": "Crafting Component",
-      "rarity": "Uncommon",
-      "effect": "Sends a notification if a trap is disabled or set off.",
-      "duration": "Permanent",
-      "range": "1 mile",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {
-        "stats": {
-          "intelligence": 8
-        },
-        "skills": {
-          "Trap Setting": 2
-        }
-      },
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "ProximityTrigger": {
-      "name": "Proximity Trigger",
-      "description": "Sets conditions for when traps go off including countdowns and mob type.",
-      "itemType": "Crafting Component",
-      "rarity": "Rare",
-      "effect": "Sets conditions for when traps go off including countdowns and mob type.",
-      "duration": "Permanent",
-      "range": "100 feet",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {
-        "stats": {
-          "intelligence": 12
-        },
-        "skills": {
-          "Trap Setting": 4
-        }
-      },
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "SnareTrap": {
-      "name": "Snare Trap",
-      "description": "Holds the target in place for fifteen seconds.",
-      "itemType": "Trap",
-      "rarity": "Common",
-      "effect": "Holds the target in place for fifteen seconds.",
-      "duration": "15 seconds",
-      "range": "Touch",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {
-        "stats": {
-          "dexterity": 8
-        },
-        "skills": {
-          "Traps": 2
-        }
-      },
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "BugbearPaste": {
-      "name": "Bugbear Paste",
-      "description": "Creates powerful explosions upon impact.",
-      "itemType": "Crafting Component",
-      "rarity": "Rare",
-      "effect": "Creates powerful explosions upon impact.",
-      "duration": "Instantaneous",
-      "range": "20 feet radius",
-      "damage": "8d6",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {
-        "stats": {
-          "strength": 8
-        },
-        "skills": {
-          "Sapper": 2
-        }
-      },
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "GnomishKnockKnock": {
-      "name": "Gnomish Knock-Knock",
-      "description": "Thermobaric explosion causing devastating damage and implosion of lungs.",
-      "itemType": "Explosive",
-      "rarity": "Legendary",
-      "effect": "Thermobaric explosion causing devastating damage and implosion of lungs.",
-      "duration": "Instantaneous",
-      "range": "50 feet radius",
-      "damage": "15d6",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {
-        "stats": {
-          "intelligence": 10
-        },
-        "skills": {
-          "Sapper": 5
-        }
-      },
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "JugOBoom": {
-      "name": "Jug O' Boom",
-      "description": "Causes a small explosion followed by burning splash damage.",
-      "itemType": "Throwable",
-      "rarity": "Rare",
-      "effect": "Causes a small explosion followed by burning splash damage.",
-      "duration": "Flames burn for 15 seconds per level of attacker's Incendiary Device Handling.",
-      "range": "20 feet radius",
-      "damage": "6d6 + 2d6 burning damage per turn",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {
-        "stats": {
-          "dexterity": 10
-        },
-        "skills": {
-          "Sapper": 3
-        }
-      },
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "CelestialGrenade": {
-      "name": "Celestial Grenade",
-      "description": "Summons a deity for one minute.",
-      "itemType": "Throwable",
-      "rarity": "Legendary",
-      "effect": "Summons a deity for one minute.",
-      "duration": "1 minute (60 seconds)",
-      "range": "10 feet radius (summoning area)",
-      "damage": "N/A",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {
-        "stats": {
-          "intelligence": 18
-        }
-      },
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "ConfusingFog": {
-      "name": "Confusing Fog",
-      "description": "Fills a space with thick wet fog blinding mobs but translucent for the user's party.",
-      "itemType": "Scroll",
-      "rarity": "Uncommon",
-      "effect": "Fills a space with thick wet fog blinding mobs but translucent for the user's party.",
-      "duration": "Caster's INT x 5 seconds",
-      "range": "30 feet radius",
-      "damage": "N/A",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {
-        "stats": {
-          "intelligence": 10
-        }
-      },
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
       "DoloresDoesntSplatPotion": {
           "name": "Dolores Doesn't Splat Potion",
           "description": "In a very early season of Dungeon Crawler World, a crocodilian alchemist crawler created the 'Dolores Doesn't Splat' potion while falling for ten minutes down a deep pit. Dolores combined two potions: one that imitates Katia Grim's Crowd Blast ability, and one that involved breeding of Rock Buffalo. To impregnate an in-heat rock buffalo, the male must penetrate her five times in rapid succession.",
@@ -508,67 +87,488 @@
           "duration": "Instantaneous",
           "range": "N/A",
           "damage": "N/A",
-          "statBonuses": {},
+          "vitalBonus": {},
           "skillBonuses": {},
           "uniqueAbilities": {},
           "requirements": {},
           "hpBonus": 0,
           "mpBonus": 0
       },
-    "GoblinDynamite": {
-      "name": "Goblin Dynamite",
-      "description": "Extremely volatile explosive with a short fuse.",
-      "itemType": "Explosive",
-      "rarity": "Common",
-      "effect": "Extremely volatile explosive with a short fuse.",
-      "duration": "Instantaneous",
-      "range": "15 feet radius",
-      "damage": "5d6",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {
-        "stats": {
-          "dexterity": 8
-        },
-        "skills": {
-          "Sapper": 2
-        }
+      "EyeInTheSkyScroll": {
+          "name": "Eye in the Sky Scroll",
+          "description": "Provides information on a target within a wide area.",
+          "itemType": "Scroll",
+          "rarity": "Very Rare",
+          "effect": "Provides information on a target within a wide area.",
+          "duration": "Instantaneous",
+          "range": "Wide area",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {
+              "stats": {
+                  "intelligence": 15
+              },
+              "skills": {
+                  "Spellcasting": 5
+              }
+          },
+          "hpBonus": 0,
+          "mpBonus": 0
       },
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "GoblinSmokeBomb": {
-      "name": "Goblin Smoke Bomb",
-      "description": "Emits a cloud of stinking multi-color opaque smoke.",
-      "itemType": "Throwable",
-      "rarity": "Common",
-      "effect": "Emits a cloud of stinking multi-color opaque smoke.",
-      "duration": "3 minutes (180 seconds)",
-      "range": "10 meter radius",
-      "damage": "N/A",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {},
-      "hpBonus": 0,
-      "mpBonus": 0
-    },
-    "Gunpowder": {
-      "name": "Gunpowder",
-      "description": "Granulated black powder used as a propellant.",
-      "itemType": "Crafting Component",
-      "rarity": "Common",
-      "effect": "Granulated black powder used as a propellant.",
-      "duration": "Instantaneous",
-      "range": "N/A",
-      "damage": "N/A",
-      "statBonuses": {},
-      "skillBonuses": {},
-      "uniqueAbilities": {},
-      "requirements": {},
-      "hpBonus": 0,
-      "mpBonus": 0
-    }
+      "FailSafe": {
+          "name": "Fail Safe",
+          "description": "Sends a notification if a trap is disabled or set off.",
+          "itemType": "Crafting Component",
+          "rarity": "Uncommon",
+          "effect": "Sends a notification if a trap is disabled or set off.",
+          "duration": "Permanent",
+          "range": "1 mile",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {
+              "stats": {
+                  "intelligence": 8
+              },
+              "skills": {
+                  "Trap Setting": 2
+              }
+          },
+          "hpBonus": 0,
+          "mpBonus": 0
+      },
+      "GnomishKnockKnock": {
+          "name": "Gnomish Knock-Knock",
+          "description": "Thermobaric explosion causing devastating damage and implosion of lungs.",
+          "itemType": "Explosive",
+          "rarity": "Legendary",
+          "effect": "Thermobaric explosion causing devastating damage and implosion of lungs.",
+          "duration": "Instantaneous",
+          "range": "50 feet radius",
+          "damage": "15d6",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {
+              "stats": {
+                  "intelligence": 10
+              },
+              "skills": {
+                  "Sapper": 5
+              }
+          },
+          "hpBonus": 0,
+          "mpBonus": 0
+      },
+      "GoblinDynamite": {
+          "name": "Goblin Dynamite",
+          "description": "Extremely volatile explosive with a short fuse.",
+          "itemType": "Explosive",
+          "rarity": "Common",
+          "effect": "Extremely volatile explosive with a short fuse.",
+          "duration": "Instantaneous",
+          "range": "15 feet radius",
+          "damage": "5d6",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {
+              "stats": {
+                  "dexterity": 8
+              },
+              "skills": {
+                  "Sapper": 2
+              }
+          },
+          "hpBonus": 0,
+          "mpBonus": 0
+      },
+      "GoblinSmokeBomb": {
+          "name": "Goblin Smoke Bomb",
+          "description": "Emits a cloud of stinking multi-color opaque smoke.",
+          "itemType": "Throwable",
+          "rarity": "Common",
+          "effect": "Emits a cloud of stinking multi-color opaque smoke.",
+          "duration": "3 minutes (180 seconds)",
+          "range": "10 meter radius",
+          "damage": "N/A",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {},
+          "hpBonus": 0,
+          "mpBonus": 0
+      },
+      "Gunpowder": {
+          "name": "Gunpowder",
+          "description": "Granulated black powder used as a propellant.",
+          "itemType": "Crafting Component",
+          "rarity": "Common",
+          "effect": "Granulated black powder used as a propellant.",
+          "duration": "Instantaneous",
+          "range": "N/A",
+          "damage": "N/A",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {},
+          "hpBonus": 0,
+          "mpBonus": 0
+      },
+      "HealCritterPotion": {
+          "name": "Heal Critter Potion",
+          "description": "Heals injured pets, dungeon familiars, and animal-class mobs.",
+          "itemType": "Potion",
+          "rarity": "Uncommon",
+          "effect": "Heals injured pets, dungeon familiars, and animal-class mobs.",
+          "duration": "Instantaneous",
+          "range": "N/A",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {},
+          "hpBonus": 0,
+          "mpBonus": 0
+      },
+      "HobgoblinDetonator": {
+          "name": "Hobgoblin Detonator",
+          "description": "Detonates up to ten explosive devices simultaneously.",
+          "itemType": "Crafting Component",
+          "rarity": "Uncommon",
+          "effect": "Detonates up to ten explosive devices simultaneously.",
+          "duration": "Instantaneous",
+          "range": "10 km (6.21 miles)",
+          "damage": "Varies based on connected explosives",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {
+              "stats": {
+                  "intelligence": 10
+              },
+              "skills": {
+                  "Explosives Handling": 3
+              }
+          },
+          "hpBonus": 0,
+          "mpBonus": 0
+      },
+      "HobgoblinPus": {
+          "name": "Hobgoblin Pus",
+          "description": "Clay-like explosive material that creates a large explosion.",
+          "itemType": "Crafting Component",
+          "rarity": "Rare",
+          "effect": "Clay-like explosive material that creates a large explosion.",
+          "duration": "Instantaneous",
+          "range": "30 feet radius",
+          "damage": "10d6",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {
+              "stats": {
+                  "dexterity": 10
+              },
+              "skills": {
+                  "Explosives Handling": 4
+              }
+          },
+          "hpBonus": 0,
+          "mpBonus": 0
+      },
+      "HobgoblinSmokeCurtain": {
+          "name": "Hobgoblin Smoke Curtain",
+          "description": "Coats the area in dense white fog affecting physical entities.",
+          "itemType": "Throwable",
+          "rarity": "Uncommon",
+          "effect": "Coats the area in dense white fog affecting physical entities.",
+          "duration": "3 minutes (180 seconds)",
+          "range": "30 feet radius",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {},
+          "hpBonus": 0,
+          "mpBonus": 0
+      },
+      "JugOBoom": {
+          "name": "Jug O' Boom",
+          "description": "Causes a small explosion followed by burning splash damage.",
+          "itemType": "Throwable",
+          "rarity": "Rare",
+          "effect": "Causes a small explosion followed by burning splash damage.",
+          "duration": "Flames burn for 15 seconds per level of attacker's Incendiary Device Handling.",
+          "range": "20 feet radius",
+          "damage": "6d6 + 2d6 burning damage per turn",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {
+              "stats": {
+                  "dexterity": 10
+              },
+              "skills": {
+                  "Sapper": 3
+              }
+          },
+          "hpBonus": 0,
+          "mpBonus": 0
+      },
+      "MajorCharlie": {
+          "name": "Major Charlie",
+          "description": "Raises intelligence by 10 points for 30 seconds then lowers intelligence by 10 points for 5 minutes.",
+          "itemType": "Potion",
+          "rarity": "Uncommon",
+          "effect": "Raises intelligence by 10 points for 30 seconds then lowers intelligence by 10 points for 5 minutes.",
+          "duration": "30 seconds (boost), 5 minutes (debuff)",
+          "range": "N/A",
+          "vitalBonus": {
+              "intelligence": 10
+          },
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {},
+          "hpBonus": 0,
+          "mpBonus": 0
+      },
+      "PotionOfBloodlust": {
+          "name": "Potion of Bloodlust",
+          "description": "Doubles strength and movement speed, reduces dexterity and constitution, increases movement speed per kill.",
+          "itemType": "Potion",
+          "rarity": "Rare",
+          "effect": "Doubles strength and movement speed, reduces dexterity and constitution, increases movement speed per kill.",
+          "duration": "(Constitution) seconds",
+          "range": "N/A",
+          "vitalBonus": {
+              "strength": "x2",
+              "dexterity": "x0.5",
+              "stamina": "x0.5"
+          },
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {},
+          "hpBonus": 0,
+          "mpBonus": 0
+      },
+      "PotionOfDinosaurRepellent": {
+          "name": "Potion of Dinosaur Repellent",
+          "description": "Repels dinosaurs for 30 hours.",
+          "itemType": "Potion",
+          "rarity": "Epic",
+          "effect": "Repels dinosaurs for 30 hours.",
+          "duration": "30 hours",
+          "range": "N/A",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {},
+          "hpBonus": 0,
+          "mpBonus": 0
+      },
+      "PotionOfHalfSplat": {
+          "name": "Potion of Half Splat",
+          "description": "Prevents death from falling damage but leaves the user at 5% health.",
+          "itemType": "Potion",
+          "rarity": "Epic",
+          "effect": "Prevents death from falling damage but leaves the user at 5% health.",
+          "duration": "Instantaneous",
+          "range": "N/A",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {},
+          "hpBonus": 0,
+          "mpBonus": 0
+      },
+      "PotionOfInvisibility": {
+          "name": "Potion of Invisibility",
+          "description": "Turns the drinker invisible for 2 * intelligence seconds.",
+          "itemType": "Potion",
+          "rarity": "Rare",
+          "effect": "Turns the drinker invisible for 2 * intelligence seconds.",
+          "duration": "2 * Intelligence seconds",
+          "range": "N/A",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {
+              "stats": {
+                  "intelligence": 10
+              }
+          },
+          "hpBonus": 0,
+          "mpBonus": 0
+      },
+      "PotionOfPhaseThroughWall": {
+          "name": "Potion of Phase Through Wall",
+          "description": "Allows the drinker to phase through wood, stone, or metal walls.",
+          "itemType": "Potion",
+          "rarity": "Rare",
+          "effect": "Allows the drinker to phase through wood, stone, or metal walls.",
+          "duration": "10 seconds",
+          "range": "N/A",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {
+              "stats": {
+                  "intelligence": 12
+              }
+          },
+          "hpBonus": 0,
+          "mpBonus": 0
+      },
+      "ProximityTrigger": {
+          "name": "Proximity Trigger",
+          "description": "Sets conditions for when traps go off including countdowns and mob type.",
+          "itemType": "Crafting Component",
+          "rarity": "Rare",
+          "effect": "Sets conditions for when traps go off including countdowns and mob type.",
+          "duration": "Permanent",
+          "range": "100 feet",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {
+              "stats": {
+                  "intelligence": 12
+              },
+              "skills": {
+                  "Trap Setting": 4
+              }
+          },
+          "hpBonus": 0,
+          "mpBonus": 0
+      },
+      "RevUpToiletGradeMoonshine": {
+          "name": "Rev-Up Toilet-Grade Moonshine",
+          "description": "Highly flammable liquid, explosive fumes, various effects upon consumption.",
+          "itemType": "Potion",
+          "rarity": "Uncommon",
+          "effect": "Highly flammable liquid, explosive fumes, various effects upon consumption.",
+          "duration": "Varies (see description)",
+          "range": "N/A",
+          "vitalBonus": {
+              "random": 2
+          },
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {},
+          "hpBonus": 0,
+          "mpBonus": 0
+      },
+      "SatchelBomb": {
+          "name": "Satchel Bomb",
+          "description": "Equivalent to three sticks of hobgoblin dynamite, enough to level a town block.",
+          "itemType": "Throwable",
+          "rarity": "Rare",
+          "effect": "Equivalent to three sticks of hobgoblin dynamite, enough to level a town block.",
+          "duration": "Instantaneous",
+          "range": "40 feet radius",
+          "damage": "12d6",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {
+              "stats": {
+                  "dexterity": 8
+              },
+              "skills": {
+                  "Explosives Handling": 5
+              }
+          },
+          "hpBonus": 0,
+          "mpBonus": 0
+      },
+      "ShrinkWand": {
+          "name": "Shrink Wand",
+          "description": "Causes items to shrink in size. Has 10 charges.",
+          "itemType": "Wand",
+          "rarity": "Rare",
+          "effect": "Causes items to shrink in size. Has 10 charges.",
+          "duration": "1 hour per charge",
+          "range": "Touch",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {
+              "stats": {
+                  "intelligence": 10
+              },
+              "skills": {
+                  "Spellcasting": 3
+              }
+          },
+          "hpBonus": 0,
+          "mpBonus": 0
+      },
+      "SizeUpPotion": {
+          "name": "Size-Up Potion",
+          "description": "Provides detailed information about mobs including their stats and skills.",
+          "itemType": "Potion",
+          "rarity": "Rare",
+          "effect": "Provides detailed information about mobs including their stats and skills.",
+          "duration": "10 minutes",
+          "range": "N/A",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {},
+          "hpBonus": 0,
+          "mpBonus": 0
+      },
+      "SnareTrap": {
+          "name": "Snare Trap",
+          "description": "Holds the target in place for fifteen seconds.",
+          "itemType": "Trap",
+          "rarity": "Common",
+          "effect": "Holds the target in place for fifteen seconds.",
+          "duration": "15 seconds",
+          "range": "Touch",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {
+              "stats": {
+                  "dexterity": 8
+              },
+              "skills": {
+                  "Traps": 2
+              }
+          },
+          "hpBonus": 0,
+          "mpBonus": 0
+      },
+      "SpiritBox": {
+          "name": "Spirit Box",
+          "description": "Roots the target in place for sixty seconds, lowers spirit resistance, summons a non-corporeal entity.",
+          "itemType": "Trap",
+          "rarity": "Rare",
+          "effect": "Roots the target in place for sixty seconds, lowers spirit resistance, summons a non-corporeal entity.",
+          "duration": "60 seconds",
+          "range": "Touch",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {},
+          "hpBonus": 0,
+          "mpBonus": 0
+      },
+      "TrollSmokeMantel": {
+          "name": "Troll Smoke Mantel",
+          "description": "Creates a thick smoke curtain.",
+          "itemType": "Throwable",
+          "rarity": "Epic",
+          "effect": "Creates a thick smoke curtain.",
+          "duration": "3 minutes (180 seconds)",
+          "range": "30 feet radius",
+          "vitalBonus": {},
+          "skillBonuses": {},
+          "uniqueAbilities": {},
+          "requirements": {},
+          "hpBonus": 0,
+          "mpBonus": 0
+      }
   }
 }

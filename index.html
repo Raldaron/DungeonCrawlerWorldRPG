@@ -4,393 +4,430 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Character Sheet</title>
-    <link rel="stylesheet" href="styles1.css">
+    <title>TTRPG Character Sheet</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
 </head>
 
 <body>
-    <div class="container">
-        <header>
-            <h1>Character Sheet</h1>
-        </header>
-        <section class="character-info">
-            <div class="character-name">
-                <label for="char-name">Character Name:</label>
-                <input type="text" id="char-name" value="Character Name">
-            </div>
-            <div class="character-details">
-                <div class="character-race">
-                    <label for="char-race">Race:</label>
-                    <select id="char-race"></select>
-                </div>
-                <div class="character-class">
-                    <label for="char-class">Class:</label>
-                    <select id="char-class"></select>
-                </div>
-            </div>
-        </section>
 
-        <section class="main-stats">
-            <div class="row">
-                <div class="stat" data-stat="char-level">
-                    <p>Level</p>
-                    <span id="char-level">1</span>
-                    <button onclick="incrementLevel()">+</button>
-                    <button onclick="decrementLevel()">-</button>
+    <div id="weaponModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+    <header>
+        <div class="header-content">
+            <div class="section">
+                <strong>Character Name:</strong>
+                <span id="character-name" ondblclick="UIModule.editField('character-name')">Crawler # 3,281,130</span>
+                <input type="text" id="character-name-input" class="hidden"
+                    onblur="UIModule.saveField('character-name')">
+            </div>
+            <div class="section">
+                <strong>Level:</strong>
+                <span id="character-level" ondblclick="UIModule.editField('character-level')">1</span>
+                <input type="number" id="character-level-input" class="hidden"
+                    onblur="UIModule.saveField('character-level')">
+            </div>
+            <div class="section">
+                <strong>Available Vital Points:</strong>
+                <span id="available-vital-points" ondblclick="UIModule.editField('available-vital-points')">12</span>
+                <input type="number" id="available-vital-points-input" class="hidden"
+                    onblur="UIModule.saveField('available-vital-points')">
+            </div>
+            <div class="section">
+                <strong>Available Skill Points:</strong>
+                <span id="available-skill-points" ondblclick="UIModule.editField('available-skill-points')">18</span>
+                <input type="number" id="available-skill-points-input" class="hidden"
+                    onblur="UIModule.saveField('available-skill-points')">
+            </div>
+            <div class="section">
+                <strong>Race:</strong>
+                <span id="character-race" ondblclick="UIModule.editField('character-race')">Human</span>
+                <select id="character-race-input" class="hidden" onblur="UIModule.saveField('character-race')"></select>
+            </div>
+            <div class="section">
+                <strong>Class:</strong>
+                <span id="character-class" ondblclick="UIModule.editField('character-class')">Warrior</span>
+                <select id="character-class-input" class="hidden"
+                    onblur="UIModule.saveField('character-class')"></select>
+            </div>
+            <div class="section">
+                <strong>Armor Rating:</strong>
+                <span id="armor-rating">10</span>
+            </div>
+            <div class="section">
+                <strong>Hit Points:</strong>
+                <span id="current-hp" ondblclick="UIModule.editField('current-hp')">50</span> / <span
+                    id="total-hp">50</span>
+                <input type="number" id="current-hp-input" class="hidden" onblur="UIModule.saveField('current-hp')">
+            </div>
+            <div class="section">
+                <strong>Mana Points:</strong>
+                <span id="current-mp" ondblclick="UIModule.editField('current-mp')">30</span> / <span
+                    id="total-mp">30</span>
+                <input type="number" id="current-mp-input" class="hidden" onblur="UIModule.saveField('current-mp')">
+            </div>
+            <div class="section">
+                <strong>Ability Point Pool:</strong>
+                <span id="ability-point-pool" ondblclick="UIModule.editField('ability-point-pool')">5</span>
+                <input type="number" id="ability-point-pool-input" class="hidden"
+                    onblur="UIModule.saveField('ability-point-pool')">
+            </div>
+            <div class="section">
+                <strong>Current Views:</strong>
+                <div class="gauge">
+                    <div class="gauge-background"></div>
+                    <div class="gauge-needle" id="current-views-needle"></div>
                 </div>
-                <div class="stat" data-stat="stat-points">
-                    <p>Stat Points</p>
-                    <span id="stat-points">60</span>
+            </div>
+            <div class="section">
+                <strong>Followers:</strong>
+                <span id="followers">50</span>
+            </div>
+            <div class="section">
+                <strong>Favorites:</strong>
+                <span id="favorites">20</span>
+            </div>
+        </div>
+    </header>
+    <div class="tab-container">
+        <div class="tabs">
+            <button class="tablink" onclick="TabModule.openTab(event, 'CharacterInfo')">Character Info</button>
+            <button class="tablink active" onclick="TabModule.openTab(event, 'Main')">Main</button>
+            <button class="tablink" onclick="TabModule.openTab(event, 'Stats')">Stats</button>
+            <button class="tablink" onclick="TabModule.openTab(event, 'Equipment')">Equipment</button>
+            <button class="tablink" onclick="TabModule.openTab(event, 'Inventory')">Inventory</button>
+            <button class="tablink" onclick="TabModule.openTab(event, 'Spells')">Spells</button>
+            <button class="tablink" onclick="TabModule.openTab(event, 'Crafting')">Crafting</button>
+            <button class="tablink" onclick="TabModule.openTab(event, 'QuestLog')">Quest Log</button>
+            <button class="tablink" onclick="TabModule.openTab(event, 'Notes')">Notes</button>
+        </div>
+        <div id="CharacterInfo" class="tabcontent">
+            <div class="info-cards">
+                <div class="card" id="race-card">
+                    <h3>Race Information</h3>
+                    <p><strong>Name:</strong> <span id="race-name"></span></p>
+                    <p><strong>Description:</strong> <span id="race-description"></span></p>
+                    <p><strong>Lore:</strong> <span id="race-lore"></span></p>
+                    <p><strong>Stat Bonuses:</strong> <span id="stat-bonuses"></span></p>
+                    <p><strong>Skill Bonuses:</strong> <span id="skill-bonuses"></span></p>
+                    <p><strong>Traits:</strong> <span id="race-traits"></span></p>
+                    <p><strong>Abilities:</strong> <span id="race-abilities"></span></p>
                 </div>
-                <div class="stat" data-stat="skill-points">
-                    <p>Skill Points</p>
-                    <span id="skill-points">6</span>
+                <div class="card" id="class-card">
+                    <h3>Class Information</h3>
+                    <p><strong>Name:</strong> <span id="class-name"></span></p>
+                    <p><strong>Description:</strong> <span id="class-description"></span></p>
+                    <p><strong>Archetype:</strong> <span id="class-archetype"></span></p>
+                    <p><strong>Primary Vitals:</strong> <span id="class-primary-vitals"></span></p>
+                    <p><strong>Vital Bonuses:</strong> <span id="class-vital-bonuses"></span></p>
+                    <p><strong>Skill Bonuses:</strong> <span id="class-skill-bonuses"></span></p>
+                    <p><strong>Traits:</strong> <span id="class-traits"></span></p>
+                    <p><strong>Abilities:</strong> <span id="class-abilities"></span></p>
+                </div>
+            </div>
+        </div>
+        <div id="Main" class="tabcontent active">
+            <div class="sub-tabs">
+                <button class="subtablink" onclick="TabModule.openSubTab(event, 'Actions')">Actions</button>
+                <button class="subtablink" onclick="TabModule.openSubTab(event, 'Abilities')">Abilities</button>
+            </div>
+            <div id="Actions" class="subtabcontent">
+                <h2>Actions</h2>
+                <div class="sub-section">
+                    <h3>Major Actions</h3>
+                    <!-- Major Actions content goes here -->
+                </div>
+                <div class="sub-section">
+                    <h3>Minor Actions</h3>
+                    <!-- Minor Actions content goes here -->
+                </div>
+                <div class="sub-section">
+                    <h3>Reactions</h3>
+                    <!-- Reactions content goes here -->
                 </div>
             </div>
 
-            <div class="row spaced-row">
-                <div class="stat" data-stat="hp">
-                    <p>HP</p>
-                    <span id="hp">0</span>
-                </div>
-                <div class="stat" data-stat="mp">
-                    <p>MP</p>
-                    <span id="mp">0</span>
-                </div>
-                <div class="stat" data-stat="ar">
-                    <p>AR</p>
-                    <span id="ar">10</span>
-                </div>
-                <div class="stat" data-stat="ap">
-                    <p>AP</p>
-                    <span id="ap">0</span>
-                </div>
+            <div id="Abilities" class="subtabcontent">
+                <h2>Abilities</h2>
+                <div id="abilities-container"></div>
             </div>
-        </section>
-        <section class="main-stats">
-        </section>
-        <section class="abilities">
-            <h2>Unique Abilities</h2>
-            <div class="ability-container"></div>
-        </section>
-        <section class="buffs">
-            <h2>Buffs</h2>
-            <div class="buff-container"></div>
-        </section>
-        <section class="actions">
-            <h2>Actions</h2>
-            <div class="action-container"></div>
-        </section>
-        <section class="stats">
-            <h2>Stats</h2>
-            <div class="stat-container">
-                <div class="stat" data-stat="strength">
-                    <p>Strength</p>
-                    <span id="strength">1</span>
-                </div>
-                <div class="stat" data-stat="dexterity">
-                    <p>Dexterity</p>
-                    <span id="dexterity">1</span>
-                </div>
-                <div class="stat" data-stat="stamina">
-                    <p>Stamina</p>
-                    <span id="stamina">1</span>
-                </div>
-                <div class="stat" data-stat="intelligence">
-                    <p>Intelligence</p>
-                    <span id="intelligence">1</span>
-                </div>
-                <div class="stat" data-stat="perception">
-                    <p>Perception</p>
-                    <span id="perception">1</span>
-                </div>
-                <div class="stat" data-stat="wit">
-                    <p>Wit</p>
-                    <span id="wit">1</span>
-                </div>
-                <div class="stat" data-stat="charisma">
-                    <p>Charisma</p>
-                    <span id="charisma">1</span>
-                </div>
-                <div class="stat" data-stat="manipulation">
-                    <p>Manipulation</p>
-                    <span id="manipulation">1</span>
-                </div>
-                <div class="stat" data-stat="appearance">
-                    <p>Appearance</p>
-                    <span id="appearance">1</span>
-                </div>
+        </div>
+        <div id="Stats" class="tabcontent">
+            <div class="subtabs">
+                <button class="subtablink active" onclick="TabModule.openSubTab(event, 'Vitals')">Vitals</button>
+                <button class="subtablink" onclick="TabModule.openSubTab(event, 'Skills')">Skills</button>
+                <button class="subtablink" onclick="TabModule.openSubTab(event, 'Enhancements')">Enhancements</button>
+                <button class="subtablink" onclick="TabModule.openSubTab(event, 'Traits')">Traits</button>
+                <button class="subtablink" onclick="TabModule.openSubTab(event, 'BuffsDebuffs')">Buffs/Debuffs</button>
             </div>
-        </section>
-
-        <section class="skills">
-            <h2>Skills</h2>
-            <div class="skill-container">
-                <div class="skill-column">
-                    <!-- Column 1 -->
-                </div>
-                <div class="skill-column">
-                    <!-- Column 2 -->
-                </div>
-                <div class="skill-column">
-                    <!-- Column 3 -->
-                </div>
-                <div class="skill-column">
-                    <!-- Column 4 -->
-                </div>
-            </div>
-        </section>
-        <section class="spells">
-            <h2>Spells</h2>
-            <div class="spell-container">
-                <!-- Spells will be dynamically populated by JavaScript -->
-            </div>
-        </section>
-        </section>
-        <section class="utility">
-            <h2>Utility Slots</h2>
-            <div class="utility-grid">
-                <div class="utility-column">
-                    <div class="utility-slot" data-slot="utility-1">
-                        <div class="item-list"></div>
-                        <button class="increment">+</button>
-                        <button class="decrement">-</button>
+            <div id="Vitals" class="subtabcontent active">
+                <h3>Vitals</h3>
+                <div class="vitals-container">
+                    <div class="vitals-column">
+                        <h4>Physical</h4>
+                        <div class="vitals-box">
+                            <div class="stat-box">
+                                <label>Strength</label>
+                                <div class="stat-score" id="strength-score">0</div>
+                            </div>
+                            <div class="stat-box">
+                                <label>Dexterity</label>
+                                <div class="stat-score" id="dexterity-score">0</div>
+                            </div>
+                            <div class="stat-box">
+                                <label>Stamina</label>
+                                <div class="stat-score" id="stamina-score">0</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="utility-slot" data-slot="utility-2">
-                        <div class="item-list"></div>
-                        <button class="increment">+</button>
-                        <button class="decrement">-</button>
+                    <div class="vitals-column">
+                        <h4>Mental</h4>
+                        <div class="vitals-box">
+                            <div class="stat-box">
+                                <label>Intelligence</label>
+                                <div class="stat-score" id="intelligence-score">0</div>
+                            </div>
+                            <div class="stat-box">
+                                <label>Perception</label>
+                                <div class="stat-score" id="perception-score">0</div>
+                            </div>
+                            <div class="stat-box">
+                                <label>Wit</label>
+                                <div class="stat-score" id="wit-score">0</div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="utility-slot" data-slot="utility-3">
-                        <div class="item-list"></div>
-                        <button class="increment">+</button>
-                        <button class="decrement">-</button>
-                    </div>
-                </div>
-                <div class="utility-column">
-                    <div class="utility-slot" data-slot="utility-4">
-                        <div class="item-list"></div>
-                        <button class="increment">+</button>
-                        <button class="decrement">-</button>
-                    </div>
-                    <div class="utility-slot" data-slot="utility-5">
-                        <div class="item-list"></div>
-                        <button class="increment">+</button>
-                        <button class="decrement">-</button>
-                    </div>
-                    <div class="utility-slot" data-slot="utility-6">
-                        <div class="item-list"></div>
-                        <button class="increment">+</button>
-                        <button class="decrement">-</button>
-                    </div>
-                </div>
-                <div class="utility-column">
-                    <div class="utility-slot" data-slot="utility-7">
-                        <div class="item-list"></div>
-                        <button class="increment">+</button>
-                        <button class="decrement">-</button>
-                    </div>
-                    <div class="utility-slot" data-slot="utility-8">
-                        <div class="item-list"></div>
-                        <button class="increment">+</button>
-                        <button class="decrement">-</button>
-                    </div>
-                    <div class="utility-slot" data-slot="utility-9">
-                        <div class="item-list"></div>
-                        <button class="increment">+</button>
-                        <button class="decrement">-</button>
+                    <div class="vitals-column">
+                        <h4>Social</h4>
+                        <div class="vitals-box">
+                            <div class="stat-box">
+                                <label>Charisma</label>
+                                <div class="stat-score" id="charisma-score">0</div>
+                            </div>
+                            <div class="stat-box">
+                                <label>Manipulation</label>
+                                <div class="stat-score" id="manipulation-score">0</div>
+                            </div>
+                            <div class="stat-box">
+                                <label>Appearance</label>
+                                <div class="stat-score" id="appearance-score">0</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
-        <section class="equipment">
+            <div id="Skills" class="subtabcontent">
+                <h3>Skills</h3>
+                <div id="skills-container" class="skills-grid"></div>
+            </div>
+            <div id="Enhancements" class="subtabcontent">
+                <h3>Enhancements</h3>
+                <p>Enhancements content goes here.</p>
+            </div>
+            <div id="Traits" class="subtabcontent">
+                <h3>Traits</h3>
+                <div id="traits-list"></div>
+            </div>
+            <div id="BuffsDebuffs" class="subtabcontent">
+                <h3>Buffs/Debuffs</h3>
+                <p>Buffs/Debuffs content goes here.</p>
+            </div>
+        </div>
+        <div id="Equipment" class="tabcontent">
             <h2>Equipment</h2>
-            <div class="equipment-grid">
-                <div class="equipment-slot" data-slot="primary-weapon">
-                    <h3>Primary Weapon</h3>
-                    <div class="item-list"></div>
+            <div class="equipment-container">
+                <div class="equipment-section weapons-section">
+                    <h3>Weapons</h3>
+                    <div class="equipment-grid">
+                        <div class="equipment-card" data-slot="Primary Weapon">
+                            <div id="primary-weapon-slot" class="equipment-slot" data-slot-type="weapon"
+                                onclick="InventoryModule.showEquippableItems('weapon')">
+                            </div>
+                        </div>
+
+                        <div class="equipment-card" data-slot="Secondary Weapon">
+                            <div id="secondary-weapon-slot" class="equipment-slot" data-slot-type="weapon"
+                                onclick="InventoryModule.showEquippableItems('weapon')">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="equipment-section utility-section">
+                        <h3>Utility Slots</h3>
+                        <div class="equipment-grid">
+                            <div class="equipment-card equipment-slot" data-slot="Utility-1" data-slot-type="utility">
+                                <div id="utility-slot-1" class="equipment-slot-content"></div>
+                            </div>
+                            <div class="equipment-card equipment-slot" data-slot="Utility-2" data-slot-type="utility">
+                                <div id="utility-slot-2" class="equipment-slot-content"></div>
+                            </div>
+                            <div class="equipment-card equipment-slot" data-slot="Utility-3" data-slot-type="utility">
+                                <div id="utility-slot-3" class="equipment-slot-content"></div>
+                            </div>
+                            <div class="equipment-card equipment-slot" data-slot="Utility-4" data-slot-type="utility">
+                                <div id="utility-slot-4" class="equipment-slot-content"></div>
+                            </div>
+                            <div class="equipment-card equipment-slot" data-slot="Utility-5" data-slot-type="utility">
+                                <div id="utility-slot-5" class="equipment-slot-content"></div>
+                            </div>
+                            <div class="equipment-card equipment-slot" data-slot="Utility-6" data-slot-type="utility">
+                                <div id="utility-slot-6" class="equipment-slot-content"></div>
+                            </div>
+                            <div class="equipment-card equipment-slot" data-slot="Utility-7" data-slot-type="utility">
+                                <div id="utility-slot-7" class="equipment-slot-content"></div>
+                            </div>
+                            <div class="equipment-card equipment-slot" data-slot="Utility-8" data-slot-type="utility">
+                                <div id="utility-slot-8" class="equipment-slot-content"></div>
+                            </div>
+                            <div class="equipment-card equipment-slot" data-slot="Utility-9" data-slot-type="utility">
+                                <div id="utility-slot-9" class="equipment-slot-content"></div>
+                            </div>
+                            <div class="equipment-card equipment-slot" data-slot="Utility-10" data-slot-type="utility">
+                                <div id="utility-slot-10" class="equipment-slot-content"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="equipment-slot" data-slot="secondary-weapon">
-                    <h3>Secondary Weapon</h3>
-                    <div class="item-list"></div>
-                </div>
-                <div class="equipment-slot" data-slot="headgear">
-                    <h3>Headgear</h3>
-                    <div class="item-list"></div>
-                </div>
-                <div class="equipment-slot" data-slot="face-accessory">
-                    <h3>Face Accessory</h3>
-                    <div class="item-list"></div>
-                </div>
-                <div class="equipment-slot" data-slot="neck">
-                    <h3>Neck</h3>
-                    <div class="item-list"></div>
-                </div>
-                <div class="equipment-slot" data-slot="shoulders">
-                    <h3>Shoulders</h3>
-                    <div class="item-list"></div>
-                </div>
-                <div class="equipment-slot" data-slot="torso">
-                    <h3>Torso</h3>
-                    <div class="item-list"></div>
-                </div>
-                <div class="equipment-slot" data-slot="waist">
-                    <h3>Waist</h3>
-                    <div class="item-list"></div>
-                </div>
-                <div class="equipment-slot" data-slot="arms">
-                    <h3>Arms</h3>
-                    <div class="item-list"></div>
-                </div>
-                <div class="equipment-slot" data-slot="l-hand">
-                    <h3>L Hand</h3>
-                    <div class="item-list"></div>
-                </div>
-                <div class="equipment-slot" data-slot="r-hand">
-                    <h3>R Hand</h3>
-                    <div class="item-list"></div>
-                </div>
-                <div class="equipment-slot" data-slot="legs">
-                    <h3>Legs</h3>
-                    <div class="item-list"></div>
-                </div>
-                <div class="equipment-slot" data-slot="l-foot">
-                    <h3>L Foot</h3>
-                    <div class="item-list"></div>
-                </div>
-                <div class="equipment-slot" data-slot="r-foot">
-                    <h3>R Foot</h3>
-                    <div class="item-list"></div>
-                </div>
-                <div class="equipment-slot" data-slot="finger-1">
-                    <h3>Finger</h3>
-                    <div class="item-list"></div>
-                </div>
-                <div class="equipment-slot" data-slot="finger-2">
-                    <h3>Finger</h3>
-                    <div class="item-list"></div>
-                </div>
-                <div class="equipment-slot" data-slot="finger-3">
-                    <h3>Finger</h3>
-                    <div class="item-list"></div>
-                </div>
-                <div class="equipment-slot" data-slot="finger-4">
-                    <h3>Finger</h3>
-                    <div class="item-list"></div>
+
+                <div class="equipment-section armor-section">
+                    <h3>Armor</h3>
+                    <div class="equipment-grid">
+                        <div class="equipment-card" data-slot="Head">
+                            <div id="face-slot" class="equipment-slot" slot-type="face"
+                                onclick="InventoryModule.showEquippableItems('face')">
+                            </div>
+                        </div>
+                        <div class="equipment-card" data-slot="Face">
+                            <div id="face-slot" class="equipment-slot" slot-type="face"
+                                onclick="InventoryModule.showEquippableItems('face')"></div>
+                        </div>
+
+                        <div class="equipment-card" data-slot="Neck">
+                            <div id="neck-slot" class="equipment-slot" slot-type="neck"
+                                onclick="InventoryModule.showEquippableItems('neck')"></div>
+                        </div>
+
+                        <div class="equipment-card" data-slot="Shoulders">
+                            <div id="shoulders-slot" class="equipment-slot" slot-type="shoulders"
+                                onclick="InventoryModule.showEquippableItems('shoulders')"></div>
+                        </div>
+
+                        <div class="equipment-card" data-slot="Torso">
+                            <div id="torso-slot" class="equipment-slot" slot-type="torso"
+                                onclick="InventoryModule.showEquippableItems('torso')"></div>
+                        </div>
+
+                        <div class="equipment-card" data-slot="Arms">
+                            <div id="left-arm-slot" class="equipment-slot" slot-type="arm"
+                                onclick="InventoryModule.showEquippableItems('arm')"></div>
+                            <div id="right-arm-slot" class="equipment-slot" slot-type="arm"
+                                onclick="InventoryModule.showEquippableItems('arm')"></div>
+                        </div>
+
+                        <div class="equipment-card" data-slot="Wrists">
+                            <div id="left-wrist-slot" class="equipment-slot" slot-type="wrist"
+                                onclick="InventoryModule.showEquippableItems('wrist')"></div>
+                            <div id="right-wrist-slot" class="equipment-slot" slot-type="wrist"
+                                onclick="InventoryModule.showEquippableItems('wrist')"></div>
+                        </div>
+
+                        <div class="equipment-card" data-slot="Fingers">
+                            <div id="finger-slot-1" class="equipment-slot" slot-type="finger"
+                                onclick="InventoryModule.showEquippableItems('finger')"></div>
+                            <div id="finger-slot-2" class="equipment-slot" slot-type="finger"
+                                onclick="InventoryModule.showEquippableItems('finger')"></div>
+                            <div id="finger-slot-3" class="equipment-slot" slot-type="finger"
+                                onclick="InventoryModule.showEquippableItems('finger')"></div>
+                            <div id="finger-slot-4" class="equipment-slot" slot-type="finger"
+                                onclick="InventoryModule.showEquippableItems('finger')"></div>
+                        </div>
+
+                        <div class="equipment-card" data-slot="Waist">
+                            <div id="waist-slot" class="equipment-slot" slot-type="waist"
+                                onclick="InventoryModule.showEquippableItems('waist')"></div>
+                        </div>
+
+                        <div class="equipment-card" data-slot="Legs">
+                            <div id="legs-slot" class="equipment-slot" slot-type="legs"
+                                onclick="InventoryModule.showEquippableItems('legs')"></div>
+                        </div>
+
+                        <div class="equipment-card" data-slot="Ankles">
+                            <div id="left-ankle-slot" class="equipment-slot" slot-type="ankle"
+                                onclick="InventoryModule.showEquippableItems('ankle')"></div>
+                            <div id="right-ankle-slot" class="equipment-slot" slot-type="ankle"
+                                onclick="InventoryModule.showEquippableItems('ankle')"></div>
+                        </div>
+
+                        <div class="equipment-card" data-slot="Feet">
+                            <div id="left-foot-slot" class="equipment-slot" slot-type="foot"
+                                onclick="InventoryModule.showEquippableItems('foot')"></div>
+                            <div id="right-foot-slot" class="equipment-slot" slot-type="foot"
+                                onclick="InventoryModule.showEquippableItems('foot')"></div>
+                        </div>
+
+                        <div class="equipment-card" data-slot="Toes">
+                            <div id="toe-slot-1" class="equipment-slot" slot-type="toe"
+                                onclick="InventoryModule.showEquippableItems('toe')"></div>
+                            <div id="toe-slot-2" class="equipment-slot" slot-type="toe"
+                                onclick="InventoryModule.showEquippableItems('toe')"></div>
+                            <div id="toe-slot-3" class="equipment-slot" slot-type="toe"
+                                onclick="InventoryModule.showEquippableItems('toe')"></div>
+                            <div id="toe-slot-4" class="equipment-slot" slot-type="toe"
+                                onclick="InventoryModule.showEquippableItems('toe')"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
-            <section class="notes">
-                <h2>Current Quest Notes</h2>
-                <textarea id="quest-notes" placeholder="Enter notes here..."></textarea>
-            </section>
-        <section class="inventory">
+        </div>
+        <div id="Inventory" class="tabcontent">
             <h2>Inventory</h2>
-            <button id="add-to-inventory-btn">Add to Inventory</button>
-            <button id="open-inventory-btn">Open Inventory</button>
-        </section>
+            <div id="inventory-categories"></div>
+        </div>
+        <div id="Spells" class="tabcontent">
+            <h2>Spells</h2>
+            <div id="spells-container"></div>
+        </div>
+        <div id="Crafting" class="tabcontent">
+            <h2>Crafting</h2>
+            <p>Crafting content goes here.</p>
+        </div>
+        <div id="QuestLog" class="tabcontent">
+            <h2>Quest Log</h2>
+            <p>Quest Log content goes here.</p>
+        </div>
+        <div id="Notes" class="tabcontent">
+            <h2>Notes</h2>
+            <p>Notes content goes here.</p>
+        </div>
     </div>
 
-    
-    <div id="inventory-modal" class="modal">
+    <div id="category-modal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeInventoryModal()">&times;</span>
-            <h2>Inventory</h2>
-            <div id="inventory-items"></div>
+            <span class="close">&times;</span>
+            <h2 id="category-title">Weapons</h2>
+
+            <div class="search-container">
+                <input type="text" id="item-search" placeholder="Search items...">
+            </div>
+
+            <div id="category-items">
+                <!-- Weapon type sections will be dynamically added here -->
+            </div>
         </div>
     </div>
 
-    <div id="search-modal" class="modal">
+    <!-- Item Detail Modal -->
+    <div id="item-detail-modal" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="closeSearchModal()">&times;</span>
-            <h2>Add Item to Inventory</h2>
-            <input type="text" id="item-search" placeholder="Search for items...">
-            <div id="search-results"></div>
-        </div>
-    </div>
-
-
-    <div id="race-modal" class="modal">
-        <div class="modal-content" id="race-modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="race-modal-title"></h2>
-            <p id="race-modal-description"></p>
-            <h3>Lore</h3>
-            <p id="race-modal-lore"></p>
-            <h3>Stat Bonuses</h3>
-            <p id="race-modal-stat-bonuses"></p>
-            <h3>Skill Bonuses</h3>
-            <p id="race-modal-skill-bonuses"></p>
-        </div>
-    </div>
-
-    <div id="item-details-modal" class="modal">
-        <div class="modal-content">
-            <!-- Content will be dynamically populated -->
-        </div>
-    </div>
-
-    <div id="ability-modal" class="modal">
-        <div class="modal-content" id="ability-modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="ability-modal-title"></h2>
-            <p id="ability-modal-description"></p>
-            <h3>Effect</h3>
-            <p id="ability-modal-effect"></p>
-            <h3>Range</h3>
-            <p id="ability-modal-range"></p>
-            <h3>Ability Point Cost</h3>
-            <p id="ability-modal-cost"></p>
-            <h3>Cooldown</h3>
-            <p id="ability-modal-cooldown"></p>
-        </div>
-    </div>
-    
-    <div id="buff-modal" class="modal">
-        <div class="modal-content" id="buff-modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="buff-modal-title"></h2>
-            <p id="buff-modal-description"></p>
-            <h3>Effect</h3>
-            <p id="buff-modal-effect"></p>
-        </div>
-    </div>
-
-    <div id="spell-modal" class="modal">
-        <div class="modal-content" id="spell-modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="spell-modal-title"></h2>
-            <p id="spell-modal-description"></p>
-            <h3>Effect</h3>
-            <p id="spell-modal-effect"></p>
-            <h3>Mana Cost</h3>
-            <p id="spell-modal-cost"></p>
-        </div>
-    </div>
-
-    <div id="race-modal" class="modal">
-        <div class="modal-content" id="race-modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="race-modal-title"></h2>
-            <p id="race-modal-description"></p>
-            <h3>Lore</h3>
-            <p id="race-modal-lore"></p>
-            <h3>Stat Bonuses</h3>
-            <p id="race-modal-stat-bonuses"></p>
-            <h3>Skill Bonuses</h3>
-            <p id="race-modal-skill-bonuses"></p>
-        </div>
-    </div>
-
-    <div id="class-modal" class="modal">
-        <div class="modal-content" id="class-modal-content">
-            <!-- Content will be dynamically populated by JavaScript -->
-        </div>
-    </div>
-
-    <div id="equipment-modal" class="modal">
-        <div class="modal-content">
-            <!-- Content will be dynamically populated -->
+            <span class="close">&times;</span>
+            <h2 id="item-detail-name"></h2>
+            <div id="item-detail-info"></div>
+            <div id="equip-buttons"></div>
         </div>
     </div>
 

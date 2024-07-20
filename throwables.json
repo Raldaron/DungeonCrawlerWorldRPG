@@ -1,0 +1,92 @@
+{
+    "throwables": {
+        "CelestialGrenade": {
+            "name": "Celestial Grenade",
+            "description": "Summons a deity for one minute.",
+            "itemType": "Throwable",
+            "rarity": "Legendary",
+            "effect": "Summons a deity for one minute.",
+            "duration": "1 minute (60 seconds)",
+            "range": "10 feet radius (summoning area)",
+            "vitalBonus": {},
+            "skillBonus": {},
+            "abilities": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "GoblinSmokeBomb": {
+            "name": "Goblin Smoke Bomb",
+            "description": "Emits a cloud of stinking multi-color opaque smoke.",
+            "itemType": "Throwable",
+            "rarity": "Common",
+            "effect": "Emits a cloud of stinking multi-color opaque smoke.",
+            "duration": "3 minutes (180 seconds)",
+            "range": "10 meter radius",
+            "vitalBonus": {},
+            "skillBonus": {},
+            "abilities": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "HobgoblinSmokeCurtain": {
+            "name": "Hobgoblin Smoke Curtain",
+            "description": "Coats the area in dense white fog affecting physical entities.",
+            "itemType": "Throwable",
+            "rarity": "Uncommon",
+            "effect": "Coats the area in dense white fog affecting physical entities.",
+            "duration": "3 minutes (180 seconds)",
+            "range": "30 feet radius",
+            "vitalBonus": {},
+            "skillBonus": {},
+            "abilities": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "JugO'Boom": {
+            "name": "Jug O' Boom",
+            "description": "Causes a small explosion followed by burning splash damage.",
+            "itemType": "Throwable",
+            "rarity": "Rare",
+            "effect": "Causes a small explosion followed by burning splash damage.",
+            "duration": "Flames burn for 15 seconds per level of attacker's Incendiary Device Handling.",
+            "range": "20 feet radius",
+            "damage": "10d6",
+            "damageType": "Fire",
+            "blastRadius": 30,
+            "triggerMechanism": "Impact Detonation",
+            "vitalBonus": {},
+            "skillBonus": {},
+            "abilities": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "SatchelBomb": {
+            "name": "Satchel Bomb",
+            "description": "Equivalent to three sticks of hobgoblin dynamite, enough to level a town block.",
+            "itemType": "Throwable",
+            "rarity": "Rare",
+            "effect": "Equivalent to three sticks of hobgoblin dynamite, enough to level a town block.",
+            "duration": "Instantaneous",
+            "range": "600 feet radius",
+            "vitalBonus": {},
+            "skillBonus": {},
+            "abilities": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        },
+        "TrollSmokeMantel": {
+            "name": "Troll Smoke Mantel",
+            "description": "Creates a thick smoke curtain.",
+            "itemType": "Throwable",
+            "rarity": "Epic",
+            "effect": "Creates a thick smoke curtain.",
+            "duration": "3 minutes (180 seconds)",
+            "range": "30 feet radius",
+            "vitalBonus": {},
+            "skillBonus": {},
+            "abilities": {},
+            "hpBonus": 0,
+            "mpBonus": 0
+        }
+    }
+}
