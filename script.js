@@ -31,10 +31,11 @@ const CharacterModule = (function () {
         classBonuses: {},
         currentRaceBonuses: {},
         currentClassBonuses: {},
-        manualAdjustments: {}
+        manualAdjustments: {},
+        equippedItems: {},
     };
 
-    function setVital(vital, value) {
+    function setVitals(vital, value) {
         if (characterData.vitals.hasOwnProperty(vital)) {
             characterData.vitals[vital] = value;
         }
@@ -83,10 +84,12 @@ const CharacterModule = (function () {
 
             if (isRemoving) {
                 characterData[`${type}Bonuses`][lowerStat] = (characterData[`${type}Bonuses`][lowerStat] || 0) - bonusValue;
-                characterData.vitals[lowerStat] -= bonusValue;
+                const currentValue = getVitals()[lowerStat];
+                setVitals(lowerStat, currentValue - bonusValue);
             } else {
                 characterData[`${type}Bonuses`][lowerStat] = (characterData[`${type}Bonuses`][lowerStat] || 0) + bonusValue;
-                characterData.vitals[lowerStat] += bonusValue;
+                const currentValue = getVitals()[lowerStat];
+                setVitals(lowerStat, currentValue + bonusValue);
             }
         });
     }
@@ -100,6 +103,24 @@ const CharacterModule = (function () {
             totalBonuses[stat] = (totalBonuses[stat] || 0) + characterData.classBonuses[stat];
         }
         return totalBonuses;
+    }
+
+    function applyPercentageVitalBonus(percentage) {
+        const vitals = getVitals();
+        for (const vital in vitals) {
+            const baseValue = vitals[vital];
+            const bonusValue = Math.floor(baseValue * (percentage / 100));
+            setVitals(vital, baseValue + bonusValue);
+        }
+    }
+
+    function removePercentageVitalBonus(percentage) {
+        const vitals = getVitals();
+        for (const vital in vitals) {
+            const currentValue = vitals[vital];
+            const originalValue = Math.floor(currentValue / (1 + percentage / 100));
+            setVitals(vital, originalValue);
+        }
     }
 
     return {
@@ -131,18 +152,6 @@ const CharacterModule = (function () {
                     }
                 }
             }
-        },
-        deductPoints: function (type, amount) {
-            if (type === 'vital' && characterData.availableVitalPoints >= amount) {
-                characterData.availableVitalPoints -= amount;
-                UIModule.updateField('available-vital-points', characterData.availableVitalPoints);
-                return true;
-            } else if (type === 'skill' && characterData.availableSkillPoints >= amount) {
-                characterData.availableSkillPoints -= amount;
-                UIModule.updateField('available-skill-points', characterData.availableSkillPoints);
-                return true;
-            }
-            return false;
         },
         deductSkillPoints: function (amount) {
             if (characterData.availableSkillPoints >= amount) {
@@ -183,15 +192,60 @@ const CharacterModule = (function () {
             // Reapply manual adjustments
             this.applyManualAdjustments();
         },
-        // In the CharacterModule
-        setVital: function (vital, value) {
+        setVitals: function (vital, value) {
             if (characterData.vitals.hasOwnProperty(vital)) {
                 characterData.vitals[vital] = value;
             }
         },
-
+        getAvailablePoints: function (type) {
+            console.log(`Getting ${type} points:`, type === 'vital' ? this.getData().availableVitalPoints : this.getData().availableSkillPoints);
+            return type === 'vital' ? this.getData().availableVitalPoints : this.getData().availableSkillPoints;
+        },
+        updateField: function(fieldId, value) {
+            const element = document.getElementById(fieldId);
+            if (element) {
+                element.textContent = value;
+                console.log(`Updated ${fieldId} to ${value}`);
+            } else {
+                console.error(`Element with id ${fieldId} not found`);
+            }
+        },
+        deductPoints: function (type, amount) {
+            console.log(`Deducting ${amount} ${type} points`);
+            if (type === 'vital' && this.getData().availableVitalPoints >= amount) {
+                this.getData().availableVitalPoints -= amount;
+                UIModule.updateField('available-vital-points', this.getData().availableVitalPoints);
+            } else if (type === 'skill' && this.getData().availableSkillPoints >= amount) {
+                this.getData().availableSkillPoints -= amount;
+                UIModule.updateField('available-skill-points', this.getData().availableSkillPoints);
+            }
+            console.log(`After deduction: ${type} points =`, this.getAvailablePoints(type));
+        },
+        
+        addPoints: function (type, amount) {
+            console.log(`Adding ${amount} ${type} points`);
+            if (type === 'vital') {
+                this.getData().availableVitalPoints += amount;
+                UIModule.updateField('available-vital-points', this.getData().availableVitalPoints);
+            } else if (type === 'skill') {
+                this.getData().availableSkillPoints += amount;
+                UIModule.updateField('available-skill-points', this.getData().availableSkillPoints);
+            }
+            console.log(`After addition: ${type} points =`, this.getAvailablePoints(type));
+        },
         getVitals: function () {
             return { ...characterData.vitals };
+        },
+        applyPercentageVitalBonus: function (percentage) {
+            applyPercentageVitalBonus(percentage);
+            this.applyManualAdjustments();
+            UIModule.updateVitalsDisplay();
+        },
+
+        removePercentageVitalBonus: function (percentage) {
+            removePercentageVitalBonus(percentage);
+            this.applyManualAdjustments();
+            UIModule.updateVitalsDisplay();
         },
         updateBonuses: function (newBonuses, type) {
             applyBonuses(newBonuses, type);
@@ -371,6 +425,7 @@ const UIModule = (function() {
         updateField('favorites', data.favorites);
         updateField('available-vital-points', data.availableVitalPoints);
         updateField('available-skill-points', data.availableSkillPoints);
+        updateEquippedItems(data.equippedItems);
         initializeActionsTab();
     }
 
@@ -414,6 +469,20 @@ const UIModule = (function() {
         updateTraitsDisplay();
         updateStats(raceData, 'race');
         updateSkills(raceData);
+    }
+
+    function updateEquippedItems(equippedItems) {
+        for (const [slot, item] of Object.entries(equippedItems)) {
+            const slotElement = document.getElementById(`${slot}-slot`);
+            if (slotElement) {
+                slotElement.textContent = item ? item.name : 'Empty';
+                if (item) {
+                    slotElement.onclick = () => InventoryModule.openEquippedItemModal(item, slot);
+                } else {
+                    slotElement.onclick = () => InventoryModule.showEquippableItems(slot);
+                }
+            }
+        }
     }
 
     function updateClassInfo(classData, classAbilitiesData) {
@@ -776,38 +845,48 @@ const UIModule = (function() {
             'sapper', 'scrounge', 'seduction', 'sense deception', 'sleight of hand',
             'stealth', 'subterfuge', 'survival', 'tactics', 'tracking'
         ];
-
+    
         const skillsContainer = document.getElementById('skills-container');
         if (skillsContainer) {
             skillsContainer.innerHTML = '';
-
+    
             skills.forEach(skill => {
                 const skillBox = document.createElement('div');
                 skillBox.className = 'skill-box';
-
+    
                 const skillName = document.createElement('span');
                 skillName.className = 'skill-name';
                 skillName.textContent = skill;
-
+    
+                const scoreContainer = document.createElement('div');
+                scoreContainer.className = 'skill-score-container';
+    
                 const skillScore = document.createElement('span');
                 skillScore.className = 'skill-score';
                 skillScore.textContent = '0';
                 skillScore.dataset.baseScore = '0';
                 skillScore.dataset.score = '0';
                 skillScore.dataset.bonus = '0';
-
-                skillScore.addEventListener('dblclick', function (event) {
-                    const currentBaseScore = parseInt(this.dataset.baseScore);
-                    const newBaseScore = event.ctrlKey ? currentBaseScore - 1 : currentBaseScore + 1;
-                    this.dataset.baseScore = newBaseScore;
-                    const bonus = parseInt(this.dataset.bonus);
-                    const newTotalScore = newBaseScore + bonus;
-                    this.textContent = newTotalScore;
-                    this.dataset.score = newTotalScore;
-                });
-
+    
+                const buttonsContainer = document.createElement('div');
+                buttonsContainer.className = 'skill-buttons hidden';
+    
+                const incrementBtn = document.createElement('button');
+                incrementBtn.className = 'skill-increment';
+                incrementBtn.textContent = '+';
+    
+                const decrementBtn = document.createElement('button');
+                decrementBtn.className = 'skill-decrement';
+                decrementBtn.textContent = '-';
+    
+                buttonsContainer.appendChild(incrementBtn);
+                buttonsContainer.appendChild(decrementBtn);
+    
+                scoreContainer.appendChild(skillScore);
+                scoreContainer.appendChild(buttonsContainer);
+    
                 skillBox.appendChild(skillName);
-                skillBox.appendChild(skillScore);
+                skillBox.appendChild(scoreContainer);
                 skillsContainer.appendChild(skillBox);
             });
         } else {
@@ -885,7 +964,8 @@ const UIModule = (function() {
         updateVitalsDisplay,
         updateSkillsDisplay,
         updateSkillScore,
-        createSpellCard
+        createSpellCard,
+        updateEquippedItems: updateEquippedItems
     };
 })();
 
@@ -931,7 +1011,7 @@ const TabModule = (function () {
 
 
 
-const InventoryModule = (function () {
+const InventoryModule = (() => {
     let inventoryData = {
         weapons: {},
         armor: {},
@@ -966,17 +1046,36 @@ const InventoryModule = (function () {
         title.textContent = `Equippable Items for ${slotType}`;
         itemsContainer.innerHTML = '';
     
-        let items = inventoryData.armor; // We're dealing with armor items
-        let jsonKey = 'armor';
+        let items = {};
+        let jsonKeys = [];
+    
+        if (slotType === 'weapon') {
+            items = inventoryData.weapons;
+            jsonKeys = ['weapons'];
+        } else if (slotType === 'utility') {
+            items = {
+                ...inventoryData.throwables,
+                ...inventoryData.potions,
+                ...inventoryData.scrolls,
+                ...inventoryData.craftingComponents,
+                ...inventoryData.explosives,
+                ...inventoryData.ammunition,
+                ...inventoryData.items
+            };
+            jsonKeys = ['throwables', 'potions', 'scrolls', 'crafting_components', 'explosives', 'ammunition', 'items'];
+        } else {
+            items = inventoryData.armor;
+            jsonKeys = ['armor'];
+        }
     
         console.log("Items for this category:", items);
         console.log("Number of items:", Object.keys(items).length);
     
-        filterItems('', title.textContent, jsonKey, items, itemsContainer, slotType);
+        filterItems('', title.textContent, jsonKeys, items, itemsContainer, slotType);
     
         searchInput.value = '';
         searchInput.addEventListener('input', (e) => {
-            filterItems(e.target.value, title.textContent, jsonKey, items, itemsContainer, slotType);
+            filterItems(e.target.value, title.textContent, jsonKeys, items, itemsContainer, slotType);
         });
     
         modal.style.display = 'block';
@@ -989,11 +1088,11 @@ const InventoryModule = (function () {
             console.log("Slot:", slot, "Attributes:", slot.attributes);
             slot.addEventListener('click', (event) => {
                 console.log("Clicked slot:", event.currentTarget, "Attributes:", event.currentTarget.attributes);
-                const slotType = event.currentTarget.getAttribute('slot-type');
+                const slotType = event.currentTarget.getAttribute('data-slot-type') || event.currentTarget.getAttribute('slot-type');
                 if (slotType) {
-                    InventoryModule.showEquippableItems(slotType);
+                    showEquippableItems(slotType);
                 } else {
-                    console.error("No slot-type attribute found on clicked element", event.currentTarget);
+                    console.error("No slot type attribute found on clicked element", event.currentTarget);
                 }
             });
         });
@@ -1051,6 +1150,7 @@ const InventoryModule = (function () {
             if (item.count === 0) {
                 utilitySlots[index] = null;
             }
+            updateSlotDisplay(document.getElementById(`utility-slot-${index + 1}`), utilitySlots[index]);
         }
     }
 
@@ -1064,43 +1164,51 @@ const InventoryModule = (function () {
         equipButtons.appendChild(unequipButton);
     }
 
-    function unequipItem(item, slot) {
-        const slotElement = document.getElementById(`${slot}-slot`);
-        slotElement.textContent = '';
-        slotElement.onclick = () => showEquippableItems(slot);
-
-        // Remove bonuses, abilities, traits, and spells granted by the item
-        removeBonuses(item);
-        removeAbilities(item);
-        removeTraits(item);
-        removeSpells(item);
-
-        // Update UI
-        UIModule.updateCharacterInfo(CharacterModule.getData());
-
-        // Close the modal
-        document.getElementById('item-detail-modal').style.display = 'none';
-    }
-
-    function removeBonuses(item) {
-        for (const [vital, bonus] of Object.entries(item.vitalBonus || {})) {
-            CharacterModule.setVital(vital, CharacterModule.getVitals()[vital] - bonus);
-        }
-        for (const [skill, bonus] of Object.entries(item.skillBonus || {})) {
-            UIModule.updateSkillScore(skill, -bonus);
+    function unequipItem(slotType) {
+        const characterData = CharacterModule.getData();
+        const item = characterData.equippedItems[slotType];
+        if (item) {
+            removeItemBonuses(item);
+            removeItemAbilities(item);
+            removeItemTraits(item);
+            removeItemSpells(item);
+            delete characterData.equippedItems[slotType];
+    
+            const slot = document.getElementById(`${slotType}-slot`);
+            if (slot) {
+                slot.textContent = 'Empty';
+                slot.onclick = () => InventoryModule.showEquippableItems(slotType);
+            }
+    
+            console.log(`Item unequipped from ${slotType} slot`);
         }
     }
 
     function removeAbilities(item) {
-        // Implement logic to remove abilities granted by the item
+        if (item.abilities) {
+            item.abilities.forEach(ability => {
+                // Remove ability from character
+                // This would depend on how abilities are stored and managed in your character system
+            });
+        }
     }
 
     function removeTraits(item) {
-        // Implement logic to remove traits granted by the item
+        if (item.traits) {
+            item.traits.forEach(trait => {
+                // Remove trait from character
+                // This would depend on how traits are stored and managed in your character system
+            });
+        }
     }
 
     function removeSpells(item) {
-        // Implement logic to remove spells granted by the item
+        if (item.spellsGranted) {
+            item.spellsGranted.forEach(spell => {
+                // Remove spell from character
+                // This would depend on how spells are stored and managed in your character system
+            });
+        }
     }
 
     function createMinorActionCard(item) {
@@ -1124,7 +1232,6 @@ const InventoryModule = (function () {
             cardContent += `<p><strong>Damage:</strong> ${item.damage} ${item.damageType || ''}</p>`;
         }
 
-        // Add any additional properties
         if (item.vitalBonus && Object.keys(item.vitalBonus).length > 0) {
             cardContent += `<p><strong>Vital Bonuses:</strong> ${JSON.stringify(item.vitalBonus)}</p>`;
         }
@@ -1167,50 +1274,82 @@ const InventoryModule = (function () {
             </div>
         `;
     
-        // Apply vital and skill bonuses
         applyItemBonuses(weapon);
-    
-        // Add abilities, traits, and spells
         addItemAbilities(weapon);
         addItemTraits(weapon);
         addItemSpells(weapon);
     
-        // Display the weapon action
         displayWeaponAction(weapon, slot);
     
-        // Close the modal after equipping
         document.getElementById('item-detail-modal').style.display = 'none';
     }
 
-    function equipToSlot(weapon, slotElement, slot) {
-        console.log("Equipping weapon:", weapon); // Debug log
+    function equipArmor(item, slotType) {
+        console.log(`Equipping ${item.name} to ${slotType} slot`);
+        const slot = document.getElementById(`${slotType}-slot`);
+        if (slot) {
+            // Unequip any existing item in this slot
+            const existingItem = CharacterModule.getData().equippedItems[slotType];
+            if (existingItem) {
+                unequipItem(slotType);
+            }
     
-        if (!slotElement) {
-            console.error(`Weapon slot not found: ${slot}`);
-            return;
+            slot.textContent = item.name;
+            slot.onclick = () => InventoryModule.openEquippedItemModal(item, slotType);
+    
+            applyItemBonuses(item);
+            addItemAbilities(item);
+            addItemTraits(item);
+            addItemSpells(item);
+    
+            console.log(`${item.name} equipped successfully to ${slotType} slot`);
+            return true;
+        } else {
+            console.error(`Slot not found: ${slotType}-slot`);
+            return false;
+        }
+    }
+
+    function applyItemBonuses(item) {
+        console.log("Applying bonuses for item:", item.name);
+    
+        if (item.vitalBonus) {
+            if (item.vitalBonus.allStats) {
+                const allStatsBonus = item.vitalBonus.allStats;
+                const vitals = CharacterModule.getVitals();
+                for (const vital in vitals) {
+                    const currentValue = vitals[vital];
+                    const newValue = Math.round(currentValue * (1 + allStatsBonus));
+                    CharacterModule.setVitals(vital, newValue);
+                    console.log(`Applied ${allStatsBonus * 100}% bonus to ${vital}: ${currentValue} -> ${newValue}`);
+                }
+            } else {
+                for (const [vital, bonus] of Object.entries(item.vitalBonus)) {
+                    const currentValue = CharacterModule.getVitals()[vital] || 0;
+                    const newValue = currentValue + bonus;
+                    CharacterModule.setVitals(vital, newValue);
+                    console.log(`Applied bonus to ${vital}: ${currentValue} -> ${newValue}`);
+                }
+            }
         }
     
-        slotElement.innerHTML = `
-            <div class="equipped-weapon">
-                <h5>${weapon.name}</h5>
-                <p>Damage: ${weapon.damageAmount} ${weapon.damageType}</p>
-                <p>Range: ${weapon.meleeRanged}</p>
-            </div>
-        `;
+        if (item.skillBonus) {
+            for (const [skill, bonus] of Object.entries(item.skillBonus)) {
+                console.log(`Applying skill bonus: ${skill} +${bonus}`);
+                UIModule.updateSkillScore(skill, bonus);
+            }
+        }
     
-        // Apply vital and skill bonuses
-        applyWeaponBonuses(weapon);
+        if (item.armorRating) {
+            const currentArmorRating = CharacterModule.getData().armorRating || 0;
+            const newArmorRating = currentArmorRating + item.armorRating;
+            CharacterModule.updateData('armorRating', newArmorRating);
+            console.log(`Updated Armor Rating: ${currentArmorRating} -> ${newArmorRating}`);
+        }
     
-        // Add abilities, traits, and spells
-        addWeaponAbilities(weapon);
-        addWeaponTraits(weapon);
-        addWeaponSpells(weapon);
-    
-        // Display the weapon action
-        displayWeaponAction(weapon, slot);
-    
-        // Close the modal after equipping
-        document.getElementById('item-detail-modal').style.display = 'none';
+        UIModule.updateCharacterInfo(CharacterModule.getData());
+        UIModule.updateVitalsDisplay();
+        UIModule.updateSkillsDisplay();
     }
 
     function addItemAbilities(item) {
@@ -1234,54 +1373,6 @@ const InventoryModule = (function () {
         UIModule.updateSpells(spellsToAdd);
     }
 
-    function applyWeaponBonuses(weapon) {
-        // Apply vital bonuses
-        for (const [vital, bonus] of Object.entries(weapon.vitalBonus)) {
-            CharacterModule.setVital(vital, CharacterModule.getVitals()[vital] + bonus);
-        }
-
-        // Apply skill bonuses
-        for (const [skill, bonus] of Object.entries(weapon.skillBonus)) {
-            UIModule.updateSkillScore(skill, bonus);
-        }
-
-        // Update the UI
-        UIModule.updateCharacterInfo(CharacterModule.getData());
-    }
-
-    function addWeaponAbilities(weapon) {
-        const abilitiesData = DataLoadingModule.getAbilitiesData();
-        const abilitiesToAdd = weapon.abilities.map(abilityName => abilitiesData[abilityName]).filter(ability => ability);
-        UIModule.updateAbilities(abilitiesToAdd);
-    }
-
-    function addWeaponTraits(weapon) {
-        const traitsData = DataLoadingModule.getTraitsData();
-        const traitsToAdd = weapon.traits.map(traitName => traitsData[traitName]).filter(trait => trait);
-        UIModule.updateTraits(traitsToAdd, 'weapon');
-    }
-
-    function addWeaponSpells(weapon) {
-        const spellsData = DataLoadingModule.getSpellsData();
-        let spellsToAdd = [];
-
-        if (Array.isArray(weapon.spellsGranted)) {
-            spellsToAdd = weapon.spellsGranted.map(spellName => {
-                const spell = spellsData[spellName];
-                return spell ? { ...spell, Name: spellName } : null;
-            }).filter(spell => spell);
-        } else if (typeof weapon.spellsGranted === 'object' && weapon.spellsGranted !== null) {
-            spellsToAdd = Object.keys(weapon.spellsGranted).map(spellName => {
-                const spell = spellsData[spellName];
-                return spell ? { ...spell, Name: spellName } : null;
-            }).filter(spell => spell);
-        }
-
-        if (spellsToAdd.length > 0) {
-            UIModule.updateSpells(spellsToAdd);
-        }
-    }
-
     function loadInventoryData() {
         return Promise.all([
             fetch('weapons.json').then(response => response.json()),
@@ -1301,9 +1392,10 @@ const InventoryModule = (function () {
             inventoryData.traps = traps.traps;
             inventoryData.scrolls = scrolls.scrolls;
             inventoryData.explosives = explosives.explosives;
-            inventoryData.crafting_components = craftingComponents.crafting_components;
+            inventoryData.craftingComponents = craftingComponents.crafting_components;
             inventoryData.ammunition = ammunition.ammunition;
             console.log("Inventory data loaded:", inventoryData);
+            console.log("Scrolls data:", inventoryData.scrolls);
             createCategoryIcons();
         }).catch(error => console.error('Error loading inventory data:', error));
     }
@@ -1319,12 +1411,14 @@ const InventoryModule = (function () {
             { name: 'Traps', icon: 'traps_icon.webp', jsonKey: 'traps' },
             { name: 'Scrolls', icon: 'scrolls_icon.webp', jsonKey: 'scrolls' },
             { name: 'Explosives', icon: 'explosives_icon.webp', jsonKey: 'explosives' },
-            { name: 'Crafting', icon: 'crafting-components_icon.webp', jsonKey: 'craftingComponents' }
+            { name: 'Crafting', icon: 'crafting-components_icon.webp', jsonKey: 'craftingComponents' },
+            { name: 'Ammunition', icon: 'ammunition_icon.webp', jsonKey: 'ammunition' }
         ];
 
         categories.forEach(category => {
             const div = document.createElement('div');
             div.className = 'inventory-category';
+            div.dataset.category = category.name;
             div.dataset.jsonKey = category.jsonKey;
             div.innerHTML = `
                 <img src="${category.icon}" alt="${category.name}">
@@ -1339,26 +1433,28 @@ const InventoryModule = (function () {
         const title = document.getElementById('category-title');
         const itemsContainer = document.getElementById('category-items');
         const searchInput = document.getElementById('item-search');
-
+    
         title.textContent = categoryName;
         itemsContainer.innerHTML = '';
-
+    
         const items = inventoryData[jsonKey];
-
+    
         if (!items) {
             console.error(`No items found for category: ${categoryName}`);
             return;
         }
-
+    
+        console.log(`Opening category modal for ${categoryName}:`, items);
+    
         if (jsonKey === 'weapons') {
             displayWeaponsByType(items, itemsContainer);
         } else {
             displayGenericItems(items, itemsContainer);
         }
-
+    
         searchInput.value = '';
         searchInput.addEventListener('input', (e) => filterItems(e.target.value, categoryName, jsonKey, items, itemsContainer));
-
+    
         modal.style.display = 'block';
     }
 
@@ -1390,85 +1486,46 @@ const InventoryModule = (function () {
         });
     }
 
-    function displayGenericItems(filteredItems, container) {
-        console.log("Displaying generic items, count:", filteredItems.length);
+    function displayGenericItems(items, container) {
+        console.log("Displaying generic items:", items);
         const itemGrid = document.createElement('div');
         itemGrid.className = 'item-grid';
-        filteredItems.forEach(([key, item]) => {
+        Object.entries(items).forEach(([key, item]) => {
+            console.log("Creating card for item:", item);
             const itemCard = createItemCard(item);
             itemGrid.appendChild(itemCard);
         });
         container.appendChild(itemGrid);
     }
 
-    
-    function addEquipButtonForSlot(item, slotType) {
-        const equipButtons = document.getElementById('equip-buttons');
-        equipButtons.innerHTML = '';
-        const equipButton = document.createElement('button');
-        equipButton.textContent = `Equip to ${slotType}`;
-        equipButton.onclick = () => {
-            if (slotType.startsWith('utility')) {
-                equipToUtilitySlot(item);
-            } else if (slotType.includes('weapon')) {
-                equipWeapon(item, slotType);
-            } else {
-                equipArmor(item, slotType);
-            }
-            document.getElementById('item-detail-modal').style.display = 'none';
-            document.getElementById('category-modal').style.display = 'none';
-        };
-        equipButtons.appendChild(equipButton);
-    }
-
     function createItemCard(item) {
-        console.log("Creating item card for:", item.name);
+        console.log("Creating item card for:", item);
         const itemCard = document.createElement('div');
         itemCard.className = 'item-card';
         itemCard.innerHTML = `
-            <div class="item-name">${item.name}</div>
-            <div class="item-type">${item.itemType || ''}</div>
+            <div class="item-name">${item.Name || item.name || 'Unnamed Item'}</div>
+            <div class="item-type">${item.itemType || 'Scroll'}</div>
         `;
         itemCard.addEventListener('click', () => openItemDetailModal(item));
         return itemCard;
     }
 
-    function filterItems(searchTerm, categoryName, jsonKey, items, container, slotType) {
-        console.log("Filtering items for:", slotType);
-        console.log("Number of items before filtering:", Object.keys(items).length);
-        
+    function filterItems(searchTerm, categoryName, jsonKey, items, container) {
         container.innerHTML = '';
+        console.log("Filtering items:", items);
         const filteredItems = Object.entries(items).filter(([key, item]) => {
-            const nameMatch = item && item.name && item.name.toLowerCase().includes(searchTerm.toLowerCase());
-            const descriptionMatch = item && item.description && item.description.toLowerCase().includes(searchTerm.toLowerCase());
-            const canEquip = canEquipToSlot(item, slotType);
-            
-            console.log(`Item: ${item.name}, Type: ${item.itemType}, Can equip: ${canEquip}`);
-            
-            return (nameMatch || descriptionMatch) && canEquip;
+            const nameMatch = (item.Name || item.name || '').toLowerCase().includes(searchTerm.toLowerCase());
+            const descriptionMatch = (item.Description || item.description || '').toLowerCase().includes(searchTerm.toLowerCase());
+            return nameMatch || descriptionMatch;
         });
-    
-        console.log("Number of items after filtering:", filteredItems.length);
     
         if (jsonKey === 'weapons') {
             displayWeaponItems(filteredItems, container);
-        } else if (jsonKey === 'armor') {
-            displayArmorItems(filteredItems, container);
         } else {
-            displayGenericItems(filteredItems, container);
+            displayGenericItems(Object.fromEntries(filteredItems), container);
         }
     }
-    
-    function displayGenericItems(filteredItems, container) {
-        const itemGrid = document.createElement('div');
-        itemGrid.className = 'item-grid';
-        filteredItems.forEach(([key, item]) => {
-            const itemCard = createItemCard({ key, ...item });
-            itemGrid.appendChild(itemCard);
-        });
-        container.appendChild(itemGrid);
-    }
-    
+
     function displayWeaponItems(filteredItems, container) {
         const weaponTypes = {};
         filteredItems.forEach(([key, weapon]) => {
@@ -1477,130 +1534,210 @@ const InventoryModule = (function () {
             }
             weaponTypes[weapon.weaponType].push({ key, ...weapon });
         });
-    
+
         Object.entries(weaponTypes).forEach(([weaponType, weapons]) => {
             const typeSection = document.createElement('div');
             typeSection.className = 'weapon-type';
             typeSection.innerHTML = `<h3>${weaponType}</h3>`;
-    
+
             const itemGrid = document.createElement('div');
             itemGrid.className = 'item-grid';
-    
+
             weapons.forEach(weapon => {
                 const itemCard = createItemCard(weapon);
                 itemGrid.appendChild(itemCard);
             });
-    
+
             typeSection.appendChild(itemGrid);
             container.appendChild(typeSection);
         });
     }
-    
-    function displayArmorItems(filteredItems, container) {
-        const armorTypes = {
-            head: [], face: [], neck: [], shoulders: [], torso: [], arm: [], 
-            wrist: [], finger: [], waist: [], legs: [], ankle: [], foot: [], toe: []
-        };
-        filteredItems.forEach(([key, armor]) => {
-            if (armorTypes[armor.armorType.toLowerCase()]) {
-                armorTypes[armor.armorType.toLowerCase()].push({ key, ...armor });
-            }
-        });
-        Object.entries(armorTypes).forEach(([armorType, armors]) => {
-            if (armors.length > 0) {
-                const typeSection = document.createElement('div');
-                typeSection.className = 'armor-type';
-                typeSection.innerHTML = `<h3>${armorType.charAt(0).toUpperCase() + armorType.slice(1)}</h3>`;
-                const itemGrid = document.createElement('div');
-                itemGrid.className = 'item-grid';
-                armors.forEach(armor => {
-                    const itemCard = createItemCard(armor);
-                    itemGrid.appendChild(itemCard);
-                });
-                typeSection.appendChild(itemGrid);
-                container.appendChild(typeSection);
-            }
-        });
-    }
+
+    // Add these functions to the InventoryModule
+
+function createWeaponInfo(item) {
+    return `
+        <div class="item-detail-section">
+            <h3>Weapon Details</h3>
+            <p><strong>Weapon Type:</strong> ${item.weaponType || 'N/A'}</p>
+            <p><strong>Damage:</strong> ${item.damageAmount || 'N/A'} ${item.damageType || ''}</p>
+            <p><strong>Range:</strong> ${item.meleeRanged || 'N/A'}</p>
+            <p><strong>Hands Required:</strong> ${item.handsRequired || 'N/A'}</p>
+            <p><strong>Magic/Non-Magical:</strong> ${item.magicNonMagical || 'N/A'}</p>
+        </div>
+    `;
+}
+
+function createArmorInfo(item) {
+    return `
+        <div class="item-detail-section">
+            <h3>Armor Details</h3>
+            <p><strong>Armor Type:</strong> ${item.armorType || 'N/A'}</p>
+            <p><strong>Armor Rating:</strong> ${item.armorRating || 'N/A'}</p>
+            <p><strong>Tank Modifier:</strong> ${item.tankModifier || 'N/A'}</p>
+        </div>
+    `;
+}
+
+function createAmmunitionInfo(item) {
+    return `
+        <div class="item-detail-section">
+            <h3>Ammunition Details</h3>
+            <p><strong>Range:</strong> ${item.range || 'N/A'}</p>
+            <p><strong>Damage:</strong> ${item.damage || 'N/A'} ${item.damageType || ''}</p>
+            ${item.radius ? `<p><strong>Blast Radius:</strong> ${item.radius} feet</p>` : ''}
+            ${item.triggerMechanism ? `<p><strong>Trigger Mechanism:</strong> ${item.triggerMechanism}</p>` : ''}
+        </div>
+    `;
+}
+
+function createCraftingComponentInfo(item) {
+    return `
+        <div class="item-detail-section">
+            <h3>Crafting Component Details</h3>
+            <p><strong>Effect:</strong> ${item.effect || 'N/A'}</p>
+            <p><strong>Duration:</strong> ${item.duration || 'N/A'}</p>
+            <p><strong>Range:</strong> ${item.range || 'N/A'}</p>
+        </div>
+    `;
+}
+
+function createExplosiveInfo(item) {
+    return `
+        <div class="item-detail-section">
+            <h3>Explosive Details</h3>
+            <p><strong>Effect:</strong> ${item.effect || 'N/A'}</p>
+            <p><strong>Duration:</strong> ${item.duration || 'N/A'}</p>
+            <p><strong>Range:</strong> ${item.range || 'N/A'}</p>
+        </div>
+    `;
+}
+
+function createPotionInfo(item) {
+    return `
+        <div class="item-detail-section">
+            <h3>Potion Details</h3>
+            <p><strong>Effect:</strong> ${item.effect || 'N/A'}</p>
+            <p><strong>Duration:</strong> ${item.duration || 'N/A'}</p>
+            ${item.hpBonus ? `<p><strong>HP Bonus:</strong> ${item.hpBonus}</p>` : ''}
+            ${item.mpBonus ? `<p><strong>MP Bonus:</strong> ${item.mpBonus}</p>` : ''}
+        </div>
+    `;
+}
+
+function createThrowableInfo(item) {
+    return `
+        <div class="item-detail-section">
+            <h3>Throwable Details</h3>
+            <p><strong>Effect:</strong> ${item.effect || 'N/A'}</p>
+            <p><strong>Duration:</strong> ${item.duration || 'N/A'}</p>
+            <p><strong>Range:</strong> ${item.range || 'N/A'}</p>
+        </div>
+    `;
+}
+
+function createTrapInfo(item) {
+    return `
+        <div class="item-detail-section">
+            <h3>Trap Details</h3>
+            <p><strong>Effect:</strong> ${item.effect || 'N/A'}</p>
+            <p><strong>Duration:</strong> ${item.duration || 'N/A'}</p>
+            <p><strong>Range:</strong> ${item.range || 'N/A'}</p>
+        </div>
+    `;
+}
 
     function openItemDetailModal(item) {
+        console.log("Opening item detail modal for:", item);
         const modal = document.getElementById('item-detail-modal');
         const title = document.getElementById('item-detail-name');
         const info = document.getElementById('item-detail-info');
         const equipButtons = document.getElementById('equip-buttons');
         
-        title.textContent = item.name;
+        title.textContent = item.Name || item.name || 'Unnamed Item';
 
         let infoHTML = `
             <div class="item-detail-grid">
                 <div class="item-detail-section">
                     <h3>Basic Info</h3>
-                    <p><strong>Type:</strong> ${item.itemType}</p>
+                    <p><strong>Type:</strong> ${item.itemType || 'Scroll'}</p>
                     <p><strong>Rarity:</strong> ${item.rarity || 'N/A'}</p>
-                    ${item.description ? `<p><strong>Description:</strong> ${item.description}</p>` : ''}
+                    ${item.Description || item.description ? `<p><strong>Description:</strong> ${item.Description || item.description}</p>` : ''}
                 </div>`;
 
-        // Add general properties that apply to all item types
-        if (item.effect) {
-            infoHTML += `
-                <div class="item-detail-section">
-                    <h3>Effect</h3>
-                    <p>${item.effect}</p>
-                </div>`;
-        }
+        infoHTML += createItemTypeSpecificInfo(item);
+        infoHTML += createBonusesInfo(item);
+        infoHTML += createSpecialPropertiesInfo(item);
 
-        if (item.duration) {
-            infoHTML += `
-                <div class="item-detail-section">
-                    <h3>Duration</h3>
-                    <p>${item.duration}</p>
-                </div>`;
-        }
+        infoHTML += '</div>';
+        info.innerHTML = infoHTML;
 
-        if (item.range) {
-            infoHTML += `
-                <div class="item-detail-section">
-                    <h3>Range</h3>
-                    <p>${item.range}</p>
-                </div>`;
-        }
+        equipButtons.innerHTML = '';
+        createEquipButtons(item, equipButtons);
 
-        // Add type-specific information
-        switch (item.itemType) {
-            case 'Weapon':
-                infoHTML += createWeaponInfo(item);
-                break;
-            case 'Armor':
-                infoHTML += createArmorInfo(item);
-                break;
-            case 'Ammunition':
-                infoHTML += createAmmunitionInfo(item);
-                break;
-            case 'Crafting Component':
-                infoHTML += createCraftingComponentInfo(item);
-                break;
-            case 'Explosive':
-                infoHTML += createExplosiveInfo(item);
-                break;
-            case 'Potion':
-                infoHTML += createPotionInfo(item);
-                break;
-            case 'Scroll':
-                infoHTML += createScrollInfo(item);
-                break;
-            case 'Throwable':
-                infoHTML += createThrowableInfo(item);
-                break;
-            case 'Trap':
-                infoHTML += createTrapInfo(item);
-                break;
-            default:
-                infoHTML += '<p>No additional information available for this item type.</p>';
-        }
+        modal.style.display = 'block';
+    }
 
-        // Add general bonuses and abilities
+    function createItemTypeSpecificInfo(item) {
+        console.log("Creating specific info for item:", item);
+        let html = '';
+        if (item.itemType === 'Scroll' || !item.itemType) {
+            html = createScrollInfo(item);
+        } else {
+            switch (item.itemType) {
+                case 'Weapon':
+                    html = createWeaponInfo(item);
+                    break;
+                case 'Armor':
+                    html = createArmorInfo(item);
+                    break;
+                case 'Ammunition':
+                    html = createAmmunitionInfo(item);
+                    break;
+                case 'Crafting Component':
+                    html = createCraftingComponentInfo(item);
+                    break;
+                case 'Explosive':
+                    html = createExplosiveInfo(item);
+                    break;
+                case 'Potion':
+                    html = createPotionInfo(item);
+                    break;
+                case 'Throwable':
+                    html = createThrowableInfo(item);
+                    break;
+                case 'Trap':
+                    html = createTrapInfo(item);
+                    break;
+                default:
+                    html = '<p>No additional information available for this item type.</p>';
+            }
+        }
+        return html;
+    }
+    
+
+    function createScrollInfo(item) {
+        return `
+            <div class="item-detail-section">
+                <h3>Scroll Details</h3>
+                <p><strong>Effect:</strong> ${item.Effect || 'N/A'}</p>
+                <p><strong>Range:</strong> ${item.Range || 'N/A'}</p>
+                <p><strong>Damage:</strong> ${item.Damage || 'N/A'}</p>
+                <p><strong>Damage Type:</strong> ${item.DamageType || 'N/A'}</p>
+                <p><strong>Casting Time:</strong> ${item.CastingTime || 'N/A'}</p>
+                <p><strong>Ability Point Cost:</strong> ${item.AbilityPointCost || 'N/A'}</p>
+                <p><strong>Cooldown:</strong> ${item.Cooldown || 'N/A'}</p>
+                <p><strong>Scaling:</strong> ${item.Scaling || 'N/A'}</p>
+                <p><strong>Spellcasting Modifier:</strong> ${item.SpellCastingModifier || 'N/A'}</p>
+            </div>
+        `;
+    }
+
+    function createBonusesInfo(item) {
+        let html = '';
         if (item.vitalBonus && Object.keys(item.vitalBonus).length > 0) {
-            infoHTML += `
+            html += `
                 <div class="item-detail-section">
                     <h3>Vital Bonuses</h3>
                     <ul>
@@ -1608,9 +1745,8 @@ const InventoryModule = (function () {
                     </ul>
                 </div>`;
         }
-
         if (item.skillBonus && Object.keys(item.skillBonus).length > 0) {
-            infoHTML += `
+            html += `
                 <div class="item-detail-section">
                     <h3>Skill Bonuses</h3>
                     <ul>
@@ -1618,9 +1754,13 @@ const InventoryModule = (function () {
                     </ul>
                 </div>`;
         }
+        return html;
+    }
 
+    function createSpecialPropertiesInfo(item) {
+        let html = '';
         if (item.abilities && item.abilities.length > 0) {
-            infoHTML += `
+            html += `
                 <div class="item-detail-section">
                     <h3>Abilities</h3>
                     <ul>
@@ -1628,9 +1768,8 @@ const InventoryModule = (function () {
                     </ul>
                 </div>`;
         }
-
         if (item.traits && item.traits.length > 0) {
-            infoHTML += `
+            html += `
                 <div class="item-detail-section">
                     <h3>Traits</h3>
                     <ul>
@@ -1638,21 +1777,10 @@ const InventoryModule = (function () {
                     </ul>
                 </div>`;
         }
+        return html;
+    }
 
-        infoHTML += '</div>';
-        info.innerHTML = infoHTML;
-
-        // Clear previous equip buttons
-        equipButtons.innerHTML = '';
-
-        const slotTypes = ['utility', 'primary-weapon', 'secondary-weapon', 'head', 'neck', 'legs', 'torso', 'waist', 'shoulders', 'arm', 'foot', 'ankle', 'finger', 'toe', 'face'];
-        slotTypes.forEach(slotType => {
-            if (canEquipToSlot(item, slotType)) {
-                addEquipButtonForSlot(item, slotType);
-            }
-        });
-
-        // Add equip buttons based on item type
+    function createEquipButtons(item, equipButtons) {
         if (item.itemType === 'Weapon') {
             const primaryButton = document.createElement('button');
             primaryButton.textContent = 'Equip as Primary Weapon';
@@ -1674,350 +1802,51 @@ const InventoryModule = (function () {
             equipButton.textContent = 'Equip Item';
             equipButton.onclick = () => {
                 if (equipItem(item)) {
-                    modal.style.display = 'none';
+                    document.getElementById('item-detail-modal').style.display = 'none';
                 }
             };
             equipButtons.appendChild(equipButton);
         }
-
-        modal.style.display = 'block';
-    }
-
-    function canEquipToSlot(item, slotType) {
-        if (slotType === 'utility') {
-            return ['Throwable', 'Potion', 'Trap', 'Explosive', 'Scroll', 'Crafting Component', 'Ammunition'].includes(item.itemType);
-        } else if (slotType === 'weapon') {
-            return item.itemType === 'Weapon';
-        } else {
-            return item.itemType === 'Armor' && item.armorType.toLowerCase() === slotType.toLowerCase();
-        }
-    }
-
-
-    function createWeaponInfo(item) {
-        return `
-            <div class="item-detail-section">
-                <h3>Weapon Details</h3>
-                <p><strong>Weapon Type:</strong> ${item.weaponType || 'N/A'}</p>
-                <p><strong>Damage:</strong> ${item.damageAmount || 'N/A'} ${item.damageType || ''}</p>
-                <p><strong>Range:</strong> ${item.meleeRanged || 'N/A'}</p>
-                <p><strong>Hands Required:</strong> ${item.handsRequired || 'N/A'}</p>
-                <p><strong>Magic/Non-Magic:</strong> ${item.magicNonMagical || 'N/A'}</p>
-            </div>
-            <div class="item-detail-section">
-                <h3>Bonuses</h3>
-                ${createBonusList(item.vitalBonus, 'Vital Bonuses')}
-                ${createBonusList(item.skillBonus, 'Skill Bonuses')}
-            </div>
-            <div class="item-detail-section">
-                <h3>Special</h3>
-                ${createList(item.abilities, 'Abilities')}
-                ${createList(item.traits, 'Traits')}
-                ${createList(item.spellsGranted, 'Spells Granted')}
-            </div>
-        `;
-    }
-
-    function createArmorInfo(item) {
-        return `
-            <div class="item-detail-section">
-                <h3>Armor Details</h3>
-                <p><strong>Armor Type:</strong> ${item.armorType || 'N/A'}</p>
-                <p><strong>Armor Rating:</strong> ${item.armorRating || 'N/A'}</p>
-                <p><strong>Tank Modifier:</strong> ${item.tankModifier || 'N/A'}</p>
-            </div>
-            ${createBonusList(item.vitalBonus, 'Vital Bonuses')}
-            ${createBonusList(item.skillBonus, 'Skill Bonuses')}
-            ${createList(item.abilities, 'Abilities')}
-            ${createList(item.traits, 'Traits')}
-            ${createList(item.spellsGranted, 'Spells Granted')}
-        `;
-    }
-
-    function createAmmunitionInfo(item) {
-        return `
-            <div class="item-detail-section">
-                <h3>Ammunition Details</h3>
-                <p><strong>Effect:</strong> ${item.effect || 'N/A'}</p>
-                <p><strong>Range:</strong> ${item.range || 'N/A'}</p>
-                <p><strong>Damage:</strong> ${item.damage || 'N/A'}</p>
-                <p><strong>Damage Type:</strong> ${item.damageType || 'N/A'}</p>
-            </div>
-            ${createList(item.additionalEffects, 'Additional Effects')}
-        `;
-    }
-
-    function createCraftingComponentInfo(item) {
-        return `
-            <div class="item-detail-section">
-                <h3>Crafting Component Details</h3>
-                <p><strong>Effect:</strong> ${item.effect || 'N/A'}</p>
-            </div>
-        `;
-    }
-
-    function createExplosiveInfo(item) {
-        return `
-            <div class="item-detail-section">
-                <h3>Explosive Details</h3>
-                <p><strong>Effect:</strong> ${item.effect || 'N/A'}</p>
-                <p><strong>Damage:</strong> ${item.damage || 'N/A'}</p>
-                <p><strong>Damage Type:</strong> ${item.damageType || 'N/A'}</p>
-                <p><strong>Radius:</strong> ${item.radius || 'N/A'}</p>
-            </div>
-        `;
-    }
-
-    function createPotionInfo(item) {
-        return `
-            <div class="item-detail-section">
-                <h3>Potion Details</h3>
-                <p><strong>Effect:</strong> ${item.effect || 'N/A'}</p>
-                <p><strong>Duration:</strong> ${item.duration || 'N/A'}</p>
-            </div>
-        `;
-    }
-
-    function createScrollInfo(item) {
-        return `
-            <div class="item-detail-section">
-                <h3>Scroll Details</h3>
-                <p><strong>Description:</strong> ${item.Description || 'N/A'}</p>
-                <p><strong>Effect:</strong> ${item.Effect || 'N/A'}</p>
-                <p><strong>Range:</strong> ${item.Range || 'N/A'}</p>
-                <p><strong>Damage:</strong> ${item.Damage || 'N/A'}</p>
-                <p><strong>Damage Type:</strong> ${item.DamageType || 'N/A'}</p>
-                <p><strong>Casting Time:</strong> ${item.CastingTime || 'N/A'}</p>
-                <p><strong>Ability Point Cost:</strong> ${item.AbilityPointCost || 'N/A'}</p>
-                <p><strong>Cooldown:</strong> ${item.Cooldown || 'N/A'}</p>
-                <p><strong>Scaling:</strong> ${item.Scaling || 'N/A'}</p>
-                <p><strong>Spellcasting Modifier:</strong> ${item.SpellCastingModifier || 'N/A'}</p>
-            </div>
-        `;
-    }
-
-    function createThrowableInfo(item) {
-        return `
-            <div class="item-detail-section">
-                <h3>Throwable Details</h3>
-                <p><strong>Effect:</strong> ${item.effect || 'N/A'}</p>
-                <p><strong>Duration:</strong> ${item.duration || 'N/A'}</p>
-                <p><strong>Range:</strong> ${item.range || 'N/A'}</p>
-                <p><strong>Damage:</strong> ${item.damage || 'N/A'}</p>
-                <p><strong>Damage Type:</strong> ${item.damageType || 'N/A'}</p>
-                <p><strong>Blast Radius:</strong> ${item.blastRadius ? item.blastRadius + ' feet' : 'N/A'}</p>
-                <p><strong>Trigger Mechanism:</strong> ${item.triggerMechanism || 'N/A'}</p>
-            </div>
-        `;
-    }
-
-    function createTrapInfo(item) {
-        return `
-            <div class="item-detail-section">
-                <h3>Trap Details</h3>
-                <p><strong>Effect:</strong> ${item.effect || 'N/A'}</p>
-                <p><strong>Duration:</strong> ${item.duration || 'N/A'}</p>
-            </div>
-        `;
-    }
-
-    function createBonusList(bonuses, title) {
-        if (!bonuses || Object.keys(bonuses).length === 0) return '';
-        let html = `<div class="item-detail-section"><h3>${title}</h3><ul>`;
-        for (const [key, value] of Object.entries(bonuses)) {
-            html += `<li>${key}: +${value}</li>`;
-        }
-        html += '</ul></div>';
-        return html;
-    }
-
-    function createList(items, title) {
-        if (!items || (Array.isArray(items) && items.length === 0) || Object.keys(items).length === 0) return '';
-
-        let html = `<div class="item-detail-section"><h3>${title}</h3><ul>`;
-
-        if (Array.isArray(items)) {
-            items.forEach(item => {
-                html += `<li>${item}</li>`;
-            });
-        } else if (typeof items === 'object') {
-            Object.entries(items).forEach(([key, value]) => {
-                html += `<li>${key}: ${value}</li>`;
-            });
-        }
-
-        html += '</ul></div>';
-        return html;
-    }
-
-    function displayWeaponAction(weapon, slot) {
-        const actionsTab = document.getElementById('Actions');
-        if (!actionsTab) {
-            console.error('Actions tab not found');
-            return;
-        }
-
-        const majorActionsSection = actionsTab.querySelector('.major-actions');
-        if (!majorActionsSection) {
-            console.error('Major Actions section not found');
-            return;
-        }
-
-        // Create or update the weapon action
-        let weaponAction = majorActionsSection.querySelector(`.weapon-action-${slot}`);
-        if (!weaponAction) {
-            weaponAction = document.createElement('div');
-            weaponAction.className = `action weapon-action-${slot}`;
-            majorActionsSection.appendChild(weaponAction);
-        }
-
-        weaponAction.innerHTML = `
-            <h4>Attack with ${weapon.name}</h4>
-            <p>Make an attack using your ${slot} weapon.</p>
-            <ul>
-                <li>Damage: ${weapon.damageAmount} ${weapon.damageType}</li>
-                <li>Range: ${weapon.meleeRanged}</li>
-                ${weapon.weaponType ? `<li>Weapon Type: ${weapon.weaponType}</li>` : ''}
-                ${weapon.handsRequired ? `<li>Hands Required: ${weapon.handsRequired}</li>` : ''}
-            </ul>
-            <button class="use-action-btn">Use Action</button>
-        `;
-
-        // Add event listener to the weapon action button
-        const useActionBtn = weaponAction.querySelector('.use-action-btn');
-        useActionBtn.addEventListener('click', () => handleWeaponAttack(weapon, slot));
-    }
-
-    function handleWeaponAttack(weapon, slot) {
-        console.log(`Attack with ${weapon.name} (${slot} weapon)`);
-        // Implement attack logic here
-    }
-
-    // In the InventoryModule
-    function equipArmor(item, slotType) {
-        const slots = document.querySelectorAll(`[id^="${slotType}-slot"]`);
-        for (let slot of slots) {
-            if (!slot.textContent) {
-                slot.textContent = item.name;
-                slot.onclick = () => openEquippedItemModal(item, slotType);
-    
-                // Apply vital and skill bonuses
-                applyItemBonuses(item);
-    
-                // Add abilities, traits, and spells
-                addItemAbilities(item);
-                addItemTraits(item);
-                addItemSpells(item);
-    
-                // Update UI
-                UIModule.updateCharacterInfo(CharacterModule.getData());
-    
-                break;  // Equip to the first empty slot of this type
-            }
-        }
-        // Close the modal after equipping
-        document.getElementById('item-detail-modal').style.display = 'none';
-    }
-
-    function applyItemBonuses(item) {
-        console.log("Applying bonuses for item:", item.name);
-    
-        // Apply vital bonuses
-        for (const [vital, bonus] of Object.entries(item.vitalBonus || {})) {
-            console.log(`Applying vital bonus: ${vital} +${bonus}`);
-            const currentValue = CharacterModule.getVitals()[vital] || 0;
-            CharacterModule.setVital(vital, currentValue + bonus);
-        }
-    
-        // Apply skill bonuses
-        console.log("Skill bonuses to apply:", item.skillBonus);
-        for (const [skill, bonus] of Object.entries(item.skillBonus || {})) {
-            console.log(`Applying skill bonus: ${skill} +${bonus}`);
-            UIModule.updateSkillScore(skill, bonus);
-        }
-    
-        // Update UI
-        UIModule.updateCharacterInfo(CharacterModule.getData());
-        UIModule.updateVitalsDisplay();
-        UIModule.updateSkillsDisplay();
     }
 
     function equipItem(item) {
-        console.log("Equipping item:", item); // Debug log
+        console.log("Equipping item:", item);
     
-        if (canEquipToSlot(item, 'utility')) {
-            return equipToUtilitySlot(item);
-        } else if (canEquipToSlot(item, 'weapon')) {
-            // You might want to check if it's primary or secondary weapon here
-            return equipWeapon(item, 'primary');
+        let equipped = false;
+    
+        if (item.itemType === 'Weapon') {
+            equipped = equipWeapon(item, 'primary');
         } else if (item.itemType === 'Armor') {
-            return equipArmor(item, item.armorType.toLowerCase());
+            equipped = equipArmor(item, item.armorType.toLowerCase());
+        } else if (['Throwable', 'Scroll', 'Potion', 'Explosive', 'Ammunition', 'Crafting Component'].includes(item.itemType)) {
+            equipped = equipToUtilitySlot(item);
+        } else {
+            // For items that don't fit into the above categories
+            applyItemBonuses(item);
+            addItemAbilities(item);
+            addItemTraits(item);
+            addItemSpells(item);
+            equipped = true;
         }
     
-        if (['Throwable', 'Scroll', 'Potion', 'Explosive', 'Ammunition', 'Crafting Component'].includes(item.itemType)) {
-            return equipToUtilitySlot(item);
+        if (equipped) {
+            // Update the character data to reflect the newly equipped item
+            const characterData = CharacterModule.getData();
+            if (!characterData.equippedItems) {
+                characterData.equippedItems = {};
+            }
+            characterData.equippedItems[item.armorType ? item.armorType.toLowerCase() : item.itemType] = item;
+            
+            // Update the UI
+            UIModule.updateCharacterInfo(characterData);
+            UIModule.updateEquippedItems(characterData.equippedItems);
+    
+            console.log("Item equipped successfully");
+        } else {
+            console.log("Failed to equip item");
         }
     
-        // Apply vital bonuses
-        for (const [vital, bonus] of Object.entries(item.vitalBonus || {})) {
-            CharacterModule.setVital(vital, CharacterModule.getVitals()[vital] + bonus);
-        }
-    
-        // Apply skill bonuses
-        for (const [skill, bonus] of Object.entries(item.skillBonus || {})) {
-            UIModule.updateSkillScore(skill, bonus);
-        }
-    
-        // Add abilities
-        const abilitiesData = DataLoadingModule.getAbilitiesData();
-        console.log("Abilities data:", abilitiesData); // Debug log
-        console.log("Item abilities:", item.abilities); // Debug log
-    
-        let abilitiesToAdd = [];
-        if (Array.isArray(item.abilities)) {
-            abilitiesToAdd = item.abilities.map(abilityName => abilitiesData[abilityName]).filter(ability => ability);
-        } else if (typeof item.abilities === 'object' && item.abilities !== null) {
-            abilitiesToAdd = Object.keys(item.abilities).map(abilityName => abilitiesData[abilityName]).filter(ability => ability);
-        }
-        UIModule.updateAbilities(abilitiesToAdd);
-    
-        // Add traits
-        const traitsData = DataLoadingModule.getTraitsData();
-        console.log("Traits data:", traitsData); // Debug log
-        console.log("Item traits:", item.traits); // Debug log
-    
-        let traitsToAdd = [];
-        if (Array.isArray(item.traits)) {
-            traitsToAdd = item.traits.map(traitName => traitsData[traitName]).filter(trait => trait);
-        } else if (typeof item.traits === 'object' && item.traits !== null) {
-            traitsToAdd = Object.keys(item.traits).map(traitName => traitsData[traitName]).filter(trait => trait);
-        }
-        UIModule.updateTraits(traitsToAdd, 'item');
-    
-        // Add spells
-        const spellsData = DataLoadingModule.getSpellsData();
-        console.log("Spells data:", spellsData); // Debug log
-        console.log("Item spells granted:", item.spellsGranted); // Debug log
-    
-        let spellsToAdd = [];
-        if (Array.isArray(item.spellsGranted)) {
-            spellsToAdd = item.spellsGranted.map(spellName => {
-                const spell = spellsData[spellName];
-                return spell ? { ...spell, Name: spellName } : null;
-            }).filter(spell => spell);
-        } else if (typeof item.spellsGranted === 'object' && item.spellsGranted !== null) {
-            spellsToAdd = Object.keys(item.spellsGranted).map(spellName => {
-                const spell = spellsData[spellName];
-                return spell ? { ...spell, Name: spellName } : null;
-            }).filter(spell => spell);
-        }
-        UIModule.updateSpells(spellsToAdd);
-    
-        // Update UI
-        UIModule.updateCharacterInfo(CharacterModule.getData());
-    
-        console.log("Item equipped successfully"); // Debug log
-        return true;
+        return equipped;
     }
 
     function init() {
@@ -2026,29 +1855,25 @@ const InventoryModule = (function () {
             createCategoryIcons();
             setupEquipmentSlotListeners();
 
-            // Add event listener to the inventory categories container
             const categoriesContainer = document.getElementById('inventory-categories');
             if (categoriesContainer) {
                 categoriesContainer.addEventListener('click', handleCategoryClick);
             }
         });
 
-        // Close modal when clicking on <span> (x)
         document.querySelectorAll('.close').forEach(closeBtn => {
-            closeBtn.onclick = function () {
+            closeBtn.onclick = function() {
                 this.closest('.modal').style.display = 'none';
             }
         });
 
-        // Close modal when clicking outside of it
-        window.onclick = function (event) {
+        window.onclick = function(event) {
             if (event.target.classList.contains('modal')) {
                 event.target.style.display = 'none';
             }
         }
     }
 
-    // Define handleCategoryClick to avoid errors
     function handleCategoryClick(event) {
         const categoryElement = event.target.closest('.inventory-category');
         if (categoryElement) {
@@ -2058,6 +1883,46 @@ const InventoryModule = (function () {
         }
     }
 
+    function applyPercentageVitalBonus(percentage) {
+        const vitals = CharacterModule.getVitals();
+        for (const vital in vitals) {
+            const currentValue = vitals[vital];
+            const newValue = Math.floor(currentValue * (1 + percentage));
+            CharacterModule.setVitals(vital, newValue);
+        }
+    }
+
+    function removePercentageVitalBonus(percentage) {
+        const vitals = CharacterModule.getVitals();
+        for (const vital in vitals) {
+            const currentValue = vitals[vital];
+            const originalValue = Math.floor(currentValue / (1 + percentage));
+            CharacterModule.setVitals(vital, originalValue);
+        }
+    }
+
+    function removeBonuses(item) {
+        if (item.vitalBonus && item.vitalBonus.allStats) {
+            CharacterModule.removePercentageVitalBonus(item.vitalBonus.allStats);
+        }
+
+        for (const [vital, bonus] of Object.entries(item.vitalBonus || {})) {
+            if (vital !== 'allStats') {
+                const currentValue = CharacterModule.getVitals()[vital];
+                CharacterModule.setVitals(vital, currentValue - bonus);
+            }
+        }
+
+        for (const [skill, bonus] of Object.entries(item.skillBonus || {})) {
+            UIModule.updateSkillScore(skill, -bonus);
+        }
+
+        UIModule.updateCharacterInfo(CharacterModule.getData());
+        UIModule.updateVitalsDisplay();
+        UIModule.updateSkillsDisplay();
+    }
+
+
 
     return {
         init: init,
@@ -2065,8 +1930,9 @@ const InventoryModule = (function () {
         equipArmor: equipArmor,
         equipItem: equipItem,
         showEquippableItems: showEquippableItems,
-        openEquippedItemModal: openEquippedItemModal
-        // Add other functions you want to expose here
+        openEquippedItemModal: openEquippedItemModal,
+        applyItemBonuses,
+        removeBonuses
     };
 })();
 
@@ -2190,53 +2056,85 @@ document.addEventListener('DOMContentLoaded', () => {
     }, true);
 
     // Skills management
-    const skillsContainer = document.getElementById('skills-container');
+const skillsContainer = document.getElementById('skills-container');
 
-    skillsContainer.addEventListener('click', (event) => {
-        if (event.target.classList.contains('skill-increment') || event.target.classList.contains('skill-decrement')) {
-            const skillBox = event.target.closest('.skill-box');
-            const scoreElement = skillBox.querySelector('.skill-score');
-            const baseScore = parseInt(scoreElement.dataset.baseScore);
-            const bonus = parseInt(scoreElement.dataset.bonus);
-            const characterLevel = parseInt(CharacterModule.getData().level);
-            const maxSkillScore = Math.min(7, characterLevel);
+skillsContainer.addEventListener('dblclick', (event) => {
+    const scoreContainer = event.target.closest('.skill-score-container');
+    if (scoreContainer) {
+        const buttons = scoreContainer.querySelector('.skill-buttons');
+        buttons.classList.toggle('hidden');
+    }
+});
 
-            if (event.target.classList.contains('skill-increment')) {
-                if (baseScore < maxSkillScore && CharacterModule.deductSkillPoints(1)) {
-                    scoreElement.dataset.baseScore = baseScore + 1;
-                    UIModule.updateSkillScore(scoreElement, baseScore + 1, bonus);
-                }
-            } else if (event.target.classList.contains('skill-decrement')) {
-                if (baseScore > 0) {
-                    scoreElement.dataset.baseScore = baseScore - 1;
-                    UIModule.updateSkillScore(scoreElement, baseScore - 1, bonus);
-                    CharacterModule.addSkillPoints(1);
-                }
+skillsContainer.addEventListener('click', (event) => {
+    if (event.target.classList.contains('skill-increment') || event.target.classList.contains('skill-decrement')) {
+        const skillBox = event.target.closest('.skill-box');
+        const scoreElement = skillBox.querySelector('.skill-score');
+        const baseScore = parseInt(scoreElement.dataset.baseScore);
+        const bonus = parseInt(scoreElement.dataset.bonus);
+        const characterLevel = parseInt(CharacterModule.getData().level);
+        const maxSkillScore = Math.min(15);
+        const availablePoints = CharacterModule.getAvailablePoints('skill');
+
+        if (event.target.classList.contains('skill-increment')) {
+            if (baseScore < maxSkillScore && availablePoints > 0) {
+                const newBaseScore = Math.min(baseScore + 1, maxSkillScore);
+                const pointsUsed = newBaseScore - baseScore;
+                scoreElement.dataset.baseScore = newBaseScore;
+                scoreElement.textContent = newBaseScore + bonus;
+                CharacterModule.deductPoints('skill', pointsUsed);
             }
+        } else if (event.target.classList.contains('skill-decrement')) {
+            if (baseScore > 0) {
+                const newBaseScore = baseScore - 1;
+                scoreElement.dataset.baseScore = newBaseScore;
+                scoreElement.textContent = newBaseScore + bonus;
+                CharacterModule.addPoints('skill', 1);
+            }
+        }
+    }
+});
+
+// Vital stats management
+document.querySelectorAll('.stat-score-container').forEach(container => {
+    const statScore = container.querySelector('.stat-score');
+    const buttons = container.querySelector('.stat-buttons');
+
+    statScore.addEventListener('dblclick', () => {
+        buttons.classList.toggle('hidden');
+    });
+
+    const incrementBtn = container.querySelector('.stat-increment');
+    const decrementBtn = container.querySelector('.stat-decrement');
+
+    incrementBtn.addEventListener('click', () => {
+        console.log('Increment button clicked');
+        const currentScore = parseInt(statScore.textContent);
+        const characterLevel = parseInt(CharacterModule.getData().level);
+        const maxVitalScore = 5; // Changed this line
+        const availablePoints = CharacterModule.getAvailablePoints('vital');
+        console.log('Current score:', currentScore, 'Max score:', maxVitalScore, 'Available points:', availablePoints);
+
+        if (currentScore < maxVitalScore && availablePoints > 0) {
+            const newScore = currentScore + 1;
+            const pointsUsed = 1;
+            console.log('New score:', newScore, 'Points used:', pointsUsed);
+            statScore.textContent = newScore;
+            CharacterModule.deductPoints('vital', pointsUsed);
+            console.log('After deduction, available points:', CharacterModule.getAvailablePoints('vital'));
         }
     });
 
-    // Vital stats management
-    document.querySelectorAll('.stat-score').forEach(statElement => {
-        statElement.addEventListener('dblclick', (event) => {
-            const currentScore = parseInt(event.target.textContent);
-            const characterLevel = parseInt(CharacterModule.getData().level);
-            const maxVitalScore = Math.min(5, characterLevel);
-
-            if (event.ctrlKey) {
-                // Decrease vital score
-                if (currentScore > 0) {
-                    event.target.textContent = currentScore - 1;
-                    CharacterModule.addPoints('vital', 1);
-                }
-            } else {
-                // Increase vital score
-                if (currentScore < maxVitalScore && CharacterModule.deductPoints('vital', 1)) {
-                    event.target.textContent = currentScore + 1;
-                }
-            }
-        });
+    decrementBtn.addEventListener('click', () => {
+        const currentScore = parseInt(statScore.textContent);
+        if (currentScore > 0) {
+            const newScore = currentScore - 1;
+            statScore.textContent = newScore;
+            CharacterModule.addPoints('vital', 1);
+            console.log('After addition, available points:', CharacterModule.getAvailablePoints('vital'));
+        }
     });
+});
 
     // Initialize Inventory
     InventoryModule.init();
