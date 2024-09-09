@@ -1,0 +1,14 @@
+{
+    "quest_items": {
+      "item1": {
+        "name": "Ancient Relic",
+        "description": "A mysterious artifact needed for the main quest.",
+        "itemType": "QuestItem"
+      },
+      "item2": {
+        "name": "Magic Key",
+        "description": "A key to unlock the hidden temple.",
+        "itemType": "QuestItem"
+      }
+    }
+  }

@@ -7,12 +7,7 @@
             "rarity": "Rare",
             "effect": "Creates powerful explosions upon impact.",
             "duration": "Instantaneous",
-            "range": "20 feet radius",
-            "vitalBonus": {},
-            "skillBonus": {},
-            "abilities": {},
-            "hpBonus": 0,
-            "mpBonus": 0
+            "range": "20 feet radius"
         },
         "FailSafe": {
             "name": "Fail Safe",
@@ -21,12 +16,7 @@
             "rarity": "Uncommon",
             "effect": "Sends a notification if a trap is disabled or set off.",
             "duration": "Permanent",
-            "range": "1 mile",
-            "vitalBonus": {},
-            "skillBonus": {},
-            "abilities": {},
-            "hpBonus": 0,
-            "mpBonus": 0
+            "range": "1 mile"
         },
         "Gunpowder": {
             "name": "Gunpowder",
@@ -35,12 +25,7 @@
             "rarity": "Common",
             "effect": "Granulated black powder used as a propellant.",
             "duration": "Instantaneous",
-            "range": "N/A",
-            "vitalBonus": {},
-            "skillBonus": {},
-            "abilities": {},
-            "hpBonus": 0,
-            "mpBonus": 0
+            "range": "N/A"
         },
         "HobgoblinDetonator": {
             "name": "Hobgoblin Detonator",
@@ -49,12 +34,7 @@
             "rarity": "Uncommon",
             "effect": "Detonates up to ten explosive devices simultaneously.",
             "duration": "Instantaneous",
-            "range": "10 km (6.21 miles)",
-            "vitalBonus": {},
-            "skillBonus": {},
-            "abilities": {},
-            "hpBonus": 0,
-            "mpBonus": 0
+            "range": "10 km (6.21 miles)"
         },
         "HobgoblinPus": {
             "name": "Hobgoblin Pus",
@@ -63,12 +43,7 @@
             "rarity": "Rare",
             "effect": "Clay-like explosive material that creates a large explosion.",
             "duration": "Instantaneous",
-            "range": "30 feet radius",
-            "vitalBonus": {},
-            "skillBonus": {},
-            "abilities": {},
-            "hpBonus": 0,
-            "mpBonus": 0
+            "range": "30 feet radius"
         },
         "ProximityTrigger": {
             "name": "Proximity Trigger",
@@ -77,12 +52,772 @@
             "rarity": "Rare",
             "effect": "Sets conditions for when traps go off including countdowns and mob type.",
             "duration": "Permanent",
-            "range": "100 feet",
-            "vitalBonus": {},
-            "skillBonus": {},
-            "abilities": {},
-            "hpBonus": 0,
-            "mpBonus": 0
+            "range": "100 feet"
+        },
+        "BrindleGrubSlime": {
+            "name": "Brindle Grub Slime",
+            "description": "Harvested from the trails left by the elusive Brindle Grub, this thick slime is both a crafting component and a biohazard. Great for sticky traps or gluing together relationships on the verge of collapse.",
+            "itemType": "Crafting Component",
+            "rarity": "Rare",
+            "effect": "Creates strong adhesive bonds.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "FairyDust": {
+            "name": "Fairy Dust",
+            "description": "No, not the kind that makes you fly. This dust makes you hallucinate and question all your life choices. Handy for making mind-altering potions or confetti for your enemies' funerals.",
+            "itemType": "Crafting Component",
+            "rarity": "Rare",
+            "effect": "Induces hallucinations.",
+            "duration": "Temporary",
+            "range": "N/A"
+        },
+        "SquidInk": {
+            "name": "Squid Ink",
+            "description": "Extracted from the Saccathian’s many tentacles, this ink can either write your memoirs or blot out the sun for a few moments. Your choice.",
+            "itemType": "Crafting Component",
+            "rarity": "Uncommon",
+            "effect": "Creates dark ink.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "RatHooliganLeather": {
+            "name": "Rat Hooligan Leather",
+            "description": "Tough and surprisingly stylish, this leather from Rat Hooligans is perfect for making armor that says, “I might pick your pocket, but I’ll look good doing it.”",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Creates light armor.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "ArcaneBattery": {
+            "name": "Arcane Battery",
+            "description": "Ever wanted a piece of a sorcerer’s soul in your pocket? Now you can! This miniature power cell is perfect for powering your magical devices or just lighting up your miserable existence. Warning: May contain traces of despair.",
+            "itemType": "Crafting Component",
+            "rarity": "Rare",
+            "effect": "Powers magical devices.",
+            "duration": "Temporary",
+            "range": "N/A"
+        },
+        "SoulThread": {
+            "name": "Soul Thread",
+            "description": "Spun from the tortured souls of the dearly departed, this thread is both unbreakable and incredibly unsettling. Great for stitching together your magical garments or just sewing seeds of horror.",
+            "itemType": "Crafting Component",
+            "rarity": "Rare",
+            "effect": "Creates enchanted clothing.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "GorgonEye": {
+            "name": "Gorgon Eye",
+            "description": "Petrified and still judging your life choices, this eye can turn anything to stone with one withering glare. Ideal for making petrifying weapons or just ensuring you always win at staring contests.",
+            "itemType": "Crafting Component",
+            "rarity": "Very Rare",
+            "effect": "Petrifies targets.",
+            "duration": "Instantaneous",
+            "range": "N/A"
+        },
+        "EchoCrystal": {
+            "name": "Echo Crystal",
+            "description": "This crystal captures and stores sounds, from sweet nothings to blood-curdling screams. Use it to make replayable messages or just annoy your neighbors to death.",
+            "itemType": "Crafting Component",
+            "rarity": "Uncommon",
+            "effect": "Stores and replays sounds.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "ShadowSilk": {
+            "name": "Shadow Silk",
+            "description": "Woven from the darkness between stars, this silk is light-absorbing and almost impossible to see. Perfect for crafting stealth gear or just disappearing when the bill arrives.",
+            "itemType": "Crafting Component",
+            "rarity": "Very Rare",
+            "effect": "Creates stealth clothing.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "PhoenixAshes": {
+            "name": "Phoenix Ashes",
+            "description": "Collected from the smoldering remains of a reborn phoenix, these ashes are perfect for whipping up resurrection potions or adding a little fire to your chili recipe. Results may vary.",
+            "itemType": "Crafting Component",
+            "rarity": "Legendary",
+            "effect": "Used in resurrection potions.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "GhostlyEssence": {
+            "name": "Ghostly Essence",
+            "description": "A vial of ectoplasm from the most chatty of ghosts. Use it to make items that let you talk to the dead or just freak out your friends at sleepovers.",
+            "itemType": "Crafting Component",
+            "rarity": "Rare",
+            "effect": "Enables communication with the dead.",
+            "duration": "Temporary",
+            "range": "N/A"
+        },
+        "BloodMoonShard": {
+            "name": "Blood Moon Shard",
+            "description": "A fragment of a cursed moon, this shard enhances blood magic and looks great as jewelry. Handle with care, unless you enjoy unexpected blood sacrifices.",
+            "itemType": "Crafting Component",
+            "rarity": "Very Rare",
+            "effect": "Enhances blood magic.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "DragonScaleDust": {
+            "name": "Dragon Scale Dust",
+            "description": "Ground from ancient dragon scales, this dust is magical and slightly explosive. Perfect for enchanting weapons or causing chaos at your next party.",
+            "itemType": "Crafting Component",
+            "rarity": "Very Rare",
+            "effect": "Used in weapon enchantments.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "LivingVine": {
+            "name": "Living Vine",
+            "description": "A piece of vine that’s still very much alive and loves to strangle anything it touches. Perfect for making animated traps or just very aggressive houseplants.",
+            "itemType": "Crafting Component",
+            "rarity": "Rare",
+            "effect": "Creates living traps.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "ClockworkHeart": {
+            "name": "Clockwork Heart",
+            "description": "The ticking heart of a clockwork automaton. Great for bringing mechanical creations to life or just making your enemies wonder when it’ll explode.",
+            "itemType": "Crafting Component",
+            "rarity": "Uncommon",
+            "effect": "Animates mechanical creations.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "NecroticBone": {
+            "name": "Necrotic Bone",
+            "description": "A bone infused with dark energy, perfect for necromantic rituals or just making sure your skeletons stay in line. Great for those with a bone to pick.",
+            "itemType": "Crafting Component",
+            "rarity": "Rare",
+            "effect": "Used in necromantic rituals.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "StarfireEmber": {
+            "name": "Starfire Ember",
+            "description": "A burning ember from a fallen star, this piece is perfect for creating fire-based weapons or keeping your tea eternally warm. Handle with oven mitts.",
+            "itemType": "Crafting Component",
+            "rarity": "Legendary",
+            "effect": "Creates fire-based weapons.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "EnchantedMoss": {
+            "name": "Enchanted Moss",
+            "description": "Glowing moss with incredible healing properties. Great for crafting regenerative potions or adding some flair to your swamp-themed decor.",
+            "itemType": "Crafting Component",
+            "rarity": "Uncommon",
+            "effect": "Enhances healing properties.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "SirensHair": {
+            "name": "Siren’s Hair",
+            "description": "Strands of hair from a siren, enchanted to be irresistibly alluring. Use it to make charm potions or just give yourself that extra volume.",
+            "itemType": "Crafting Component",
+            "rarity": "Rare",
+            "effect": "Creates charm potions.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "VolcanicGlass": {
+            "name": "Volcanic Glass",
+            "description": "Sharp and dangerous, this glass is formed from cooled lava. Ideal for making piercing weapons or just really edgy mirrors.",
+            "itemType": "Crafting Component",
+            "rarity": "Uncommon",
+            "effect": "Creates piercing weapons.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "VoidCrystal": {
+            "name": "Void Crystal",
+            "description": "A piece of crystallized nothingness, perfect for making items that consume light and matter. Warning: Staring too long may cause existential dread.",
+            "itemType": "Crafting Component",
+            "rarity": "Very Rare",
+            "effect": "Consumes light and matter.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "LightningRod": {
+            "name": "Lightning Rod",
+            "description": "A rod that captures and stores lightning. Great for crafting electrical weapons or just giving your enemies a shocking experience.",
+            "itemType": "Crafting Component",
+            "rarity": "Rare",
+            "effect": "Captures and stores lightning.",
+            "duration": "Temporary",
+            "range": "N/A"
+        },
+        "BansheeWail": {
+            "name": "Banshee Wail",
+            "description": "A captured scream of a banshee in a vial. Perfect for sound-based traps or ensuring no one ever gets a good night’s sleep again.",
+            "itemType": "Crafting Component",
+            "rarity": "Very Rare",
+            "effect": "Creates sound-based traps.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "FrozenTear": {
+            "name": "Frozen Tear",
+            "description": "A tear from an ice elemental, frozen solid. Ideal for crafting frost weapons or keeping your drinks cold indefinitely. Ice, ice, baby.",
+            "itemType": "Crafting Component",
+            "rarity": "Rare",
+            "effect": "Creates frost weapons.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "DoppelgangerClay": {
+            "name": "Doppelgänger Clay",
+            "description": "Malleable clay that mimics any material it touches. Perfect for creating disguises or really high-stakes pottery classes.",
+            "itemType": "Crafting Component",
+            "rarity": "Very Rare",
+            "effect": "Mimics materials.",
+            "duration": "Temporary",
+            "range": "N/A"
+        },
+        "LichsPhylacteryShard": {
+            "name": "Lich’s Phylactery Shard",
+            "description": "A fragment of a lich’s soul container, pulsating with dark energy. Useful for making powerful dark artifacts or giving your enemies a very bad day.",
+            "itemType": "Crafting Component",
+            "rarity": "Legendary",
+            "effect": "Creates powerful dark artifacts.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "MysticHoney": {
+            "name": "Mystic Honey",
+            "description": "Produced by enchanted bees, this honey is magical and delicious. Great for potions or making your tea taste like victory.",
+            "itemType": "Crafting Component",
+            "rarity": "Rare",
+            "effect": "Enhances magical potions.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "TitansToenail": {
+            "name": "Titan's Toenail",
+            "description": "Disgustingly large and strong, this toenail can be ground into a powder to enhance strength potions or gross people out at dinner parties.",
+            "itemType": "Crafting Component",
+            "rarity": "Very Rare",
+            "effect": "Enhances strength potions.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "CelestialFeather": {
+            "name": "Celestial Feather",
+            "description": "A feather from an angelic being, glowing with divine light. Perfect for making holy weapons or adding some celestial chic to your wardrobe.",
+            "itemType": "Crafting Component",
+            "rarity": "Legendary",
+            "effect": "Creates holy items.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "DemonicInk": {
+            "name": "Demonic Ink",
+            "description": "Ink made from demon blood, ideal for writing cursed contracts or edgy tattoos. Guaranteed to void warranties and souls.",
+            "itemType": "Crafting Component",
+            "rarity": "Very Rare",
+            "effect": "Creates cursed items.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "Sand": {
+            "name": "Sand",
+            "description": "Fine grains of silica, perfect for making glass or just getting into places you didn’t know you had.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in glass-making.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "ScrapMetal": {
+            "name": "Scrap Metal",
+            "description": "A pile of rusty, twisted metal pieces. Ideal for makeshift weapons or patching up old armor.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used for repairs and crafting weapons.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "SubwayTokens": {
+            "name": "Subway Tokens",
+            "description": "Old tokens from a defunct subway system. Useful for enchanting with teleportation spells or as currency in a pinch.",
+            "itemType": "Crafting Component",
+            "rarity": "Uncommon",
+            "effect": "Used in teleportation spells.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "OldHat": {
+            "name": "Old Hat",
+            "description": "A well-worn hat that’s seen better days. Perfect for disguises or just keeping the sun out of your eyes.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in crafting disguises.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "BrokenMirror": {
+            "name": "Broken Mirror",
+            "description": "Shards of a once-beautiful mirror. Great for creating reflective surfaces or bad luck charms.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in reflective items and curses.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "LeatherStraps": {
+            "name": "Leather Straps",
+            "description": "Strips of tough leather, useful for bindings or creating rudimentary armor.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in bindings and armor.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "GlassBottles": {
+            "name": "Glass Bottles",
+            "description": "Empty bottles waiting to be filled with potions or Molotov cocktails.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used as potion containers.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "CopperWire": {
+            "name": "Copper Wire",
+            "description": "Thin, flexible wire ideal for conducting electricity or holding things together in a pinch.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in electrical items.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "OldBook": {
+            "name": "Old Book",
+            "description": "A dusty, forgotten tome. Useful for enchanting or just pretending you can read.",
+            "itemType": "Crafting Component",
+            "rarity": "Uncommon",
+            "effect": "Used in enchanting books.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "RustyNails": {
+            "name": "Rusty Nails",
+            "description": "Bent and oxidized nails. Perfect for adding to traps or tetanus shots.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in traps and repairs.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "WoodenPlanks": {
+            "name": "Wooden Planks",
+            "description": "Sturdy pieces of wood. Ideal for building structures or makeshift shields.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in building and crafting shields.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "String": {
+            "name": "String",
+            "description": "Simple but versatile, perfect for tying things together or setting up tripwires.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in traps and bindings.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "TinCan": {
+            "name": "Tin Can",
+            "description": "An empty can that once held food. Useful for makeshift armor or signaling devices.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in armor and noise makers.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "ClothScraps": {
+            "name": "Cloth Scraps",
+            "description": "Pieces of fabric left overfrom who-knows-what. Ideal for bandages or simple clothing.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in bandages and clothing.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "BrokenClock": {
+            "name": "Broken Clock",
+            "description": "A timepiece that no longer tells time. Perfect for parts or as a reminder of your impending doom.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in mechanical items.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "Rope": {
+            "name": "Rope",
+            "description": "A length of sturdy rope. Essential for climbing, binding, or creative punishments.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in climbing gear and bindings.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "Buttons": {
+            "name": "Buttons",
+            "description": "Assorted buttons from various garments. Useful for decorations or replacement parts.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in decorative items and repairs.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "JarOfPickles": {
+            "name": "Jar of Pickles",
+            "description": "A jar filled with preserved cucumbers. Can be eaten or used to distract hungry monsters.",
+            "itemType": "Crafting Component",
+            "rarity": "Uncommon",
+            "effect": "Used in food items and distractions.",
+            "duration": "Temporary",
+            "range": "N/A"
+        },
+        "EmptySack": {
+            "name": "Empty Sack",
+            "description": "A burlap sack that once held something important. Now it’s just waiting to be filled with loot.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in carrying bags and storage.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "ShoeLaces": {
+            "name": "Shoe Laces",
+            "description": "A pair of laces from an old pair of shoes. Great for tying things up or replacing broken cords.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in bindings and repairs.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "OldMap": {
+            "name": "Old Map",
+            "description": "A faded map of a place that might not exist anymore. Useful for navigation or starting fires.",
+            "itemType": "Crafting Component",
+            "rarity": "Uncommon",
+            "effect": "Used in navigational aids and kindling.",
+            "duration": "Temporary",
+            "range": "N/A"
+        },
+        "PlasticFork": {
+            "name": "Plastic Fork",
+            "description": "A single-use utensil that’s surprisingly sharp. Perfect for makeshift weapons or eating on the go.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in improvised weapons and eating tools.",
+            "duration": "Temporary",
+            "range": "N/A"
+        },
+        "BottleCap": {
+            "name": "Bottle Cap",
+            "description": "A metal cap from a bottle of unknown origin. Useful for crafting small tools or as currency in some post-apocalyptic markets.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in small tools and barter.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "EmptyNotebook": {
+            "name": "Empty Notebook",
+            "description": "A blank notebook waiting to be filled with secrets or terrible poetry.",
+            "itemType": "Crafting Component",
+            "rarity": "Uncommon",
+            "effect": "Used in journals and spellbooks.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "PieceOfChalk": {
+            "name": "Piece of Chalk",
+            "description": "A small piece of chalk, perfect for drawing runes or marking paths.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in crafting runes and navigation marks.",
+            "duration": "Temporary",
+            "range": "N/A"
+        },
+        "Feather": {
+            "name": "Feather",
+            "description": "A loose feather from an unknown bird. Great for quills or tickling your enemies.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in writing tools and distractions.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "Matchsticks": {
+            "name": "Matchsticks",
+            "description": "A box of matchsticks, essential for starting fires or lighting up dark places.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in fire starters and light sources.",
+            "duration": "Temporary",
+            "range": "N/A"
+        },
+        "OldCoin": {
+            "name": "Old Coin",
+            "description": "A tarnished coin from a forgotten realm. Useful for enchantments or bribing the easily impressed.",
+            "itemType": "Crafting Component",
+            "rarity": "Uncommon",
+            "effect": "Used in enchanting items and bribery.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "TinFoil": {
+            "name": "Tin Foil",
+            "description": "A crumpled piece of tin foil. Perfect for crafting makeshift hats or conducting electricity.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in hats and electrical items.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "PieceOfChalkboard": {
+            "name": "Piece of Chalkboard",
+            "description": "A fragment of a chalkboard, useful for temporary notes or as a bludgeoning weapon in a pinch.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in message boards and improvised weapons.",
+            "duration": "Temporary",
+            "range": "N/A"
+        },
+        "RustyKey": {
+            "name": "Rusty Key",
+            "description": "An old, rusty key that probably doesn’t open anything important. Or does it?",
+            "itemType": "Crafting Component",
+            "rarity": "Uncommon",
+            "effect": "Used in lockpicks and mysterious artifacts.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "PlasticBag": {
+            "name": "Plastic Bag",
+            "description": "A crinkly plastic bag. Useful for waterproofing or suffocating your enemies. We don’t judge.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in waterproof containers and traps.",
+            "duration": "Temporary",
+            "range": "N/A"
+        },
+        "Paperclip": {
+            "name": "Paperclip",
+            "description": "A bent paperclip that’s seen better days. Ideal for lockpicking or holding papers together.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in lockpicks and organizational tools.",
+            "duration": "Temporary",
+            "range": "N/A"
+        },
+        "BottleOfGlue": {
+            "name": "Bottle of Glue",
+            "description": "A sticky substance perfect for holding things together or making a mess.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in adhesive items and prank tools.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "SpareTire": {
+            "name": "Spare Tire",
+            "description": "A rubber tire that no longer fits any vehicle. Great for crafting rubber items or just rolling away.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in rubber components.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "CircuitBoard": {
+            "name": "Circuit Board",
+            "description": "A small, outdated circuit board from an ancient device. Perfect for crafting electronic gadgets or just pretending you understand technology.",
+            "itemType": "Crafting Component",
+            "rarity": "Uncommon",
+            "effect": "Used in electronic devices.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "ResistorPack": {
+            "name": "Resistor Pack",
+            "description": "A bundle of resistors that probably don’t resist much anymore. Ideal for fine-tuning your homemade electronics or making tiny, ineffective barricades.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in electronic components.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "Capacitor": {
+            "name": "Capacitor",
+            "description": "An electronic component that stores energy. Useful for powering small devices or giving your enemies a shocking surprise.",
+            "itemType": "Crafting Component",
+            "rarity": "Uncommon",
+            "effect": "Stores electrical energy.",
+            "duration": "Temporary",
+            "range": "N/A"
+        },
+        "OldSmartphone": {
+            "name": "Old Smartphone",
+            "description": "A cracked and outdated smartphone. Good for scavenging parts or impressing the technologically illiterate.",
+            "itemType": "Crafting Component",
+            "rarity": "Uncommon",
+            "effect": "Used in communication devices.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "BrokenKeyboard": {
+            "name": "Broken Keyboard",
+            "description": "An old keyboard missing a few keys. Great for harvesting parts or crafting a very ineffective weapon.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in electronic components.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "PlasticContainer": {
+            "name": "Plastic Container",
+            "description": "A sturdy plastic container with a secure lid. Perfect for storing potions, small parts, or your collection of regrets.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in storage containers.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "MetalBox": {
+            "name": "Metal Box",
+            "description": "A small, lockable metal box. Useful for securing valuables or creating a small, portable trap.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in secure containers.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "GlassJar": {
+            "name": "Glass Jar",
+            "description": "A clear glass jar with a tight-fitting lid. Perfect for preserving ingredients or displaying your collection of questionable substances.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in potion containers.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "CardboardBox": {
+            "name": "Cardboard Box",
+            "description": "A simple, collapsible cardboard box. Ideal for temporary storage or crafting disguises that would fool no one.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in temporary storage.",
+            "duration": "Temporary",
+            "range": "N/A"
+        },
+        "BatteryPack": {
+            "name": "Battery Pack",
+            "description": "A pack of old batteries, some of which might still have a charge. Useful for powering devices or just creating sparks.",
+            "itemType": "Crafting Component",
+            "rarity": "Uncommon",
+            "effect": "Used in power sources.",
+            "duration": "Temporary",
+            "range": "N/A"
+        },
+        "OldLaptop": {
+            "name": "Old Laptop",
+            "description": "An ancient laptop with a dead battery and a cracked screen. Good for scavenging parts or using as a very flat paperweight.",
+            "itemType": "Crafting Component",
+            "rarity": "Uncommon",
+            "effect": "Used in electronic components.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "FlashDrive": {
+            "name": "Flash Drive",
+            "description": "A small, weathered USB flash drive. Ideal for storing important data or launching cyber-attacks on your enemies' patience.",
+            "itemType": "Crafting Component",
+            "rarity": "Uncommon",
+            "effect": "Used in data storage devices.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "PlasticTubing": {
+            "name": "Plastic Tubing",
+            "description": "Flexible plastic tubes of varying lengths. Great for transferring liquids or crafting makeshift blowguns.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in liquid transfer devices.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "MetalCanister": {
+            "name": "Metal Canister",
+            "description": "A durable metal canister with a secure lid. Perfect for storing volatile substances or crafting small bombs.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in storage containers.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "RubberBands": {
+            "name": "Rubber Bands",
+            "description": "A pile of rubber bands in various states of elasticity. Useful for binding things together or creating impromptu slingshots.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in binding materials.",
+            "duration": "Temporary",
+            "range": "N/A"
+        },
+        "OldTelevision": {
+            "name": "Old Television",
+            "description": "A bulky, outdated television set. Good for scavenging electronic parts or as an incredibly impractical projectile.",
+            "itemType": "Crafting Component",
+            "rarity": "Uncommon",
+            "effect": "Used in electronic components.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "MetalFlask": {
+            "name": "Metal Flask",
+            "description": "A small metal flask, ideal for carrying liquids. Useful for holding potions or just staying hydrated in style.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in portable containers.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "PlasticBucket": {
+            "name": "Plastic Bucket",
+            "description": "A basic plastic bucket, great for carrying water or crafting helmet-like headgear.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in water carriers.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "WireSpool": {
+            "name": "Wire Spool",
+            "description": "A spool of various types of wire, perfect for crafting or tripping hazards for those who annoy you.",
+            "itemType": "Crafting Component",
+            "rarity": "Common",
+            "effect": "Used in electronic components.",
+            "duration": "Permanent",
+            "range": "N/A"
+        },
+        "OldCamera": {
+            "name": "Old Camera",
+            "description": "A dusty old camera that may or may not work. Useful for scavenging optical parts or capturing the ghost of your lost dreams.",
+            "itemType": "Crafting Component",
+            "rarity": "Uncommon",
+            "effect": "Used in optical devices.",
+            "duration": "Permanent",
+            "range": "N/A"
         }
     }
 }

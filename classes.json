@@ -11,7 +11,8 @@
         "vitalBonus": [],
         "skillBonus": [],
         "abilities": [],
-        "traits": []
+        "traits": [],
+        "armorRating": -2
     },
     "agony_urchin": {
         "name": "Agony Urchin",
@@ -39,7 +40,8 @@
         "traits": [
             "Persistent Irritant",
             "Pain Tolerance"
-        ]
+        ],
+        "armorRating": 1
     },
     "alley_cat_brawler": {
         "name": "Alley Cat Brawler",
@@ -67,7 +69,8 @@
         "traits": [
             "Street Smarts",
             "Nimble Escape"
-        ]
+        ],
+        "armorRating": 0
     },
     "animal_test_subject": {
         "name": "Animal Test Subject",
@@ -95,7 +98,8 @@
         "traits": [
             "Unpredictable Biology",
             "Experimental Resistance"
-        ]
+        ],
+        "armorRating": -1
     },
     "archer": {
         "name": "Archer",
@@ -123,7 +127,8 @@
         "traits": [
             "Eagle Eye",
             "Quickdraw"
-        ]
+        ],
+        "armorRating": 0
     },
     "black_inquisitor_general": {
         "name": "Black Inquisitor General",
@@ -151,7 +156,8 @@
         "traits": [
             "Truth Seeker",
             "Fearsome Presence"
-        ]
+        ],
+        "armorRating": 1
     },
     "blizzardmancer": {
         "name": "Blizzardmancer",
@@ -179,7 +185,8 @@
         "traits": [
             "Cold Immunity",
             "Frozen Aura"
-        ]
+        ],
+        "armorRating": -1
     },
     "blood_assassin": {
         "name": "Blood Assassin",
@@ -207,7 +214,8 @@
         "traits": [
             "Bloodsense",
             "Gruesome Display"
-        ]
+        ],
+        "armorRating": 2
     },
     "bogatyr": {
         "name": "Bogatyr",
@@ -235,7 +243,8 @@
         "traits": [
             "Legendary Strength",
             "Inspiring Presence"
-        ]
+        ],
+        "armorRating": 2
     },
     "boring_ol_fighter": {
         "name": "Boring Ol' Fighter",
@@ -252,9 +261,20 @@
             "Dexterity: +1"
         ],
         "skillBonus": [
-            "Close Combat: +3",
+            "close-combat: +3",
             "Athletics: +2",
-            "Intimidation: +2"
+            "Intimidation: +2",
+            "Melee: +2",
+            "ranged-combat: +2",
+            "Archery: +2",
+            "Firearms: +2",
+            "Artillery: +2",
+            "Block: +2",
+            "Parry: +2",
+            "Dodge: +2",
+            "Tactics: +2",
+            "Pugilism: +2",
+            "explosives-handling: +2"
         ],
         "abilities": [
             "Combat Rhythm",
@@ -263,7 +283,8 @@
         "traits": [
             "Unbreakable",
             "Weapon Mastery"
-        ]
+        ],
+        "armorRating": 2
     },
     "boring_ol_mage": {
         "name": "Boring Ol' Mage",
@@ -291,7 +312,8 @@
         "traits": [
             "Arcane Insight",
             "Spell Sculptor"
-        ]
+        ],
+        "armorRating": -2
     },
     "crisper": {
         "name": "Crisper",
@@ -319,7 +341,8 @@
         "traits": [
             "Heat Resistant",
             "Iron Stomach"
-        ]
+        ],
+        "armorRating": 0
     },
     "d_bag_geek": {
         "name": "D-Bag Geek",
@@ -347,7 +370,8 @@
         "traits": [
             "Actually...",
             "Social Media Savvy"
-        ]
+        ],
+        "armorRating": -1
     },
     "demigod_attendant": {
         "name": "Demigod Attendant",
@@ -375,7 +399,8 @@
         "traits": [
             "Heavenly Connections",
             "Divine Protection"
-        ]
+        ],
+        "armorRating": 1
     },
     "earth_mover": {
         "name": "Earth Mover",
@@ -403,7 +428,8 @@
         "traits": [
             "One with Earth",
             "Rocky Hide"
-        ]
+        ],
+        "armorRating": 2
     },
     "feral_cat_berserker": {
         "name": "Feral Cat Berserker",
@@ -431,7 +457,8 @@
         "traits": [
             "Cat-like Reflexes",
             "Night Vision"
-        ]
+        ],
+        "armorRating": 0
     },
     "fire_spiritualist": {
         "name": "Fire Spiritualist",
@@ -459,7 +486,8 @@
         "traits": [
             "Fire Affinity",
             "Passionate Aura"
-        ]
+        ],
+        "armorRating": -1
     },
     "firecracker": {
         "name": "Firecracker",
@@ -487,7 +515,8 @@
         "traits": [
             "Short Fuse",
             "Blast Resistant"
-        ]
+        ],
+        "armorRating": -1
     },
     "football_hooligan": {
         "name": "Football Hooligan",
@@ -515,7 +544,8 @@
         "traits": [
             "Mob Mentality",
             "Unbreakable Spirit"
-        ]
+        ],
+        "armorRating": 1
     },
     "forsaken_aerialist": {
         "name": "Forsaken Aerialist",
@@ -532,9 +562,18 @@
             "Charisma: +1"
         ],
         "skillBonus": [
-            "Acrobatics: +3",
-            "Athletics: +2",
-            "Performance: +2"
+            "Acrobatics: +2",
+            "Dodge: +2",
+            "Parry: +2",
+            "Survival: +2",
+            "Acrobatics: +2",
+            "Stealth: +2",
+            "Performance: +2",
+            "Arcana: +2",
+            "detect-trap: +2",
+            "Engineering: +2",
+            "Lore: +2",
+            "Alchemy: +2"
         ],
         "abilities": [
             "Boom Boom Bouquet",
@@ -543,7 +582,8 @@
         "traits": [
             "Gravity Defiance",
             "Aura of Gloom"
-        ]
+        ],
+        "armorRating": 0
     },
     "freelance_psychiatrist": {
         "name": "Freelance Psychiatrist",
@@ -571,7 +611,8 @@
         "traits": [
             "Insightful",
             "Calming Presence"
-        ]
+        ],
+        "armorRating": -1
     },
     "fugitive": {
         "name": "Fugitive",
@@ -599,7 +640,8 @@
         "traits": [
             "Always Prepared",
             "Suspicious Mind"
-        ]
+        ],
+        "armorRating": 0
     },
     "glass_cannon": {
         "name": "Glass Cannon",
@@ -627,7 +669,8 @@
         "traits": [
             "Fragile Power",
             "Quick Reflexes"
-        ]
+        ],
+        "armorRating": -2
     },
     "gut_rearranger": {
         "name": "Gut Rearranger",
@@ -655,7 +698,8 @@
         "traits": [
             "Surgical Strikes",
             "Gut Instinct"
-        ]
+        ],
+        "armorRating": 1
     },
     "hammersmith": {
         "name": "Hammersmith",
@@ -683,7 +727,8 @@
         "traits": [
             "Heat Resistance",
             "Master Craftsman"
-        ]
+        ],
+        "armorRating": 2
     },
     "holistic_healer": {
         "name": "Holistic Healer",
@@ -711,7 +756,8 @@
         "traits": [
             "Aura Reading",
             "Power of Belief"
-        ]
+        ],
+        "armorRating": -1
     },
     "imperial_soldier": {
         "name": "Imperial Soldier",
@@ -739,7 +785,8 @@
         "traits": [
             "Unyielding Loyalty",
             "Regimented Training"
-        ]
+        ],
+        "armorRating": 2
     },
     "jouster": {
         "name": "Jouster",
@@ -767,7 +814,8 @@
         "traits": [
             "Saddle Sure",
             "Honor Bound"
-        ]
+        ],
+        "armorRating": 1
     },
     "knife_sharpener": {
         "name": "Knife Sharpener",
@@ -795,7 +843,8 @@
         "traits": [
             "Keen Edge",
             "Weapon Whisperer"
-        ]
+        ],
+        "armorRating": 0
     },
     "legatus": {
         "name": "Legatus",
@@ -823,7 +872,8 @@
         "traits": [
             "Voice of Authority",
             "Inspiring Presence"
-        ]
+        ],
+        "armorRating": 2
     },
     "legendary_diva": {
         "name": "Legendary Diva",
@@ -851,7 +901,8 @@
         "traits": [
             "Center Stage",
             "Perfect Pitch"
-        ]
+        ],
+        "armorRating": -1
     },
     "master_telephone_psychic": {
         "name": "Master Telephone Psychic",
@@ -879,7 +930,8 @@
         "traits": [
             "Psychic Hotline",
             "Uncanny Intuition"
-        ]
+        ],
+        "armorRating": -2
     },
     "nimblefoot_enforcer": {
         "name": "Nimblefoot Enforcer",
@@ -907,7 +959,8 @@
         "traits": [
             "Light-footed",
             "Embarrassing Strikes"
-        ]
+        ],
+        "armorRating": 0
     },
     "nine_tails": {
         "name": "Nine Tails",
@@ -935,7 +988,8 @@
         "traits": [
             "Vulpine Charm",
             "Illusory Escape"
-        ]
+        ],
+        "armorRating": -1
     },
     "pest_exterminator": {
         "name": "Pest Exterminator",
@@ -963,7 +1017,8 @@
         "traits": [
             "Pest Sense",
             "Toxin Resistance"
-        ]
+        ],
+        "armorRating": 0
     },
     "physicker": {
         "name": "Physicker",
@@ -991,7 +1046,8 @@
         "traits": [
             "Anatomical Expertise",
             "Plague Doctor"
-        ]
+        ],
+        "armorRating": 1
     },
     "pit_fighter": {
         "name": "Pit Fighter",
@@ -1019,7 +1075,8 @@
         "traits": [
             "Arena Veteran",
             "Showmanship"
-        ]
+        ],
+        "armorRating": 2
     },
     "poet_laureate": {
         "name": "Poet Laureate",
@@ -1047,7 +1104,8 @@
         "traits": [
             "Silver Tongue",
             "Lyrical Memory"
-        ]
+        ],
+        "armorRating": -1
     },
     "prodromoi": {
         "name": "Prodromoi",
@@ -1075,7 +1133,8 @@
         "traits": [
             "First Strike",
             "Terrain Mastery"
-        ]
+        ],
+        "armorRating": 1
     },
     "pterolykos": {
         "name": "Pterolykos",
@@ -1103,7 +1162,8 @@
         "traits": [
             "Wings of Freedom",
             "Predator's Instinct"
-        ]
+        ],
+        "armorRating": 0
     },
     "ranger": {
         "name": "Ranger",
@@ -1131,7 +1191,8 @@
         "traits": [
             "Beast Whisperer",
             "Camouflage Expert"
-        ]
+        ],
+        "armorRating": 0
     },
     "riot_forces_support": {
         "name": "Riot Forces Support",
@@ -1159,7 +1220,8 @@
         "traits": [
             "Unbreakable Line",
             "Crowd Dispersal"
-        ]
+        ],
+        "armorRating": 2
     },
     "roller_derby_jammer": {
         "name": "Roller Derby Jammer",
@@ -1187,7 +1249,8 @@
         "traits": [
             "Skate or Die",
             "Crowd Favorite"
-        ]
+        ],
+        "armorRating": 1
     },
     "sacred_paladin": {
         "name": "Sacred Paladin",
@@ -1215,7 +1278,8 @@
         "traits": [
             "Aura of Protection",
             "Divine Health"
-        ]
+        ],
+        "armorRating": 2
     },
     "santero": {
         "name": "Santero",
@@ -1243,7 +1307,8 @@
         "traits": [
             "Spiritual Conduit",
             "Ritual Master"
-        ]
+        ],
+        "armorRating": -1
     },
     "sapper": {
         "name": "Sapper",
@@ -1271,7 +1336,8 @@
         "traits": [
             "Demolitions Expert",
             "Danger Sense"
-        ]
+        ],
+        "armorRating": 0
     },
     "sergeant_at_arms": {
         "name": "Sergeant-at-Arms",
@@ -1299,7 +1365,8 @@
         "traits": [
             "Voice of Authority",
             "Unbreakable Formation"
-        ]
+        ],
+        "armorRating": 2
     },
     "shepherd": {
         "name": "Shepherd",
@@ -1327,7 +1394,8 @@
         "traits": [
             "One with Nature",
             "Protective Instinct"
-        ]
+        ],
+        "armorRating": 0
     },
     "shieldmaiden": {
         "name": "Shieldmaiden",
@@ -1355,7 +1423,8 @@
         "traits": [
             "Unbreakable",
             "Guardian's Presence"
-        ]
+        ],
+        "armorRating": 2
     },
     "shotgun_messenger": {
         "name": "Shotgun Messenger",
@@ -1383,7 +1452,8 @@
         "traits": [
             "Neither Snow Nor Rain",
             "Return to Sender"
-        ]
+        ],
+        "armorRating": 1
     },
     "slave_driver": {
         "name": "Slave Driver",
@@ -1411,7 +1481,8 @@
         "traits": [
             "Iron Will",
             "Taskmaster"
-        ]
+        ],
+        "armorRating": 1
     },
     "spy": {
         "name": "Spy",
@@ -1439,7 +1510,8 @@
         "traits": [
             "Paranoia",
             "Infiltrator"
-        ]
+        ],
+        "armorRating": -1
     },
     "staunch_barrier": {
         "name": "Staunch Barrier",
@@ -1467,7 +1539,8 @@
         "traits": [
             "Immovable",
             "Living Shield"
-        ]
+        ],
+        "armorRating": 2
     },
     "swashbuckler": {
         "name": "Swashbuckler",
@@ -1495,7 +1568,8 @@
         "traits": [
             "Nimble Defense",
             "Natural Charmer"
-        ]
+        ],
+        "armorRating": 0
     },
     "trebuchet_commander": {
         "name": "Trebuchet Commander",
@@ -1523,7 +1597,8 @@
         "traits": [
             "Long-Range Expert",
             "Structural Weakness"
-        ]
+        ],
+        "armorRating": 1
     },
     "trickster": {
         "name": "Trickster",
@@ -1551,7 +1626,8 @@
         "traits": [
             "Master of Disguise",
             "Lucky Break"
-        ]
+        ],
+        "armorRating": 0
     },
     "vape_shop_counter_jockey": {
         "name": "Vape Shop Counter Jockey",
@@ -1579,7 +1655,8 @@
         "traits": [
             "Vape Resistance",
             "Social Lubricant"
-        ]
+        ],
+        "armorRating": -1
     },
     "viper_queen": {
         "name": "Viper Queen",
@@ -1607,7 +1684,8 @@
         "traits": [
             "Cold Blood",
             "Hypnotic Gaze"
-        ]
+        ],
+        "armorRating": 1
     },
     "warlock": {
         "name": "Warlock",
@@ -1635,7 +1713,8 @@
         "traits": [
             "Dark One's Blessing",
             "Otherworldly Patron"
-        ]
+        ],
+        "armorRating": 0
     },
     "weather_engineer": {
         "name": "Weather Engineer",
@@ -1663,7 +1742,8 @@
         "traits": [
             "Weather Sense",
             "Elemental Affinity"
-        ]
+        ],
+        "armorRating": -1
     },
     "wind_mage": {
         "name": "Wind Mage",
@@ -1691,7 +1771,8 @@
         "traits": [
             "Air Cushion",
             "Wind Whisper"
-        ]
+        ],
+        "armorRating": -1
     },
     "zulu_warrior": {
         "name": "Zulu Warrior",
@@ -1719,6 +1800,7 @@
         "traits": [
             "Warrior's Pride",
             "Battle Dancer"
-        ]
+        ],
+        "armorRating": 2
     }
 }

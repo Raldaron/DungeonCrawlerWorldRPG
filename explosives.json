@@ -7,12 +7,11 @@
             "rarity": "Legendary",
             "effect": "Thermobaric explosion causing devastating damage and implosion of lungs.",
             "duration": "Instantaneous",
-            "range": "50 feet radius",
-            "vitalBonus": {},
-            "skillBonus": {},
-            "abilities": {},
-            "hpBonus": 0,
-            "mpBonus": 0
+            "Range": "Placed",
+            "damage": "20d12 / 10d12",
+            "damageType": "Fire / Force",
+            "blastRadius": 30,
+            "triggerMechanism": "Multiple Options"
         },
         "GoblinDynamite": {
             "name": "Goblin Dynamite",
@@ -21,12 +20,89 @@
             "rarity": "Common",
             "effect": "Extremely volatile explosive with a short fuse.",
             "duration": "Instantaneous",
-            "range": "15 feet radius",
-            "vitalBonus": {},
-            "skillBonus": {},
-            "abilities": {},
-            "hpBonus": 0,
-            "mpBonus": 0
+            "range": "Throwing Distance",
+            "damage": "8d10 / 4d8",
+            "damageType": "Fire / Force",
+            "blastRadius": "30 feet",
+            "triggerMechanism": "Multiple Options"
+        },
+        "HobgoblinDynamite": {
+            "name": "Hobgoblin Dynamite",
+            "description": "Generally more valuable and stable than Goblin Dynamite.",
+            "itemType": "Explosive",
+            "rarity": "Uncommon",
+            "effect": "Large concussive explosion in a 60ft circle",
+            "duration": "Instantaneous",
+            "range": "Throwing Distance",
+            "damage": "8d10 / 4d8",
+            "damageType": "Fire / Force",
+            "blastRadius": "30 feet",
+            "triggerMechanism": "Multiple Options"
+        },
+        "HobgoblinPus": {
+            "name": "Hobgoblin Pus",
+            "description": "Hobgoblin Pus is clay-like explosive material that can be detonated with an actual trigger to create a large explosion.",
+            "itemType": "Explosive",
+            "rarity": "Uncommon",
+            "effect": "Large concussive-thermobaric explosion in a 20ft circle",
+            "duration": "Instantaneous",
+            "range": "Placed",
+            "damage": "6d10 / 10d8",
+            "damageType": "Fire / Force",
+            "blastRadius": "20 feet",
+            "triggerMechanism": "Remotely Detonated"
+        },
+        "BugbearPaste": {
+            "name": "Bugbear Paste",
+            "description": "Bugbear Paste is a paste capable of creating powerful explosions.",
+            "itemType": "Explosive",
+            "rarity": "Very Rare",
+            "effect": "Large thermobaric explosion in a 20ft circle",
+            "duration": "Instantaneous",
+            "range": "Placed",
+            "damage": "10d12",
+            "damageType": "Fire",
+            "blastRadius": "30 feet",
+            "triggerMechanism": "Multiple Options"
+        },
+        "GunpowderSatchel": {
+            "name": "Gunpowder Satchel",
+            "description": "Gunpowder (also called black powder or, if you're a goblin, 'funpowder') is a granulated black powder that was widely used as a propellant in firearms before it was replaced by smokeless powder. First used in Earth warfare in 904 AD, gunpowder is a low explosive, meaning it deflagrates (burns quickly) rather than detonates, and has a generally low brisance (shattering capability). As a result, it is good at throwing metal but not at breaking rock or fortifications. In the Dungeon, gunpowder must be collected in satchels to be stored in inventory. Crawlers may receive heavy leather satchels of gunpowder in Goblin Boxes, or loot it from mobs such as goblins on the First Floor.",
+            "itemType": "Explosive",
+            "rarity": "Common",
+            "effect": "Low force explosion in a 120ft circle",
+            "duration": "Instantaneous",
+            "range": "1/2 Throwing Distance",
+            "damage": "1d10",
+            "damageType": "Fire",
+            "blastRadius": "60 feet",
+            "triggerMechanism": "Heat"
+        },
+        "SatchelBomb": {
+            "name": "Satchel Bomb",
+            "description": "Equivalent to thirteen sticks of hobgoblin dynamite, enough to level a town block.",
+            "itemType": "Throwable",
+            "rarity": "Rare",
+            "effect": "Equivalent to thirteen sticks of hobgoblin dynamite, enough to level a town block.",
+            "duration": "Instantaneous",
+            "range": "Placed",
+            "damage": "10d12 / 10d12",
+            "damageType": "Fire / Force",
+            "blastRadius": "600 Foot Radius",
+            "triggerMechanism": "Multiple Options"
+        },
+        "JugO'Boom": {
+            "name": "Jug O' Boom",
+            "description": "Causes a small explosion followed by burning splash damage.",
+            "itemType": "Throwable",
+            "rarity": "Rare",
+            "effect": "Causes a small explosion followed by burning splash damage.",
+            "duration": "Flames burn for 15 seconds per level of attacker's Incendiary Device Handling.",
+            "range": "Throwing Distance",
+            "damage": "10d6",
+            "damageType": "Fire",
+            "blastRadius": "20 foot radius",
+            "triggerMechanism": "Impact Detonation"
         }
     }
 }
