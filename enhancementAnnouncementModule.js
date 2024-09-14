@@ -8,7 +8,7 @@ const EnhancementAnnouncementModule = {
     createAnnouncementModal() {
         const modal = document.createElement('div');
         modal.id = 'enhancement-announcement-modal';
-        modal.className = 'modal';
+        modal.className = 'modal centered-popup'; // Change to 'centered-popup'
         modal.innerHTML = `
             <div class="modal-content">
                 <span class="close">&times;</span>
@@ -45,29 +45,22 @@ const EnhancementAnnouncementModule = {
         // Store the current enhancement for the details view
         this.currentEnhancement = enhancement;
 
-        // Disable close button and overlay click for 3 seconds
-        const closeBtn = modal.querySelector('.close');
-        closeBtn.style.pointerEvents = 'none';
-        modal.style.pointerEvents = 'none';
-
+        // Set a timeout to automatically close the announcement after 5 seconds
         setTimeout(() => {
-            closeBtn.style.pointerEvents = 'auto';
-            modal.style.pointerEvents = 'auto';
-        }, 3000);
+            this.closeModal();
+        }, 5000);
     },
 
     closeModal() {
         const modal = document.getElementById('enhancement-announcement-modal');
-        if (modal.style.pointerEvents === 'auto') {
-            modal.style.display = 'none';
-        }
+        modal.style.display = 'none';
     },
 
     viewEnhancementDetails() {
         if (this.currentEnhancement) {
             EnhancementModule.showEnhancementDetails(this.currentEnhancement.name);
         }
-        document.getElementById('enhancement-announcement-modal').style.display = 'none';
+        this.closeModal();
     }
 };
 

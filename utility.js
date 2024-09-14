@@ -301,45 +301,77 @@ const UtilityModule = {
         }
     },
 
-    displayScrollDetailModal(scroll, isEquipped, slotId) {
+    displayItemDetailModal(item, isEquipped, slotId) {
         const modal = document.getElementById('utility-item-detail-modal');
         if (!modal) {
             console.error('Utility item detail modal not found');
             return;
         }
 
-        document.getElementById('utility-item-detail-title').textContent = scroll.Name || 'Unknown Scroll';
-        document.getElementById('utility-item-rarity').textContent = scroll.rarity || 'N/A';
-        document.getElementById('utility-item-description').textContent = scroll.Description || 'No description available';
-        document.getElementById('utility-item-type').textContent = `Type: Scroll`;
-        document.getElementById('utility-item-effect').textContent = `Effect: ${scroll.Effect || 'N/A'}`;
-        document.getElementById('utility-item-duration').textContent = `Duration: ${scroll.duration || 'N/A'}`;
-        document.getElementById('utility-item-range').textContent = `Range: ${scroll.Range || 'N/A'}`;
-        document.getElementById('utility-item-damage').textContent = `Damage: ${scroll.Damage || 'N/A'}`;
-        document.getElementById('utility-item-damage-type').textContent = `Damage Type: ${scroll.DamageType || 'N/A'}`;
-        document.getElementById('utility-item-casting-time').textContent = `Casting Time: ${scroll.CastingTime || 'N/A'}`;
-        document.getElementById('utility-item-cooldown').textContent = `Cooldown: ${scroll.Cooldown || 'N/A'}`;
-        document.getElementById('utility-item-spell-modifier').textContent = `Spell Casting Modifier: ${scroll.SpellCastingModifier || 'N/A'}`;
+        const content = modal.querySelector('.modal-content');
+        if (!content) {
+            console.error('Modal content not found');
+            return;
+        }
 
-        this.updateBonusesSection(scroll);
+        content.innerHTML = `
+            <span class="close">&times;</span>
+            <div class="item-detail-header">
+                <h2 id="utility-item-detail-title">${item.name || item.itemName || 'Unknown Item'}</h2>
+                <p id="utility-item-rarity">${item.rarity || 'Common'}</p>
+            </div>
+            <div class="item-detail-body">
+                <div class="item-image-container">
+                    <img id="utility-item-image" src="${item.imageUrl || '/path/to/default/image.png'}" alt="${item.name || item.itemName}">
+                </div>
+                <div class="item-info">
+                    ${this.formatField('Description', item.description)}
+                    ${this.formatField('Type', item.itemType)}
+                    <div class="item-stats">
+                        ${this.formatField('Effect', item.effect)}
+                        ${this.formatField('Duration', item.duration)}
+                        ${this.formatField('Range', item.range)}
+                        ${this.formatField('Damage', item.damage)}
+                        ${this.formatField('Damage Type', item.damageType)}
+                        ${this.formatField('Blast Radius', item.blastRadius)}
+                        ${this.formatField('Trigger Mechanism', item.triggerMechanism)}
+                        ${this.formatField('Casting Time', item.CastingTime)}
+                        ${this.formatField('Mana Point Cost', item.ManaPointCost)}
+                        ${this.formatField('Cooldown', item.Cooldown)}
+                        ${this.formatField('Spell Casting Modifier', item.SpellCastingModifier)}
+                    </div>
+                    ${this.formatCollapsibleSection('Vital Bonuses', item.vitalBonus)}
+                    ${this.formatCollapsibleSection('Skill Bonuses', item.skillBonus)}
+                    ${this.formatCollapsibleSection('Abilities', item.abilities)}
+                    ${this.formatCollapsibleSection('Traits', item.traits)}
+                    ${this.formatCollapsibleSection('Stat Buffs', item.statBuffs)}
+                    ${this.formatCollapsibleSection('Skill Buffs', item.skillBuffs)}
+                    ${this.formatCollapsibleSection('HP Buffs', item.hpBuffs)}
+                    ${this.formatCollapsibleSection('MP Buffs', item.mpBuffs)}
+                    ${this.formatCollapsibleSection('Scaling', item.Scaling)}
+                </div>
+            </div>
+            <div class="item-actions">
+                <button id="utility-equip-unequip-button">${isEquipped ? 'Unequip' : 'Equip'}</button>
+            </div>
+        `;
 
-        document.getElementById('utility-item-abilities').textContent = `Abilities: ${this.formatArray(scroll.abilities)}`;
-        document.getElementById('utility-item-traits').textContent = `Traits: ${this.formatArray(scroll.traits)}`;
-
-        const equipButton = document.getElementById('utility-equip-unequip-button');
-        equipButton.textContent = isEquipped ? 'Unequip' : 'Equip';
+        const equipButton = content.querySelector('#utility-equip-unequip-button');
         equipButton.onclick = () => {
             if (isEquipped) {
                 this.unequipItem(slotId);
             } else {
-                this.equipItem(scroll.Name);
+                this.equipItem(item.name || item.itemName);
             }
             modal.style.display = 'none';
         };
 
+        // Set up collapsible sections
+        this.setupCollapsibles();
+
         modal.style.display = 'block';
 
-        const closeButton = modal.querySelector('.close');
+        const closeButton = content.querySelector('.close');
         if (closeButton) {
             closeButton.onclick = () => {
                 modal.style.display = 'none';
@@ -353,51 +385,140 @@ const UtilityModule = {
         };
     },
 
-    displayItemDetailModal(item, isEquipped, slotId) {
-        const modal = document.getElementById('utility-item-detail-modal');
+    displayScrollDetailModal(scroll, isEquipped, slotId) {
+        console.log('Displaying scroll details:', scroll);
+    
+        let modal = document.getElementById('utility-item-detail-modal');
         if (!modal) {
-            console.error('Utility item detail modal not found');
-            return;
+            console.log('Utility item detail modal not found, creating dynamically');
+            modal = document.createElement('div');
+            modal.id = 'utility-item-detail-modal';
+            modal.className = 'modal';
+            document.body.appendChild(modal);
         }
-
-        document.getElementById('utility-item-detail-title').textContent = item.name || 'Unknown Item';
-        document.getElementById('utility-item-rarity').textContent = item.rarity || 'N/A';
-        document.getElementById('utility-item-description').textContent = item.description || 'No description available';
-        document.getElementById('utility-item-type').textContent = `Type: ${item.itemType || 'Unknown'}`;
-        document.getElementById('utility-item-effect').textContent = `Effect: ${item.effect || 'N/A'}`;
-        document.getElementById('utility-item-duration').textContent = `Duration: ${item.duration || 'N/A'}`;
-        document.getElementById('utility-item-range').textContent = `Range: ${item.range || 'N/A'}`;
-
-        this.updateBonusesSection(item);
-
-        document.getElementById('utility-item-abilities').textContent = `Abilities: ${this.formatArray(item.abilities)}`;
-        document.getElementById('utility-item-traits').textContent = `Traits: ${this.formatArray(item.traits)}`;
-
-        const equipButton = document.getElementById('utility-equip-unequip-button');
-        equipButton.textContent = isEquipped ? 'Unequip' : 'Equip';
+    
+        let content = modal.querySelector('.modal-content');
+        if (!content) {
+            console.log('Modal content not found, creating dynamically');
+            content = document.createElement('div');
+            content.className = 'modal-content';
+            modal.appendChild(content);
+        }
+    
+        content.innerHTML = `
+            <span class="close">&times;</span>
+            <div class="item-detail-header">
+                <h2 id="item-detail-title">${scroll.Name || 'Unknown Scroll'}</h2>
+                <p id="item-rarity">${scroll.rarity || 'Common'}</p>
+            </div>
+            <div class="item-detail-body">
+                <div class="item-image-container">
+                    <img id="item-image" src="${scroll.imageUrl || '/path/to/default/scroll-image.png'}" alt="${scroll.Name}">
+                </div>
+                <div class="item-info">
+                    ${this.formatField('Description', scroll.Description)}
+                    ${this.formatField('Type', 'Scroll')}
+                    <div class="item-stats">
+                        ${this.formatField('Effect', scroll.Effect)}
+                        ${this.formatField('Range', scroll.Range)}
+                        ${this.formatField('Damage', scroll.Damage)}
+                        ${this.formatField('Damage Type', scroll.DamageType)}
+                        ${this.formatField('Casting Time', scroll.CastingTime)}
+                        ${this.formatField('Mana Point Cost', scroll.ManaPointCost)}
+                        ${this.formatField('Cooldown', scroll.Cooldown)}
+                        ${this.formatField('Spell Casting Modifier', scroll.SpellCastingModifier)}
+                    </div>
+                    ${this.formatScrollScaling(scroll.Scaling)}
+                </div>
+            </div>
+            <div class="item-actions">
+                <button id="equip-unequip-button">${isEquipped ? 'Unequip' : 'Equip'}</button>
+            </div>
+        `;
+    
+        const equipButton = content.querySelector('#equip-unequip-button');
         equipButton.onclick = () => {
             if (isEquipped) {
                 this.unequipItem(slotId);
             } else {
-                this.equipItem(item.name);
+                this.equipItem(scroll.Name);
             }
             modal.style.display = 'none';
         };
-
-        modal.style.display = 'block';
-
-        const closeButton = modal.querySelector('.close');
+    
+        const closeButton = content.querySelector('.close');
         if (closeButton) {
             closeButton.onclick = () => {
                 modal.style.display = 'none';
             };
         }
-
+    
+        this.setupCollapsibles();
+    
+        modal.style.display = 'block';
+    
         window.onclick = (event) => {
             if (event.target == modal) {
                 modal.style.display = 'none';
             }
         };
+    },
+    
+    formatField(label, value) {
+        if (value && value !== 'N/A' && value !== 0) {
+            return `<div class="stat-group"><span class="stat-label">${label}:</span> <span class="stat-value">${value}</span></div>`;
+        }
+        return '';
+    },
+    
+    formatScrollScaling(scaling) {
+        if (scaling && scaling.length > 0) {
+            return `
+                <div class="collapsible-section">
+                    <button class="collapsible">Scaling</button>
+                    <div class="collapsible-content">
+                        <p>${scaling.replace(/<br>/g, '<br>')}</p>
+                    </div>
+                </div>
+            `;
+        }
+        return '';
+    },
+    
+    setupCollapsibles() {
+        const collapsibles = document.getElementsByClassName('collapsible');
+        for (let i = 0; i < collapsibles.length; i++) {
+            collapsibles[i].addEventListener('click', function() {
+                this.classList.toggle('active');
+                const content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+    },
+    
+    formatCollapsibleSection(title, data) {
+        if (data && data.length > 0) {
+            return `
+                <div class="collapsible-section">
+                    <button class="collapsible">${title}</button>
+                    <div class="collapsible-content">
+                        <p>${data.replace(/<br>/g, '<br>')}</p>
+                    </div>
+                </div>
+            `;
+        }
+        return '';
+    },
+
+    formatStat(label, value) {
+        if (value && value !== 'N/A') {
+            return `<div class="stat-group"><span class="stat-label">${label}:</span> <span class="stat-value">${value}</span></div>`;
+        }
+        return '';
     },
 
     updateBonusesSection(item) {

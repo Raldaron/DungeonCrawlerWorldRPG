@@ -3,6 +3,7 @@ const ActionModule = {
 
     init() {
         console.log('Initializing ActionModule');
+        this.actions = [];
         this.displayActions();
     },
 
@@ -438,6 +439,27 @@ const ActionModule = {
 
     capitalizeFirstLetter(string) {
         return string.charAt(0).toUpperCase() + string.slice(1);
+    },
+
+    loadSavedData(data) {
+        if (data && data.actions) {
+            this.actions = data.actions;
+            this.displayActions();
+        }
+    },
+
+    getAllActionData() {
+        return {
+            actions: this.actions.map(action => {
+                // Create a copy of the action object
+                const actionCopy = { ...action };
+                
+                // Remove any circular references or functions
+                delete actionCopy.element;
+                
+                return actionCopy;
+            })
+        };
     }
 };
 

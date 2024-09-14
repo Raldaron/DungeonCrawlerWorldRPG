@@ -119,11 +119,7 @@ const App = {
 
     exportCharacterData() {
         const characterData = {
-            level: {
-                currentLevel: this.LevelModule.currentLevel,
-                vitalPoints: this.LevelModule.vitalPoints,
-                skillPoints: this.LevelModule.skillPoints
-            },
+            level: this.LevelModule.currentLevel,
             vitals: VitalModule.getAllVitalData(),
             skills: SkillModule.getAllSkillData(),
             race: this.RaceClassModule.currentRace,
@@ -134,14 +130,14 @@ const App = {
             abilities: AbilityModule.getAllAbilityData(),
             traits: TraitModule.getAllTraitData(),
             ap: this.APModule.apValue,
-            actions: ActionModule.getAllActionData()  // Add this line
+            actions: ActionModule.getAllActionData()  // Use the new method here
         };
-
+    
         const dataStr = JSON.stringify(characterData, null, 2);
         const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
-
+    
         const exportFileDefaultName = 'character_data.json';
-
+    
         const linkElement = document.createElement('a');
         linkElement.setAttribute('href', dataUri);
         linkElement.setAttribute('download', exportFileDefaultName);
@@ -267,23 +263,39 @@ const App = {
                         break;
                 }
             }
+        },
+
+        editCharacterName() {
+            const nameElement = document.getElementById('character-name');
+            const currentName = nameElement.textContent;
+            const newName = prompt('Enter new character name:', currentName);
+
+            if (newName !== null && newName.trim() !== '') {
+                nameElement.textContent = newName.trim();
+            }
         }
     },
+
 
     LevelModule: {
         currentLevel: 1,
         vitalPoints: 12,
         skillPoints: 18,
-
+    
         init() {
             this.updateLevel(1);
             this.setupEventListeners();
         },
-
+    
         setupEventListeners() {
-            document.getElementById('character-level')?.addEventListener('dblclick', () => this.promptLevelChange());
+            const levelElement = document.getElementById('character-level');
+            if (levelElement) {
+                levelElement.addEventListener('dblclick', () => this.promptLevelChange());
+            } else {
+                console.error('Character level element not found');
+            }
         },
-
+    
         promptLevelChange() {
             const newLevel = prompt(`Enter new level (1-100):`, this.currentLevel);
             if (newLevel !== null) {
@@ -295,20 +307,25 @@ const App = {
                 }
             }
         },
-
+    
         updateLevel(newLevel) {
             const oldLevel = this.currentLevel;
             this.currentLevel = newLevel;
-            document.getElementById('character-level').textContent = this.currentLevel;
-
+            const levelElement = document.getElementById('character-level');
+            if (levelElement) {
+                levelElement.textContent = this.currentLevel;
+            } else {
+                console.error('Character level element not found');
+            }
+    
             const [vitalPointsGained, skillPointsGained] = this.calculatePointsGained(oldLevel, newLevel);
             this.vitalPoints += vitalPointsGained;
             this.skillPoints += skillPointsGained;
-
+    
             VitalModule.setAvailablePoints(this.vitalPoints);
             SkillModule.setAvailablePoints(this.skillPoints);
         },
-
+    
         calculatePointsGained(oldLevel, newLevel) {
             const levelRanges = [
                 { max: 10, vitalPoints: 1, skillPoints: 2 },
@@ -322,7 +339,7 @@ const App = {
                 { max: 90, vitalPoints: 9, skillPoints: 18 },
                 { max: 100, vitalPoints: 10, skillPoints: 20 },
             ];
-
+    
             return levelRanges.reduce((acc, range) => {
                 const levelsInRange = Math.min(newLevel, range.max) - Math.max(oldLevel, range.max - 9);
                 if (levelsInRange > 0) {
@@ -332,7 +349,7 @@ const App = {
                 return acc;
             }, [0, 0]);
         },
-
+    
         loadSavedData(data) {
             if (data) {
                 this.currentLevel = data.currentLevel || 1;
@@ -445,15 +462,15 @@ const App = {
             const cls = this.classes[classKey];
             if (cls) {
                 // ... (existing UI update code)
-    
+
                 this.currentClass = classKey;
-                
+
                 // Update CharacterModule
                 CharacterModule.setClass(cls);
-                
+
                 console.log('Class updated:', cls);
                 console.log('Current archetype:', CharacterModule.getArchetype());
-    
+
                 // Refresh enhancements after updating class
                 EnhancementModule.refreshEnhancements();
             }
@@ -474,7 +491,7 @@ const App = {
                 return acc;
             }, {});
         },
-        
+
         normalizeSkillName(skillName) {
             return skillName.toLowerCase().replace(/\s+/g, '-');
         },
@@ -525,7 +542,7 @@ const App = {
 
         init() {
             this.apContainer = document.getElementById('ap-container');
-            this.apValue = document.getElementById('ap-value');
+            this.apValue = document.getElementById('character-ap'); // Ensure this ID aligns with your HTML
             this.apButtons = document.getElementById('ap-buttons');
             this.apIncrement = document.getElementById('ap-increment');
             this.apDecrement = document.getElementById('ap-decrement');
@@ -560,7 +577,7 @@ const App = {
         },
 
         changeAP(delta) {
-            const apElement = document.getElementById('character-ap');
+            const apElement = document.getElementById('character-ap'); // Ensures the element is retrieved each time
             if (apElement) {
                 let currentAP = parseInt(apElement.textContent, 10) || 0;
                 currentAP += delta;
@@ -586,6 +603,36 @@ const App = {
             }
         },
     },
+
+    MPModule: {
+        updateMaxMP() {
+            const intelligenceElement = document.getElementById('intelligence-score');
+            if (intelligenceElement) {
+                const intelligenceScore = parseInt(intelligenceElement.textContent, 10) || 0;
+                const maxMP = intelligenceScore * 5;
+                const maxMPElement = document.getElementById('max-mp');
+                if (maxMPElement) {
+                    maxMPElement.textContent = maxMP;
+                } else {
+                    console.error('Max MP element not found');
+                }
+            } else {
+                console.error('Intelligence score element not found');
+            }
+        }
+    },
+
+    VitalModule: {
+        setVitalScore(vitalName, score) {
+            // Ensure the previous logic is preserved here
+            // Existing setVitalScore logic...
+
+            if (vitalName.toLowerCase() === 'intelligence') {
+                MPModule.updateMaxMP();
+            }
+        }
+    },
+
 
     debugCharacterInfo() {
         console.log('--- Debug Character Info ---');
@@ -685,20 +732,35 @@ const UIModule = {
     },
 
     editField(fieldId) {
-        if (fieldId === 'available-vital-points') {
-            VitalModule.editAvailablePoints();
+        const element = document.getElementById(fieldId);
+        if (!element) {
+            console.error(`Element with id ${fieldId} not found`);
+            return;
+        }
+        const currentValue = element.textContent;
+        let newValue;
+    
+        if (fieldId === 'character-ap' || fieldId === 'current-hp' || fieldId === 'current-mp') {
+            newValue = prompt(`Enter new value for ${fieldId.replace('character-', '').replace('current-', '').toUpperCase()}:`, currentValue);
+            if (newValue !== null && !isNaN(newValue)) {
+                newValue = parseInt(newValue, 10);
+                if (fieldId === 'character-ap') {
+                    App.APModule.updateAPDisplay(newValue);
+                } else {
+                    element.textContent = newValue;
+                    // Add any additional logic for HP and MP if needed
+                }
+            }
         } else {
-            // Handle other editable fields here
-            const element = document.getElementById(fieldId);
-            const currentValue = element.textContent;
-            const newValue = prompt(`Enter new value for ${fieldId}:`, currentValue);
-
+            // Handle other editable fields as before
+            newValue = prompt(`Enter new value for ${fieldId}:`, currentValue);
             if (newValue !== null) {
                 element.textContent = newValue;
-
-                // Update related modules if necessary
+    
                 if (fieldId === 'character-level') {
-                    LevelModule.updateLevel(parseInt(newValue, 10));
+                    App.LevelModule.updateLevel(parseInt(newValue, 10));
+                } else if (fieldId === 'available-vital-points') {
+                    VitalModule.setAvailablePoints(parseInt(newValue, 10));
                 } else if (fieldId === 'available-skill-points') {
                     SkillModule.setAvailablePoints(parseInt(newValue, 10));
                 }
@@ -926,7 +988,7 @@ const RaceClassModule = {
 
             this.currentClass = classKey;
             CharacterModule.setClass(cls);
-            
+
             console.log('Class updated:', cls);
             console.log('Current archetype:', CharacterModule.getArchetype());
 
@@ -958,86 +1020,35 @@ const APModule = {
     apValue: 0,
 
     init() {
-        this.apContainer = document.getElementById('ap-container');
-        this.apValue = document.getElementById('ap-value');
-        this.apButtons = document.getElementById('ap-buttons');
-        this.apIncrement = document.getElementById('ap-increment');
-        this.apDecrement = document.getElementById('ap-decrement');
-
-        this.setupEventListeners();
-        this.updateAPDisplay();
-    },
-
-    setupEventListeners() {
-        this.apContainer.addEventListener('click', () => this.toggleAPButtons());
-        this.apIncrement.addEventListener('click', (e) => {
-            e.stopPropagation();
-            this.changeAP(1);
-        });
-        this.apDecrement.addEventListener('click', (e) => {
-            e.stopPropagation();
-            this.changeAP(-1);
-        });
-        document.addEventListener('click', (e) => {
-            if (!this.apContainer.contains(e.target)) {
-                this.hideAPButtons();
-            }
-        });
-    },
-
-    toggleAPButtons() {
-        this.apButtons.classList.toggle('hidden');
-    },
-
-    hideAPButtons() {
-        this.apButtons.classList.add('hidden');
-    },
-
-    setupAPListeners() {
-        const apContainer = document.getElementById('ap-container');
-        const apElement = document.getElementById('character-ap');
-        const incrementButton = document.getElementById('ap-increment');
-        const decrementButton = document.getElementById('ap-decrement');
-
-        if (apContainer && apElement && incrementButton && decrementButton) {
-            apContainer.addEventListener('click', () => {
-                document.getElementById('ap-buttons').classList.toggle('hidden');
-            });
-
-            incrementButton.addEventListener('click', (e) => {
-                e.stopPropagation();
-                this.changeAP(1);
-            });
-
-            decrementButton.addEventListener('click', (e) => {
-                e.stopPropagation();
-                this.changeAP(-1);
-            });
+        this.apElement = document.getElementById('character-ap');
+        if (this.apElement) {
+            this.apElement.addEventListener('dblclick', () => UIModule.editField('character-ap'));
         } else {
-            console.error('One or more AP elements not found');
+            console.error('AP element not found');
+        }
+        this.updateAPDisplay(this.apValue);
+    },
+
+    updateAPDisplay(ap) {
+        if (this.apElement) {
+            this.apElement.textContent = ap;
+            this.apValue = ap;
+        } else {
+            console.error('AP element not found');
         }
     },
 
     changeAP(delta) {
-        const apElement = document.getElementById('character-ap');
-        if (apElement) {
-            let currentAP = parseInt(apElement.textContent, 10) || 0; // Use 0 if parsing fails
-            currentAP += delta;
-            this.updateAPDisplay(currentAP);
-        } else {
-            console.error('AP element not found');
-        }
+        this.apValue += delta;
+        this.updateAPDisplay(this.apValue);
     },
 
-    updateAPDisplay(ap) {
-        const apElement = document.getElementById('character-ap');
-        if (apElement) {
-            apElement.textContent = ap;
-        } else {
-            console.error('AP element not found');
+    loadSavedData(data) {
+        if (data !== undefined) {
+            this.apValue = data;
+            this.updateAPDisplay(this.apValue);
         }
     },
-
 };
 
 document.getElementById('refresh-enhancements').addEventListener('click', () => {
@@ -1091,3 +1102,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     });
 });
+
+// Expose UIModule to the global scope
+window.UIModule = App.UIModule;

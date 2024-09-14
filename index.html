@@ -24,7 +24,7 @@
 <button id="import-character-btn">Import Character</button>
         <div class="info-item" id="character-name-container">
           <label for="character-name">Name:</label>
-          <span id="character-name" ondblclick="UIModule.editField('character-name')">Crawler # 3,281,130</span>
+          <span id="character-name" ondblclick="UIModule.editField('character-name')">Character Name</span>
         </div>
         <div class="info-item" id="race-container">
           <label for="race-select">Race:</label>
@@ -52,21 +52,15 @@
           <label for="armor-rating">AR:</label>
           <span id="armor-rating">10</span>
         </div>
-        <div class="info-item" id="hit-points-container">
-          <label for="current-hp">HP:</label>
-          <span id="current-hp" ondblclick="UIModule.editField('current-hp')">50</span>
-        </div>
-        <div class="info-item" id="mana-points-container">
-          <label for="total-mp">MP:</label>
-          <span id="total-mp">30</span>
-        </div>
-        <div id="ap-container" class="info-item">
-          <span>AP: </span>
-          <span id="character-ap">0</span>
-          <div id="ap-buttons" class="hidden">
-            <button id="ap-decrement">-</button>
-            <button id="ap-increment">+</button>
-          </div>
+        <div id="hit-points-container" class="info-item">
+          HP: <span id="current-hp" ondblclick="UIModule.editField('current-hp')">50</span>
+      </div>          
+      <div id="mana-points-container" class="info-item">
+        MP: <span id="current-mp" ondblclick="UIModule.editField('current-mp')">30</span> / <span id="max-mp">50</span>
+    </div>      
+    <div id="ap-container" class="info-item">
+      AP: <span id="character-ap">0</span>
+  </div>
         </div>
       </div>
     </div>
@@ -170,7 +164,7 @@
 
     <div id="Vitals" class="subtabcontent">
       <h3>Vitals</h3>
-      <div id="vitals-container" class="vitals-grid">
+      <div id="vitals-container" class="vitals-container">
           <div class="vital-category">
               <h4 class="category-title">Physical</h4>
               <div class="vitals-row">
@@ -178,24 +172,24 @@
                       <div class="vital-name">Strength</div>
                       <div id="strength-score" class="vital-score">0</div>
                       <div class="vital-buttons">
-                          <button class="decrement">-</button>
-                          <button class="increment">+</button>
+                          <button class="vital-button decrement" data-vital="strength">-</button>
+                          <button class="vital-button increment" data-vital="strength">+</button>
                       </div>
                   </div>
                   <div class="vital-card">
                       <div class="vital-name">Dexterity</div>
                       <div id="dexterity-score" class="vital-score">0</div>
                       <div class="vital-buttons">
-                          <button class="decrement">-</button>
-                          <button class="increment">+</button>
+                          <button class="vital-button decrement" data-vital="dexterity">-</button>
+                          <button class="vital-button increment" data-vital="dexterity">+</button>
                       </div>
                   </div>
                   <div class="vital-card">
                       <div class="vital-name">Stamina</div>
                       <div id="stamina-score" class="vital-score">0</div>
                       <div class="vital-buttons">
-                          <button class="decrement">-</button>
-                          <button class="increment">+</button>
+                          <button class="vital-button decrement" data-vital="stamina">-</button>
+                          <button class="vital-button increment" data-vital="stamina">+</button>
                       </div>
                   </div>
               </div>
@@ -208,24 +202,24 @@
                       <div class="vital-name">Intelligence</div>
                       <div id="intelligence-score" class="vital-score">0</div>
                       <div class="vital-buttons">
-                          <button class="decrement">-</button>
-                          <button class="increment">+</button>
+                          <button class="vital-button decrement" data-vital="intelligence">-</button>
+                          <button class="vital-button increment" data-vital="intelligence">+</button>
                       </div>
                   </div>
                   <div class="vital-card">
                       <div class="vital-name">Perception</div>
                       <div id="perception-score" class="vital-score">0</div>
                       <div class="vital-buttons">
-                          <button class="decrement">-</button>
-                          <button class="increment">+</button>
+                          <button class="vital-button decrement" data-vital="perception">-</button>
+                          <button class="vital-button increment" data-vital="perception">+</button>
                       </div>
                   </div>
                   <div class="vital-card">
                       <div class="vital-name">Wit</div>
                       <div id="wit-score" class="vital-score">0</div>
                       <div class="vital-buttons">
-                          <button class="decrement">-</button>
-                          <button class="increment">+</button>
+                          <button class="vital-button decrement" data-vital="wit">-</button>
+                          <button class="vital-button increment" data-vital="wit">+</button>
                       </div>
                   </div>
               </div>
@@ -238,24 +232,24 @@
                       <div class="vital-name">Charisma</div>
                       <div id="charisma-score" class="vital-score">0</div>
                       <div class="vital-buttons">
-                          <button class="decrement">-</button>
-                          <button class="increment">+</button>
+                          <button class="vital-button decrement" data-vital="charisma">-</button>
+                          <button class="vital-button increment" data-vital="charisma">+</button>
                       </div>
                   </div>
                   <div class="vital-card">
                       <div class="vital-name">Manipulation</div>
                       <div id="manipulation-score" class="vital-score">0</div>
                       <div class="vital-buttons">
-                          <button class="decrement">-</button>
-                          <button class="increment">+</button>
+                          <button class="vital-button decrement" data-vital="manipulation">-</button>
+                          <button class="vital-button increment" data-vital="manipulation">+</button>
                       </div>
                   </div>
                   <div class="vital-card">
                       <div class="vital-name">Appearance</div>
                       <div id="appearance-score" class="vital-score">0</div>
                       <div class="vital-buttons">
-                          <button class="decrement">-</button>
-                          <button class="increment">+</button>
+                          <button class="vital-button decrement" data-vital="appearance">-</button>
+                          <button class="vital-button increment" data-vital="appearance">+</button>
                       </div>
                   </div>
               </div>
@@ -927,56 +921,8 @@
 <div id="item-detail-modal" class="modal">
   <div class="modal-content">
     <span class="close">&times;</span>
-    <div class="item-detail-header">
-      <h2 id="item-detail-title"></h2>
-      <span id="item-rarity"></span>
-    </div>
-    <div class="item-detail-grid">
-      <div class="item-detail-column">
-        <div class="item-detail-section">
-          <h3>General Info</h3>
-          <p id="item-description"></p>
-          <p id="item-type"></p>
-          <p id="item-subtype"></p>
-        </div>
-        <div class="item-detail-section">
-          <h3>Combat Info</h3>
-          <p id="item-damage"></p>
-          <p id="item-damage-type"></p>
-          <p id="item-range"></p>
-          <p id="item-hands-required"></p>
-        </div>
-        <div class="item-detail-section">
-          <h3>Defensive Info</h3>
-          <p id="item-armor-rating"></p>
-          <p id="item-tank-modifier"></p>
-        </div>
-      </div>
-      <div class="item-detail-column">
-        <div class="item-detail-section">
-          <h3>Vital Bonuses</h3>
-          <div id="item-vital-bonuses"></div>
-        </div>
-        <div class="item-detail-section">
-          <h3>Skill Bonuses</h3>
-          <div id="item-skill-bonuses"></div>
-        </div>
-        <div class="item-detail-section">
-          <h3>Other Bonuses</h3>
-          <p id="item-hp-bonus"></p>
-          <p id="item-mp-bonus"></p>
-        </div>
-      </div>
-    </div>
-    <div class="item-detail-footer">
-      <div class="item-detail-section">
-        <h3>Special Properties</h3>
-        <p id="item-abilities"></p>
-        <p id="item-traits"></p>
-        <p id="item-spells-granted"></p>
-      </div>
-      <button id="equip-unequip-button"></button>
-    </div>
+    <h2 id="item-detail-title"></h2>
+    <div id="item-detail-content"></div>
   </div>
 </div>
 

@@ -190,11 +190,11 @@ const AbilityModule = {
         if (effectElement) {
             let effect = ability.Effect || 'No effect description available.';
             effect += '\n\n'; // Add two line breaks after the base effect
-
+    
             if (ability.Scaling && Array.isArray(ability.Scaling)) {
                 for (let i = 0; i < ability.Scaling.length; i++) {
-                    if (ability.Scaling[i] && ability.Scaling[i].trim() !== '') {
-                        // Add each non-empty scaling level on a new line
+                    if (ability.Scaling[i] && ability.Scaling[i].trim() !== '' && i + 1 <= level) {
+                        // Only add scaling levels up to the current level
                         effect += `<strong>Level ${i + 1}:</strong> ${ability.Scaling[i]}\n`;
                     }
                 }

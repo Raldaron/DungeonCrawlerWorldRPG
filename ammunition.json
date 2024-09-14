@@ -1,6 +1,6 @@
 {
   "ammunition": {
-        "Arrow of Enthusiastic Double Gonorrhea": {
+    "Arrow of Enthusiastic Double Gonorrhea": {
         "itemName": "Arrow of Enthusiastic Double Gonorrhea",
         "itemType": "Ammunition",
         "effect": "Inflicts Enthusiastic Double Gonorrhea on the target.",
@@ -10,9 +10,7 @@
         "rarity": "Rare",
         "statBuffs": {},
         "skillBuffs": {},
-        "abilities": [
-            {}
-        ],
+        "abilities": [],
         "hpBuffs": [],
         "mpBuffs": []
     },

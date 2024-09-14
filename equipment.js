@@ -78,13 +78,15 @@ const EquipmentModule = {
 
     setupEventListeners() {
         console.log('Setting up event listeners for EquipmentModule');
+
+        // Equipment slot listeners
         document.querySelectorAll('.equipment-slot').forEach(slot => {
             if (!slot.id.startsWith('utility-slot-')) {
                 slot.addEventListener('click', event => this.handleSlotClick(event.currentTarget));
             }
         });
 
-        // Event listener for the equipment modal
+        // Equipment modal listeners
         const equipmentModal = document.getElementById('equipment-modal');
         if (equipmentModal) {
             const closeButton = equipmentModal.querySelector('.close');
@@ -99,14 +101,14 @@ const EquipmentModule = {
             console.error('Equipment modal not found');
         }
 
-        // Event listener for closing modals when clicking outside
+        // Close modals when clicking outside
         window.addEventListener('click', event => {
             if (event.target.classList.contains('modal')) {
                 this.closeModals();
             }
         });
 
-        // Event listeners for equipment navigation buttons
+        // Equipment navigation buttons
         const navButtons = document.querySelectorAll('.equipment-nav-btn');
         navButtons.forEach(button => {
             button.addEventListener('click', () => {
@@ -115,7 +117,7 @@ const EquipmentModule = {
             });
         });
 
-        // Event listeners for equip and details buttons in the equipment modal
+        // Item cards container listener
         const itemCardsContainer = document.getElementById('item-cards-container');
         if (itemCardsContainer) {
             itemCardsContainer.addEventListener('click', event => {
@@ -130,7 +132,7 @@ const EquipmentModule = {
             });
         }
 
-        // Event listener for the item detail modal
+        // Item detail modal listener
         const itemDetailModal = document.getElementById('item-detail-modal');
         if (itemDetailModal) {
             const closeButton = itemDetailModal.querySelector('.close');
@@ -141,7 +143,7 @@ const EquipmentModule = {
             }
         }
 
-        // Event listener for equip/unequip button in item detail modal
+        // Equip/Unequip button in item detail modal
         const equipUnequipButton = document.getElementById('equip-unequip-button');
         if (equipUnequipButton) {
             equipUnequipButton.addEventListener('click', () => {
@@ -156,7 +158,7 @@ const EquipmentModule = {
             });
         }
 
-        // Add event listeners for collapsible sections
+        // Collapsible sections listeners
         document.querySelectorAll('.collapsible').forEach(collapsible => {
             collapsible.addEventListener('click', () => {
                 collapsible.classList.toggle('active');
@@ -171,6 +173,7 @@ const EquipmentModule = {
             });
         });
 
+        // Collapsible headers listeners
         document.querySelectorAll('.collapsible h3').forEach(header => {
             header.addEventListener('click', () => {
                 const content = header.nextElementSibling;
@@ -184,6 +187,8 @@ const EquipmentModule = {
                 }
             });
         });
+
+        console.log('Event listeners set up for EquipmentModule');
     },
 
     handleSlotClick(slot) {
@@ -207,66 +212,176 @@ const EquipmentModule = {
     },
 
     showItemDetails(itemKey, slotId = null) {
+        console.log('showItemDetails called with:', { itemKey, slotId });
         const item = this.items[itemKey];
+        if (!item) {
+            console.error(`Item with key ${itemKey} not found`);
+            return;
+        }
+        console.log('Item found:', item);
         const isEquipped = slotId !== null || this.isItemEquipped(itemKey);
-        const equippedSlotId = slotId || this.getEquippedSlot(itemKey);
+        const equippedSlotId = slotId || (isEquipped ? this.getEquippedSlot(itemKey) : null);
+        
+        // Close the equipment modal if it's open
+        const equipmentModal = document.getElementById('equipment-modal');
+        if (equipmentModal) {
+            equipmentModal.style.display = 'none';
+        }
+        
+        console.log('Calling displayItemDetailModal with:', { item, isEquipped, equippedSlotId });
         this.displayItemDetailModal(item, isEquipped, equippedSlotId);
     },
 
     displayItemDetailModal(item, isEquipped, slotId) {
-        const modal = document.getElementById('item-detail-modal');
-        const title = document.getElementById('item-detail-title');
-        const rarity = document.getElementById('item-rarity');
-        const description = document.getElementById('item-description');
-        const type = document.getElementById('item-type');
-        const subtype = document.getElementById('item-subtype');
-        const damage = document.getElementById('item-damage');
-        const damageType = document.getElementById('item-damage-type');
-        const range = document.getElementById('item-range');
-        const handsRequired = document.getElementById('item-hands-required');
-        const armorRating = document.getElementById('item-armor-rating');
-        const tankModifier = document.getElementById('item-tank-modifier');
-        const vitalBonuses = document.getElementById('item-vital-bonuses');
-        const skillBonuses = document.getElementById('item-skill-bonuses');
-        const hpBonus = document.getElementById('item-hp-bonus');
-        const mpBonus = document.getElementById('item-mp-bonus');
-        const abilities = document.getElementById('item-abilities');
-        const traits = document.getElementById('item-traits');
-        const spellsGranted = document.getElementById('item-spells-granted');
-        const equipUnequipButton = document.getElementById('equip-unequip-button');
-
-        if (!modal || !title || !equipUnequipButton) {
-            console.error('Item detail modal elements not found');
+        console.log('Displaying item details:', item);
+    
+        let modal = document.getElementById('item-detail-modal');
+        let content;
+    
+        if (!modal) {
+            console.warn('Item detail modal not found, creating dynamically');
+            modal = document.createElement('div');
+            modal.id = 'item-detail-modal';
+            modal.className = 'modal';
+            document.body.appendChild(modal);
+    
+            const modalContent = document.createElement('div');
+            modalContent.className = 'modal-content';
+            modal.appendChild(modalContent);
+    
+            const closeSpan = document.createElement('span');
+            closeSpan.className = 'close';
+            closeSpan.innerHTML = '&times;';
+            closeSpan.onclick = () => { modal.style.display = 'none'; };
+            modalContent.appendChild(closeSpan);
+    
+            content = document.createElement('div');
+            content.id = 'item-detail-content';
+            modalContent.appendChild(content);
+        } else {
+            content = modal.querySelector('#item-detail-content');
+        }
+    
+        if (!content) {
+            console.error('Modal content element not found and could not be created');
             return;
         }
-
-        title.textContent = item.name;
-        title.dataset.itemKey = item.name; // Store the item key for later use
-
-        rarity.textContent = item.rarity || 'N/A';
-        description.textContent = item.description || 'No description available.';
-        type.textContent = `Type: ${item.itemType || 'N/A'}`;
-        subtype.textContent = `Subtype: ${item.weaponType || item.armorType || 'N/A'}`;
-        damage.textContent = `Damage: ${item.damageAmount || 'N/A'}`;
-        damageType.textContent = `Damage Type: ${item.damageType || 'N/A'}`;
-        range.textContent = `Range: ${item.range || 'N/A'}`;
-        handsRequired.textContent = `Hands Required: ${item.handsRequired || 'N/A'}`;
-        armorRating.textContent = `Armor Rating: ${item.armorRating || 'N/A'}`;
-        tankModifier.textContent = `Tank Modifier: ${item.tankModifier || 'N/A'}`;
-
-        vitalBonuses.innerHTML = this.formatBonuses(item.vitalBonus);
-        skillBonuses.innerHTML = this.formatBonuses(item.skillBonus);
-
-        hpBonus.textContent = `HP Bonus: ${item.hpBonus || '0'}`;
-        mpBonus.textContent = `MP Bonus: ${item.mpBonus || '0'}`;
-
-        abilities.textContent = `Abilities: ${this.formatArray(item.abilities)}`;
-        traits.textContent = `Traits: ${this.formatArray(item.traits)}`;
-        spellsGranted.textContent = `Spells Granted: ${this.formatArray(item.spellsGranted)}`;
-
-        equipUnequipButton.textContent = isEquipped ? 'Unequip' : 'Equip';
-
+    
+        content.innerHTML = `
+            <div class="item-detail-header">
+                <h2>${item.name}</h2>
+                <p id="item-rarity">${item.rarity || 'Common'}</p>
+            </div>
+            <div class="item-detail-body">
+                <div class="item-info">
+                    <p>${item.description || 'No description available.'}</p>
+                    <p><strong>Type:</strong> ${item.itemType || 'Unknown'}</p>
+                    <div class="item-stats">
+                        ${this.formatStat('Damage', item.damageAmount, item.damageType)}
+                        ${this.formatStat('Armor Rating', item.armorRating)}
+                        ${this.formatStat('HP Bonus', item.hpBonus)}
+                        ${this.formatStat('MP Bonus', item.mpBonus)}
+                    </div>
+                    ${this.formatCollapsibleSection('Vital Bonuses', item.vitalBonus)}
+                    ${this.formatCollapsibleSection('Skill Bonuses', item.skillBonus)}
+                    ${this.formatCollapsibleSection('Abilities', item.abilities)}
+                    ${this.formatCollapsibleSection('Traits', item.traits)}
+                    ${this.formatCollapsibleSection('Spells Granted', item.spellsGranted)}
+                </div>
+            </div>
+            <div class="item-actions">
+                <button id="equip-unequip-button">${isEquipped ? 'Unequip' : 'Equip'}</button>
+            </div>
+        `;
+    
+        // Set up event listener for equip/unequip button
+        const equipButton = content.querySelector('#equip-unequip-button');
+        equipButton.onclick = () => {
+            if (isEquipped) {
+                this.unequipItem(slotId);
+            } else {
+                this.equipItem(item.name);
+            }
+            modal.style.display = 'none';
+        };
+    
+        // Set up collapsible sections
+        this.setupCollapsibles();
+    
         modal.style.display = 'block';
+    },
+
+    formatStat(label, value, subValue = '') {
+        if (value && value !== 'N/A') {
+            let content = `<span class="stat-label">${label}:</span> <span class="stat-value">${value}`;
+            if (subValue) {
+                content += ` ${subValue}`;
+            }
+            content += '</span>';
+            return `<div class="stat-group">${content}</div>`;
+        }
+        return '';
+    },
+
+    formatCollapsibleSection(title, data) {
+        if (data && Object.keys(data).length > 0) {
+            let content = '';
+            if (Array.isArray(data)) {
+                content = data.join(', ');
+            } else if (typeof data === 'object') {
+                if (title === 'Vital Bonuses' || title === 'Skill Bonuses') {
+                    content = Object.entries(data)
+                        .map(([key, value]) => `${key}: ${value}`)
+                        .join('<br>');
+                } else {
+                    content = Object.entries(data)
+                        .map(([key, value]) => `${key}: ${value}`)
+                        .join(', ');
+                }
+            } else {
+                content = data.toString();
+            }
+            return `
+                <div class="collapsible-section">
+                    <button class="collapsible">${title}</button>
+                    <div class="collapsible-content">
+                        <p>${content}</p>
+                    </div>
+                </div>
+            `;
+        }
+        return '';
+    },
+
+    setupCollapsibles() {
+        const collapsibles = document.getElementsByClassName('collapsible');
+        for (let i = 0; i < collapsibles.length; i++) {
+            collapsibles[i].addEventListener('click', function () {
+                this.classList.toggle('active');
+                const content = this.nextElementSibling;
+                if (content.style.maxHeight) {
+                    content.style.maxHeight = null;
+                } else {
+                    content.style.maxHeight = content.scrollHeight + "px";
+                }
+            });
+        }
+    },
+
+    formatField(field, value) {
+        let formattedValue = '';
+        if (typeof value === 'object' && value !== null) {
+            if (Array.isArray(value)) {
+                formattedValue = value.join(', ');
+            } else {
+                formattedValue = Object.entries(value)
+                    .map(([k, v]) => `${k}: ${v}`)
+                    .join(', ');
+            }
+        } else {
+            formattedValue = value.toString();
+        }
+        return `<p><strong>${this.capitalizeFirstLetter(field)}:</strong> ${formattedValue}</p>`;
     },
 
     formatArray(arr) {
@@ -494,63 +609,62 @@ const EquipmentModule = {
         console.log(`Equipping item: ${itemKey}`);
         const item = this.items[itemKey];
         const slot = document.getElementById(this.selectedSlot);
-        
+
         if (!slot || !item) {
             console.error(`Failed to equip item: ${itemKey}. Slot or item not found.`);
             return;
         }
-    
+
         // Unequip current item if there is one
         if (slot.dataset.equippedItem) {
             this.unequipItem(this.selectedSlot);
         }
-    
+
         // Update slot content and dataset
         this.updateSlotContent(slot, item);
         slot.dataset.equippedItem = itemKey;
-        
+
         // Update equippedItems
         this.equippedItems[this.selectedSlot] = item;
-        
+
         console.log(`Item ${itemKey} equipped successfully to ${this.selectedSlot}`);
         console.log('Updated equipped items:', this.equippedItems);
-    
+
         // Apply item bonuses
         this.applyItemBonuses(item);
-        
+
         // Handle equipment spells
         this.handleEquipmentSpells(item, true);
-        
+
         // Update related modules
         this.updateRelatedModules(item);
-    
+
         // Handle item actions
         if (item.itemType === 'Weapon') {
             ActionModule.addAction(item);
         }
-    
+
         this.closeModals();
         this.refreshDisplays();
         EnhancementModule.refreshEnhancements();
     },
-    
-    unequipItem(slotId) {
-    const slot = document.getElementById(slotId);
-    if (slot) {
-        const itemKey = slot.dataset.equippedItem;
-        if (itemKey) {
-            const item = this.items[itemKey];
-            if (item) {
-                console.log('Removing bonuses for item:', item);
-                this.removeItemBonuses(item);
-                this.handleEquipmentSpells(item, false);
-                // Handle item actions
-                this.handleItemAction(itemKey, false);
-            }
-        }
 
-            // Clear slot content and dataset
-            slot.innerHTML = '';
+    unequipItem(slotId) {
+        const slot = document.getElementById(slotId);
+        if (slot) {
+            const itemKey = slot.dataset.equippedItem;
+            if (itemKey) {
+                const item = this.items[itemKey];
+                if (item) {
+                    this.removeItemBonuses(item);
+                    this.handleEquipmentSpells(item, false);
+                    this.handleItemAction(itemKey, false);
+                }
+            }
+
+            // Clear slot content but keep the label
+            const slotLabel = slot.dataset.slotType || slot.id;
+            slot.innerHTML = `<div class="slot-label">${this.formatSlotLabel(slotLabel)}</div>`;
             slot.dataset.equippedItem = '';
 
             // Remove from equippedItems
@@ -558,13 +672,26 @@ const EquipmentModule = {
 
             console.log(`Item unequipped from slot ${slotId}`);
             console.log('Updated equipped items:', this.equippedItems);
+
+            // Re-add the event listener
+            slot.addEventListener('click', () => this.handleSlotClick(slot));
         }
+    },
+
+    formatSlotLabel(label) {
+        return label.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
     },
 
     updateSlotContent(slot, item) {
         const content = document.createElement('div');
         content.className = 'equipment-slot-content';
-        content.textContent = item.name;
+
+        if (item) {
+            content.textContent = item.name;
+        } else {
+            const slotLabel = slot.dataset.slotType || slot.id;
+            content.innerHTML = `<div class="slot-label">${this.formatSlotLabel(slotLabel)}</div>`;
+        }
 
         // Clear existing content
         slot.innerHTML = '';
@@ -611,12 +738,17 @@ const EquipmentModule = {
     },
 
     isItemEquipped(itemKey) {
-        return Object.values(this.equippedItems).some(item => item && item.name === this.items[itemKey].name);
+        return Object.values(this.equippedItems).some(equippedItem =>
+            equippedItem && this.items[itemKey] && equippedItem.name === this.items[itemKey].name
+        );
     },
 
     // Find which slot has an item equipped
     getEquippedSlot(itemKey) {
-        return Object.keys(this.equippedItems).find(slotId => this.equippedItems[slotId].name === itemKey);
+        return Object.keys(this.equippedItems).find(slotId => {
+            const equippedItem = this.equippedItems[slotId];
+            return equippedItem && equippedItem.name === this.items[itemKey].name;
+        });
     },
 
     setupWeaponSlots() {
@@ -672,7 +804,8 @@ const EquipmentModule = {
 
     // Close all modal windows
     closeModals() {
-        document.querySelectorAll('.modal').forEach(modal => {
+        const modals = document.querySelectorAll('.modal');
+        modals.forEach(modal => {
             modal.style.display = 'none';
         });
     },

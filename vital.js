@@ -75,7 +75,10 @@ const VitalModule = {
                 const vitalsGrid = document.createElement('div');
                 vitalsGrid.className = 'vitals-grid';
                 
-                vitals.forEach(vital => {
+                vitals.forEach((vital, index) => {
+                    const column = document.createElement('div');
+                    column.className = 'vital-column';
+                    
                     const vitalCard = document.createElement('div');
                     vitalCard.className = 'vital-card';
                     vitalCard.innerHTML = `
@@ -86,7 +89,9 @@ const VitalModule = {
                             <button class="vital-button increment" data-vital="${vital}">+</button>
                         </div>
                     `;
-                    vitalsGrid.appendChild(vitalCard);
+                    
+                    column.appendChild(vitalCard);
+                    vitalsGrid.appendChild(column);
                 });
                 
                 categoryContainer.appendChild(vitalsGrid);

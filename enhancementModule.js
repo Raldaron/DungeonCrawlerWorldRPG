@@ -128,24 +128,56 @@ const EnhancementModule = {
                     ${enhancement.requirements.equipment ? `<li>Equipment: ${enhancement.requirements.equipment.name} (${enhancement.requirements.equipment.slot})</li>` : ''}
                 </ul>
                 <h3>Scaling:</h3>
-                <ul>
-                    ${enhancement.scaling.map(scale => `<li>Level ${scale.level}: ${scale.effect}</li>`).join('')}
-                </ul>
+                <div class="enhancement-level-select">
+                    <label for="enhancement-level-select">Current Level:</label>
+                    <select id="enhancement-level-select">
+                        ${this.createLevelOptions(enhancement)}
+                    </select>
+                </div>
+                <div id="enhancement-scaling-content"></div>
             `;
             modal.style.display = 'block';
-
+    
             const closeBtn = content.querySelector('.close');
             closeBtn.onclick = () => {
                 modal.style.display = 'none';
             };
-
+    
             window.onclick = (event) => {
                 if (event.target == modal) {
                     modal.style.display = 'none';
                 }
             };
+    
+            const levelSelect = document.getElementById('enhancement-level-select');
+            levelSelect.addEventListener('change', () => {
+                this.updateEnhancementScaling(enhancement, parseInt(levelSelect.value));
+            });
+    
+            // Initialize scaling display with level 1
+            this.updateEnhancementScaling(enhancement, 1);
         } else {
             console.error('Enhancement not found:', enhancementName);
+        }
+    },
+    
+    createLevelOptions(enhancement) {
+        let options = '';
+        for (let i = 1; i <= enhancement.scaling.length; i++) {
+            options += `<option value="${i}">${i}</option>`;
+        }
+        return options;
+    },
+    
+    updateEnhancementScaling(enhancement, level) {
+        const scalingContent = document.getElementById('enhancement-scaling-content');
+        scalingContent.innerHTML = '';
+    
+        for (let i = 0; i < level; i++) {
+            const scale = enhancement.scaling[i];
+            const scaleElement = document.createElement('p');
+            scaleElement.innerHTML = `<strong>Level ${scale.level}:</strong> ${scale.effect}`;
+            scalingContent.appendChild(scaleElement);
         }
     },
 
@@ -173,12 +205,12 @@ const EnhancementModule = {
             <button id="close-enhancement-popup">Close</button>
         `;
         popup.style.display = 'block';
-
+    
         const closeButton = document.getElementById('close-enhancement-popup');
         closeButton.addEventListener('click', () => {
             popup.style.display = 'none';
         });
-
+    
         // Automatically hide the popup after 5 seconds
         setTimeout(() => {
             popup.style.display = 'none';
