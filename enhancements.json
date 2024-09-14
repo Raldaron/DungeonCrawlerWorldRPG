@@ -1,679 +1,599 @@
 {
   "enhancements": [
-      {
-          "name": "Bomb Surgeon",
-          "requirements": {
-              "vitals": {
-                  "Intelligence": 8,
-                  "Perception": 7
-              },
-              "skills": {
-                  "Explosives Handling": 8,
-                  "Engineering": 7
-              },
-              "archetypes": [
-                  "Engineer",
-                  "Wizard",
-                  "Anarchist",
-                  "Rogue"
-              ]
-          },
-          "description": "Bomb Surgeon gives you the rare skill set to tinker with explosives without immediately turning yourself into chunky salsa. It's like playing surgeon, but instead of saving lives, you're trying to not end yours. You\u2019ll become the Michelangelo of mayhem, except instead of a paintbrush, you\u2019re wielding a bomb you\u2019ve half-figured out how to defuse.",
-          "scaling": [
-              {
-                  "level": 1,
-                  "effect": "Can deconstruct rudimentary explosive or incendiary devices, \"feel the depth of the blasting cap\" in dynamite and sense the stability score of an explosive without handling it or checking the description."
-              },
-              {
-                  "level": 3,
-                  "effect": "Can deconstruct non-trapped explosives to salvage their component parts and divide simple explosives into parts to create multiple smaller explosives."
-              },
-              {
-                  "level": 5,
-                  "effect": "Can use a Sapper's table to alter or swap triggering mechanisms (e.g., change a fused explosive to impact detonation or set a proximity trigger). May purchase a bomber's studio."
-              },
-              {
-                  "level": 7,
-                  "effect": "Can use a bomber's studio to increase or decrease an explosive's blast radius by 50% in either direction and adjust a device's yield (damage) by 50% in either direction."
-              },
-              {
-                  "level": 10,
-                  "effect": "Master level: Can create legendary explosive devices with multiple trigger mechanisms and cascading effects. Increase the modifications possible with a bomber's studio to 75% in either direction for blast radius and yield."
-              }
-          ]
+    {
+      "name": "Bomb Surgeon",
+      "requirements": {
+        "vitals": {
+          "Intelligence": 8,
+          "Perception": 7
+        },
+        "skills": {
+          "Explosives Handling": 8,
+          "Engineering": 7
+        },
+        "archetypes": ["Engineer", "Wizard", "Anarchist", "Rogue"]
       },
-      {
-          "name": "Escape Plan",
-          "requirements": {
-              "vitals": {
-                  "Intelligence": 8,
-                  "Wit": 7
-              },
-              "skills": {
-                  "Stealth": 8,
-                  "Awareness": 7
-              },
-              "archetypes": [
-                  "Rogue",
-                  "Ranger",
-                  "Bard",
-                  "Femme Fatale"
-              ]
-          },
-          "description": "Escape Plan is your ticket out when the going gets tough\u2014or when you've realized you've walked straight into a death trap like a moron. Gain the uncanny ability to locate hidden doors and alternate routes that scream \"I shouldn\u2019t be here.\" Ideal for those who specialize in making poor decisions and want to live to make more of them.",
-          "scaling": [
-              {
-                  "level": 1,
-                  "effect": "Gain a 25% increased chance to detect hidden doors within a 10-foot radius."
-              },
-              {
-                  "level": 3,
-                  "effect": "Increase detection radius to 20 feet. Gain the ability to see a basic outline of unexplored adjacent rooms on the map."
-              },
-              {
-                  "level": 5,
-                  "effect": "Gain a more detailed map, showing room layouts and major features of explored areas."
-              },
-              {
-                  "level": 7,
-                  "effect": "Increase detection radius for hidden doors to 30 feet. Map now shows potential escape routes highlighted."
-              },
-              {
-                  "level": 10,
-                  "effect": "Master level: Can detect all hidden doors within sight. Map provides real-time updates of creature movements in explored areas."
-              }
-          ]
+      "description": "Bomb Surgeon gives you the rare skill set to tinker with explosives without immediately turning yourself into chunky salsa. It's like playing surgeon, but instead of saving lives, you're trying to not end yours. You\u2019ll become the Michelangelo of mayhem, except instead of a paintbrush, you\u2019re wielding a bomb you\u2019ve half-figured out how to defuse.",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "Can deconstruct rudimentary explosive or incendiary devices, \"feel the depth of the blasting cap\" in dynamite and sense the stability score of an explosive without handling it or checking the description."
+        },
+        {
+          "level": 3,
+          "effect": "Can deconstruct non-trapped explosives to salvage their component parts and divide simple explosives into parts to create multiple smaller explosives."
+        },
+        {
+          "level": 5,
+          "effect": "Can use a Sapper's table to alter or swap triggering mechanisms (e.g., change a fused explosive to impact detonation or set a proximity trigger). May purchase a bomber's studio."
+        },
+        {
+          "level": 7,
+          "effect": "Can use a bomber's studio to increase or decrease an explosive's blast radius by 50% in either direction and adjust a device's yield (damage) by 50% in either direction."
+        },
+        {
+          "level": 10,
+          "effect": "Master level: Can create legendary explosive devices with multiple trigger mechanisms and cascading effects. Increase the modifications possible with a bomber's studio to 75% in either direction for blast radius and yield."
+        }
+      ]
+    },
+    {
+      "name": "Escape Plan",
+      "requirements": {
+        "vitals": {
+          "Intelligence": 8,
+          "Wit": 7
+        },
+        "skills": {
+          "Stealth": 8,
+          "Awareness": 7
+        },
+        "archetypes": ["Rogue", "Ranger", "Bard", "Femme Fatale"]
       },
-      {
-          "name": "Find Crawler",
-          "requirements": {
-              "vitals": {
-                  "Perception": 9,
-                  "Intelligence": 6
-              },
-              "skills": {
-                  "Awareness": 8,
-                  "Investigation": 7
-              },
-              "archetypes": [
-                  "Ranger",
-                  "Rogue",
-                  "Wizard",
-                  "Sorcerer"
-              ]
-          },
-          "description": "Find Crawler is the ultimate stalker\u2019s toolkit, allowing you to sniff out the presence of other crawlers like some sort of socially awkward bloodhound. Perfect for tracking down your so-called allies to see if they\u2019re pocketing your share of the loot or just plotting to stab you in the back. Again.",
-          "scaling": [
-              {
-                  "level": 1,
-                  "effect": "Detect the presence of other crawlers within a 50-foot radius. General direction is shown on the map, but not exact locations."
-              },
-              {
-                  "level": 3,
-                  "effect": "Increase detection radius to 100 feet. Can now see the names of detected crawlers on the map. Gain the ability to sort detected crawlers by level or archetype."
-              },
-              {
-                  "level": 5,
-                  "effect": "Increase detection radius to 200 feet. Can now see the general direction of movement for detected crawlers. Gain the ability to 'tag' one crawler for extended tracking (up to 1 hour)."
-              },
-              {
-                  "level": 7,
-                  "effect": "Gain the ability to see the health status and active buffs/debuffs of detected crawlers. Tagged crawler can now be tracked for up to 4 hours."
-              },
-              {
-                  "level": 10,
-                  "effect": "Master level: Detection radius increased to 500 feet. Can now see detailed information about detected crawlers including their top 3 skills and current objectives. Can tag up to 3 crawlers simultaneously for tracking."
-              }
-          ],
-          "cooldown": "Activating Find Crawler requires concentration and can be used for up to 1 minute per character level before requiring a short rest."
+      "description": "Escape Plan is your ticket out when the going gets tough\u2014or when you've realized you've walked straight into a death trap like a moron. Gain the uncanny ability to locate hidden doors and alternate routes that scream \"I shouldn\u2019t be here.\" Ideal for those who specialize in making poor decisions and want to live to make more of them.",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "Gain a 25% increased chance to detect hidden doors within a 10-foot radius."
+        },
+        {
+          "level": 3,
+          "effect": "Increase detection radius to 20 feet. Gain the ability to see a basic outline of unexplored adjacent rooms on the map."
+        },
+        {
+          "level": 5,
+          "effect": "Gain a more detailed map, showing room layouts and major features of explored areas."
+        },
+        {
+          "level": 7,
+          "effect": "Increase detection radius for hidden doors to 30 feet. Map now shows potential escape routes highlighted."
+        },
+        {
+          "level": 10,
+          "effect": "Master level: Can detect all hidden doors within sight. Map provides real-time updates of creature movements in explored areas."
+        }
+      ]
+    },
+    {
+      "name": "Find Crawler",
+      "requirements": {
+        "vitals": {
+          "Perception": 9,
+          "Intelligence": 6
+        },
+        "skills": {
+          "Awareness": 8,
+          "Investigation": 7
+        },
+        "archetypes": ["Ranger", "Rogue", "Wizard", "Sorcerer"]
       },
-      {
-          "name": "Foot Soldier",
-          "requirements": {
-              "vitals": {
-                  "Strength": 8,
-                  "Stamina": 7
-              },
-              "skills": {
-                  "Close Combat": 9,
-                  "Athletics": 6
-              },
-              "archetypes": [
-                  "Fighter",
-                  "Barbarian",
-                  "Monk",
-                  "Anarchist"
-              ]
-          },
-          "description": "Foot Soldier enhances your kicking power, turning your feet into blunt instruments of sheer idiocy. This is for when you decide punching is too mainstream and you want to express your anger issues through a more leg-centric form of violence. Now, every kick will have the force of your unresolved childhood trauma behind it.",
-          "scaling": [
-              {
-                  "level": 1,
-                  "effect": "Increase kick damage by 25%. Gain the ability to perform a basic sweep kick."
-              },
-              {
-                  "level": 3,
-                  "effect": "Increase kick damage by 50%. Sweep kick has a 25% chance to knock the target prone."
-              },
-              {
-                  "level": 5,
-                  "effect": "Increase kick damage by 75%. Gain the ability to perform a jumping kick for 1.5x normal kick damage."
-              },
-              {
-                  "level": 7,
-                  "effect": "Increase kick damage by 100%. Sweep kick now has a 50% chance to knock the target prone."
-              },
-              {
-                  "level": 10,
-                  "effect": "Master level: Increase kick damage by 150%. Gain the ability to perform a roundhouse kick that hits all adjacent enemies for normal kick damage."
-              }
-          ]
+      "description": "Find Crawler is the ultimate stalker\u2019s toolkit, allowing you to sniff out the presence of other crawlers like some sort of socially awkward bloodhound. Perfect for tracking down your so-called allies to see if they\u2019re pocketing your share of the loot or just plotting to stab you in the back. Again.",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "Detect the presence of other crawlers within a 50-foot radius. General direction is shown on the map, but not exact locations."
+        },
+        {
+          "level": 3,
+          "effect": "Increase detection radius to 100 feet. Can now see the names of detected crawlers on the map. Gain the ability to sort detected crawlers by level or archetype."
+        },
+        {
+          "level": 5,
+          "effect": "Increase detection radius to 200 feet. Can now see the general direction of movement for detected crawlers. Gain the ability to 'tag' one crawler for extended tracking (up to 1 hour)."
+        },
+        {
+          "level": 7,
+          "effect": "Gain the ability to see the health status and active buffs/debuffs of detected crawlers. Tagged crawler can now be tracked for up to 4 hours."
+        },
+        {
+          "level": 10,
+          "effect": "Master level: Detection radius increased to 500 feet. Can now see detailed information about detected crawlers including their top 3 skills and current objectives. Can tag up to 3 crawlers simultaneously for tracking."
+        }
+      ],
+      "cooldown": "Activating Find Crawler requires concentration and can be used for up to 1 minute per character level before requiring a short rest."
+    },
+    {
+      "name": "Foot Soldier",
+      "requirements": {
+        "vitals": {
+          "Strength": 8,
+          "Stamina": 7
+        },
+        "skills": {
+          "Close Combat": 9,
+          "Athletics": 6
+        },
+        "archetypes": ["Fighter", "Barbarian", "Monk", "Anarchist"]
       },
-      {
-          "name": "Good First Impression",
-          "requirements": {
-              "vitals": {
-                  "Charisma": 9,
-                  "Appearance": 6
-              },
-              "skills": {
-                  "Persuasion": 9,
-                  "Empathy": 6
-              },
-              "archetypes": [
-                  "Bard",
-                  "Cleric",
-                  "Sorcerer",
-                  "Femme Fatale"
-              ]
-          },
-          "description": "Good First Impression increases the odds that monsters and NPCs will actually tolerate your presence, at least for a little while. Because nothing says \"trustworthy\" like a shady adventurer who\u2019s just stumbled in covered in blood, eyes darting with that \"I swear I won't loot your corpse\" kind of charm. IED (Improvised Explosive Device) It\u2019s one thing to take a grenade and toss it. But it takes a set of brass balls the size of basilisk eggs to actually build a bomb. Especially with the unreliable crap you find down here. Every level of this skill increases the damage yield of improvised explosive devices by 10% and decreases the chances of a catastrophic, premature uh-oh by half. Incendiary Device Handling Incendiary Device Handling makes you the pyromaniac\u2019s best friend, improving your ability to burn things down\u2014preferably things that aren't you or your idiot friends. Perfect for those who enjoy the smell of napalm in the morning but don\u2019t have the attention span to actually handle explosives with care. Light on Your Feet Light on Your Feet lets you prance around the battlefield like a caffeinated pixie on a sugar high. Leap over enemies, avoid attacks, and escape traps\u2014all while your companions curse your name for being such an insufferable show-off. Because nothing says \"team player\" like leaving everyone else to take the hits. Love Vampire Love Vampire lets you redirect damage to your enemies, because why suffer the consequences of your own bad choices when you can make someone else pay for them? Perfect for those who think empathy is for losers and just want to survive another round of poorly planned heroics. Mascot Mascot gives your pet a starring role in every battle, boosting party morale while simultaneously making everyone question their life choices. Your animal companion becomes the MVP, while you bask in its reflected glory, knowing that even a flea-ridden mutt is more useful than you. Regeneration Regeneration lets you bounce back from injuries like a rubber band that just refuses to snap. Perfect for those who take the \u201cliving on the edge\u201d mantra a little too literally and want to keep cheating death, over and over again, much to the annoyance of everyone who wishes you\u2019d just stay down. Rooted in Place Rooted in Place makes you as immovable as your stubborn refusal to learn from your mistakes. Become a walking, talking roadblock, laughing in the face of knockback effects like they\u2019re just another bad idea to ignore. Now you can stand your ground with all the grace of a mule in a windstorm. Smush Killing with your feet. Your bare, beautiful feet.\\n Taking your bare foot, placing it on top of a living, conscious life, and then pressing lovingly down until that life ceases to be. Is there a more noble way to kill? \\n The amount of pressure you can bring to bear upon an enemy with your unshod foot is increased by 10% with each level of this skill. Snitch Snitch lets you call in the cavalry whenever you find yourself in a situation that\u2019s just a bit too hot to handle. Great for tattling on enemies and bringing the guards running\u2014because nothing says \u201cI\u2019ve got this\u201d like immediately calling for backup. Ideal for cowards who want to look like heroes without doing any of the heavy lifting. Steelie Skin Steelie Skin makes your flesh tougher as your health drops, which is just as well since you\u2019ll probably be getting hit a lot with your lack of actual combat skills. As you take damage, you get harder to kill, like a cockroach that\u2019s somehow survived three nuclear winters and refuses to die, out of spite. StepSon StepSon enhances your foot-based attacks, which is great news for anyone who\u2019s ever wanted to weaponize their daddy issues. Inflict stagger with a good kick and leave your enemies dazed, confused, and possibly questioning why they\u2019re even here. Kick your way to victory, because using your fists is so last year. Talon Strike Birds have ugly feet. Disgusting feet, really. Still, there\u2019s something sensual about the sight of a hawk swooping down upon its prey, talons out, and slashing. It\u2019s so sudden, so unexpected, so explosively violent. \\n Such violence. Sweet, sweet violence. \\n Turns the side of your bare foot into a fast-moving slashing weapon, increasing the damage against opponents by up to (Level of skill) times your regular kicking damage for (Level of skill) seconds. Each kick using this skill has a 2% chance to cast the instakill spell Eviscerate. This melee skill has a cooldown of five minutes. Higher levels of this skill increase damage, duration, and chance of casting Eviscerate. A level 15 of this skill will result in Talon Strike being permanently active. Tent the House Tent the House lets you turn any potion into a wide-area effect, spreading the benefits (or detriments) to anyone within spitting distance. It\u2019s ideal for those who believe that sharing is caring\u2014especially when sharing a deadly poison or an explosive buff gone wrong. Precision Archer Precision Archer lets you hit your targets with pinpoint accuracy, assuming your shaky hands and poor life choices don\u2019t get in the way. Perfect for when you want to feel like Legolas but end up looking more like an amateur dart player at a rowdy pub. Gunslinger Gunslinger improves your firearm skills, letting you shoot faster and more accurately. Because when it comes to handling firearms, what could go wrong with faster shooting? Great for wannabe desperados who have more bravado than actual skill. Blade Dancer Blade Dancer turns you into a whirling dervish of death, swinging your blades around like you\u2019re auditioning for the deadliest ballet ever. Gain speed and style, making your enemies die in awe\u2014or maybe just out of sheer embarrassment for you. Siege Breaker Siege Breaker is for those who think the best defense is a good offense and the best offense is a large, blunt object. Swing your heavy weapon with the kind of reckless abandon usually only exhibited by Golden Corral patrons on fried chicken night. You\u2019ll be smashing through enemies and defenses like a black guy smashing his way through a weight watcher\u2019s meeting.",
-          "scaling": [
-              {
-                  "level": 1,
-                  "effect": "20% increased chance for neutral monsters/NPCs to become friendly on first encounter. +1 to Charisma checks during first interactions."
-              },
-              {
-                  "level": 3,
-                  "effect": "35% increased chance for friendly first encounters. +2 to Charisma checks during first interactions. 10% discount on first purchases from NPC merchants."
-              },
-              {
-                  "level": 5,
-                  "effect": "50% increased chance for friendly first encounters. +3 to Charisma checks during first interactions. 20% discount on first purchases. 10% chance to receive a small gift from friendly NPCs."
-              },
-              {
-                  "level": 7,
-                  "effect": "65% increased chance for friendly first encounters. +4 to Charisma checks during first interactions. 30% discount on first purchases. 20% chance to receive a gift from friendly NPCs."
-              },
-              {
-                  "level": 10,
-                  "effect": "80% increased chance for friendly first encounters. +5 to Charisma checks during first interactions. 40% discount on first purchases. 30% chance to receive a valuable gift from friendly NPCs. 10% chance to turn hostile monsters neutral on first encounter."
-              }
-          ]
+      "description": "Foot Soldier enhances your kicking power, turning your feet into blunt instruments of sheer idiocy. This is for when you decide punching is too mainstream and you want to express your anger issues through a more leg-centric form of violence. Now, every kick will have the force of your unresolved childhood trauma behind it.",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "Increase kick damage by 25%. Gain the ability to perform a basic sweep kick."
+        },
+        {
+          "level": 3,
+          "effect": "Increase kick damage by 50%. Sweep kick has a 25% chance to knock the target prone."
+        },
+        {
+          "level": 5,
+          "effect": "Increase kick damage by 75%. Gain the ability to perform a jumping kick for 1.5x normal kick damage."
+        },
+        {
+          "level": 7,
+          "effect": "Increase kick damage by 100%. Sweep kick now has a 50% chance to knock the target prone."
+        },
+        {
+          "level": 10,
+          "effect": "Master level: Increase kick damage by 150%. Gain the ability to perform a roundhouse kick that hits all adjacent enemies for normal kick damage."
+        }
+      ]
+    },
+    {
+      "name": "Good First Impression",
+      "requirements": {
+        "vitals": {
+          "Charisma": 9,
+          "Appearance": 6
+        },
+        "skills": {
+          "Persuasion": 9,
+          "Empathy": 6
+        },
+        "archetypes": ["Bard", "Cleric", "Sorcerer", "Femme Fatale"]
       },
-      {
-          "name": "Deer in the Headlights",
-          "requirements": {
-              "vitals": {
-                  "Charisma": 8,
-                  "Manipulation": 7
-              },
-              "skills": {
-                  "Intimidation": 8,
-                  "Performance": 7
-              },
-              "archetypes": [
-                  "Bard",
-                  "Rogue",
-                  "Femme Fatale",
-                  "Sorcerer"
-              ]
-          },
-          "description": "Deer in the Headlights allows you to stun enemies with the kind of paralysis usually reserved for small, panicked animals caught in a car\u2019s high beams. Freeze foes in place while they reevaluate every life choice that led them to face you, a practitioner of awkward intimidation tactics.",
-          "scaling": [
-              {
-                  "level": 1,
-                  "effect": "Can freeze a single target of equal or lower level for 5 seconds once per encounter."
-              },
-              {
-                  "level": 3,
-                  "effect": "Increase freeze duration to 10 seconds. Can affect targets up to 2 levels higher."
-              },
-              {
-                  "level": 5,
-                  "effect": "Increase freeze duration to 15 seconds. Can affect multiple targets simultaneously."
-              },
-              {
-                  "level": 7,
-                  "effect": "Can affect targets up to 5 levels higher. 50% chance to not consume the use per encounter."
-              },
-              {
-                  "level": 10,
-                  "effect": "Master level: Can freeze all visible targets within a 30-foot radius for 15 seconds once per day."
-              }
-          ],
-          "cooldown": "Once used, cannot be used again for 5 minutes."
+      "description": "Good First Impression increases the odds that monsters and NPCs will actually tolerate your presence, at least for a little while. Because nothing says \"trustworthy\" like a shady adventurer who\u2019s just stumbled in covered in blood, eyes darting with that \"I swear I won't loot your corpse\" kind of charm. IED (Improvised Explosive Device) It\u2019s one thing to take a grenade and toss it. But it takes a set of brass balls the size of basilisk eggs to actually build a bomb. Especially with the unreliable crap you find down here. Every level of this skill increases the damage yield of improvised explosive devices by 10% and decreases the chances of a catastrophic, premature uh-oh by half. Incendiary Device Handling Incendiary Device Handling makes you the pyromaniac\u2019s best friend, improving your ability to burn things down\u2014preferably things that aren't you or your idiot friends. Perfect for those who enjoy the smell of napalm in the morning but don\u2019t have the attention span to actually handle explosives with care. Light on Your Feet Light on Your Feet lets you prance around the battlefield like a caffeinated pixie on a sugar high. Leap over enemies, avoid attacks, and escape traps\u2014all while your companions curse your name for being such an insufferable show-off. Because nothing says \"team player\" like leaving everyone else to take the hits. Love Vampire Love Vampire lets you redirect damage to your enemies, because why suffer the consequences of your own bad choices when you can make someone else pay for them? Perfect for those who think empathy is for losers and just want to survive another round of poorly planned heroics. Mascot Mascot gives your pet a starring role in every battle, boosting party morale while simultaneously making everyone question their life choices. Your animal companion becomes the MVP, while you bask in its reflected glory, knowing that even a flea-ridden mutt is more useful than you. Regeneration Regeneration lets you bounce back from injuries like a rubber band that just refuses to snap. Perfect for those who take the \u201cliving on the edge\u201d mantra a little too literally and want to keep cheating death, over and over again, much to the annoyance of everyone who wishes you\u2019d just stay down. Rooted in Place Rooted in Place makes you as immovable as your stubborn refusal to learn from your mistakes. Become a walking, talking roadblock, laughing in the face of knockback effects like they\u2019re just another bad idea to ignore. Now you can stand your ground with all the grace of a mule in a windstorm. Smush Killing with your feet. Your bare, beautiful feet.\\n Taking your bare foot, placing it on top of a living, conscious life, and then pressing lovingly down until that life ceases to be. Is there a more noble way to kill? \\n The amount of pressure you can bring to bear upon an enemy with your unshod foot is increased by 10% with each level of this skill. Snitch Snitch lets you call in the cavalry whenever you find yourself in a situation that\u2019s just a bit too hot to handle. Great for tattling on enemies and bringing the guards running\u2014because nothing says \u201cI\u2019ve got this\u201d like immediately calling for backup. Ideal for cowards who want to look like heroes without doing any of the heavy lifting. Steelie Skin Steelie Skin makes your flesh tougher as your health drops, which is just as well since you\u2019ll probably be getting hit a lot with your lack of actual combat skills. As you take damage, you get harder to kill, like a cockroach that\u2019s somehow survived three nuclear winters and refuses to die, out of spite. StepSon StepSon enhances your foot-based attacks, which is great news for anyone who\u2019s ever wanted to weaponize their daddy issues. Inflict stagger with a good kick and leave your enemies dazed, confused, and possibly questioning why they\u2019re even here. Kick your way to victory, because using your fists is so last year. Talon Strike Birds have ugly feet. Disgusting feet, really. Still, there\u2019s something sensual about the sight of a hawk swooping down upon its prey, talons out, and slashing. It\u2019s so sudden, so unexpected, so explosively violent. \\n Such violence. Sweet, sweet violence. \\n Turns the side of your bare foot into a fast-moving slashing weapon, increasing the damage against opponents by up to (Level of skill) times your regular kicking damage for (Level of skill) seconds. Each kick using this skill has a 2% chance to cast the instakill spell Eviscerate. This melee skill has a cooldown of five minutes. Higher levels of this skill increase damage, duration, and chance of casting Eviscerate. A level 15 of this skill will result in Talon Strike being permanently active. Tent the House Tent the House lets you turn any potion into a wide-area effect, spreading the benefits (or detriments) to anyone within spitting distance. It\u2019s ideal for those who believe that sharing is caring\u2014especially when sharing a deadly poison or an explosive buff gone wrong. Precision Archer Precision Archer lets you hit your targets with pinpoint accuracy, assuming your shaky hands and poor life choices don\u2019t get in the way. Perfect for when you want to feel like Legolas but end up looking more like an amateur dart player at a rowdy pub. Gunslinger Gunslinger improves your firearm skills, letting you shoot faster and more accurately. Because when it comes to handling firearms, what could go wrong with faster shooting? Great for wannabe desperados who have more bravado than actual skill. Blade Dancer Blade Dancer turns you into a whirling dervish of death, swinging your blades around like you\u2019re auditioning for the deadliest ballet ever. Gain speed and style, making your enemies die in awe\u2014or maybe just out of sheer embarrassment for you. Siege Breaker Siege Breaker is for those who think the best defense is a good offense and the best offense is a large, blunt object. Swing your heavy weapon with the kind of reckless abandon usually only exhibited by Golden Corral patrons on fried chicken night. You\u2019ll be smashing through enemies and defenses like a black guy smashing his way through a weight watcher\u2019s meeting.",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "20% increased chance for neutral monsters/NPCs to become friendly on first encounter. +1 to Charisma checks during first interactions."
+        },
+        {
+          "level": 3,
+          "effect": "35% increased chance for friendly first encounters. +2 to Charisma checks during first interactions. 10% discount on first purchases from NPC merchants."
+        },
+        {
+          "level": 5,
+          "effect": "50% increased chance for friendly first encounters. +3 to Charisma checks during first interactions. 20% discount on first purchases. 10% chance to receive a small gift from friendly NPCs."
+        },
+        {
+          "level": 7,
+          "effect": "65% increased chance for friendly first encounters. +4 to Charisma checks during first interactions. 30% discount on first purchases. 20% chance to receive a gift from friendly NPCs."
+        },
+        {
+          "level": 10,
+          "effect": "80% increased chance for friendly first encounters. +5 to Charisma checks during first interactions. 40% discount on first purchases. 30% chance to receive a valuable gift from friendly NPCs. 10% chance to turn hostile monsters neutral on first encounter."
+        }
+      ]
+    },
+    {
+      "name": "Deer in the Headlights",
+      "requirements": {
+        "vitals": {
+          "Charisma": 8,
+          "Manipulation": 7
+        },
+        "skills": {
+          "Intimidation": 8,
+          "Performance": 7
+        },
+        "archetypes": ["Bard", "Rogue", "Femme Fatale", "Sorcerer"]
       },
-      {
-          "name": "Detect Trap",
-          "requirements": {
-              "vitals": {
-                  "Intelligence": 8,
-                  "Perception": 7
-              },
-              "skills": {
-                  "Awareness": 9,
-                  "Detect Trap": 6
-              },
-              "archetypes": [
-                  "Rogue",
-                  "Ranger",
-                  "Wizard",
-                  "Bard"
-              ]
-          },
-          "description": "Detect Trap enhances your ability to spot traps before they turn you into a fine paste. Think of it as a sixth sense, but instead of seeing dead people, you see the very real prospect of your own demise. It\u2019s perfect for those who like to keep all their limbs attached and not filled with arrows.",
-          "scaling": [
-              {
-                  "level": 1,
-                  "effect": "Gain the ability to detect simple traps within a 10-foot radius. When a trap is triggered, its activation is delayed by 5 seconds, during which the character is informed they've set off a trap."
-              },
-              {
-                  "level": 3,
-                  "effect": "Increase detection radius to 20 feet. Can now detect intermediate traps. Trap activation delay increased to 6 seconds."
-              },
-              {
-                  "level": 5,
-                  "effect": "Gain the ability to determine the general nature of detected traps (e.g., pit, spike, magical). Trap activation delay increased to 7 seconds."
-              },
-              {
-                  "level": 7,
-                  "effect": "Increase detection radius to 30 feet. Can now detect advanced and magical traps. Trap activation delay increased to 8 seconds."
-              },
-              {
-                  "level": 10,
-                  "effect": "Master level: Can detect all traps within a 50-foot radius and gain detailed information about their mechanisms and trigger conditions. Trap activation delay increased to 10 seconds."
-              }
-          ]
+      "description": "Deer in the Headlights allows you to stun enemies with the kind of paralysis usually reserved for small, panicked animals caught in a car\u2019s high beams. Freeze foes in place while they reevaluate every life choice that led them to face you, a practitioner of awkward intimidation tactics.",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "Can freeze a single target of equal or lower level for 5 seconds once per encounter."
+        },
+        {
+          "level": 3,
+          "effect": "Increase freeze duration to 10 seconds. Can affect targets up to 2 levels higher."
+        },
+        {
+          "level": 5,
+          "effect": "Increase freeze duration to 15 seconds. Can affect multiple targets simultaneously."
+        },
+        {
+          "level": 7,
+          "effect": "Can affect targets up to 5 levels higher. 50% chance to not consume the use per encounter."
+        },
+        {
+          "level": 10,
+          "effect": "Master level: Can freeze all visible targets within a 30-foot radius for 15 seconds once per day."
+        }
+      ],
+      "cooldown": "Once used, cannot be used again for 5 minutes."
+    },
+    {
+      "name": "Detect Trap",
+      "requirements": {
+        "vitals": {
+          "Intelligence": 8,
+          "Perception": 7
+        },
+        "skills": {
+          "Awareness": 9,
+          "Detect Trap": 6
+        },
+        "archetypes": ["Rogue", "Ranger", "Wizard", "Bard"]
       },
-      {
-          "name": "Determine Value",
-          "requirements": {
-              "vitals": {
-                  "Intelligence": 9,
-                  "Perception": 6
-              },
-              "skills": {
-                  "Lore": 8,
-                  "Investigation": 7
-              },
-              "archetypes": [
-                  "Wizard",
-                  "Rogue",
-                  "Cleric",
-                  "Scholar"
-              ]
-          },
-          "description": "Hopefully now you\u2019ll realize all those Magic: The Gathering cards are nothing more than just meaningless pieces of paper, and you should have spent your money on something with actual value, like a treadmill. Or shampoo.",
-          "scaling": [
-              {
-                  "level": 1,
-                  "effect": "Can sort inventory by item value, excluding equipped items."
-              },
-              {
-                  "level": 3,
-                  "effect": "Gain the ability to see the actual value of unequipped items in the inventory."
-              },
-              {
-                  "level": 5,
-                  "effect": "Can now assess the value of equipped items without unequipping them."
-              },
-              {
-                  "level": 7,
-                  "effect": "Gain the ability to determine the value of visible items in the environment within a 10-foot radius."
-              },
-              {
-                  "level": 10,
-                  "effect": "Master level: Can accurately assess the value of all items within sight, including hidden or magical items. Gain insight into potential value increases through crafting or modifications."
-              }
-          ]
+      "description": "Detect Trap enhances your ability to spot traps before they turn you into a fine paste. Think of it as a sixth sense, but instead of seeing dead people, you see the very real prospect of your own demise. It\u2019s perfect for those who like to keep all their limbs attached and not filled with arrows.",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "Gain the ability to detect simple traps within a 10-foot radius. When a trap is triggered, its activation is delayed by 5 seconds, during which the character is informed they've set off a trap."
+        },
+        {
+          "level": 3,
+          "effect": "Increase detection radius to 20 feet. Can now detect intermediate traps. Trap activation delay increased to 6 seconds."
+        },
+        {
+          "level": 5,
+          "effect": "Gain the ability to determine the general nature of detected traps (e.g., pit, spike, magical). Trap activation delay increased to 7 seconds."
+        },
+        {
+          "level": 7,
+          "effect": "Increase detection radius to 30 feet. Can now detect advanced and magical traps. Trap activation delay increased to 8 seconds."
+        },
+        {
+          "level": 10,
+          "effect": "Master level: Can detect all traps within a 50-foot radius and gain detailed information about their mechanisms and trigger conditions. Trap activation delay increased to 10 seconds."
+        }
+      ]
+    },
+    {
+      "name": "Determine Value",
+      "requirements": {
+        "vitals": {
+          "Intelligence": 9,
+          "Perception": 6
+        },
+        "skills": {
+          "Lore": 8,
+          "Investigation": 7
+        },
+        "archetypes": ["Wizard", "Rogue", "Cleric", "Scholar"]
       },
-      {
-          "name": "Double Tap",
-          "requirements": {
-              "vitals": {
-                  "Dexterity": 9,
-                  "Perception": 6
-              },
-              "skills": {
-                  "Ranged Combat": 8,
-                  "Firearms": 7
-              },
-              "archetypes": [
-                  "Ranger",
-                  "Rogue",
-                  "Fighter",
-                  "Rebel Leader"
-              ]
-          },
-          "description": "Double Tap gives you the skill to hit twice with just enough accuracy to make those two shots really count. It's the perfect enhancement for when you want to make sure the job is done\u2014or when you just really, really hate that one particular target.",
-          "scaling": [
-              {
-                  "level": 1,
-                  "effect": "25% increased chance of a critical hit on the second consecutive hit with the same attack."
-              },
-              {
-                  "level": 3,
-                  "effect": "50% increased chance of a critical hit on the second consecutive hit. 10% chance to not consume ammunition on a successful double tap."
-              },
-              {
-                  "level": 5,
-                  "effect": "75% increased chance of a critical hit on the second consecutive hit. 20% chance to not consume ammunition."
-              },
-              {
-                  "level": 7,
-                  "effect": "100% increased chance of a critical hit on the second consecutive hit. 30% chance to not consume ammunition."
-              },
-              {
-                  "level": 10,
-                  "effect": "Guaranteed critical hit on the second consecutive hit. 50% chance to not consume ammunition. 25% chance for the critical hit to deal triple damage instead of double."
-              }
-          ]
+      "description": "Hopefully now you\u2019ll realize all those Magic: The Gathering cards are nothing more than just meaningless pieces of paper, and you should have spent your money on something with actual value, like a treadmill. Or shampoo.",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "Can sort inventory by item value, excluding equipped items."
+        },
+        {
+          "level": 3,
+          "effect": "Gain the ability to see the actual value of unequipped items in the inventory."
+        },
+        {
+          "level": 5,
+          "effect": "Can now assess the value of equipped items without unequipping them."
+        },
+        {
+          "level": 7,
+          "effect": "Gain the ability to determine the value of visible items in the environment within a 10-foot radius."
+        },
+        {
+          "level": 10,
+          "effect": "Master level: Can accurately assess the value of all items within sight, including hidden or magical items. Gain insight into potential value increases through crafting or modifications."
+        }
+      ]
+    },
+    {
+      "name": "Double Tap",
+      "requirements": {
+        "vitals": {
+          "Dexterity": 9,
+          "Perception": 6
+        },
+        "skills": {
+          "Ranged Combat": 8,
+          "Firearms": 7
+        },
+        "archetypes": ["Ranger", "Rogue", "Fighter", "Rebel Leader"]
       },
-      {
-          "name": "Acute Ears",
-          "requirements": {
-              "vitals": {
-                  "Perception": 9,
-                  "Intelligence": 6
-              },
-              "skills": {
-                  "Awareness": 8,
-                  "Detect Trap": 7
-              },
-              "archetypes": [
-                  "Ranger",
-                  "Rogue",
-                  "Wizard",
-                  "Bard"
-              ]
-          },
-          "description": "Acute Ears sharpens your hearing to levels that would make a bat jealous, letting you eavesdrop on every secret and ambush plot in a five-mile radius. It\u2019s like having a radar installed in your skull, only without the annoying beeping\u2014unless you count the incessant ringing of tinnitus from all those loud dungeon noises.",
-          "scaling": [
-              {
-                  "level": 1,
-                  "effect": "Improves hearing and allows the crawler to see more mobs on their minimap."
-              },
-              {
-                  "level": 3,
-                  "effect": "When seeing a red dot on the minimap, the crawler can identify (with \"somewhat-reliable\" accuracy) the mob's size and whether it's a type of mob they've seen before."
-              },
-              {
-                  "level": 5,
-                  "effect": "Increases the range and accuracy of mob detection on the minimap."
-              },
-              {
-                  "level": 7,
-                  "effect": "Allows the crawler to distinguish between different types of known mobs on the minimap."
-              },
-              {
-                  "level": 10,
-                  "effect": "Grants the ability to detect hidden or invisible mobs on the minimap with a certain probability."
-              }
-          ]
+      "description": "Double Tap gives you the skill to hit twice with just enough accuracy to make those two shots really count. It's the perfect enhancement for when you want to make sure the job is done\u2014or when you just really, really hate that one particular target.",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "25% increased chance of a critical hit on the second consecutive hit with the same attack."
+        },
+        {
+          "level": 3,
+          "effect": "50% increased chance of a critical hit on the second consecutive hit. 10% chance to not consume ammunition on a successful double tap."
+        },
+        {
+          "level": 5,
+          "effect": "75% increased chance of a critical hit on the second consecutive hit. 20% chance to not consume ammunition."
+        },
+        {
+          "level": 7,
+          "effect": "100% increased chance of a critical hit on the second consecutive hit. 30% chance to not consume ammunition."
+        },
+        {
+          "level": 10,
+          "effect": "Guaranteed critical hit on the second consecutive hit. 50% chance to not consume ammunition. 25% chance for the critical hit to deal triple damage instead of double."
+        }
+      ]
+    },
+    {
+      "name": "Acute Ears",
+      "requirements": {
+        "vitals": {
+          "Perception": 9,
+          "Intelligence": 6
+        },
+        "skills": {
+          "Awareness": 8,
+          "Detect Trap": 7
+        },
+        "archetypes": ["Ranger", "Rogue", "Wizard", "Bard"]
       },
-      {
-          "name": "Backfire",
-          "requirements": {
-              "vitals": {
-                  "Intelligence": 8,
-                  "Wit": 7
-              },
-              "skills": {
-                  "Engineering": 9,
-                  "Explosives Handling": 6
-              },
-              "archetypes": [
-                  "Engineer",
-                  "Rogue",
-                  "Wizard",
-                  "Anarchist"
-              ]
-          },
-          "description": "Backfire lets you deconstruct traps and put them back together in all the wrong ways, for all the right reasons. Turn that bear trap into a bear hug with spikes or repurpose those pressure plates into a dance floor for the uninvited. Remember, nothing says \"Welcome to my personal hell\" like a trap you\u2019ve \u201ccustomized.\u201d",
-          "scaling": [
-              {
-                  "level": 1,
-                  "effect": "Gain the ability to pick up and deconstruct simple traps and recover components."
-              },
-              {
-                  "level": 3,
-                  "effect": "Increase component recovery value to 70%. Can now deconstruct intermediate traps."
-              },
-              {
-                  "level": 5,
-                  "effect": "Gain the ability to modify and repurpose recovered trap components."
-              },
-              {
-                  "level": 7,
-                  "effect": "Can now deconstruct advanced traps. Increase component recovery chance to 90%."
-              },
-              {
-                  "level": 10,
-                  "effect": "Master level: Can deconstruct any trap. Gain the ability to create custom traps using recovered components."
-              }
-          ]
+      "description": "Acute Ears sharpens your hearing to levels that would make a bat jealous, letting you eavesdrop on every secret and ambush plot in a five-mile radius. It\u2019s like having a radar installed in your skull, only without the annoying beeping\u2014unless you count the incessant ringing of tinnitus from all those loud dungeon noises.",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "Improves hearing and allows the crawler to see more mobs on their minimap."
+        },
+        {
+          "level": 3,
+          "effect": "When seeing a red dot on the minimap, the crawler can identify (with \"somewhat-reliable\" accuracy) the mob's size and whether it's a type of mob they've seen before."
+        },
+        {
+          "level": 5,
+          "effect": "Increases the range and accuracy of mob detection on the minimap."
+        },
+        {
+          "level": 7,
+          "effect": "Allows the crawler to distinguish between different types of known mobs on the minimap."
+        },
+        {
+          "level": 10,
+          "effect": "Grants the ability to detect hidden or invisible mobs on the minimap with a certain probability."
+        }
+      ]
+    },
+    {
+      "name": "Backfire",
+      "requirements": {
+        "vitals": {
+          "Intelligence": 8,
+          "Wit": 7
+        },
+        "skills": {
+          "Engineering": 9,
+          "Explosives Handling": 6
+        },
+        "archetypes": ["Engineer", "Rogue", "Wizard", "Anarchist"]
       },
-      {
-          "name": "Cockroach",
-          "requirements": {
-              "vitals": {
-                  "Stamina": 8,
-                  "Resilience": 7
-              },
-              "skills": {
-                  "Endurance": 9,
-                  "Survival": 6
-              },
-              "archetypes": [
-                  "Barbarian",
-                  "Fighter",
-                  "Rogue",
-                  "Ranger"
-              ]
-          },
-          "description": "Cockroach gives you the enviable ability to survive deadly encounters by clinging to life with all the desperation of a middle manager in a layoff season. Think of it as a second chance to keep annoying everyone around you with your relentless refusal to die. You\u2019ll get by with just a sliver of health, because who needs dignity when you have survival?",
-          "scaling": [
-              {
-                  "level": 1,
-                  "effect": "Gain a 50% chance to survive a fatal attack with 1 HP remaining."
-              },
-              {
-                  "level": 3,
-                  "effect": "Increase survival chance to 70%."
-              },
-              {
-                  "level": 5,
-                  "effect": "Guaranteed to survive one fatal hit per fight, though left near death."
-              },
-              {
-                  "level": 7,
-                  "effect": "Increase survival chance to 60% for subsequent fatal hits in the same fight."
-              },
-              {
-                  "level": 10,
-                  "effect": "Health doesn't go down at all after the first fatal strike in a fight."
-              }
-          ],
-          "cooldown": "Once activated, cannot trigger again for 1 hour."
+      "description": "Backfire lets you deconstruct traps and put them back together in all the wrong ways, for all the right reasons. Turn that bear trap into a bear hug with spikes or repurpose those pressure plates into a dance floor for the uninvited. Remember, nothing says \"Welcome to my personal hell\" like a trap you\u2019ve \u201ccustomized.\u201d",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "Gain the ability to pick up and deconstruct simple traps and recover components."
+        },
+        {
+          "level": 3,
+          "effect": "Increase component recovery value to 70%. Can now deconstruct intermediate traps."
+        },
+        {
+          "level": 5,
+          "effect": "Gain the ability to modify and repurpose recovered trap components."
+        },
+        {
+          "level": 7,
+          "effect": "Can now deconstruct advanced traps. Increase component recovery chance to 90%."
+        },
+        {
+          "level": 10,
+          "effect": "Master level: Can deconstruct any trap. Gain the ability to create custom traps using recovered components."
+        }
+      ]
+    },
+    {
+      "name": "Cockroach",
+      "requirements": {
+        "vitals": {
+          "Stamina": 8,
+          "Resilience": 7
+        },
+        "skills": {
+          "Endurance": 9,
+          "Survival": 6
+        },
+        "archetypes": ["Barbarian", "Fighter", "Rogue", "Ranger"]
       },
-      {
-          "name": "Dangerous Explosives Handling",
-          "requirements": {
-              "vitals": {
-                  "Intelligence": 8,
-                  "Perception": 7
-              },
-              "skills": {
-                  "Explosives Handling": 9,
-                  "Awareness": 6
-              },
-              "archetypes": [
-                  "Engineer",
-                  "Rogue",
-                  "Anarchist",
-                  "Wizard"
-              ]
-          },
-          "description": "Dangerous Explosives Handling turns you into a walking, talking bomb squad\u2014minus the paycheck and health insurance. It\u2019s for those who like to live dangerously, or who just have a very poor understanding of personal safety. Detect and disarm explosives before they explode, or don't\u2014it's a free country, after all.",
-          "scaling": [
-              {
-                  "level": 1,
-                  "effect": "Gain the ability to detect the general stability of an explosive device."
-              },
-              {
-                  "level": 3,
-                  "effect": "Can identify the type and approximate yield of an explosive device."
-              },
-              {
-                  "level": 5,
-                  "effect": "Gain detailed information about an explosive's trigger mechanism."
-              },
-              {
-                  "level": 7,
-                  "effect": "Can accurately assess the blast radius and potential collateral damage of an explosive."
-              },
-              {
-                  "level": 10,
-                  "effect": "Master level: Gain the ability to temporarily stabilize unstable explosives for safe handling and disposal."
-              }
-          ]
+      "description": "Cockroach gives you the enviable ability to survive deadly encounters by clinging to life with all the desperation of a middle manager in a layoff season. Think of it as a second chance to keep annoying everyone around you with your relentless refusal to die. You\u2019ll get by with just a sliver of health, because who needs dignity when you have survival?",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "Gain a 50% chance to survive a fatal attack with 1 HP remaining."
+        },
+        {
+          "level": 3,
+          "effect": "Increase survival chance to 70%."
+        },
+        {
+          "level": 5,
+          "effect": "Guaranteed to survive one fatal hit per fight, though left near death."
+        },
+        {
+          "level": 7,
+          "effect": "Increase survival chance to 60% for subsequent fatal hits in the same fight."
+        },
+        {
+          "level": 10,
+          "effect": "Health doesn't go down at all after the first fatal strike in a fight."
+        }
+      ],
+      "cooldown": "Once activated, cannot trigger again for 1 hour."
+    },
+    {
+      "name": "Dangerous Explosives Handling",
+      "requirements": {
+        "vitals": {
+          "Intelligence": 8,
+          "Perception": 7
+        },
+        "skills": {
+          "Explosives Handling": 9,
+          "Awareness": 6
+        },
+        "archetypes": ["Engineer", "Rogue", "Anarchist", "Wizard"]
       },
-      {
-          "name": "Iron Punch",
-          "requirements": {
-              "vitals": {
-                  "Strength": 9,
-                  "Dexterity": 6
-              },
-              "skills": {
-                  "Close Combat": 8,
-                  "Melee": 7
-              },
-              "archetypes": [
-                  "Fighter",
-                  "Monk",
-                  "Barbarian",
-                  "Rogue"
-              ]
-          },
-          "description": "When simple brutality isn\u2019t enough. Newsboy cap not included. \\n With a skill like this, you can always find work as a 1920\u2019s street tough or a collection agent for a bookie. \\n War gauntlets and lumpers will protect your hands and enhance your punching damage without losing your bare-knuckle bonus. Each level of this skill increases the enhanced fist damage bonus by an additional 10%",
-          "scaling": [
-              {
-                  "level": 1,
-                  "effect": "Increases Bare-knuckle damage by 10% when wearing a war gauntlet."
-              },
-              {
-                  "level": 3,
-                  "effect": "Increases Bare-knuckle damage by 20% when wearing a war gauntlet."
-              },
-              {
-                  "level": 5,
-                  "effect": "Increases Bare-knuckle damage by 30% when wearing a war gauntlet."
-              },
-              {
-                  "level": 7,
-                  "effect": "Increases Bare-knuckle damage by 40% when wearing a war gauntlet."
-              },
-              {
-                  "level": 10,
-                  "effect": "Increases Bare-knuckle damage by 50% when wearing a war gauntlet. Gain \"Breadbasket Effect\": 10% chance to stun a mob for several seconds."
-              }
-          ]
+      "description": "Dangerous Explosives Handling turns you into a walking, talking bomb squad\u2014minus the paycheck and health insurance. It\u2019s for those who like to live dangerously, or who just have a very poor understanding of personal safety. Detect and disarm explosives before they explode, or don't\u2014it's a free country, after all.",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "Gain the ability to detect the general stability of an explosive device."
+        },
+        {
+          "level": 3,
+          "effect": "Can identify the type and approximate yield of an explosive device."
+        },
+        {
+          "level": 5,
+          "effect": "Gain detailed information about an explosive's trigger mechanism."
+        },
+        {
+          "level": 7,
+          "effect": "Can accurately assess the blast radius and potential collateral damage of an explosive."
+        },
+        {
+          "level": 10,
+          "effect": "Master level: Gain the ability to temporarily stabilize unstable explosives for safe handling and disposal."
+        }
+      ]
+    },
+    {
+      "name": "Iron Punch",
+      "requirements": {
+        "vitals": {
+          "Strength": 9,
+          "Dexterity": 6
+        },
+        "skills": {
+          "Close Combat": 8,
+          "Melee": 7
+        },
+        "archetypes": ["Fighter", "Monk", "Barbarian", "Rogue"]
       },
-      {
-          "name": "Pugilism",
-          "requirements": {
-              "vitals": {
-                  "Stamina": 8,
-                  "Strength": 7
-              },
-              "skills": {
-                  "Close Combat": 9,
-                  "Athletics": 6
-              },
-              "archetypes": [
-                  "Fighter",
-                  "Barbarian",
-                  "Monk",
-                  "Rogue"
-              ]
-          },
-          "description": "The art of beating the shit out of your opponents with closed fists. Each level of this skill increases your bare-knuckle damage by 25%.",
-          "scaling": [
-              {
-                  "level": 1,
-                  "effect": "Increases bare-knuckle damage by 25%"
-              },
-              {
-                  "level": 3,
-                  "effect": "Increases bare-knuckle damage by 50%"
-              },
-              {
-                  "level": 5,
-                  "effect": "Increases bare-knuckle damage by 75%"
-              },
-              {
-                  "level": 7,
-                  "effect": "Increases bare-knuckle damage by 100%"
-              },
-              {
-                  "level": 10,
-                  "effect": "Increases bare-knuckle damage by 125%"
-              }
-          ]
+      "description": "When simple brutality isn\u2019t enough. Newsboy cap not included. \\n With a skill like this, you can always find work as a 1920\u2019s street tough or a collection agent for a bookie. \\n War gauntlets and lumpers will protect your hands and enhance your punching damage without losing your bare-knuckle bonus. Each level of this skill increases the enhanced fist damage bonus by an additional 10%",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "Increases Bare-knuckle damage by 10% when wearing a war gauntlet."
+        },
+        {
+          "level": 3,
+          "effect": "Increases Bare-knuckle damage by 20% when wearing a war gauntlet."
+        },
+        {
+          "level": 5,
+          "effect": "Increases Bare-knuckle damage by 30% when wearing a war gauntlet."
+        },
+        {
+          "level": 7,
+          "effect": "Increases Bare-knuckle damage by 40% when wearing a war gauntlet."
+        },
+        {
+          "level": 10,
+          "effect": "Increases Bare-knuckle damage by 50% when wearing a war gauntlet. Gain \"Breadbasket Effect\": 10% chance to stun a mob for several seconds."
+        }
+      ]
+    },
+    {
+      "name": "Pugilism",
+      "requirements": {
+        "vitals": {
+          "Stamina": 8,
+          "Strength": 7
+        },
+        "skills": {
+          "Close Combat": 9,
+          "Athletics": 6
+        },
+        "archetypes": ["Fighter", "Barbarian", "Monk", "Rogue"]
       },
-      {
-          "name": "Powerful Strike",
-          "requirements": {
-              "vitals": {
-                  "Strength": 10,
-                  "Stamina": 5
-              },
-              "skills": {
-                  "Close Combat": 8,
-                  "Endurance": 7
-              },
-              "archetypes": [
-                  "Fighter",
-                  "Barbarian",
-                  "Monk",
-                  "Anarchist"
-              ]
-          },
-          "description": "Powerful Strike is for those who believe that a fist is more than just a blunt object\u2014it's a lifestyle. Amplify your bare-knuckle damage while embracing the minimalist lifestyle of \u2018no weapons, no problems.\u2019 Unleash your inner street fighter and make every punch feel like a final exam you didn't study for: unexpectedly devastating.",
-          "scaling": [
-              {
-                  "level": 1,
-                  "effect": "Multiplies Bare-knuckle damage by 1.25x"
-              },
-              {
-                  "level": 3,
-                  "effect": "Multiplies Bare-knuckle damage by 1.5x"
-              },
-              {
-                  "level": 5,
-                  "effect": "Multiplies Bare-knuckle damage by 1.75x"
-              },
-              {
-                  "level": 7,
-                  "effect": "Multiplies Bare-knuckle damage by 2x"
-              },
-              {
-                  "level": 10,
-                  "effect": "Multiplies Bare-knuckle damage by 2.5x"
-              }
-          ]
-      }
+      "description": "The art of beating the shit out of your opponents with closed fists. Each level of this skill increases your bare-knuckle damage by 25%.",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "Increases bare-knuckle damage by 25%"
+        },
+        {
+          "level": 3,
+          "effect": "Increases bare-knuckle damage by 50%"
+        },
+        {
+          "level": 5,
+          "effect": "Increases bare-knuckle damage by 75%"
+        },
+        {
+          "level": 7,
+          "effect": "Increases bare-knuckle damage by 100%"
+        },
+        {
+          "level": 10,
+          "effect": "Increases bare-knuckle damage by 125%"
+        }
+      ]
+    },
+    {
+      "name": "Powerful Strike",
+      "requirements": {
+        "vitals": {
+          "Strength": 10,
+          "Stamina": 5
+        },
+        "skills": {
+          "Close Combat": 8,
+          "Endurance": 7
+        },
+        "archetypes": ["Fighter", "Barbarian", "Monk", "Anarchist"]
+      },
+      "description": "Powerful Strike is for those who believe that a fist is more than just a blunt object\u2014it's a lifestyle. Amplify your bare-knuckle damage while embracing the minimalist lifestyle of \u2018no weapons, no problems.\u2019 Unleash your inner street fighter and make every punch feel like a final exam you didn't study for: unexpectedly devastating.",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "Multiplies Bare-knuckle damage by 1.25x"
+        },
+        {
+          "level": 3,
+          "effect": "Multiplies Bare-knuckle damage by 1.5x"
+        },
+        {
+          "level": 5,
+          "effect": "Multiplies Bare-knuckle damage by 1.75x"
+        },
+        {
+          "level": 7,
+          "effect": "Multiplies Bare-knuckle damage by 2x"
+        },
+        {
+          "level": 10,
+          "effect": "Multiplies Bare-knuckle damage by 2.5x"
+        }
+      ]
+    }
   ]
 }
