@@ -674,47 +674,6 @@
                   "effect": "Multiplies Bare-knuckle damage by 2.5x"
               }
           ]
-      },{
-        "name": "Pugs",
-        "requirements": {
-            "vitals": {
-                "Stamina": 1,
-                "Strength": 1
-            },
-            "skills": {
-                "Close Combat": 1,
-                "Athletics": 1
-            },
-            "archetypes": [
-                "Fighter",
-                "Barbarian",
-                "Monk",
-                "Rogue"
-            ]
-        },
-        "description": "The art of beating the shit out of your opponents with closed fists. Each level of this skill increases your bare-knuckle damage by 25%.",
-        "scaling": [
-            {
-                "level": 1,
-                "effect": "Increases bare-knuckle damage by 25%"
-            },
-            {
-                "level": 3,
-                "effect": "Increases bare-knuckle damage by 50%"
-            },
-            {
-                "level": 5,
-                "effect": "Increases bare-knuckle damage by 75%"
-            },
-            {
-                "level": 7,
-                "effect": "Increases bare-knuckle damage by 100%"
-            },
-            {
-                "level": 10,
-                "effect": "Increases bare-knuckle damage by 125%"
-            }
-        ]
-    }
+      }
   ]
 }
