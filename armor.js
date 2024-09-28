@@ -9,13 +9,15 @@ const ArmorModule = {
     selectedSlot: null,
 
     init() {
-        this.loadArmor();
+        this.loadArmor().then(() => {
+            this.updateArmorRating();
+        });
         this.setupEventListeners();
         this.createArmorDetailModal();
     },
 
     loadArmor() {
-        fetch('armor.json')
+        return fetch('armor.json')
             .then(response => response.json())
             .then(data => {
                 this.armor = data.armor;
@@ -70,12 +72,8 @@ const ArmorModule = {
         }
     },
 
-    isArmorSlot(slotType) {
-        const armorSlotTypes = ['head', 'face', 'neck', 'shoulders', 'torso', 'arm', 'wrist', 'finger', 'waist', 'legs', 'ankle', 'feet', 'toe'];
-        return armorSlotTypes.includes(slotType.toLowerCase());
-    },
-
     handleArmorSlotClick(slot) {
+        this.selectedSlot = slot.id;
         const slotType = slot.dataset.slotType.toLowerCase();
         const equippedArmorKey = slot.dataset.equippedArmor;
         if (equippedArmorKey) {
@@ -133,18 +131,21 @@ const ArmorModule = {
         return card;
     },
 
-    equipArmor(armorKey) {
+    equipArmor(armorKey, slotId = this.selectedSlot) {
         const armor = this.armor[armorKey];
-        const slot = document.getElementById(this.selectedSlot);
-        if (slot) {
+        const slot = document.getElementById(slotId);
+        if (slot && armor) {
             // Unequip current item if there is one
             if (slot.dataset.equippedArmor) {
-                this.unequipArmor(slot.id);
+                this.unequipArmor(slotId);
             }
-
-            slot.textContent = armor.name;
+    
+            this.updateSlotContent(slot, armor.name);
             slot.dataset.equippedArmor = armorKey;
-
+    
+            // Synchronize with EquipmentModule
+            EquipmentModule.equippedItems[slotId] = armor;
+    
             // Update vital and skill scores
             if (armor.vitalBonus) {
                 VitalModule.updateSingleItemBonus('armor', armor.vitalBonus);
@@ -152,7 +153,7 @@ const ArmorModule = {
             if (armor.skillBonus) {
                 SkillModule.updateEquippedScores(armor.skillBonus, 'armor');
             }
-
+    
             // Update abilities and traits
             if (armor.abilities && Array.isArray(armor.abilities)) {
                 AbilityModule.addEquipmentAbilities(armor.abilities);
@@ -160,11 +161,17 @@ const ArmorModule = {
             if (armor.traits && Array.isArray(armor.traits)) {
                 TraitModule.updateTraits('armor', armorKey, armor.traits);
             }
-
+    
             // Add spells granted by the armor
             if (armor.spellsGranted && Array.isArray(armor.spellsGranted)) {
                 SpellModule.addEquipmentSpells(armor.spellsGranted);
             }
+    
+            // Update EquipmentModule with the new armor
+            EquipmentModule.updateEquippedArmor(this.selectedSlot, armor);
+            
+            // Update Armor Rating
+            this.updateArmorRating();
         }
         this.closeModals();
     },
@@ -175,30 +182,154 @@ const ArmorModule = {
             const armorKey = slot.dataset.equippedArmor;
             const armor = this.armor[armorKey];
             
-            // Remove bonuses
-            if (armor.vitalBonus) {
-                VitalModule.removeSingleItemBonus('armor', armor.vitalBonus);
+            if (armor) {
+                // Remove bonuses
+                if (armor.vitalBonus) {
+                    VitalModule.removeSingleItemBonus('armor', armor.vitalBonus);
+                }
+                
+                if (armor.skillBonus) {
+                    SkillModule.removeEquippedScores('armor');
+                }
+                
+                // Remove abilities and traits
+                if (armor.abilities && Array.isArray(armor.abilities)) {
+                    AbilityModule.removeEquipmentAbilities(armor.abilities);
+                }
+                if (armor.traits && Array.isArray(armor.traits)) {
+                    TraitModule.removeTraits('armor', armorKey);
+                }
+        
+                // Remove spells granted by the armor
+                if (armor.spellsGranted && Array.isArray(armor.spellsGranted)) {
+                    SpellModule.removeEquipmentSpells(armor.spellsGranted);
+                }
+
+                
             }
-            if (armor.skillBonus) {
-                SkillModule.removeEquippedScores('armor');
-            }
-            
-            // Remove abilities and traits
-            if (armor.abilities && Array.isArray(armor.abilities)) {
-                AbilityModule.removeEquipmentAbilities(armor.abilities);
-            }
-            if (armor.traits && Array.isArray(armor.traits)) {
-                TraitModule.removeTraits('armor', armorKey);
-            }
-    
-            // Remove spells granted by the armor
-            if (armor.spellsGranted && Array.isArray(armor.spellsGranted)) {
-                SpellModule.removeEquipmentSpells(armor.spellsGranted);
-            }
-    
+        
             slot.textContent = '';
             slot.dataset.equippedArmor = '';
+    
+            // Update EquipmentModule to remove the armor
+            EquipmentModule.updateEquippedArmor(slotId, null);
+            
+            // Update Armor Rating
+            this.updateArmorRating();
         }
+    },
+
+    getEquippedArmor() {
+        const equippedArmor = {};
+        document.querySelectorAll('.equipment-slot[data-slot-type]').forEach(slot => {
+            if (this.isArmorSlot(slot.dataset.slotType)) {
+                const armorKey = slot.dataset.equippedArmor;
+                if (armorKey) {
+                    equippedArmor[slot.id] = armorKey;
+                }
+            }
+        });
+        return equippedArmor;
+    },
+    
+    unequipAllArmor() {
+        document.querySelectorAll('.equipment-slot[data-slot-type]').forEach(slot => {
+            if (this.isArmorSlot(slot.dataset.slotType)) {
+                this.unequipArmor(slot.id);
+            }
+        });
+    },
+    
+    isArmorSlot(slotType) {
+        const armorSlotTypes = ['head', 'face', 'neck', 'shoulders', 'torso', 'arm', 'wrist', 'finger', 'waist', 'legs', 'ankle', 'feet', 'toe'];
+        return armorSlotTypes.includes(slotType.toLowerCase());
+    },
+
+    getEquippedArmorKeys() {
+        const equippedArmorKeys = {};
+        for (const [slotId, armor] of Object.entries(this.equippedItems)) {
+            if (armor) {
+                equippedArmorKeys[slotId] = armor.key || armor.name;
+            }
+        }
+        return equippedArmorKeys;
+    },
+
+    recalculateArmorRating() {
+        let baseAR = 10;
+        let totalAR = baseAR;
+
+        document.querySelectorAll('.equipment-slot[data-slot-type]').forEach(slot => {
+            const armorKey = slot.dataset.equippedArmor;
+            if (armorKey && this.armor[armorKey]) {
+                const armor = this.armor[armorKey];
+                if (armor && typeof armor.armorRating !== 'undefined') {
+                    totalAR += parseInt(armor.armorRating) || 0;
+                }
+            }
+        });
+
+        return totalAR;
+    },
+
+    updateArmorRating() {
+        const totalAR = this.recalculateArmorRating();
+        const armorRatingElement = document.getElementById('armor-rating');
+        if (armorRatingElement) {
+            armorRatingElement.textContent = totalAR;
+        }
+        console.log('Updated Armor Rating:', totalAR);
+    },
+    
+    updateSlotContent(slot, armorName) {
+        const content = document.createElement('div');
+        content.className = 'equipment-slot-content';
+        content.textContent = armorName;
+    
+        // Clear existing content
+        slot.innerHTML = '';
+        slot.appendChild(content);
+    },
+    
+    resetSlotContent(slot) {
+        // Clear the slot content
+        slot.innerHTML = '';
+    
+        // Recreate the slot label
+        const slotLabel = document.createElement('span');
+        slotLabel.className = 'slot-label';
+        slotLabel.textContent = this.getSlotLabel(slot.id);
+        slot.appendChild(slotLabel);
+    },
+    
+    getSlotLabel(slotId) {
+        // Map slot IDs to their labels
+        const slotLabels = {
+            'head-slot': 'Head',
+            'face-slot': 'Face',
+            'neck-slot': 'Neck',
+            'shoulders-slot': 'Shoulders',
+            'torso-slot': 'Torso',
+            'left-arm-slot': 'Left Arm',
+            'right-arm-slot': 'Right Arm',
+            'left-wrist-slot': 'Left Wrist',
+            'right-wrist-slot': 'Right Wrist',
+            'left-finger1-slot': 'Left Finger 1',
+            'left-finger2-slot': 'Left Finger 2',
+            'right-finger1-slot': 'Right Finger 1',
+            'right-finger2-slot': 'Right Finger 2',
+            'waist-slot': 'Waist',
+            'legs-slot': 'Legs',
+            'left-ankle-slot': 'Left Ankle',
+            'right-ankle-slot': 'Right Ankle',
+            'feet-slot': 'Feet',
+            'left-toe1-slot': 'Left Toe 1',
+            'left-toe2-slot': 'Left Toe 2',
+            'right-toe1-slot': 'Right Toe 1',
+            'right-toe2-slot': 'Right Toe 2'
+        };
+    
+        return slotLabels[slotId] || 'Unknown Slot';
     },
 
     showArmorDetails(armorKey, isEquipped) {
@@ -297,6 +428,16 @@ const ArmorModule = {
 
         if (container.children.length === 0) {
             container.innerHTML = '<p>No matching armor found</p>';
+        }
+    },
+
+    loadSavedData(data) {
+        if (data && data.equippedItems) {
+            for (const [slotId, armorKey] of Object.entries(data.equippedItems)) {
+                if (this.isArmorSlot(slotId.split('-')[0]) && armorKey) {
+                    this.equipArmor(armorKey, slotId);
+                }
+            }
         }
     }
 };

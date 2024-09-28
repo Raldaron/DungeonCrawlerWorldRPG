@@ -24,6 +24,13 @@ const EnhancementModule = {
         return card;
     },
 
+    checkAndAnnounceNewEnhancement(enhancement) {
+        if (!this.unlockedEnhancements.has(enhancement.name)) {
+            this.unlockedEnhancements.add(enhancement.name);
+            EnhancementAnnouncementModule.announceNewEnhancement(enhancement);
+        }
+    },
+
     // Add more methods as needed
 };
 

@@ -1,12 +1,15 @@
 const SpellModule = {
     allSpells: {},
     knownSpells: [],
+    learnedSpells: [], // Add this line
+    grantedSpells: [], // Add this line
 
     init() {
         console.log('Initializing SpellModule');
         return this.loadSpells()
             .then(() => {
                 this.setupEventListeners();
+                this.updateKnownSpells(); // Update this to use both arrays
             })
             .catch(error => console.error('Error initializing SpellModule:', error));
     },
@@ -128,66 +131,56 @@ const SpellModule = {
         const container = document.getElementById('known-spells-container');
         if (container) {
             container.innerHTML = '';
-            this.knownSpells.forEach(spellKey => {
-                const spellCard = this.createKnownSpellCard(spellKey);
+            const allKnownSpells = [...new Set([...this.learnedSpells, ...this.grantedSpells])];
+            allKnownSpells.forEach(spellKey => {
+                const spellCard = this.createKnownSpellCard(spellKey, this.learnedSpells.includes(spellKey));
                 container.appendChild(spellCard);
             });
         } else {
             console.error('Known spells container not found');
         }
     },
-
-    addEquipmentSpells(spells) {
-        spells.forEach(spellName => {
-            if (this.allSpells[spellName] && !this.knownSpells.includes(spellName)) {
-                this.knownSpells.push(spellName);
-            }
-        });
-        this.updateKnownSpells();
-    },
-
-    removeEquipmentSpells(spells) {
-        this.knownSpells = this.knownSpells.filter(spellName => !spells.includes(spellName));
-        this.updateKnownSpells();
-    },
-
-    createKnownSpellCard(spellKey) {
-        const spell = this.allSpells[spellKey];
-        const card = document.createElement('div');
-        card.className = 'spell-card known-spell-card';
-        card.innerHTML = `
-        <div class="spell-name">${spell.Name}</div>
-        <div class="spell-cooldown">Cooldown: ${spell.Cooldown || 'N/A'}</div>
-    `;
-
-        card.addEventListener('click', () => this.showSpellDetails(spellKey, true));
-
-        return card;
+    
+    updateSpellsSubtab() {
+        const spellsContainer = document.getElementById('known-spells-container');
+        if (spellsContainer) {
+            spellsContainer.innerHTML = '';
+            spellsContainer.className = 'spells-grid';
+            const allKnownSpells = [...new Set([...this.learnedSpells, ...this.grantedSpells])];
+            allKnownSpells.forEach(spellKey => {
+                const spellCard = this.createKnownSpellCard(spellKey, this.learnedSpells.includes(spellKey));
+                spellsContainer.appendChild(spellCard);
+            });
+        }
     },
 
     addEquipmentSpells(spells) {
         spells.forEach(spellName => {
-            if (this.allSpells[spellName] && !this.knownSpells.includes(spellName)) {
-                this.knownSpells.push(spellName);
+            if (this.allSpells[spellName] && !this.grantedSpells.includes(spellName)) {
+                this.grantedSpells.push(spellName);
             }
         });
         this.updateKnownSpells();
     },
     
     removeEquipmentSpells(spells) {
-        this.knownSpells = this.knownSpells.filter(spellName => !spells.includes(spellName));
+        this.grantedSpells = this.grantedSpells.filter(spellName => !spells.includes(spellName));
         this.updateKnownSpells();
     },
 
-    updateSpellsSubtab() {
-        const spellsContainer = document.getElementById('known-spells-container');
-        if (spellsContainer) {
-            spellsContainer.innerHTML = '';
-            this.knownSpells.forEach(spellKey => {
-                const spellCard = this.createKnownSpellCard(spellKey);
-                spellsContainer.appendChild(spellCard);
-            });
-        }
+    createKnownSpellCard(spellKey, isLearned) {
+        const spell = this.allSpells[spellKey];
+        const card = document.createElement('div');
+        card.className = `spell-card known-spell-card ${isLearned ? 'learned-spell' : 'granted-spell'}`;
+        card.innerHTML = `
+            <div class="spell-name">${spell.Name}</div>
+            <div class="spell-cooldown">Cooldown: ${spell.Cooldown || 'N/A'}</div>
+            <div class="spell-source">${isLearned ? 'Learned' : 'Granted'}</div>
+        `;
+    
+        card.addEventListener('click', () => this.showSpellDetails(spellKey, true));
+    
+        return card;
     },
 
     createArcanaSpellCard(key, spell) {
@@ -336,25 +329,13 @@ const SpellModule = {
     },
 
     learnSpell(spellKey) {
-        if (!this.knownSpells.includes(spellKey)) {
-            this.knownSpells.push(spellKey);
+        if (!this.learnedSpells.includes(spellKey)) {
+            this.learnedSpells.push(spellKey);
             this.updateKnownSpells();
             this.updateSpellsSubtab();
             alert(`You've learned the spell: ${this.allSpells[spellKey].Name}`);
         } else {
             alert(`You already know the spell: ${this.allSpells[spellKey].Name}`);
-        }
-    },
-
-    updateSpellsSubtab() {
-        const spellsContainer = document.getElementById('known-spells-container');
-        if (spellsContainer) {
-            spellsContainer.innerHTML = '';
-            spellsContainer.className = 'spells-grid';
-            this.knownSpells.forEach(spellKey => {
-                const spellCard = this.createKnownSpellCard(spellKey);
-                spellsContainer.appendChild(spellCard);
-            });
         }
     },
 
@@ -400,14 +381,18 @@ const SpellModule = {
 
     getAllSpellData() {
         return {
-            knownSpells: this.knownSpells
+            learnedSpells: this.learnedSpells
         };
+    },
+
+    getKnownSpellKeys() {
+        return [...this.knownSpells];
     },
 
     loadSavedData(data) {
         if (data) {
-            this.knownSpells = data.knownSpells || [];
-            this.displayKnownSpells();
+            this.learnedSpells = data.learnedSpells || [];
+            this.updateKnownSpells();
         }
     }
 };

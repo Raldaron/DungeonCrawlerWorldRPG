@@ -541,20 +541,80 @@
           "effect": "Increases bare-knuckle damage by 25%"
         },
         {
-          "level": 3,
+          "level": 2,
           "effect": "Increases bare-knuckle damage by 50%"
         },
         {
-          "level": 5,
+          "level": 3,
           "effect": "Increases bare-knuckle damage by 75%"
         },
         {
-          "level": 7,
+          "level": 4,
           "effect": "Increases bare-knuckle damage by 100%"
         },
         {
-          "level": 10,
+          "level": 5,
           "effect": "Increases bare-knuckle damage by 125%"
+        },
+        {
+          "level": 6,
+          "effect": "Increases bare-knuckle damage by 150%"
+        },
+        {
+          "level": 7,
+          "effect": "Increases bare-knuckle damage by 175%"
+        },
+        {
+          "level": 8,
+          "effect": "Increases bare-knuckle damage by 200%"
+        },
+        {
+          "level": 9,
+          "effect": "Increases bare-knuckle damage by 225%"
+        },
+        {
+          "level": 10,
+          "effect": "Increases bare-knuckle damage by 250%"
+        },
+        {
+          "level": 11,
+          "effect": "Increases bare-knuckle damage by 275%"
+        },
+        {
+          "level": 12,
+          "effect": "Increases bare-knuckle damage by 300%"
+        },
+        {
+          "level": 13,
+          "effect": "Increases bare-knuckle damage by 325%"
+        },
+        {
+          "level": 14,
+          "effect": "Increases bare-knuckle damage by 350%"
+        },
+        {
+          "level": 15,
+          "effect": "Increases bare-knuckle damage by 375%"
+        },
+        {
+          "level": 16,
+          "effect": "Increases bare-knuckle damage by 400%"
+        },
+        {
+          "level": 17,
+          "effect": "Increases bare-knuckle damage by 425%"
+        },
+        {
+          "level": 18,
+          "effect": "Increases bare-knuckle damage by 450%"
+        },
+        {
+          "level": 19,
+          "effect": "Increases bare-knuckle damage by 475%"
+        },
+        {
+          "level": 20,
+          "effect": "Increases bare-knuckle damage by 500%"
         }
       ]
     },
@@ -592,6 +652,376 @@
         {
           "level": 10,
           "effect": "Multiplies Bare-knuckle damage by 2.5x"
+        }
+      ]
+    },
+    {
+      "name": "Shadow Slip",
+      "requirements": {
+        "vitals": {
+          "Dexterity": 9,
+          "Perception": 7
+        },
+        "skills": {
+          "Stealth": 8,
+          "Awareness": 6
+        },
+        "archetypes": ["Rogue", "Monk"]
+      },
+      "description": "Shadow Slip lets you blend seamlessly into the darkness, making you nearly invisible to enemies. Ideal for rogues and monks who prefer to strike unseen.",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "Gain a 25% bonus to Stealth checks in dim or dark environments."
+        },
+        {
+          "level": 3,
+          "effect": "Become invisible for 5 seconds when in complete darkness after standing still."
+        },
+        {
+          "level": 5,
+          "effect": "Increase invisibility duration to 10 seconds. Can now move while invisible, but at half speed."
+        },
+        {
+          "level": 7,
+          "effect": "Invisibility now lasts for 15 seconds and movement speed is no longer reduced."
+        },
+        {
+          "level": 10,
+          "effect": "Master level: Shadow Slip can be used in any lighting, and invisibility lasts for 30 seconds. Attacking does not break invisibility."
+        }
+      ]
+    },
+    {
+      "name": "Arcane Bulwark",
+      "requirements": {
+        "vitals": {
+          "Intelligence": 8,
+          "Resilience": 6
+        },
+        "skills": {
+          "Arcane Defense": 9,
+          "Spellcasting": 7
+        },
+        "archetypes": ["Mage", "Sorcerer", "Wizard"]
+      },
+      "description": "Arcane Bulwark strengthens your magical defenses, allowing you to tank magical damage with greater efficiency.",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "Gain a 10% resistance to all magical damage types."
+        },
+        {
+          "level": 3,
+          "effect": "Increase magical damage resistance to 20%."
+        },
+        {
+          "level": 5,
+          "effect": "Gain the ability to reflect 5% of absorbed magic damage back at the caster."
+        },
+        {
+          "level": 7,
+          "effect": "Increase magic reflection to 10% and total resistance to 30%."
+        },
+        {
+          "level": 10,
+          "effect": "Master level: Reflect 20% of magic damage and gain 40% total magic resistance."
+        }
+      ]
+    },
+    {
+      "name": "Martial Precision",
+      "requirements": {
+        "vitals": {
+          "Dexterity": 15,
+          "Strength": 10
+        },
+        "skills": {
+          "Close Combat": 15,
+          "Melee": 8
+        },
+        "archetypes": ["Fighter", "Monk", "Rogue"]
+      },
+      "description": "Martial Precision enhances your melee strikes, focusing on critical hits and precision-based combat.",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "Gain a 10% increased chance to land critical hits with melee weapons."
+        },
+        {
+          "level": 3,
+          "effect": "Increase critical hit damage by 20%."
+        },
+        {
+          "level": 5,
+          "effect": "Gain the ability to strike vital points, reducing enemy armor by 25% when critically hit."
+        },
+        {
+          "level": 7,
+          "effect": "Increase critical hit chance by 20% and critical damage by 30%."
+        },
+        {
+          "level": 10,
+          "effect": "Master level: Every melee critical hit deals 50% more damage and bypasses 25% of enemy armor."
+        }
+      ]
+    },
+    {
+      "name": "Fortress Stance",
+      "requirements": {
+        "vitals": {
+          "Strength": 10,
+          "Resilience": 8
+        },
+        "skills": {
+          "Endurance": 9,
+          "Shield Handling": 7
+        },
+        "archetypes": ["Fighter", "Barbarian", "Monk"]
+      },
+      "description": "Fortress Stance turns you into an immovable object on the battlefield, enhancing your ability to tank damage and hold the line.",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "Gain a 10% reduction to all incoming physical damage while using a shield."
+        },
+        {
+          "level": 3,
+          "effect": "Reduce physical damage by 15% and gain a 5% increase to block chance."
+        },
+        {
+          "level": 5,
+          "effect": "Blocking an attack stuns the attacker for 1 second."
+        },
+        {
+          "level": 7,
+          "effect": "Damage reduction increased to 20% and block chance increased to 10%."
+        },
+        {
+          "level": 10,
+          "effect": "Master level: Blocking an attack stuns for 3 seconds and reflects 10% of damage back to the attacker."
+        }
+      ]
+    },
+    {
+      "name": "Cloak of Shadows",
+      "requirements": {
+        "vitals": {
+          "Dexterity": 9,
+          "Intelligence": 7
+        },
+        "skills": {
+          "Stealth": 8,
+          "Illusion": 6
+        },
+        "archetypes": ["Rogue", "Monk", "Mage"]
+      },
+      "description": "Cloak of Shadows envelops you in magical darkness, concealing you from enemies and boosting your evasion.",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "Gain a 20% chance to evade attacks when in shadows or darkness."
+        },
+        {
+          "level": 3,
+          "effect": "Invisibility for 5 seconds after evading an attack."
+        },
+        {
+          "level": 5,
+          "effect": "Increase evasion chance to 30% and invisibility duration to 10 seconds."
+        },
+        {
+          "level": 7,
+          "effect": "Evading an attack now disorients the attacker for 2 seconds."
+        },
+        {
+          "level": 10,
+          "effect": "Master level: Evade attacks in any environment, with a 40% evasion chance and 15 seconds of invisibility."
+        }
+      ]
+    },
+    {
+      "name": "Mystic Shield",
+      "requirements": {
+        "vitals": {
+          "Intelligence": 9,
+          "Resilience": 7
+        },
+        "skills": {
+          "Spellcasting": 8,
+          "Arcane Defense": 6
+        },
+        "archetypes": ["Mage", "Wizard", "Sorcerer"]
+      },
+      "description": "Mystic Shield enhances your magical barriers, allowing you to absorb damage and protect yourself or allies.",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "Absorbs 10% of incoming damage with a magical shield for 5 seconds."
+        },
+        {
+          "level": 3,
+          "effect": "Increase absorption to 20% and shield duration to 10 seconds."
+        },
+        {
+          "level": 5,
+          "effect": "Can cast Mystic Shield on allies within 20 feet."
+        },
+        {
+          "level": 7,
+          "effect": "Absorption increased to 30%, and shields can now last for 15 seconds."
+        },
+        {
+          "level": 10,
+          "effect": "Master level: Shields absorb 40% of damage for 20 seconds and can be cast on up to 3 allies simultaneously."
+        }
+      ]
+    },
+    {
+      "name": "Riposte Master",
+      "requirements": {
+        "vitals": {
+          "Dexterity": 8,
+          "Wit": 7
+        },
+        "skills": {
+          "Parry": 9,
+          "Close Combat": 7
+        },
+        "archetypes": ["Fighter", "Monk", "Rogue"]
+      },
+      "description": "Riposte Master lets you counter enemy attacks with lethal precision, turning their aggression against them.",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "Successfully parrying an attack allows for a counterattack that deals 50% of normal weapon damage."
+        },
+        {
+          "level": 3,
+          "effect": "Counterattacks now deal 75% of normal damage and can disarm the attacker."
+        },
+        {
+          "level": 5,
+          "effect": "Counterattacks deal 100% damage and have a 25% chance to knock the attacker prone."
+        },
+        {
+          "level": 7,
+          "effect": "Increase damage of counterattacks to 125% and stun the attacker for 1 second."
+        },
+        {
+          "level": 10,
+          "effect": "Master level: Counterattacks deal 150% damage and apply a bleed effect for 5 seconds."
+        }
+      ]
+    },
+    {
+      "name": "Arcane Flux",
+      "requirements": {
+        "vitals": {
+          "Intelligence": 9,
+          "Perception": 6
+        },
+        "skills": {
+          "Spellcasting": 9,
+          "Arcane Knowledge": 7
+        },
+        "archetypes": ["Mage", "Sorcerer", "Wizard"]
+      },
+      "description": "Arcane Flux increases your spellcasting potency, allowing you to manipulate the flow of magic for greater power.",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "Increase spell damage and healing effects by 5%."
+        },
+        {
+          "level": 3,
+          "effect": "Increase spell power by 10% and reduce mana cost of spells by 5%."
+        },
+        {
+          "level": 5,
+          "effect": "Gain the ability to channel Arcane Flux, increasing spell damage by 20% for 10 seconds."
+        },
+        {
+          "level": 7,
+          "effect": "Reduce mana cost of spells by 10% and spell power increased by 15%."
+        },
+        {
+          "level": 10,
+          "effect": "Master level: Arcane Flux increases spell power by 30% and reduces mana cost by 15% for 20 seconds."
+        }
+      ]
+    },
+    {
+      "name": "Vigilant Guardian",
+      "requirements": {
+        "vitals": {
+          "Resilience": 10,
+          "Perception": 7
+        },
+        "skills": {
+          "Awareness": 8,
+          "Endurance": 7
+        },
+        "archetypes": ["Fighter", "Monk", "Ranger"]
+      },
+      "description": "Vigilant Guardian makes you the ultimate protector, boosting your ability to detect and prevent incoming threats to allies.",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "Gain a 15% increased chance to detect hidden threats and ambushes."
+        },
+        {
+          "level": 3,
+          "effect": "Increase detection radius by 20 feet."
+        },
+        {
+          "level": 5,
+          "effect": "Gain the ability to instantly warn allies of incoming ambushes, increasing their defense by 10% for 10 seconds."
+        },
+        {
+          "level": 7,
+          "effect": "Increase detection radius to 30 feet and defense buff to 15%."
+        },
+        {
+          "level": 10,
+          "effect": "Master level: Automatically detect all hidden threats within 50 feet and increase defense buff to 25%."
+        }
+      ]
+    },
+    {
+      "name": "Venomous Strikes",
+      "requirements": {
+        "vitals": {
+          "Dexterity": 8,
+          "Perception": 6
+        },
+        "skills": {
+          "Melee": 9,
+          "Stealth": 7
+        },
+        "archetypes": ["Rogue", "Fighter"]
+      },
+      "description": "Venomous Strikes coats your weapons with poison, dealing additional damage over time to your foes.",
+      "scaling": [
+        {
+          "level": 1,
+          "effect": "Basic attacks apply a poison that deals 5% of weapon damage over 5 seconds."
+        },
+        {
+          "level": 3,
+          "effect": "Increase poison damage to 10% over 5 seconds."
+        },
+        {
+          "level": 5,
+          "effect": "Poison now deals 15% weapon damage and slows the target's movement speed by 10%."
+        },
+        {
+          "level": 7,
+          "effect": "Increase poison damage to 20% and slow effect to 20%."
+        },
+        {
+          "level": 10,
+          "effect": "Master level: Poison deals 25% damage, slows targets by 30%, and lasts for 10 seconds."
         }
       ]
     }

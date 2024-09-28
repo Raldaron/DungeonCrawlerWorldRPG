@@ -11,8 +11,7 @@
             "ManaPointCost": "0 AP (does not cost mana to cast)",
             "Cooldown": "1 minute",
             "Scaling": "Level 5: Affects targets even if they can't hear the caster (lip-reading counts!)<br>Level 10: Targets find it difficult to look away or focus on anything else<br>Level 15: Targets are compelled to join in, creating a spontaneous musical number ",
-            "SpellCastingModifier": "Charisma",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Charisma"
         },
         "Scroll-AstralPaw": {
             "Name": "Scroll of Astral Paw",
@@ -25,8 +24,7 @@
             "ManaPointCost": "3 AP",
             "Cooldown": "1 turn",
             "Scaling": "Level 5: Paw can grow claws, increasing damage to 2d6 + Spellcasting Modifier<br>Level 10: Paw can be made much larger, increasing range to 20 meters and damage to 3d6 + Spellcasting Modifier<br>Level 15: Caster's skills and abilities are translated directly into the paw, allowing for more complex manipulations and increasing damage to 4d6 + Spellcasting Modifier ",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-BadAttitude": {
             "Name": "Scroll of Bad Attitude",
@@ -39,8 +37,7 @@
             "ManaPointCost": "2 AP",
             "Cooldown": "1 turn",
             "Scaling": "Level 5: Affects multiple targets in a 15-foot radius<br>Level 10: Also reduces target's wisdom and charisma<br>Level 15: Creates an aura of negativity, affecting all enemies who enter within 10 feet of the caster ",
-            "SpellCastingModifier": "Manipulation",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Manipulation"
         },
         "Scroll-BangBro": {
             "Name": "Scroll of Bang Bro",
@@ -53,8 +50,7 @@
             "ManaPointCost": "5 AP",
             "Cooldown": "5 minutes",
             "Scaling": "Level 5: Increased damage (2d6 fire, 2d6 lightning) and higher chance to inflict status effects<br>Level 10: Can enchant two items simultaneously<br>Level 15: Adds chain lightning effect to electrical damage ",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-Bitch,What": {
             "Name": "Scroll of Bitch, What? ",
@@ -67,8 +63,7 @@
             "ManaPointCost": "Item based",
             "Cooldown": "30 hours",
             "Scaling": "Level 5: Increase duration to 30 seconds<br>Level 10: Add 2d10 force damage to attacks while berserk<br>Level 15: Extend invulnerability to piercing damage",
-            "SpellCastingModifier": "Stamina",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Stamina"
         },
         "Scroll-BlackNimbus": {
             "Name": "Scroll of Black Nimbus",
@@ -81,8 +76,7 @@
             "ManaPointCost": "Item based",
             "Cooldown": "1 hour",
             "Scaling": "Level 5: Increase duration by 50%<br>Level 10: Affect multiple targets within a 15-foot radius<br>Level 15: 25% chance to invoke immediate divine smite",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-BookBurner": {
             "Name": "Scroll of Book Burner",
@@ -95,8 +89,7 @@
             "ManaPointCost": "4 AP",
             "Cooldown": "24 hours",
             "Scaling": "Level 5: Can target spells up to 2 levels higher than the caster<br>Level 10: Duration increases to 48 hours<br>Level 15: Can make the target forget two spells simultaneously",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-BrainDreeze": {
             "Name": "Scroll of Brain Dreeze",
@@ -109,8 +102,7 @@
             "ManaPointCost": "3 AP",
             "Cooldown": "1 minute",
             "Scaling": "Level 5: Increase damage to 3d8 and adds a slowing effect<br>Level 10: 50% chance to cause blindness for 1 round<br>Level 15: Damage increases to 4d8 and blindness chance increases to 75%",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-ButchersMasquerade": {
             "Name": "Scroll of Butcher's Masquerade",
@@ -123,8 +115,7 @@
             "ManaPointCost": "50 AP",
             "Cooldown": "Can only be cast once in a lifetime",
             "Scaling": "Level 5: Increase area of effect and number of guests<br>Level 10: Add magical entertainment that boosts the chance of peace<br>Level 15: Extend duration to 48 hours and add cosmic catering",
-            "SpellCastingModifier": "Charisma",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Charisma"
         },
         "Scroll-Camouflage": {
             "Name": "Scroll of Camouflage",
@@ -137,8 +128,7 @@
             "ManaPointCost": "2 AP",
             "Cooldown": "5 minutes",
             "Scaling": "Level 5: Caster can make small movements without breaking the effect<br>Level 10: Extends concealment to a 5-foot radius around the caster<br>Level 15: Allows the caster to move at half speed while maintaining the effect",
-            "SpellCastingModifier": "Dexterity",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Dexterity"
         },
         "Scroll-ClockworkTriplicate": {
             "Name": "Scroll of Clockwork Triplicate",
@@ -151,8 +141,7 @@
             "ManaPointCost": "5 AP",
             "Cooldown": "1 hour",
             "Scaling": "Level 5: Duration increases to 2 minutes per spell level<br>Level 10: Replicas can cast spells known by the caster<br>Level 15: Replicas gain 50% of the caster's hit points",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-CloudofExhaust": {
             "Name": "Scroll of Cloud of Exhaust",
@@ -165,8 +154,7 @@
             "ManaPointCost": "4 AP",
             "Cooldown": "10 minutes",
             "Scaling": "Level 5: Increase radius to 40 feet<br>Level 10: Targets remain vulnerable for 1 minute after waking<br>Level 15: Cloud becomes mobile, following caster's mental commands ",
-            "SpellCastingModifier": "Stamina",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Stamina"
         },
         "Scroll-CommunityPool": {
             "Name": "Scroll of Community Pool",
@@ -179,8 +167,7 @@
             "ManaPointCost": "6 AP",
             "Cooldown": "24 hours",
             "Scaling": "Level 5: Can transfer beneficial conditions as well<br>Level 10: Can affect targets up to 5 feet away<br>Level 15: Can transfer multiple conditions at once",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-ConfusingFog": {
             "Name": "Scroll of Confusing Fog",
@@ -193,8 +180,7 @@
             "ManaPointCost": "3 AP",
             "Cooldown": "5 minutes",
             "Scaling": "Level 5: Increase radius to 40 feet<br>Level 10: Fog becomes mildly acidic, dealing 1d4 acid damage per round to enemies<br>Level 15: Duration increases to Intelligence x 10 seconds ",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-Disrupter": {
             "Name": "Scroll of Disrupter",
@@ -207,8 +193,7 @@
             "ManaPointCost": "5 AP",
             "Cooldown": "1 minute",
             "Scaling": "Level 5: Increase range to 45 feet and damage to 4d10<br>Level 10: Add 2d6 thunder damage and increase stun chance to 25%<br>Level 15: Bolt can pierce through up to 3 targets in a line",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-Fear": {
             "Name": "Scroll of Fear",
@@ -221,8 +206,7 @@
             "ManaPointCost": "3 AP",
             "Cooldown": "1 turn",
             "Scaling": "Level 5: Affects groups of enemies in a 15-foot radius<br>Level 10: 2% chance to paralyze the target<br>Level 15: Can be cast on a wide area, affecting all enemies within 30 feet ",
-            "SpellCastingModifier": "Charisma",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Charisma"
         },
         "Scroll-FireFingers": {
             "Name": "Scroll of Fire Fingers",
@@ -235,8 +219,7 @@
             "ManaPointCost": "3 AP",
             "Cooldown": "1 turn",
             "Scaling": "Level 5: Increase damage to 3d6 and range to 40 feet<br>Level 10: Can ignite objects at a distance<br>Level 15: Create a continuous stream of fire (4d6 damage per round)",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-Fireball": {
             "Name": "Scroll of Fireball",
@@ -249,8 +232,7 @@
             "ManaPointCost": "5 AP",
             "Cooldown": "1 minute",
             "Scaling": "Level 5: Increase damage to 10d6 and radius to 30 feet<br>Level 10: Orb leaves a trail of fire that lasts for 1 round<br>Level 15: Can be set to explode on a timer or specific trigger",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-GetOutofJail": {
             "Name": "Scroll of Get Out of Jail",
@@ -263,8 +245,7 @@
             "ManaPointCost": "2 AP",
             "Cooldown": "1 minute",
             "Scaling": "Level 5: Can target a creature up to 30 feet away<br>Level 10: Also removes the paralyzed and restrained conditions<br>Level 15: Can affect all allies within a 15-foot radius",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-Graupel": {
             "Name": "Scroll of Graupel",
@@ -277,8 +258,7 @@
             "ManaPointCost": "50 AP",
             "Cooldown": "1 week",
             "Scaling": "Level 5: Increase damage to 8d8 and add difficult terrain due to ice buildup<br>Level 10: Storm becomes electrically charged, adding 2d6 lightning damage<br>Level 16: Storm becomes deafening and obscures vision, imposing disadvantage on all rolls for non-allies in the area ",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-Hanzo": {
             "Name": "Scroll of Hanzo",
@@ -291,8 +271,7 @@
             "ManaPointCost": "4 AP",
             "Cooldown": "1 minute",
             "Scaling": "Level 5: Can target up to 3 creatures at once<br>Level 10: Increase range to 90 feet and damage to 2d6<br>Level 15: Creatures pulled take additional 2d6 force damage and are stunned for 1 round",
-            "SpellCastingModifier": "Strength",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Strength"
         },
         "Scroll-HastenPoison": {
             "Name": "Scroll of Hasten Poison",
@@ -305,8 +284,7 @@
             "ManaPointCost": "3 AP",
             "Cooldown": "1 minute",
             "Scaling": "Level 5: Can affect poisons on targets up to 30 feet away<br>Level 10: Triples poison damage instead of doubling<br>Level 15: Also applies the poisoned condition if not already present",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-HealCritter": {
             "Name": "Scroll of Heal Critter",
@@ -319,8 +297,7 @@
             "ManaPointCost": "2 AP (0 if cast from a scroll)",
             "Cooldown": "1 minute",
             "Scaling": "Level 5: Increase healing to 3d8 + spellcasting modifier<br>Level 10: Can target a critter up to 30 feet away<br>Level 15: Also removes one negative condition (poisoned, paralyzed, etc.) ",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-Hole": {
             "Name": "Scroll of Hole",
@@ -333,8 +310,7 @@
             "ManaPointCost": "Variable (1 AP per second of duration)",
             "Cooldown": "None",
             "Scaling": "Level 1: 3cm depth per spell level<br>Level 5: Can adjust hole diameter at will<br>Level 10: Can create non-cylindrical shapes<br>Level 15: Can create holes in magical or reinforced surfaces",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-INeedMyPersonalSpace": {
             "Name": "Scroll of I Need My Personal Space",
@@ -347,8 +323,7 @@
             "ManaPointCost": "4 AP",
             "Cooldown": "1 minute",
             "Scaling": "Level 5: Increase radius to 20 feet and damage to 3d6<br>Level 10: Knocked-back creatures are also stunned for 1 round<br>Level 15: Caster can choose to exclude certain targets from the effect",
-            "SpellCastingModifier": "Charisma",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Charisma"
         },
         "Scroll-InkMarauder": {
             "Name": "Scroll of Ink Marauder",
@@ -361,8 +336,7 @@
             "ManaPointCost": "5 AP + blood sacrifice",
             "Cooldown": "24 hours",
             "Scaling": "Level 5: Can create multiple elementals at once<br>Level 10: Elementals gain resistance to non-magical weapons<br>Level 15: Can create 3D, fully-realized versions of drawn creatures ",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-LaundryDay": {
             "Name": "Scroll of Laundry Day",
@@ -375,8 +349,7 @@
             "ManaPointCost": "25 AP",
             "Cooldown": "1 minute",
             "Scaling": "Level 5: Can animate multiple items at once<br>Level 10: Animated items gain resistances based on their material<br>Level 15: Can animate items worn or wielded by enemies",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-MagicMissile": {
             "Name": "Scroll of Magic Missile",
@@ -389,8 +362,7 @@
             "ManaPointCost": "3-6 AP (variable at level 5+)",
             "Cooldown": "1 turn",
             "Scaling": "Level 5: Can choose AP cost (3-6) to determine number of missiles<br>Level 10: 25% chance to set targets on fire (1d4 fire damage per round)<br>Level 15: Missiles can ricochet to hit additional targets",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-MinionArmy": {
             "Name": "Scroll of Minion Army",
@@ -403,8 +375,7 @@
             "ManaPointCost": "50 AP",
             "Cooldown": "5 hours",
             "Scaling": "Level 5: Increase affected area and conversion chance<br>Level 10: Minions gain a strength boost while under your control<br>Level 15: Can affect higher-level creatures with increased success rate",
-            "SpellCastingModifier": "Charisma",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Charisma"
         },
         "Scroll-Mute": {
             "Name": "Scroll of Mute",
@@ -417,8 +388,7 @@
             "ManaPointCost": "3 AP",
             "Cooldown": "1 minute",
             "Scaling": "Level 5: Increase duration to 2 minutes<br>Level 10: Can target multiple creatures within range<br>Level 15: Also prevents the target from making any sound at all",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-Ping": {
             "Name": "Scroll of Ping",
@@ -431,8 +401,7 @@
             "ManaPointCost": "5 AP",
             "Cooldown": "5 minutes",
             "Scaling": "Level 5: Provides more detailed information about detected creatures<br>Level 10: Can distinguish between friend and foe<br>Level 15: Can detect invisible or hidden creatures",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-ProtectiveShell": {
             "Name": "Scroll of Protective Shell",
@@ -445,8 +414,7 @@
             "ManaPointCost": "Item based (no mana cost)",
             "Cooldown": "30 hours",
             "Scaling": "Level 5: Increase duration to 10 seconds + 1 second per spell level<br>Level 10: Shell also blocks non-magical projectiles<br>Level 15: Can move the shell at half your movement speed",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-PuddleJumper": {
             "Name": "Scroll of Puddle Jumper",
@@ -459,8 +427,7 @@
             "ManaPointCost": "20 AP",
             "Cooldown": "5 hours",
             "Scaling": "Level 5: Reduce casting delay to 5 seconds<br>Level 10: Can teleport up to six creatures<br>Level 15: No delay on teleportation",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-ReverseGravity": {
             "Name": "Scroll of Reverse Gravity",
@@ -473,8 +440,7 @@
             "ManaPointCost": "7 AP",
             "Cooldown": "1 minute",
             "Scaling": "Level 5: Increase affected area to 75-foot cube<br>Level 10: Can selectively choose which objects are affected<br>Level 15: Can change the direction of gravity at will within the affected area",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-Rigorous": {
             "Name": "Scroll of Rigorous",
@@ -487,8 +453,7 @@
             "ManaPointCost": "4 AP",
             "Cooldown": "1 minute",
             "Scaling": "Level 5: Duration increases to 2 rounds<br>Level 10: Also grants resistance to the reflected effect<br>Level 15: Can choose to reflect or absorb the effect",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-SecondChance": {
             "Name": "Scroll of Second Chance",
@@ -501,8 +466,7 @@
             "ManaPointCost": "6 AP",
             "Cooldown": "10 minutes",
             "Scaling": "Level 5: Can raise creatures up to 5 levels higher than caster<br>Level 10: Raised creatures retain more of their original abilities<br>Level 15: Can raise multiple creatures at once",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-SelfImmolation": {
             "Name": "Scroll of Self-Immolation",
@@ -515,8 +479,7 @@
             "ManaPointCost": "None (requires Emberus' favor)",
             "Cooldown": "24 hours",
             "Scaling": "Level 5: Can control the shape of the fire<br>Level 10: Fire can selectively avoid allies<br>Level 15: Range increases exponentially and becomes fully controllable",
-            "SpellCastingModifier": "Stamina",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Stamina"
         },
         "Scroll-Shatter": {
             "Name": "Scroll of Shatter",
@@ -529,8 +492,7 @@
             "ManaPointCost": "3 AP",
             "Cooldown": "1 minute",
             "Scaling": "Level 5: Increase disarm chance to 3%<br>Level 10: Increase chance of weapon breaking or transferring to 10% each<br>Level 15: Can affect multiple objects at once",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-Shield": {
             "Name": "Scroll of Shield",
@@ -543,8 +505,7 @@
             "ManaPointCost": "2 AP",
             "Cooldown": "1 turn",
             "Scaling": "Level 5: Shield also provides resistance to elemental damage<br>Level 10: Can extend shield to protect one nearby ally<br>Level 15: Shield can reflect some damage back to attacker",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-Skedaddle": {
             "Name": "Scroll of Skedaddle",
@@ -557,8 +518,7 @@
             "ManaPointCost": "8 AP",
             "Cooldown": "1 hour",
             "Scaling": "Level 5: Can choose from three random locations<br>Level 10: Extend time frame to locations visited in last 24 hours<br>Level 15: Can bring one additional non-party member",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-SuppuratingEye": {
             "Name": "Scroll of Suppurating Eye",
@@ -571,8 +531,7 @@
             "ManaPointCost": "3 AP",
             "Cooldown": "None",
             "Scaling": "Level 5: Can hear thoughts of creatures near the fluid<br>Level 10: Can cast spells through the fluid location<br>Level 15: Can create multiple eyes simultaneously",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-TeleporttoStairwell": {
             "Name": "Scroll of Teleport to Stairwell",
@@ -585,8 +544,7 @@
             "ManaPointCost": "10 AP",
             "Cooldown": "25 days",
             "Scaling": "Level 20: Can bring along up to 5 allies<br>Level 25: Can teleport to any previously visited location, not just exits<br>Level 30: No cooldown, but increases AP cost to 20 ",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-Torch": {
             "Name": "Scroll of Torch",
@@ -599,8 +557,7 @@
             "ManaPointCost": "1 AP",
             "Cooldown": "None",
             "Scaling": "Level 5: Can adjust brightness and color of light<br>Level 10: Can send light orb up to 60 feet away<br>Level 13: Can stun vampires and set their heads aflame",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-Tripper": {
             "Name": "Scroll of Tripper",
@@ -613,8 +570,7 @@
             "ManaPointCost": "Item based (no mana cost)",
             "Cooldown": "1 hour",
             "Scaling": "Level 5: Can choose which type of traps to trigger<br>Level 10: Can redirect some trap effects<br>Level 15: Can create temporary magical traps in addition to triggering existing ones",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-TwinkleToes": {
             "Name": "Scroll of Twinkle Toes",
@@ -627,8 +583,7 @@
             "ManaPointCost": "2 AP",
             "Cooldown": "1 minute",
             "Scaling": "Level 5: Also increases minion's Dexterity for the duration<br>Level 10: Can affect up to three minions at once<br>Level 15: Minions can run on vertical surfaces and water for the duration",
-            "SpellCastingModifier": "Dexterity",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Dexterity"
         },
         "Scroll-WallofFire": {
             "Name": "Scroll of Wall of Fire",
@@ -641,8 +596,7 @@
             "ManaPointCost": "15 AP",
             "Cooldown": "1 minute",
             "Scaling": "Level 5: Wall can be up to 20 feet high and 60 feet long<br>Level 10: Damage increases to 7d8, and the wall ignites flammable objects<br>Level 15: Can shape the wall into a ring or dome ",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-WaterLily": {
             "Name": "Scroll of Water Lily",
@@ -655,8 +609,7 @@
             "ManaPointCost": "8 AP",
             "Cooldown": "24 hours",
             "Scaling": "Level 5: Can affect targets up to 30 feet away<br>Level 10: Can put multiple targets to sleep simultaneously<br>Level 15: Sleeping target is surrounded by a damaging water barrier",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-WhyAreYouHittingYourself": {
             "Name": "Scroll of Why Are You Hitting Yourself",
@@ -669,8 +622,7 @@
             "ManaPointCost": "4 AP",
             "Cooldown": "1 minute",
             "Scaling": "Level 5: Duration increases to 2 rounds<br>Level 10: Can affect multiple targets<br>Level 15: Target uses their most powerful ability on themselves",
-            "SpellCastingModifier": "Manipulation",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Manipulation"
         },
         "Scroll-WingsofthePixie": {
             "Name": "Scroll of Wings of the Pixie",
@@ -683,8 +635,7 @@
             "ManaPointCost": "3 AP",
             "Cooldown": "5 minutes",
             "Scaling": "Level 5: Leave a trail of disorienting pixie dust behind you as you fly<br>Level 10: Can carry one additional creature while flying<br>Level 15: Gain the ability to teleport short distances while the wings are active",
-            "SpellCastingModifier": "Dexterity",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Dexterity"
         },
         "Scroll-WispArmor": {
             "Name": "Scroll of Wisp Armor",
@@ -697,8 +648,7 @@
             "ManaPointCost": "5 AP",
             "Cooldown": "5 minutes",
             "Scaling": "Level 5: Also provides a slight physical damage reduction<br>Level 10: Can extend the effect to one nearby ally<br>Level 15: Reflects 25% of negated magic damage back to the attacker",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         },
         "Scroll-Zerzura": {
             "Name": "Scroll of Zerzura",
@@ -711,8 +661,7 @@
             "ManaPointCost": "50 AP",
             "Cooldown": "Can only be cast once at the end of a floor",
             "Scaling": "Level 10: Can choose from three potential landing spots<br>Level 20: Can bring along some surrounding territory<br>Level 30: Can target a specific location instead of random placement",
-            "SpellCastingModifier": "Intelligence",
-            "itemType": "Scroll"
+            "SpellCastingModifier": "Intelligence"
         }
     }
 }

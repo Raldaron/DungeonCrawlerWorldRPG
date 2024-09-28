@@ -1,4 +1,19 @@
 {
+    "boringNothing": {
+        "name": "Boring Old Nothing",
+        "description": "Yawn.",
+        "archetype": "Lame",
+        "primaryVitals": [
+            "Stamina",
+            "Dexterity",
+            "Charisma"
+        ],
+        "vitalBonus": [],
+        "skillBonus": [],
+        "abilities": [],
+        "traits": [],
+        "armorRating": -2
+    },
     "agony_urchin": {
         "name": "Agony Urchin",
         "description": "Agony Urchin, the embodiment of that small, persistent pain you can't quite locate or explain. This prickly character thrives on discomfort, both physical and emotional, making them a foe no one wants to confront. Their presence alone is enough to make armor chafe and boots pinch, proving that sometimes the smallest irritants are the most effective.",

@@ -21,8 +21,8 @@
             "effect": "Extremely volatile explosive with a short fuse.",
             "duration": "Instantaneous",
             "range": "Throwing Distance",
-            "damage": "8d10 / 4d8",
-            "damageType": "Fire / Force",
+            "damage": "8d10 and 4d8",
+            "damageType": "Fire and Force",
             "blastRadius": "30 feet",
             "triggerMechanism": "Multiple Options"
         },

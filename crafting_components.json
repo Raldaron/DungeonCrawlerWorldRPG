@@ -1,5 +1,5 @@
 {
-    "crafting_components": {
+    "craftingcomponents": {
         "BugbearPaste": {
             "name": "Bugbear Paste",
             "description": "Creates powerful explosions upon impact.",

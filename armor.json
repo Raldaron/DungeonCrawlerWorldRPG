@@ -1,5 +1,79 @@
 {
     "armor": {
+        "A": {
+            "name": "A",
+            "description": "Appears to be a small, knitted beanie hat. It boosts all of the wearer's base stats by 3% and allows the wearer to cast the I Need My Personal Space Spell.",
+            "itemType": "Armor",
+            "armorType": "Head",
+            "rarity": "Uncommon",
+            "armorRating": 1,
+            "tankModifier": 1,
+            "vitalBonus": {
+                "intelligence": 1,
+                "manipulation": 1,
+                "wit": 1,
+                "dexterity": 1,
+                "stamina": 1,
+                "strength": 1,
+                "charisma": 1,
+                "appearance": 1,
+                "perception": 1
+            },
+            "skillBonus": {
+                "Acrobatics": 1,
+                "Alchemy": 1,
+                "Animal Ken": 1,
+                "Archery": 1,
+                "Arcana": 1,
+                "Artillery": 1,
+                "Athletics": 1,
+                "Awareness": 1,
+                "Block": 1,
+                "Close Combat": 1,
+                "Deception": 1,
+                "Disguise": 1,
+                "Dodge": 1,
+                "Endurance": 1,
+                "Engineering": 1,
+                "Empathy": 1,
+                "Explosives Handling": 1,
+                "Firearms": 1,
+                "Hold Breath": 1,
+                "Intimidation": 1,
+                "Investigation": 1,
+                "Lore": 1,
+                "Medicine": 1,
+                "Melee": 1,
+                "Nature": 1,
+                "Parry": 1,
+                "Perception": 1,
+                "Performance": 1,
+                "Persuasion": 1,
+                "Pugilism": 1,
+                "Ranged Combat": 1,
+                "Resilience": 1,
+                "Sapper": 1,
+                "Scrounge": 1,
+                "Seduction": 1,
+                "Sense Deception": 1,
+                "Sleight of Hand": 1,
+                "Stealth": 1,
+                "Subterfuge": 1,
+                "Tactics": 1,
+                "Tracking": 1
+            },
+            "abilities": [
+                "Remote Detonator"
+            ],
+            "traits": [
+                "Upgradeable"
+            ],
+            "spellsGranted": [
+                "INeedMyPersonalSpace"
+            ],
+            "hpBonus": 10,
+            "mpBonus": 10
+        },
         "ApothecaryBeanie": {
             "name": "Apothecary Beanie",
             "description": "Appears to be a small, knitted beanie hat. It boosts all of the wearer's base stats by 3% and allows the wearer to cast the I Need My Personal Space Spell.",

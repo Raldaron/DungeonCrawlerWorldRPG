@@ -75,15 +75,50 @@ label {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-
-
 /* Header Styles */
 header {
-  background-color: var(--primary-color);
-  color: var(--on-primary);
-  padding: 0.5rem;
+  background-color: var(--surface-color);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
+
+.character-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.info-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  width: 100%;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+}
+
+.info-item label {
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+.info-item span[contenteditable="true"] {
+  min-width: 2em;
+  padding: 0.2em 0.4em;
+  border: 1px solid var(--primary-color);
   border-radius: 4px;
-  margin-bottom: 0.5rem;
+  background-color: var(--secondary-color);
+  color: var(--on-background);
+  cursor: text;
+}
+
+.info-item span[contenteditable="true"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--primary-light);
 }
 
 .header-content {
@@ -276,14 +311,6 @@ header {
   gap: 0.5rem;
 }
 
-#item-detail-modal {
-  z-index: 1001; /* Make sure this is higher than the equipment modal */
-}
-
-#equipment-modal {
-  z-index: 1000;
-}
-
 #armor-modal .item-card,
 #utility-modal .item-card,
 #equipment-modal .item-card,
@@ -322,84 +349,6 @@ header {
   color: var(--on-surface);
 }
 
-/* Styles Enhancement Modal */
-.enhancement-popup {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1000;
-  background-color: var(--surface-color);
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  max-width: 80%;
-  width: 400px;
-  text-align: center;
-  display: none;
-}
-
-.enhancement-popup h2 {
-  color: var(--primary-color);
-  margin-bottom: 10px;
-}
-
-.enhancement-popup h3 {
-  color: var(--secondary-color);
-  margin-bottom: 15px;
-}
-
-.enhancement-popup p {
-  margin-bottom: 20px;
-}
-
-#close-enhancement-popup {
-  background-color: var(--primary-color);
-  color: var(--on-primary);
-  border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-#close-enhancement-popup:hover {
-  background-color: var(--primary-variant);
-}
-
-
-/* Styles for race and class dropdowns */
-#race-select,
-#class-select {
-    color: #333333; /* Dark gray color */
-    background-color: var(--surface-color);
-    border: 1px solid rgba(0, 0, 0, 0.12);
-    padding: 0.5rem;
-    border-radius: 4px;
-    width: 100%;
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-}
-
-#race-select option,
-#class-select option {
-    color: #333333; /* Dark gray color */
-    background-color: var(--surface-color);
-}
-
-/* Style for the selected option */
-#race-select option:checked,
-#class-select option:checked {
-    background-color: var(--primary-color);
-    color: var(--on-primary);
-}
-
-/* Style for hover state */
-#race-select option:hover,
-#class-select option:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-}
-
 /* Ensuring multiple cards per row on larger screens */
 @media (min-width: 600px) {
   .modal-grid {
@@ -414,12 +363,22 @@ header {
   }
 }
 
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  color: var(--on-surface);
+}
+
+label {
+  color: var(--on-surface);
+}
+
 /* Form Elements Styles */
 button, .button {
   background-color: var(--secondary-color);
   color: var(--on-secondary);
   border: none;
-  padding: 0.5rem 0.75rem;
+  padding: 0.5rem 0.7rem;
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s, box-shadow 0.3s;
@@ -757,46 +716,37 @@ input[type="file"] {
 
 /* AP Styles */
 #ap-container {
-  position: relative;
-  cursor: pointer;
-}
-
-#ap-buttons {
-  display: none;
-  position: absolute;
-  top: calc(100% + 0.25rem);
-  right: 0;
-  background-color: var(--surface-color);
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  border-radius: 4px;
-  padding: 0.25rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-#ap-container:hover #ap-buttons {
   display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-#ap-buttons button {
+.ap-control {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.ap-button {
   background-color: var(--primary-color);
   color: var(--on-primary);
   border: none;
-  padding: 0.25rem 0.5rem;
-  margin: 0 0.125rem;
-  cursor: pointer;
+  padding: 2px 8px;
   border-radius: 4px;
-  font-size: 0.8rem;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
 }
 
-#ap-buttons button:hover {
+.ap-button:hover {
   background-color: var(--primary-variant);
 }
 
-/* Hidden Class */
-.hidden {
-  display: none !important;
+#character-ap {
+  min-width: 20px;
+  text-align: center;
 }
+
 
 /* Scrollbar Styles */
 ::-webkit-scrollbar {
@@ -847,4 +797,297 @@ input[type="file"] {
   .equipment-card, .skill-card, .vital-card {
     padding: 0.25rem;
   }
+}
+
+#item-detail-modal {
+  z-index: 1001; /* Make sure this is higher than the equipment modal */
+}
+
+#equipment-modal {
+  z-index: 1000;
+}
+
+/* Styles for race and class dropdowns */
+#race-select,
+#class-select {
+    color: #333333; /* Dark gray color */
+    background-color: var(--surface-color);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    padding: 0.5rem;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+#race-select option,
+#class-select option {
+    color: #333333; /* Dark gray color */
+    background-color: var(--surface-color);
+}
+
+/* Style for the selected option */
+#race-select option:checked,
+#class-select option:checked {
+    background-color: var(--primary-color);
+    color: var(--on-primary);
+}
+
+/* Style for hover state */
+#race-select option:hover,
+#class-select option:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.centered-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.centered-popup .modal-content {
+  background-color: var(--surface-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+}
+
+.centered-popup h2 {
+  margin-top: 0;
+  color: var(--primary-color);
+}
+
+.centered-popup .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: var(--on-surface);
+}
+
+#view-enhancement-details {
+  margin-top: 15px;
+  padding: 8px 16px;
+  background-color: var(--primary-color);
+  color: var(--on-primary);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#view-enhancement-details:hover {
+  background-color: var(--primary-variant);
+}
+
+#enhancement-detail-modal .modal-content {
+  max-width: 600px;
+  width: 90%;
+  margin: 10% auto;
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 5px;
+}
+
+#enhancement-detail-modal #enhancement-level-select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  background-color: var(--surface-color);
+  color: var(--on-surface);
+  font-size: 16px;
+}
+
+#enhancement-detail-modal #enhancement-level-select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--primary-color);
+}
+
+#enhancement-detail-modal label[for="enhancement-level-select"] {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--on-surface);
+}
+
+#enhancement-scaling {
+  margin-top: 20px;
+}
+
+#enhancement-level-select {
+  margin-left: 10px;
+  padding: 5px;
+}
+
+#enhancement-scaling-content ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#enhancement-scaling-content li {
+  margin-bottom: 10px;
+}
+
+#enhancement-announcement-message {
+  margin-bottom: 15px;
+  font-size: 16px;
+  color: var(--on-surface);
+}
+
+.enhancement-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  background-color: var(--surface-color);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 80%;
+  width: 400px;
+  text-align: center;
+  display: none;
+}
+
+.enhancement-popup h2 {
+  color: var(--primary-color);
+  margin-bottom: 10px;
+}
+
+.enhancement-popup h3 {
+  color: var(--secondary-color);
+  margin-bottom: 15px;
+}
+
+.enhancement-popup p {
+  margin-bottom: 20px;
+}
+
+#close-enhancement-popup {
+  background-color: var(--primary-color);
+  color: var(--on-primary);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#close-enhancement-popup:hover {
+  background-color: var(--primary-variant);
+}
+
+.level-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 5px;
+}
+
+.level-button {
+  background-color: var(--primary-color);
+  color: var(--on-primary);
+  border: none;
+  padding: 2px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.level-button:hover {
+  background-color: var(--primary-variant);
+}
+
+.level-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+#armor-rating-container {
+  display: flex;
+  align-items: center;
+}
+
+#armor-rating {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--on-primary);
+  margin-left: 0.5rem;
+}
+
+/* Ensure the AR container is visible */
+#armor-rating-container.info-item {
+  display: flex;
+  visibility: visible;
+  opacity: 1;
+}
+
+.learned-spell {
+  border: 2px solid #4CAF50; /* Green border for learned spells */
+}
+
+.granted-spell {
+  border: 2px solid #FFC107; /* Yellow border for granted spells */
+}
+
+.spell-source {
+  font-size: 0.8em;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* Enhancement Announcement Modal */
+.enhancement-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%) translateY(-100%);
+  background-color: #2196F3;
+  border-radius: 8px;
+  box-shadow: 0 11px 15px -7px rgba(0,0,0,.2), 0 24px 38px 3px rgba(0,0,0,.14), 0 9px 46px 8px rgba(0,0,0,.12);
+  padding: 24px;
+  max-width: 80%;
+  width: 400px;
+  text-align: center;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  opacity: 0;
+}
+
+.enhancement-modal.show {
+  display: block;
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.enhancement-modal-content {
+  color: white;
+}
+
+.enhancement-modal h2 {
+  margin: 0 0 16px 0;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.enhancement-modal p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
 }

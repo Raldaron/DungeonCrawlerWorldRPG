@@ -71,7 +71,6 @@ const SkillModule = {
     },
 
     updateClassBonuses(bonuses) {
-        console.log('Updating class skill bonuses:', bonuses);
         this.classBonuses = bonuses;
         this.updateAllSkillScores();
     },
@@ -116,7 +115,6 @@ const SkillModule = {
     },
 
     updateSingleItemBonus(itemType, bonuses) {
-        console.log(`Updating ${itemType} skill bonuses:`, bonuses);
         if (!this.equippedScores[itemType]) {
             this.equippedScores[itemType] = {};
         }
@@ -129,7 +127,6 @@ const SkillModule = {
     },
 
     removeSingleItemBonus(itemType, bonuses) {
-        console.log(`Removing ${itemType} skill bonuses:`, bonuses);
         if (this.equippedScores[itemType]) {
             for (const [skill, bonus] of Object.entries(bonuses)) {
                 const normalizedSkill = this.normalizeSkillName(skill);
@@ -149,7 +146,6 @@ const SkillModule = {
     },
 
     updateEquipmentBonuses(item, isEquipping) {
-        console.log('Updating equipment bonuses:', item, isEquipping);
         const bonuses = item.skillBonus || {};
         const multiplier = isEquipping ? 1 : -1;
         const itemType = item.itemType.toLowerCase();
@@ -162,8 +158,6 @@ const SkillModule = {
             const normalizedSkill = this.normalizeSkillName(skill);
             this.equippedScores[itemType][normalizedSkill] =
                 (this.equippedScores[itemType][normalizedSkill] || 0) + (bonus * multiplier);
-
-            console.log(`Updated ${itemType} bonus for ${normalizedSkill}: ${this.equippedScores[itemType][normalizedSkill]}`);
         }
 
         this.updateAllSkillScores();
@@ -189,7 +183,6 @@ const SkillModule = {
     },
 
     updateEquippedScores(itemBonuses, itemType) {
-        console.log(`Updating ${itemType} bonuses:`, itemBonuses);
         const normalizedBonuses = {};
         for (const [skill, bonus] of Object.entries(itemBonuses)) {
             const normalizedSkill = this.normalizeSkillName(skill);
@@ -200,15 +193,11 @@ const SkillModule = {
     },
 
     removeEquippedScores(itemType) {
-        console.log(`Removing ${itemType} bonuses`);
         this.equippedScores[itemType] = {};
         this.updateAllSkillScores();
     },
 
     updateAllSkillScores() {
-        console.log('Updating all skill scores');
-        console.log('Current equipped scores:', this.equippedScores);
-
         document.querySelectorAll('.skill-card').forEach(card => {
             const skill = this.normalizeSkillName(card.dataset.skill);
             const baseScore = this.baseScores[skill] || 0;
@@ -218,7 +207,6 @@ const SkillModule = {
             const weaponBonus = (this.equippedScores.weapon && this.equippedScores.weapon[skill]) || 0;
 
             const totalScore = baseScore + raceBonus + classBonus + armorBonus + weaponBonus;
-            console.log(`Updating ${skill}: base=${baseScore}, race=${raceBonus}, class=${classBonus}, armor=${armorBonus}, weapon=${weaponBonus}, total=${totalScore}`);
 
             this.displayScores[skill] = totalScore;
             this.updateSkillScore(skill);
@@ -234,7 +222,6 @@ const SkillModule = {
         const weaponBonus = (this.equippedScores.weapons && this.equippedScores.weapons[normalizedSkillName]) || 0;
 
         const totalScore = baseScore + raceBonus + classBonus + armorBonus + weaponBonus;
-        console.log(`Getting skill level for ${skillName}: Base: ${baseScore}, Race: ${raceBonus}, Class: ${classBonus}, Armor: ${armorBonus}, Weapon: ${weaponBonus}, Total: ${totalScore}`);
         return totalScore;
     },
 
@@ -244,6 +231,14 @@ const SkillModule = {
         } else {
             console.warn(`Skill '${skillName}' not found. Unable to set level.`);
         }
+    },
+
+    getBaseScores() {
+        return { ...this.baseScores };
+    },
+    
+    getUnassignedPoints() {
+        return this.availablePoints;
     },
 
     getAllSkillData() {

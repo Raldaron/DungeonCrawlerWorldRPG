@@ -1,1156 +1,1191 @@
-<!DOCTYPE html>
-<html lang="en">
+  <!DOCTYPE html>
+  <html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="styles.css" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
 
-<body>
-  <div id="weaponModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <div id="modalContent"></div>
-    </div>
-  </div>
-  <header>
-    <div class="header-content">
-      <div class="character-info-grid">
-        <button id="export-character">Export Character</button>
-<input type="file" id="import-character" accept=".json" style="display: none;">
-<button id="import-character-btn">Import Character</button>
-        <div class="info-item" id="character-name-container">
-          <label for="character-name">Name:</label>
-          <span id="character-name" ondblclick="UIModule.editField('character-name')">Character Name</span>
-        </div>
-        <div class="info-item" id="race-container">
-          <label for="race-select">Race:</label>
-          <select id="race-select"></select>
-        </div>
-        <div class="info-item" id="class-container">
-          <label for="class-select">Class:</label>
-          <select id="class-select"></select>
-        </div>
-
-        <div class="info-item" id="character-level-container">
-          <label for="character-level">Level:</label>
-          <span id="character-level" ondblclick="UIModule.editField('character-level')">1</span>
-        </div>
-        <div class="info-item" id="vital-points-container">
-          <label for="available-vital-points">Vital Points:</label>
-          <span id="available-vital-points" ondblclick="UIModule.editField('available-vital-points')">12</span>
-        </div>
-        <div class="info-item" id="skill-points-container">
-          <label for="available-skill-points">Skill Points:</label>
-          <span id="available-skill-points" ondblclick="UIModule.editField('available-skill-points')">18</span>
-        </div>
-
-        <div class="info-item" id="armor-rating-container">
-          <label for="armor-rating">AR:</label>
-          <span id="armor-rating">10</span>
-        </div>
-        <div id="hit-points-container" class="info-item">
-          HP: <span id="current-hp" ondblclick="UIModule.editField('current-hp')">50</span>
-      </div>          
-      <div id="mana-points-container" class="info-item">
-        MP: <span id="current-mp" ondblclick="UIModule.editField('current-mp')">30</span> / <span id="max-mp">50</span>
-    </div>      
-    <div id="ap-container" class="info-item">
-      AP: <span id="character-ap">0</span>
-  </div>
-        </div>
-      </div>
-    </div>
-  </header>
-  <div class="tab-container">
-    <div class="tabs">
-      <button class="tablink" data-tab="CharacterInfo">Character Info</button>
-      <button class="tablink" data-tab="Main">Main</button>
-      <button class="tablink" data-tab="Stats">Stats</button>
-      <button class="tablink" data-tab="Equipment">Equipment</button>
-      <button class="tablink" data-tab="Inventory">Inventory</button>
-      <button class="tablink" data-tab="Arcana">Arcana</button>
-      <button class="tablink" data-tab="Crafting">Crafting</button>
-      <button class="tablink" data-tab="QuestLog">Quest Log</button>
-      <button class="tablink" data-tab="Notes">Notes</button>
-    </div>
-  </div>
-  <div id="CharacterInfo" class="tabcontent">
-    <div class="info-cards">
-      <div class="card" id="race-card">
-        <h3>Race Information</h3>
-        <p><strong>Name:</strong> <span id="race-name"></span></p>
-        <p>
-          <strong>Description:</strong> <span id="race-description"></span>
-        </p>
-        <p><strong>Lore:</strong> <span id="race-lore"></span></p>
-        <p><strong>Stat Bonuses:</strong> <span id="stat-bonuses"></span></p>
-        <p>
-          <strong>Skill Bonuses:</strong> <span id="skill-bonuses"></span>
-        </p>
-        <p><strong>Traits:</strong> <span id="race-traits"></span></p>
-        <p><strong>Abilities:</strong> <span id="race-abilities"></span></p>
-      </div>
-      <div class="card" id="class-card">
-        <h3>Class Information</h3>
-        <p><strong>Name:</strong> <span id="class-name"></span></p>
-        <p>
-          <strong>Description:</strong> <span id="class-description"></span>
-        </p>
-        <p><strong>Archetype:</strong> <span id="class-archetype"></span></p>
-        <p>
-          <strong>Primary Vitals:</strong>
-          <span id="class-primary-vitals"></span>
-        </p>
-        <p>
-          <strong>Vital Bonuses:</strong>
-          <span id="class-vital-bonuses"></span>
-        </p>
-        <p>
-          <strong>Skill Bonuses:</strong>
-          <span id="class-skill-bonuses"></span>
-        </p>
-        <p><strong>Traits:</strong> <span id="class-traits"></span></p>
-        <p><strong>Abilities:</strong> <span id="class-abilities"></span></p>
-      </div>
-    </div>
-  </div>
-  <div id="Main" class="tabcontent">
-    <div class="subtabs">
-      <button class="subtablink" data-subtab="Actions">Actions</button>
-      <button class="subtablink" data-subtab="Abilities">Abilities</button>
-      <button class="subtablink" data-subtab="Traits">Traits</button>
-      <button class="subtablink" data-subtab="Spells">Spells</button>
-      <button class="subtablink" data-subtab="Enhancements">Enhancements</button>
-    </div>
-
-    <div id="Actions" class="subtabcontent">
-      <h3>Available Actions</h3>
-      <div id="actions-grid" class="actions-grid">
-          <!-- Action cards will be populated here -->
-      </div>
-  </div>
-
-    <div id="Abilities" class="subtabcontent">
-      <h3>Current Abilities</h3>
-      <div id="abilities-grid-main" class="abilities-grid"></div>
-    </div>
-
-    <div id="Traits" class="subtabcontent">
-      <h3>Current Traits</h3>
-      <div id="traits-grid" class="traits-grid"></div>
-    </div>
-
-    <div id="Spells" class="subtabcontent">
-      <h3>Known Spells</h3>
-      <div id="known-spells-container"></div>
-    </div>
-
-    <div id="Enhancements" class="subtabcontent">
-      <div id="enhancements-container">
-          <h2>Available Enhancements</h2>
-          <div id="enhancements-grid"></div>
-      </div>
-  </div>
-  </div>
-  <div id="Stats" class="tabcontent">
-    <div class="subtabs">
-      <button class="subtablink" data-subtab="Vitals">Vitals</button>
-      <button class="subtablink" data-subtab="Skills">Skills</button>
-    </div>
-
-    <div id="Vitals" class="subtabcontent">
-      <h3>Vitals</h3>
-      <div id="vitals-container" class="vitals-container">
-          <div class="vital-category">
-              <h4 class="category-title">Physical</h4>
-              <div class="vitals-row">
-                  <div class="vital-card">
-                      <div class="vital-name">Strength</div>
-                      <div id="strength-score" class="vital-score">0</div>
-                      <div class="vital-buttons">
-                          <button class="vital-button decrement" data-vital="strength">-</button>
-                          <button class="vital-button increment" data-vital="strength">+</button>
-                      </div>
-                  </div>
-                  <div class="vital-card">
-                      <div class="vital-name">Dexterity</div>
-                      <div id="dexterity-score" class="vital-score">0</div>
-                      <div class="vital-buttons">
-                          <button class="vital-button decrement" data-vital="dexterity">-</button>
-                          <button class="vital-button increment" data-vital="dexterity">+</button>
-                      </div>
-                  </div>
-                  <div class="vital-card">
-                      <div class="vital-name">Stamina</div>
-                      <div id="stamina-score" class="vital-score">0</div>
-                      <div class="vital-buttons">
-                          <button class="vital-button decrement" data-vital="stamina">-</button>
-                          <button class="vital-button increment" data-vital="stamina">+</button>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          
-          <div class="vital-category">
-              <h4 class="category-title">Mental</h4>
-              <div class="vitals-row">
-                  <div class="vital-card">
-                      <div class="vital-name">Intelligence</div>
-                      <div id="intelligence-score" class="vital-score">0</div>
-                      <div class="vital-buttons">
-                          <button class="vital-button decrement" data-vital="intelligence">-</button>
-                          <button class="vital-button increment" data-vital="intelligence">+</button>
-                      </div>
-                  </div>
-                  <div class="vital-card">
-                      <div class="vital-name">Perception</div>
-                      <div id="perception-score" class="vital-score">0</div>
-                      <div class="vital-buttons">
-                          <button class="vital-button decrement" data-vital="perception">-</button>
-                          <button class="vital-button increment" data-vital="perception">+</button>
-                      </div>
-                  </div>
-                  <div class="vital-card">
-                      <div class="vital-name">Wit</div>
-                      <div id="wit-score" class="vital-score">0</div>
-                      <div class="vital-buttons">
-                          <button class="vital-button decrement" data-vital="wit">-</button>
-                          <button class="vital-button increment" data-vital="wit">+</button>
-                      </div>
-                  </div>
-              </div>
-          </div>
-          
-          <div class="vital-category">
-              <h4 class="category-title">Social</h4>
-              <div class="vitals-row">
-                  <div class="vital-card">
-                      <div class="vital-name">Charisma</div>
-                      <div id="charisma-score" class="vital-score">0</div>
-                      <div class="vital-buttons">
-                          <button class="vital-button decrement" data-vital="charisma">-</button>
-                          <button class="vital-button increment" data-vital="charisma">+</button>
-                      </div>
-                  </div>
-                  <div class="vital-card">
-                      <div class="vital-name">Manipulation</div>
-                      <div id="manipulation-score" class="vital-score">0</div>
-                      <div class="vital-buttons">
-                          <button class="vital-button decrement" data-vital="manipulation">-</button>
-                          <button class="vital-button increment" data-vital="manipulation">+</button>
-                      </div>
-                  </div>
-                  <div class="vital-card">
-                      <div class="vital-name">Appearance</div>
-                      <div id="appearance-score" class="vital-score">0</div>
-                      <div class="vital-buttons">
-                          <button class="vital-button decrement" data-vital="appearance">-</button>
-                          <button class="vital-button increment" data-vital="appearance">+</button>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
-
-    <div id="Skills" class="subtabcontent">
-      <h2>Skills</h2>
-      <p>Available Skill Points: <span id="available-skill-points">18</span></p>
-      <div id="skills-container">
-
-        <div class="skill-category">
-          <h3 class="category-title">Combat</h3>
-          <div class="skills-grid">
-
-            <div class="skill-card" data-skill="archery">
-              <div class="skill-name">Archery</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="artillery">
-              <div class="skill-name">Artillery</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="block">
-              <div class="skill-name">Block</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="close-combat">
-              <div class="skill-name">Close Combat</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="dodge">
-              <div class="skill-name">Dodge</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="explosives-handling">
-              <div class="skill-name">Explosives Handling</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="firearms">
-              <div class="skill-name">Firearms</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="melee">
-              <div class="skill-name">Melee</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="parry">
-              <div class="skill-name">Parry</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="ranged-combat">
-              <div class="skill-name">Ranged Combat</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="tactics">
-              <div class="skill-name">Tactics</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <h3 class="category-title">Physical</h3>
-          <div class="skills-grid">
-
-            <div class="skill-card" data-skill="acrobatics">
-              <div class="skill-name">Acrobatics</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="athletics">
-              <div class="skill-name">Athletics</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="disguise">
-              <div class="skill-name">Disguise</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="endurance">
-              <div class="skill-name">Endurance</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="hold-breath">
-              <div class="skill-name">Hold Breath</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="resilience">
-              <div class="skill-name">Resilience</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="sleight-of-hand">
-              <div class="skill-name">Sleight of Hand</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="stealth">
-              <div class="skill-name">Stealth</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="survival">
-              <div class="skill-name">Survival</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <h3 class="category-title">Social</h3>
-          <div class="skills-grid">
-
-            <div class="skill-card" data-skill="animal-ken">
-              <div class="skill-name">Animal Ken</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="deception">
-              <div class="skill-name">Deception</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="empathy">
-              <div class="skill-name">Empathy</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="intimidation">
-              <div class="skill-name">Intimidation</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="performance">
-              <div class="skill-name">Performance</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="persuasion">
-              <div class="skill-name">Persuasion</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="seduction">
-              <div class="skill-name">Seduction</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="sense-deception">
-              <div class="skill-name">Sense Deception</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        <div class="skill-category">
-          <h3 class="category-title">Mental</h3>
-          <div class="skills-grid">
-
-            <div class="skill-card" data-skill="alchemy">
-              <div class="skill-name">Alchemy</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="arcana">
-              <div class="skill-name">Arcana</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="awareness">
-              <div class="skill-name">Awareness</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="detect-trap">
-              <div class="skill-name">Detect Trap</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="engineering">
-              <div class="skill-name">Engineering</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="investigation">
-              <div class="skill-name">Investigation</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="lore">
-              <div class="skill-name">Lore</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="medicine">
-              <div class="skill-name">Medicine</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="nature">
-              <div class="skill-name">Nature</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="perception">
-              <div class="skill-name">Perception</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="scrounge">
-              <div class="skill-name">Scrounge</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-            <div class="skill-card" data-skill="tracking">
-              <div class="skill-name">Tracking</div>
-              <div class="skill-score">0</div>
-              <div class="skill-buttons">
-                <button class="skill-button decrement">-</button>
-                <button class="skill-button increment">+</button>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-  </div>
-  </div>
-
-  <div id="Equipment" class="tabcontent">
-    <h2>Equipment</h2>
-    <div class="equipment-container">
-      <div class="equipment-nav">
-        <button class="equipment-nav-btn" data-section="weapons">Weapons</button>
-        <button class="equipment-nav-btn" data-section="armor">Armor</button>
-        <button class="equipment-nav-btn" data-section="utility">Utility</button>
-      </div>
-  
-      <div class="equipment-section weapons-section">
-        <div class="equipment-grid">
-          <div class="equipment-card">
-            <div id="primary-weapon-slot" class="equipment-slot" data-slot-type="weapon">
-              <span class="slot-label">Primary Weapon</span>
-            </div>
-          </div>
-          <div class="equipment-card">
-            <div id="secondary-weapon-slot" class="equipment-slot" data-slot-type="weapon">
-              <span class="slot-label">Secondary Weapon</span>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-  
-      <div class="equipment-section armor-section">
-        <div class="equipment-grid">
-          <div class="equipment-card">
-            <div id="head-slot" class="equipment-slot" data-slot-type="head">
-              <span class="slot-label">Head</span>
-            </div>
-          </div>
-          <div class="equipment-card">
-            <div id="face-slot" class="equipment-slot" data-slot-type="face">
-              <span class="slot-label">Face</span>
-            </div>
-          </div>
-          <div class="equipment-card">
-            <div id="neck-slot" class="equipment-slot" data-slot-type="neck">
-              <span class="slot-label">Neck</span>
-            </div>
-          </div>
-          <div class="equipment-card">
-            <div id="shoulders-slot" class="equipment-slot" data-slot-type="shoulders">
-              <span class="slot-label">Shoulders</span>
-            </div>
-          </div>
-          <div class="equipment-card">
-            <div id="torso-slot" class="equipment-slot" data-slot-type="torso">
-              <span class="slot-label">Torso</span>
-            </div>
-          </div>
-          <div class="equipment-card">
-            <div id="left-arm-slot" class="equipment-slot" data-slot-type="arm">
-              <span class="slot-label">Left Arm</span>
-            </div>
-          </div>
-          <div class="equipment-card">
-            <div id="right-arm-slot" class="equipment-slot" data-slot-type="arm">
-              <span class="slot-label">Right Arm</span>
-            </div>
-          </div>
-          <div class="equipment-card">
-            <div id="left-wrist-slot" class="equipment-slot" data-slot-type="wrist">
-              <span class="slot-label">Left Wrist</span>
-            </div>
-          </div>
-          <div class="equipment-card">
-            <div id="right-wrist-slot" class="equipment-slot" data-slot-type="wrist">
-              <span class="slot-label">Right Wrist</span>
-            </div>
-          </div>
-          <!-- Begin multiple fingers -->
-          <div class="equipment-card">
-            <div id="left-finger1-slot" class="equipment-slot" data-slot-type="finger">
-              <span class="slot-label">Left Finger 1</span>
-            </div>
-          </div>
-          <div class="equipment-card">
-            <div id="left-finger2-slot" class="equipment-slot" data-slot-type="finger">
-              <span class="slot-label">Left Finger 2</span>
-            </div>
-          </div>
-          <div class="equipment-card">
-            <div id="right-finger1-slot" class="equipment-slot" data-slot-type="finger">
-              <span class="slot-label">Right Finger 1</span>
-            </div>
-          </div>
-          <div class="equipment-card">
-            <div id="right-finger2-slot" class="equipment-slot" data-slot-type="finger">
-              <span class="slot-label">Right Finger 2</span>
-            </div>
-          </div>
-          <!-- End multiple fingers -->
-          <div class="equipment-card">
-            <div id="waist-slot" class="equipment-slot" data-slot-type="waist">
-              <span class="slot-label">Waist</span>
-            </div>
-          </div>
-          <div class="equipment-card">
-            <div id="legs-slot" class="equipment-slot" data-slot-type="legs">
-              <span class="slot-label">Legs</span>
-            </div>
-          </div>
-          <div class="equipment-card">
-            <div id="left-ankle-slot" class="equipment-slot" data-slot-type="ankle">
-              <span class="slot-label">Left Ankle</span>
-            </div>
-          </div>
-          <div class="equipment-card">
-            <div id="right-ankle-slot" class="equipment-slot" data-slot-type="ankle">
-              <span class="slot-label">Right Ankle</span>
-            </div>
-          </div>
-          <div class="equipment-card">
-            <div id="feet-slot" class="equipment-slot" data-slot-type="feet">
-              <span class="slot-label">Feet</span>
-            </div>
-          </div>
-          <!-- Begin multiple toes -->
-          <div class="equipment-card">
-            <div id="left-toe1-slot" class="equipment-slot" data-slot-type="toe">
-              <span class="slot-label">Left Toe 1</span>
-            </div>
-          </div>
-          <div class="equipment-card">
-            <div id="left-toe2-slot" class="equipment-slot" data-slot-type="toe">
-              <span class="slot-label">Left Toe 2</span>
-            </div>
-          </div>
-          <div class="equipment-card">
-            <div id="right-toe1-slot" class="equipment-slot" data-slot-type="toe">
-              <span class="slot-label">Right Toe 1</span>
-            </div>
-          </div>
-          <div class="equipment-card">
-            <div id="right-toe2-slot" class="equipment-slot" data-slot-type="toe">
-              <span class="slot-label">Right Toe 2</span>
-            </div>
-          </div>
-          <!-- End multiple toes -->
-        </div>
-      </div>
-      
-      <div class="equipment-section utility-section">
-        <div class="equipment-grid">
-          <div class="equipment-card" data-slot="Utility 1">
-            <div id="utility-slot-1" class="equipment-slot" data-slot-type="utility">
-              <span class="slot-label">Utility 1</span>
-            </div>
-          </div>
-          <div class="equipment-card" data-slot="Utility 2">
-            <div id="utility-slot-2" class="equipment-slot" data-slot-type="utility">
-              <span class="slot-label">Utility 2</span>
-            </div>
-          </div>
-          <div class="equipment-card" data-slot="Utility 3">
-            <div id="utility-slot-3" class="equipment-slot" data-slot-type="utility">
-              <span class="slot-label">Utility 3</span>
-            </div>
-          </div>
-          <div class="equipment-card" data-slot="Utility 4">
-            <div id="utility-slot-4" class="equipment-slot" data-slot-type="utility">
-              <span class="slot-label">Utility 4</span>
-            </div>
-          </div>
-          <div class="equipment-card" data-slot="Utility 5">
-            <div id="utility-slot-5" class="equipment-slot" data-slot-type="utility">
-              <span class="slot-label">Utility 5</span>
-            </div>
-          </div>
-          <div class="equipment-card" data-slot="Utility 6">
-            <div id="utility-slot-6" class="equipment-slot" data-slot-type="utility">
-              <span class="slot-label">Utility 6</span>
-            </div>
-          </div>
-          <div class="equipment-card" data-slot="Utility 7">
-            <div id="utility-slot-7" class="equipment-slot" data-slot-type="utility">
-              <span class="slot-label">Utility 7</span>
-            </div>
-          </div>
-          <div class="equipment-card" data-slot="Utility 8">
-            <div id="utility-slot-8" class="equipment-slot" data-slot-type="utility">
-              <span class="slot-label">Utility 8</span>
-            </div>
-          </div>
-          <div class="equipment-card" data-slot="Utility 9">
-            <div id="utility-slot-9" class="equipment-slot" data-slot-type="utility">
-              <span class="slot-label">Utility 9</span>
-            </div>
-          </div>
-          <div class="equipment-card" data-slot="Utility 10">
-            <div id="utility-slot-10" class="equipment-slot" data-slot-type="utility">
-              <span class="slot-label">Utility 10</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div id="Inventory" class="tabcontent">
-    <h2>Inventory</h2>
-    <div id="inventory-categories"></div>
-    <div id="inventory-items" class="inventory-grid"></div>
-    <button id="add-to-inventory-btn">Add to Inventory</button>
-  </div>
-  <div id="Arcana" class="tabcontent">
-    <h2>Arcana</h2>
-    <div class="search-container">
-        <input type="text" id="spell-search" placeholder="Search spells...">
-    </div>
-    <div class="filter-container">
-        <select id="spell-filter-archetype">
-            <option value="">All Archetypes</option>
-        </select>
-        <select id="spell-filter-damage-type">
-            <option value="">All Damage Types</option>
-        </select>
-        <select id="spell-filter-casting-time">
-            <option value="">All Casting Times</option>
-        </select>
-        <select id="spell-filter-spellcasting-modifier">
-            <option value="">All Spellcasting Modifiers</option>
-        </select>
-    </div>
-    <div id="arcana-spells-container"></div>
-</div>
-  <div id="Crafting" class="tabcontent">
-    <h2>Crafting</h2>
-    <p>Crafting content goes here.</p>
-  </div>
-  <div id="QuestLog" class="tabcontent">
-    <h2>Quest Log</h2>
-    <p>Quest Log content goes here.</p>
-  </div>
-  <div id="Notes" class="tabcontent">
-    <h2>Notes</h2>
-    <p>Notes content goes here.</p>
-  </div>
-  <button id="refresh-enhancements">Refresh Enhancements</button>
-  </div>
-
-  <!-- Inventory Modal -->
-  <div id="inventory-modal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Inventory</h2>
+  <body>
+    <div id="weaponModal" class="modal">
+      <div class="modal-content">
         <span class="close">&times;</span>
-      </div>
-      <div class="modal-body">
-        <input type="text" id="inventory-search" placeholder="Search items..." />
-        <div id="inventory-categories"></div>
-        <div id="inventory-items" class="modal-grid"></div>
-      </div>
-      <div class="modal-footer">
-        <button id="add-to-inventory-btn">Add Item</button>
+        <div id="modalContent"></div>
       </div>
     </div>
-  </div>
+    <header>
+      <div class="header-content">
+        <div class="character-info-grid">
+          <button id="export-character">Export Character</button>
+          <div class="info-item" id="character-name-container">
+            <label for="character-name">Name:</label>
+            <span id="character-name" ondblclick="App.UIModule.editField('character-name')">Character Name</span>
+          </div>
+          <div class="info-item" id="race-container">
+            <label for="race-select">Race:</label>
+            <select id="race-select"></select>
+          </div>
+          <div class="info-item" id="class-container">
+            <label for="class-select">Class:</label>
+            <select id="class-select"></select>
+          </div>
 
-  <!-- Item Detail Modal -->
-<div id="item-detail-modal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <h2 id="item-detail-title"></h2>
-    <div id="item-detail-content"></div>
-  </div>
-</div>
+          <div id="character-level-container" class="info-item">
+            Level: 
+            <span id="character-level">1</span>
+            <div class="level-buttons">
+                <button id="decrement-level" class="level-button">-</button>
+                <button id="increment-level" class="level-button">+</button>
+            </div>
+        </div>
+          <div class="info-item" id="vital-points-container">
+            <label for="available-vital-points">Vital Points:</label>
+            <span id="available-vital-points" ondblclick="UIModule.editField('available-vital-points')">12</span>
+          </div>
+          <div class="info-item" id="skill-points-container">
+            <label for="available-skill-points">Skill Points:</label>
+            <span id="available-skill-points" ondblclick="UIModule.editField('available-skill-points')">18</span>
+          </div>
 
-  <!-- Utility Modal -->
-  <div id="utility-modal" class="modal">
-    <div class="modal-content">
+          <div id="armor-rating-container" class="info-item">
+            <label for="armor-rating">AR:</label>
+            <span id="armor-rating">10</span>
+          </div>
+          <div class="info-item" id="hit-points-container">
+            <label for="current-hp">HP:</label>
+            <span id="current-hp" contenteditable="true" ondblclick="UIModule.editField('current-hp')">50</span>
+            / <span id="max-hp">50</span>
+          </div>
+          <div class="info-item" id="mana-points-container">
+            <label for="current-mp">MP:</label>
+            <span id="current-mp" contenteditable="true" ondblclick="UIModule.editField('current-mp')">30</span>
+            / <span id="max-mp">30</span>
+          </div>
+          <div id="ap-container" class="info-item">
+            <label for="character-ap">AP:</label>
+            <div class="ap-control">
+                <button id="ap-decrement" class="ap-button">-</button>
+                <span id="character-ap">0</span>
+                <button id="ap-increment" class="ap-button">+</button>
+            </div>
+        </div>
+        </div>
+      </div>
+    </header>
+    <div class="tab-container">
+      <div class="tabs">
+        <button class="tablink" data-tab="CharacterInfo">Character Info</button>
+        <button class="tablink" data-tab="Main">Main</button>
+        <button class="tablink" data-tab="Stats">Stats</button>
+        <button class="tablink" data-tab="Equipment">Equipment</button>
+        <button class="tablink" data-tab="Inventory">Inventory</button>
+        <button class="tablink" data-tab="Arcana">Arcana</button>
+        <button class="tablink" data-tab="Crafting">Crafting</button>
+        <button class="tablink" data-tab="QuestLog">Quest Log</button>
+        <button class="tablink" data-tab="Notes">Notes</button>
+      </div>
+    </div>
+    <div id="CharacterInfo" class="tabcontent">
+      <div class="info-cards">
+        <div class="card" id="race-card">
+          <h3>Race Information</h3>
+          <p><strong>Name:</strong> <span id="race-name"></span></p>
+          <p>
+            <strong>Description:</strong> <span id="race-description"></span>
+          </p>
+          <p><strong>Lore:</strong> <span id="race-lore"></span></p>
+          <p><strong>Stat Bonuses:</strong> <span id="stat-bonuses"></span></p>
+          <p>
+            <strong>Skill Bonuses:</strong> <span id="skill-bonuses"></span>
+          </p>
+          <p><strong>Traits:</strong> <span id="race-traits"></span></p>
+          <p><strong>Abilities:</strong> <span id="race-abilities"></span></p>
+        </div>
+        <div class="card" id="class-card">
+          <h3>Class Information</h3>
+          <p><strong>Name:</strong> <span id="class-name"></span></p>
+          <p>
+            <strong>Description:</strong> <span id="class-description"></span>
+          </p>
+          <p><strong>Archetype:</strong> <span id="class-archetype"></span></p>
+          <p>
+            <strong>Primary Vitals:</strong>
+            <span id="class-primary-vitals"></span>
+          </p>
+          <p>
+            <strong>Vital Bonuses:</strong>
+            <span id="class-vital-bonuses"></span>
+          </p>
+          <p>
+            <strong>Skill Bonuses:</strong>
+            <span id="class-skill-bonuses"></span>
+          </p>
+          <p><strong>Traits:</strong> <span id="class-traits"></span></p>
+          <p><strong>Abilities:</strong> <span id="class-abilities"></span></p>
+        </div>
+      </div>
+    </div>
+    <div id="Main" class="tabcontent">
+      <div class="subtabs">
+        <button class="subtablink" data-subtab="Actions">Actions</button>
+        <button class="subtablink" data-subtab="Abilities">Abilities</button>
+        <button class="subtablink" data-subtab="Traits">Traits</button>
+        <button class="subtablink" data-subtab="Spells">Spells</button>
+        <button class="subtablink" data-subtab="Enhancements">Enhancements</button>
+      </div>
+
+      <div id="Actions" class="subtabcontent">
+        <h3>Available Actions</h3>
+        <div id="actions-grid" class="actions-grid">
+            <!-- Action cards will be populated here -->
+        </div>
+    </div>
+
+      <div id="Abilities" class="subtabcontent">
+        <h3>Current Abilities</h3>
+        <div id="abilities-grid-main" class="abilities-grid"></div>
+      </div>
+
+      <div id="Traits" class="subtabcontent">
+        <h3>Current Traits</h3>
+        <div id="traits-grid" class="traits-grid"></div>
+      </div>
+
+      <div id="Spells" class="subtabcontent">
+        <h3>Known Spells</h3>
+        <div id="known-spells-container"></div>
+      </div>
+
+      <div id="Enhancements" class="subtabcontent">
+        <div id="enhancements-container">
+            <h2>Available Enhancements</h2>
+            <div id="enhancements-grid"></div>
+        </div>
+    </div>
+    </div>
+    <div id="Stats" class="tabcontent">
+      <div class="subtabs">
+        <button class="subtablink" data-subtab="Vitals">Vitals</button>
+        <button class="subtablink" data-subtab="Skills">Skills</button>
+      </div>
+
+      <div id="Vitals" class="subtabcontent">
+        <h3>Vitals</h3>
+        <div id="vitals-container" class="vitals-grid">
+            <div class="vital-category">
+                <h4 class="category-title">Physical</h4>
+                <div class="vitals-row">
+                    <div class="vital-card">
+                        <div class="vital-name">Strength</div>
+                        <div id="strength-score" class="vital-score">0</div>
+                        <div class="vital-buttons">
+                            <button class="decrement">-</button>
+                            <button class="increment">+</button>
+                        </div>
+                    </div>
+                    <div class="vital-card">
+                        <div class="vital-name">Dexterity</div>
+                        <div id="dexterity-score" class="vital-score">0</div>
+                        <div class="vital-buttons">
+                            <button class="decrement">-</button>
+                            <button class="increment">+</button>
+                        </div>
+                    </div>
+                    <div class="vital-card">
+                        <div class="vital-name">Stamina</div>
+                        <div id="stamina-score" class="vital-score">0</div>
+                        <div class="vital-buttons">
+                            <button class="decrement">-</button>
+                            <button class="increment">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="vital-category">
+                <h4 class="category-title">Mental</h4>
+                <div class="vitals-row">
+                    <div class="vital-card">
+                        <div class="vital-name">Intelligence</div>
+                        <div id="intelligence-score" class="vital-score">0</div>
+                        <div class="vital-buttons">
+                            <button class="decrement">-</button>
+                            <button class="increment">+</button>
+                        </div>
+                    </div>
+                    <div class="vital-card">
+                        <div class="vital-name">Perception</div>
+                        <div id="perception-score" class="vital-score">0</div>
+                        <div class="vital-buttons">
+                            <button class="decrement">-</button>
+                            <button class="increment">+</button>
+                        </div>
+                    </div>
+                    <div class="vital-card">
+                        <div class="vital-name">Wit</div>
+                        <div id="wit-score" class="vital-score">0</div>
+                        <div class="vital-buttons">
+                            <button class="decrement">-</button>
+                            <button class="increment">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="vital-category">
+                <h4 class="category-title">Social</h4>
+                <div class="vitals-row">
+                    <div class="vital-card">
+                        <div class="vital-name">Charisma</div>
+                        <div id="charisma-score" class="vital-score">0</div>
+                        <div class="vital-buttons">
+                            <button class="decrement">-</button>
+                            <button class="increment">+</button>
+                        </div>
+                    </div>
+                    <div class="vital-card">
+                        <div class="vital-name">Manipulation</div>
+                        <div id="manipulation-score" class="vital-score">0</div>
+                        <div class="vital-buttons">
+                            <button class="decrement">-</button>
+                            <button class="increment">+</button>
+                        </div>
+                    </div>
+                    <div class="vital-card">
+                        <div class="vital-name">Appearance</div>
+                        <div id="appearance-score" class="vital-score">0</div>
+                        <div class="vital-buttons">
+                            <button class="decrement">-</button>
+                            <button class="increment">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <div id="Skills" class="subtabcontent">
+        <h2>Skills</h2>
+        <p>Available Skill Points: <span id="available-skill-points">18</span></p>
+        <div id="skills-container">
+
+          <div class="skill-category">
+            <h3 class="category-title">Combat</h3>
+            <div class="skills-grid">
+
+              <div class="skill-card" data-skill="archery">
+                <div class="skill-name">Archery</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="artillery">
+                <div class="skill-name">Artillery</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="block">
+                <div class="skill-name">Block</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="close-combat">
+                <div class="skill-name">Close Combat</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="dodge">
+                <div class="skill-name">Dodge</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="explosives-handling">
+                <div class="skill-name">Explosives Handling</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="firearms">
+                <div class="skill-name">Firearms</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="melee">
+                <div class="skill-name">Melee</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="parry">
+                <div class="skill-name">Parry</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="ranged-combat">
+                <div class="skill-name">Ranged Combat</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="tactics">
+                <div class="skill-name">Tactics</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="category-title">Physical</h3>
+            <div class="skills-grid">
+
+              <div class="skill-card" data-skill="acrobatics">
+                <div class="skill-name">Acrobatics</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="athletics">
+                <div class="skill-name">Athletics</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="disguise">
+                <div class="skill-name">Disguise</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="endurance">
+                <div class="skill-name">Endurance</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="hold-breath">
+                <div class="skill-name">Hold Breath</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="resilience">
+                <div class="skill-name">Resilience</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="sleight-of-hand">
+                <div class="skill-name">Sleight of Hand</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="stealth">
+                <div class="skill-name">Stealth</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="survival">
+                <div class="skill-name">Survival</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="category-title">Social</h3>
+            <div class="skills-grid">
+
+              <div class="skill-card" data-skill="animal-ken">
+                <div class="skill-name">Animal Ken</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="deception">
+                <div class="skill-name">Deception</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="empathy">
+                <div class="skill-name">Empathy</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="intimidation">
+                <div class="skill-name">Intimidation</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="performance">
+                <div class="skill-name">Performance</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="persuasion">
+                <div class="skill-name">Persuasion</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="seduction">
+                <div class="skill-name">Seduction</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="sense-deception">
+                <div class="skill-name">Sense Deception</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="skill-category">
+            <h3 class="category-title">Mental</h3>
+            <div class="skills-grid">
+
+              <div class="skill-card" data-skill="alchemy">
+                <div class="skill-name">Alchemy</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="arcana">
+                <div class="skill-name">Arcana</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="awareness">
+                <div class="skill-name">Awareness</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="detect-trap">
+                <div class="skill-name">Detect Trap</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="engineering">
+                <div class="skill-name">Engineering</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="investigation">
+                <div class="skill-name">Investigation</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="lore">
+                <div class="skill-name">Lore</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="medicine">
+                <div class="skill-name">Medicine</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="nature">
+                <div class="skill-name">Nature</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="perception">
+                <div class="skill-name">Perception</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="scrounge">
+                <div class="skill-name">Scrounge</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+              <div class="skill-card" data-skill="tracking">
+                <div class="skill-name">Tracking</div>
+                <div class="skill-score">0</div>
+                <div class="skill-buttons">
+                  <button class="skill-button decrement">-</button>
+                  <button class="skill-button increment">+</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    <div id="Equipment" class="tabcontent">
+      <h2>Equipment</h2>
+      <div class="equipment-container">
+        <div class="equipment-nav">
+          <button class="equipment-nav-btn" data-section="weapons">Weapons</button>
+          <button class="equipment-nav-btn" data-section="armor">Armor</button>
+          <button class="equipment-nav-btn" data-section="utility">Utility</button>
+        </div>
+    
+        <div class="equipment-section weapons-section">
+          <div class="equipment-grid">
+            <div class="equipment-card">
+              <div id="primary-weapon-slot" class="equipment-slot" data-slot-type="weapon">
+                <div class="slot-label">Primary Weapon</div>
+            </div>
+            </div>
+            <div class="equipment-card">
+              <div id="secondary-weapon-slot" class="equipment-slot" data-slot-type="weapon">
+                <div class="slot-label">Secondary Weapon</div>
+            </div>
+            </div>
+          </div>
+        </div>
+        
+    
+        <div class="equipment-section armor-section">
+          <div class="equipment-grid">
+            <div class="equipment-card">
+              <div id="head-slot" class="equipment-slot" data-slot-type="head">
+                <span class="slot-label">Head</span>
+              </div>
+            </div>
+            <div class="equipment-card">
+              <div id="face-slot" class="equipment-slot" data-slot-type="face">
+                <span class="slot-label">Face</span>
+              </div>
+            </div>
+            <div class="equipment-card">
+              <div id="neck-slot" class="equipment-slot" data-slot-type="neck">
+                <span class="slot-label">Neck</span>
+              </div>
+            </div>
+            <div class="equipment-card">
+              <div id="shoulders-slot" class="equipment-slot" data-slot-type="shoulders">
+                <span class="slot-label">Shoulders</span>
+              </div>
+            </div>
+            <div class="equipment-card">
+              <div id="torso-slot" class="equipment-slot" data-slot-type="torso">
+                <span class="slot-label">Torso</span>
+              </div>
+            </div>
+            <div class="equipment-card">
+              <div id="left-arm-slot" class="equipment-slot" data-slot-type="arm">
+                <span class="slot-label">Left Arm</span>
+              </div>
+            </div>
+            <div class="equipment-card">
+              <div id="right-arm-slot" class="equipment-slot" data-slot-type="arm">
+                <span class="slot-label">Right Arm</span>
+              </div>
+            </div>
+            <div class="equipment-card">
+              <div id="left-wrist-slot" class="equipment-slot" data-slot-type="wrist">
+                <span class="slot-label">Left Wrist</span>
+              </div>
+            </div>
+            <div class="equipment-card">
+              <div id="right-wrist-slot" class="equipment-slot" data-slot-type="wrist">
+                <span class="slot-label">Right Wrist</span>
+              </div>
+            </div>
+            <!-- Begin multiple fingers -->
+            <div class="equipment-card">
+              <div id="left-finger1-slot" class="equipment-slot" data-slot-type="finger">
+                <span class="slot-label">Left Finger 1</span>
+              </div>
+            </div>
+            <div class="equipment-card">
+              <div id="left-finger2-slot" class="equipment-slot" data-slot-type="finger">
+                <span class="slot-label">Left Finger 2</span>
+              </div>
+            </div>
+            <div class="equipment-card">
+              <div id="right-finger1-slot" class="equipment-slot" data-slot-type="finger">
+                <span class="slot-label">Right Finger 1</span>
+              </div>
+            </div>
+            <div class="equipment-card">
+              <div id="right-finger2-slot" class="equipment-slot" data-slot-type="finger">
+                <span class="slot-label">Right Finger 2</span>
+              </div>
+            </div>
+            <!-- End multiple fingers -->
+            <div class="equipment-card">
+              <div id="waist-slot" class="equipment-slot" data-slot-type="waist">
+                <span class="slot-label">Waist</span>
+              </div>
+            </div>
+            <div class="equipment-card">
+              <div id="legs-slot" class="equipment-slot" data-slot-type="legs">
+                <span class="slot-label">Legs</span>
+              </div>
+            </div>
+            <div class="equipment-card">
+              <div id="left-ankle-slot" class="equipment-slot" data-slot-type="ankle">
+                <span class="slot-label">Left Ankle</span>
+              </div>
+            </div>
+            <div class="equipment-card">
+              <div id="right-ankle-slot" class="equipment-slot" data-slot-type="ankle">
+                <span class="slot-label">Right Ankle</span>
+              </div>
+            </div>
+            <div class="equipment-card">
+              <div id="feet-slot" class="equipment-slot" data-slot-type="feet">
+                <span class="slot-label">Feet</span>
+              </div>
+            </div>
+            <!-- Begin multiple toes -->
+            <div class="equipment-card">
+              <div id="left-toe1-slot" class="equipment-slot" data-slot-type="toe">
+                <span class="slot-label">Left Toe 1</span>
+              </div>
+            </div>
+            <div class="equipment-card">
+              <div id="left-toe2-slot" class="equipment-slot" data-slot-type="toe">
+                <span class="slot-label">Left Toe 2</span>
+              </div>
+            </div>
+            <div class="equipment-card">
+              <div id="right-toe1-slot" class="equipment-slot" data-slot-type="toe">
+                <span class="slot-label">Right Toe 1</span>
+              </div>
+            </div>
+            <div class="equipment-card">
+              <div id="right-toe2-slot" class="equipment-slot" data-slot-type="toe">
+                <span class="slot-label">Right Toe 2</span>
+              </div>
+            </div>
+            <!-- End multiple toes -->
+          </div>
+        </div>
+        
+        <div class="equipment-section utility-section">
+          <div class="equipment-grid">
+            <div class="equipment-card" data-slot="Utility 1">
+              <div id="utility-slot-1" class="equipment-slot" data-slot-type="utility">
+                <span class="slot-label">Utility 1</span>
+              </div>
+            </div>
+            <div class="equipment-card" data-slot="Utility 2">
+              <div id="utility-slot-2" class="equipment-slot" data-slot-type="utility">
+                <span class="slot-label">Utility 2</span>
+              </div>
+            </div>
+            <div class="equipment-card" data-slot="Utility 3">
+              <div id="utility-slot-3" class="equipment-slot" data-slot-type="utility">
+                <span class="slot-label">Utility 3</span>
+              </div>
+            </div>
+            <div class="equipment-card" data-slot="Utility 4">
+              <div id="utility-slot-4" class="equipment-slot" data-slot-type="utility">
+                <span class="slot-label">Utility 4</span>
+              </div>
+            </div>
+            <div class="equipment-card" data-slot="Utility 5">
+              <div id="utility-slot-5" class="equipment-slot" data-slot-type="utility">
+                <span class="slot-label">Utility 5</span>
+              </div>
+            </div>
+            <div class="equipment-card" data-slot="Utility 6">
+              <div id="utility-slot-6" class="equipment-slot" data-slot-type="utility">
+                <span class="slot-label">Utility 6</span>
+              </div>
+            </div>
+            <div class="equipment-card" data-slot="Utility 7">
+              <div id="utility-slot-7" class="equipment-slot" data-slot-type="utility">
+                <span class="slot-label">Utility 7</span>
+              </div>
+            </div>
+            <div class="equipment-card" data-slot="Utility 8">
+              <div id="utility-slot-8" class="equipment-slot" data-slot-type="utility">
+                <span class="slot-label">Utility 8</span>
+              </div>
+            </div>
+            <div class="equipment-card" data-slot="Utility 9">
+              <div id="utility-slot-9" class="equipment-slot" data-slot-type="utility">
+                <span class="slot-label">Utility 9</span>
+              </div>
+            </div>
+            <div class="equipment-card" data-slot="Utility 10">
+              <div id="utility-slot-10" class="equipment-slot" data-slot-type="utility">
+                <span class="slot-label">Utility 10</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="Inventory" class="tabcontent">
+      <h2>Inventory</h2>
+      <div id="inventory-categories"></div>
+      <div id="inventory-items" class="inventory-grid"></div>
+      <button id="add-to-inventory-btn">Add to Inventory</button>
+    </div>
+    <div id="Arcana" class="tabcontent">
+      <h2>Arcana</h2>
+      <div class="search-container">
+          <input type="text" id="spell-search" placeholder="Search spells...">
+      </div>
+      <div class="filter-container">
+          <select id="spell-filter-archetype">
+              <option value="">All Archetypes</option>
+          </select>
+          <select id="spell-filter-damage-type">
+              <option value="">All Damage Types</option>
+          </select>
+          <select id="spell-filter-casting-time">
+              <option value="">All Casting Times</option>
+          </select>
+          <select id="spell-filter-spellcasting-modifier">
+              <option value="">All Spellcasting Modifiers</option>
+          </select>
+      </div>
+      <div id="arcana-spells-container"></div>
+  </div>
+    <div id="Crafting" class="tabcontent">
+      <h2>Crafting</h2>
+      <p>Crafting content goes here.</p>
+    </div>
+    <div id="QuestLog" class="tabcontent">
+      <h2>Quest Log</h2>
+      <p>Quest Log content goes here.</p>
+    </div>
+    <div id="Notes" class="tabcontent">
+      <h2>Notes</h2>
+      <p>Notes content goes here.</p>
+    </div>
+
+    <!-- Inventory Modal -->
+    <div id="inventory-modal" class="modal">
+      <div class="modal-content">
         <div class="modal-header">
-            <h2>Utility Items</h2>
-            <span class="close">&times;</span>
+          <h2>Inventory</h2>
+          <span class="close">&times;</span>
         </div>
         <div class="modal-body">
-            <div class="filter-container">
-                <input type="text" id="utility-search" placeholder="Search utility items...">
-                <select id="utility-type-filter">
-                    <option value="">All Types</option>
-                    <!-- Options will be populated dynamically -->
-                </select>
-            </div>
-            <div id="utility-cards-container" class="utility-cards-grid">
-                <!-- Utility cards will be populated here -->
-            </div>
+          <input type="text" id="inventory-search" placeholder="Search items..." />
+          <div id="inventory-categories"></div>
+          <div id="inventory-items" class="modal-grid"></div>
         </div>
+        <div class="modal-footer">
+          <button id="add-to-inventory-btn">Add Item</button>
+        </div>
+      </div>
     </div>
-</div>
 
-  <div id="utility-item-detail-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <div class="item-detail-header">
-        <h2 id="utility-item-detail-title"></h2>
-        <span id="utility-item-rarity"></span>
+    <!-- Item Detail Modal -->
+    <div id="item-detail-modal" class="modal">
+      <div class="modal-content">
+          <span class="close">&times;</span>
+          <div class="item-detail-header">
+              <h2 id="item-detail-title"></h2>
+              <span id="item-rarity"></span>
+          </div>
+          <div class="item-detail-grid">
+              <div class="item-detail-column">
+                  <div class="item-detail-section">
+                      <h3>General Info</h3>
+                      <p id="item-description"></p>
+                      <p id="item-type"></p>
+                      <p id="item-subtype"></p>
+                  </div>
+                  <div class="item-detail-section">
+                      <h3>Item Details</h3>
+                      <p id="item-effect"></p>
+                      <p id="item-duration"></p>
+                      <p id="item-range"></p>
+                      <p id="item-damage"></p>
+                      <p id="item-damage-type"></p>
+                      <p id="item-blast-radius"></p>
+                      <p id="item-trigger-mechanism"></p>
+                      <p id="item-armor-rating"></p>
+                      <p id="item-tank-modifier"></p>
+                      <p id="item-hands-required"></p>
+                      <p id="item-melee-ranged"></p>
+                      <p id="item-magic-nonmagical"></p>
+                      <p id="item-casting-time"></p>
+                      <p id="item-mana-cost"></p>
+                      <p id="item-cooldown"></p>
+                      <p id="item-spell-casting-modifier"></p>
+                  </div>
+              </div>
+              <div class="item-detail-column">
+                  <div class="item-detail-section">
+                      <h3>Bonuses</h3>
+                      <div id="item-vital-bonuses"></div>
+                      <div id="item-skill-bonuses"></div>
+                      <p id="item-hp-bonus"></p>
+                      <p id="item-mp-bonus"></p>
+                  </div>
+                  <div class="item-detail-section">
+                      <h3>Special Properties</h3>
+                      <p id="item-abilities"></p>
+                      <p id="item-traits"></p>
+                      <p id="item-spells-granted"></p>
+                      <p id="item-additional-effects"></p>
+                      <p id="item-scroll-scaling"></p>
+                  </div>
+              </div>
+          </div>
+          <div class="item-detail-footer">
+              <button id="equip-unequip-button"></button>
+          </div>
       </div>
-      <div class="item-detail-grid">
-        <div class="item-detail-column">
-          <div class="item-detail-section">
-            <h3>General Info</h3>
-            <p id="utility-item-description"></p>
-            <p id="utility-item-type"></p>
-          </div>
-          <div class="item-detail-section">
-            <h3>Usage Info</h3>
-            <p id="utility-item-effect"></p>
-            <p id="utility-item-duration"></p>
-            <p id="utility-item-range"></p>
-          </div>
-        </div>
-        <div class="item-detail-column">
-          <div class="item-detail-section">
-            <h3>Bonuses</h3>
-            <div id="utility-item-vital-bonuses"></div>
-            <div id="utility-item-skill-bonuses"></div>
-            <p id="utility-item-hp-bonus"></p>
-            <p id="utility-item-mp-bonus"></p>
-          </div>
-          <div class="item-detail-section">
-            <h3>Special Properties</h3>
-            <p id="utility-item-abilities"></p>
-            <p id="utility-item-traits"></p>
-          </div>
-        </div>
-      </div>
-      <div class="item-detail-footer">
-        <button id="utility-equip-unequip-button"></button>
-      </div>
-    </div>
   </div>
 
-  <!-- Add Item Modal -->
-  <div id="add-item-modal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Add Item to Inventory</h2>
-        <span class="close">&times;</span>
-      </div>
-      <div class="modal-body">
-        <div class="item-category-tabs">
-          <button class="tab-button" data-category="Weapons">Weapons</button>
-          <button class="tab-button" data-category="Armor">Armor</button>
-          <button class="tab-button" data-category="Potions">Potions</button>
-          <button class="tab-button" data-category="Throwables">
-            Throwables
-          </button>
-          <button class="tab-button" data-category="Explosives">
-            Explosives
-          </button>
-          <button class="tab-button" data-category="Scrolls">Scrolls</button>
-          <button class="tab-button" data-category="CraftingComponents">
-            Crafting
-          </button>
+    <!-- Utility Modal -->
+    <div id="utility-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Utility Items</h2>
+          <button class="close">&times;</button>
         </div>
+        <input type="text" id="utility-search" placeholder="Search utility items...">
+        <div id="utility-cards-container">
+          <!-- Utility cards will be dynamically inserted here -->
+        </div>
+      </div>
+    </div>
+
+    <div id="utility-item-detail-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="item-detail-header">
+          <h2 id="utility-item-detail-title"></h2>
+          <span id="utility-item-rarity"></span>
+        </div>
+        <div class="item-detail-grid">
+          <div class="item-detail-column">
+            <div class="item-detail-section">
+              <h3>General Info</h3>
+              <p id="utility-item-description"></p>
+              <p id="utility-item-type"></p>
+            </div>
+            <div class="item-detail-section">
+              <h3>Usage Info</h3>
+              <p id="utility-item-effect"></p>
+              <p id="utility-item-duration"></p>
+              <p id="utility-item-range"></p>
+            </div>
+          </div>
+          <div class="item-detail-column">
+            <div class="item-detail-section">
+              <h3>Bonuses</h3>
+              <div id="utility-item-vital-bonuses"></div>
+              <div id="utility-item-skill-bonuses"></div>
+              <p id="utility-item-hp-bonus"></p>
+              <p id="utility-item-mp-bonus"></p>
+            </div>
+            <div class="item-detail-section">
+              <h3>Special Properties</h3>
+              <p id="utility-item-abilities"></p>
+              <p id="utility-item-traits"></p>
+            </div>
+          </div>
+        </div>
+        <div class="item-detail-footer">
+          <button id="utility-equip-unequip-button"></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add Item Modal -->
+    <div id="add-item-modal" class="modal">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h2>Add Item to Inventory</h2>
+              <span class="close">&times;</span>
+          </div>
+          <div class="modal-body">
+              <div class="item-category-tabs">
+                  <button class="tab-button" data-category="Weapons">Weapons</button>
+                  <button class="tab-button" data-category="Armor">Armor</button>
+                  <button class="tab-button" data-category="Potions">Potions</button>
+                  <button class="tab-button" data-category="Throwables">Throwables</button>
+                  <button class="tab-button" data-category="Explosives">Explosives</button>
+                  <button class="tab-button" data-category="Scrolls">Scrolls</button>
+                  <button class="tab-button" data-category="Crafting">Crafting</button>
+                  <button class="tab-button" data-category="Ammunition">Ammunition</button>
+              </div>
+              <div id="item-list" class="modal-grid"></div>
+          </div>
+      </div>
+  </div>
+
+    <!-- Equipment Modal -->
+    <div id="equipment-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Available Equipment</h2>
         <input type="text" id="item-search" placeholder="Search items..." />
-        <div id="item-list" class="modal-grid"></div>
+        <div id="item-cards-container"></div>
       </div>
     </div>
-  </div>
 
-  <!-- Equipment Modal -->
-  <div id="equipment-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Available Equipment</h2>
-      <input type="text" id="item-search" placeholder="Search items..." />
-      <div id="item-cards-container"></div>
-    </div>
-  </div>
-
-  <!-- Armor Modal -->
-  <div id="armor-modal" class="modal">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2>Available Armor</h2>
-        <span class="close">&times;</span>
-      </div>
-      <div class="modal-body">
-        <input type="text" id="armor-search" placeholder="Search armor..." />
-        <div id="armor-cards-container" class="modal-grid"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Ability Modal -->
-  <div id="ability-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <div id="ability-modal-content"></div>
-    </div>
-  </div>
-
-  <div id="enhancement-detail-modal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <!-- Content will be dynamically inserted here -->
-    </div>
-</div>
-
-  <!-- Abilities Modal -->
-  <div id="abilities-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Abilities</h2>
-      <div id="abilities-list"></div>
-    </div>
-  </div>
-
-  <!-- Traits Modal -->
-  <div id="traits-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Current Traits</h2>
-      <div id="traits-list"></div>
-    </div>
-  </div>
-
-  <!-- Spell Modal-->
-  <div id="spell-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2 id="spell-modal-title"></h2>
-      <div id="spell-modal-content">
-        <p id="spell-description"></p>
-        <p id="spell-effect"></p>
-        <p id="spell-range"></p>
-        <p id="spell-damage"></p>
-        <p id="spell-damage-type"></p>
-        <p id="spell-casting-time"></p>
-        <p id="spell-ap-cost"></p>
-        <p id="spell-cooldown"></p>
-        <p id="spell-modifier"></p>
-        <div id="spell-scaling">
-          <h3>Scaling:</h3>
-          <ul id="spell-scaling-list"></ul>
+    <!-- Armor Modal -->
+    <div id="armor-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2>Available Armor</h2>
+          <span class="close">&times;</span>
         </div>
-        <div id="spell-level-control">
-          <button id="decrease-spell-level">-</button>
-          <span id="current-spell-level">1</span>
-          <button id="increase-spell-level">+</button>
+        <div class="modal-body">
+          <input type="text" id="armor-search" placeholder="Search armor..." />
+          <div id="armor-cards-container" class="modal-grid"></div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- Ability Detail Modal -->
-  <div id="ability-detail-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <!-- Ability details will be inserted here -->
+    <!-- Ability Modal -->
+    <div id="ability-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <div id="ability-modal-content"></div>
+      </div>
     </div>
-  </div>
 
-  <div id="action-detail-modal" class="modal">
-    <div class="modal-content">
-        <!-- Content will be dynamically populated -->
+    <div id="enhancement-detail-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="enhancement-detail-title"></h2>
+        <p id="enhancement-detail-description"></p>
+        <div id="enhancement-detail-requirements"></div>
+        <div id="enhancement-scaling">
+          <label for="enhancement-level-select">Current Level:</label>
+          <select id="enhancement-level-select"></select>
+        </div>
+        <div id="enhancement-scaling-content"></div>
+      </div>
     </div>
-</div>
 
-  <!-- Trait Detail Modal -->
-  <div id="trait-detail-modal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <!-- Trait details will be inserted here -->
+    <!-- Abilities Modal -->
+    <div id="abilities-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Abilities</h2>
+        <div id="abilities-list"></div>
+      </div>
     </div>
-  </div>
 
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const modal = document.getElementById("item-detail-modal");
-      const modalItemName = document.getElementById("modal-item-name");
-      const modalItemDetails = document.getElementById("modal-item-details");
+    <!-- Traits Modal -->
+    <div id="traits-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Current Traits</h2>
+        <div id="traits-list"></div>
+      </div>
+    </div>
 
-      if (!modal || !modalItemName || !modalItemDetails) {
-        console.error("Modal elements not found in the DOM");
-      }
-    });
-  </script>
+    <!-- Spell Modal-->
+    <div id="spell-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="spell-modal-title"></h2>
+        <div id="spell-modal-content">
+          <p id="spell-description"></p>
+          <p id="spell-effect"></p>
+          <p id="spell-range"></p>
+          <p id="spell-damage"></p>
+          <p id="spell-damage-type"></p>
+          <p id="spell-casting-time"></p>
+          <p id="spell-ap-cost"></p>
+          <p id="spell-cooldown"></p>
+          <p id="spell-modifier"></p>
+          <div id="spell-scaling">
+            <h3>Scaling:</h3>
+            <ul id="spell-scaling-list"></ul>
+          </div>
+          <div id="spell-level-control">
+            <button id="decrease-spell-level">-</button>
+            <span id="current-spell-level">1</span>
+            <button id="increase-spell-level">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <script type="module" src="script.js"></script>
-  <script type="module" src="utility.js"></script>
-  <script type="module" src="armor.js"></script>
-  <script type="module" src="ability.js"></script>
-  <script type="module" src="equipment.js"></script>
-  <script type="module" src="spell.js"></script>
-  <script type="module" src="tab.js"></script>
-  <script type="module" src="inventory.js"></script>
-  <script type="module" src="trait.js"></script>
-  <script type="module" src="vital.js"></script>
-  <script type="module" src="skill.js"></script>
-  <script type="module" src="itemDatabaseModule.js"></script>
-  <script type="module" src="actionModule.js"></script>
-</body>
+    <!-- Ability Detail Modal -->
+    <div id="ability-detail-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <!-- Ability details will be inserted here -->
+      </div>
+    </div>
 
-</html>
+    <!-- Trait Detail Modal -->
+    <div id="trait-detail-modal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <!-- Trait details will be inserted here -->
+      </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+    <script type="module" src="utility.js"></script>
+    <script type="module" src="armor.js"></script>
+    <script type="module" src="ability.js"></script>
+    <script type="module" src="equipment.js"></script>
+    <script type="module" src="spell.js"></script>
+    <script type="module" src="tab.js"></script>
+    <script type="module" src="inventory.js"></script>
+    <script type="module" src="trait.js"></script>
+    <script type="module" src="vital.js"></script>
+    <script type="module" src="skill.js"></script>
+    <script type="module" src="UIModule.js"></script>
+    <script type="module" src="itemDatabaseModule.js"></script>
+    <script type="module" src="actionModule.js"></script>
+  </body>
+
+  </html>

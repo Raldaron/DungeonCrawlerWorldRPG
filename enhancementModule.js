@@ -1,17 +1,23 @@
-import SkillModule from './skill.js';
+// enhancementModule.js
+
+import EnhancementAnnouncementModule from './enhancementAnnouncementModule.js';
 import VitalModule from './vital.js';
+import SkillModule from './skill.js';
 import CharacterModule from './character.js';
 import EquipmentModule from './equipment.js';
+import ActionModule from './actionModule.js';
 
 const EnhancementModule = {
     enhancements: [],
     unlockedEnhancements: new Set(),
+    activeEnhancements: {},
 
     async init() {
-        console.log('Initializing EnhancementModule');
         await this.loadEnhancements();
         this.displayEnhancements();
         this.createEnhancementPopup();
+        EnhancementAnnouncementModule.setEnhancementModule(this);
+        this.checkAndApplyEnhancements();
     },
 
     async loadEnhancements() {
@@ -19,48 +25,38 @@ const EnhancementModule = {
             const response = await fetch('enhancements.json');
             const data = await response.json();
             this.enhancements = data.enhancements;
-            console.log('Enhancements loaded:', this.enhancements);
-        } catch (error) {
-            console.error('Error loading enhancements:', error);
-        }
+        } catch (error) {}
     },
 
     refreshEnhancements() {
-        console.log('Refreshing enhancements');
+        this.checkAndApplyEnhancements();
         this.displayEnhancements();
     },
 
     displayEnhancements() {
-        console.log('Displaying enhancements');
         const enhancementsGrid = document.getElementById('enhancements-grid');
         if (enhancementsGrid) {
             enhancementsGrid.innerHTML = '';
             this.enhancements.forEach(enhancement => {
-                console.log('Checking requirements for:', enhancement.name);
-                if (this.meetsRequirements(enhancement)) {
-                    console.log('Requirements met for:', enhancement.name);
-                    const enhancementCard = this.createEnhancementCard(enhancement);
+                const level = this.meetsRequirements(enhancement);
+                if (level > 0) {
+                    const enhancementCard = this.createEnhancementCard(enhancement, level);
                     enhancementsGrid.appendChild(enhancementCard);
                     this.checkAndAnnounceNewEnhancement(enhancement);
-                } else {
-                    console.log('Requirements not met for:', enhancement.name);
                 }
             });
-        } else {
-            console.error('Enhancements grid not found');
         }
     },
 
     meetsRequirements(enhancement) {
-        console.log('Checking requirements for enhancement:', enhancement.name);
         const req = enhancement.requirements;
+        let maxLevel = 0;
 
         // Check skills
         if (req.skills) {
             for (const [skill, level] of Object.entries(req.skills)) {
                 const skillLevel = SkillModule.getSkillLevel(skill);
-                console.log(`Checking skill: ${skill}, Required: ${level}, Current: ${skillLevel}`);
-                if (skillLevel < level) return false;
+                if (skillLevel < level) return 0;
             }
         }
 
@@ -68,116 +64,137 @@ const EnhancementModule = {
         if (req.vitals) {
             for (const [vital, level] of Object.entries(req.vitals)) {
                 const vitalScore = VitalModule.getVitalScore(vital);
-                console.log(`Checking vital: ${vital}, Required: ${level}, Current: ${vitalScore}`);
-                if (vitalScore < level) return false;
+                if (vitalScore < level) return 0;
             }
         }
 
         // Check archetype
         if (req.archetypes && req.archetypes.length > 0) {
             const playerArchetype = CharacterModule.getArchetype();
-            console.log(`Checking archetype: Player: "${playerArchetype}", Required: ${req.archetypes.join(' or ')}`);
             if (!req.archetypes.includes(playerArchetype)) {
-                console.log('Archetype requirement not met');
-                return false;
+                return 0;
             }
         }
 
         // Check equipment
         if (req.equipment) {
-            console.log('Checking equipment requirement:', req.equipment);
             const equippedItem = EquipmentModule.getEquippedItem(req.equipment.slot);
             if (!equippedItem || equippedItem.name !== req.equipment.name) {
-                console.log('Equipment requirement not met');
-                return false;
+                return 0;
             }
-            console.log('Equipment requirement met:', equippedItem);
         }
 
-        console.log('All requirements met for:', enhancement.name);
-        return true;
+        // Determine the highest level of enhancement that can be applied
+        for (let i = enhancement.scaling.length; i > 0; i--) {
+            if (this.meetsScalingRequirements(enhancement, i)) {
+                maxLevel = i;
+                break;
+            }
+        }
+
+        return maxLevel;
+    },
+
+    meetsScalingRequirements(enhancement, level) {
+        return true; // Placeholder
     },
 
     createEnhancementCard(enhancement) {
         const card = document.createElement('div');
         card.className = 'enhancement-card';
         card.innerHTML = `
-            <h3>${enhancement.name}</h3>
-            <p>${enhancement.description}</p>
-            <button class="enhancement-details-btn" data-enhancement="${enhancement.name}">Details</button>
+          <h3>${enhancement.name}</h3>
+          <p>${enhancement.description}</p>
         `;
-        card.querySelector('.enhancement-details-btn').addEventListener('click', () => this.showEnhancementDetails(enhancement.name));
+        card.addEventListener('click', () => this.showEnhancementDetails(enhancement.name));
         return card;
     },
 
+    checkAndAnnounceNewEnhancement(enhancement) {
+        if (!this.unlockedEnhancements.has(enhancement.name)) {
+            this.unlockedEnhancements.add(enhancement.name);
+            EnhancementAnnouncementModule.announceNewEnhancement(enhancement);
+        }
+    },
+
     showEnhancementDetails(enhancementName) {
-        console.log('Showing details for enhancement:', enhancementName);
         const enhancement = this.enhancements.find(e => e.name === enhancementName);
-        if (enhancement) {
-            const modal = document.getElementById('enhancement-detail-modal');
-            const content = modal.querySelector('.modal-content');
-            content.innerHTML = `
-                <span class="close">&times;</span>
-                <h2>${enhancement.name}</h2>
-                <p>${enhancement.description}</p>
-                <h3>Requirements:</h3>
-                <ul>
-                    ${Object.entries(enhancement.requirements.skills || {}).map(([skill, level]) => `<li>${skill}: ${level}</li>`).join('')}
-                    ${Object.entries(enhancement.requirements.vitals || {}).map(([vital, level]) => `<li>${vital}: ${level}</li>`).join('')}
-                    ${enhancement.requirements.archetypes ? `<li>Archetype: ${enhancement.requirements.archetypes.join(' OR ')}</li>` : ''}
-                    ${enhancement.requirements.equipment ? `<li>Equipment: ${enhancement.requirements.equipment.name} (${enhancement.requirements.equipment.slot})</li>` : ''}
-                </ul>
-                <h3>Scaling:</h3>
-                <div class="enhancement-level-select">
-                    <label for="enhancement-level-select">Current Level:</label>
-                    <select id="enhancement-level-select">
-                        ${this.createLevelOptions(enhancement)}
-                    </select>
-                </div>
-                <div id="enhancement-scaling-content"></div>
-            `;
-            modal.style.display = 'block';
-    
-            const closeBtn = content.querySelector('.close');
-            closeBtn.onclick = () => {
-                modal.style.display = 'none';
-            };
-    
-            window.onclick = (event) => {
-                if (event.target == modal) {
-                    modal.style.display = 'none';
-                }
-            };
-    
-            const levelSelect = document.getElementById('enhancement-level-select');
-            levelSelect.addEventListener('change', () => {
-                this.updateEnhancementScaling(enhancement, parseInt(levelSelect.value));
-            });
-    
-            // Initialize scaling display with level 1
-            this.updateEnhancementScaling(enhancement, 1);
-        } else {
-            console.error('Enhancement not found:', enhancementName);
+        if (!enhancement) {
+            return;
         }
-    },
-    
-    createLevelOptions(enhancement) {
-        let options = '';
-        for (let i = 1; i <= enhancement.scaling.length; i++) {
-            options += `<option value="${i}">${i}</option>`;
-        }
-        return options;
-    },
-    
-    updateEnhancementScaling(enhancement, level) {
+
+        const modal = document.getElementById('enhancement-detail-modal');
+        const title = document.getElementById('enhancement-detail-title');
+        const description = document.getElementById('enhancement-detail-description');
+        const requirements = document.getElementById('enhancement-detail-requirements');
+        const levelSelect = document.getElementById('enhancement-level-select');
         const scalingContent = document.getElementById('enhancement-scaling-content');
-        scalingContent.innerHTML = '';
-    
-        for (let i = 0; i < level; i++) {
-            const scale = enhancement.scaling[i];
-            const scaleElement = document.createElement('p');
-            scaleElement.innerHTML = `<strong>Level ${scale.level}:</strong> ${scale.effect}`;
-            scalingContent.appendChild(scaleElement);
+
+        title.textContent = enhancement.name;
+
+        if (enhancement.description && enhancement.description !== 'N/A') {
+            description.textContent = enhancement.description;
+            description.style.display = 'block';
+        } else {
+            description.style.display = 'none';
+        }
+
+        if (Object.keys(enhancement.requirements).length > 0) {
+            let requirementsHTML = '<h3>Requirements:</h3><ul>';
+            Object.entries(enhancement.requirements).forEach(([key, value]) => {
+                if (typeof value === 'object') {
+                    const subRequirements = Object.entries(value)
+                        .filter(([, v]) => v && v !== 'N/A')
+                        .map(([k, v]) => `${k}: ${v}`)
+                        .join(', ');
+                    if (subRequirements) {
+                        requirementsHTML += `<li>${key}: ${subRequirements}</li>`;
+                    }
+                } else if (value && value !== 'N/A') {
+                    requirementsHTML += `<li>${key}: ${value}</li>`;
+                }
+            });
+            requirementsHTML += '</ul>';
+            requirements.innerHTML = requirementsHTML;
+            requirements.style.display = 'block';
+        } else {
+            requirements.style.display = 'none';
+        }
+
+        levelSelect.innerHTML = '';
+        for (let i = 1; i <= 20; i++) {
+            const option = document.createElement('option');
+            option.value = i;
+            option.textContent = `Level ${i}`;
+            levelSelect.appendChild(option);
+        }
+
+        this.updateScalingContent(enhancement, 1);
+
+        levelSelect.addEventListener('change', (event) => {
+            this.updateScalingContent(enhancement, parseInt(event.target.value));
+        });
+
+        modal.style.display = 'block';
+    },
+
+    updateScalingContent(enhancement, level) {
+        const scalingContent = document.getElementById('enhancement-scaling-content');
+        let scalingHTML = '<h3>Effects:</h3><ul>';
+
+        const validScaling = enhancement.scaling.filter(scale => scale.effect && scale.effect !== 'N/A');
+
+        if (validScaling.length > 0) {
+            validScaling.forEach((scale) => {
+                if (scale.level <= level) {
+                    scalingHTML += `<li><strong>Level ${scale.level}:</strong> ${scale.effect}</li>`;
+                }
+            });
+            scalingHTML += '</ul>';
+            scalingContent.innerHTML = scalingHTML;
+            scalingContent.style.display = 'block';
+        } else {
+            scalingContent.style.display = 'none';
         }
     },
 
@@ -189,32 +206,54 @@ const EnhancementModule = {
         document.body.appendChild(popup);
     },
 
-    checkAndAnnounceNewEnhancement(enhancement) {
-        if (!this.unlockedEnhancements.has(enhancement.name)) {
-            this.unlockedEnhancements.add(enhancement.name);
-            this.showEnhancementPopup(enhancement);
+    showEnhancementPopup(enhancement) {
+        const popup = document.getElementById('enhancement-popup');
+        if (popup) {
+            popup.innerHTML = `
+                <h2>New Enhancement Unlocked!</h2>
+                <h3>${enhancement.name}</h3>
+                <p>${enhancement.description}</p>
+                <button id="close-enhancement-popup">Close</button>
+            `;
+            popup.style.display = 'block';
+
+            const closeButton = document.getElementById('close-enhancement-popup');
+            if (closeButton) {
+                closeButton.addEventListener('click', () => {
+                    popup.style.display = 'none';
+                });
+            }
+
+            setTimeout(() => {
+                popup.style.display = 'none';
+            }, 5000);
         }
     },
 
-    showEnhancementPopup(enhancement) {
-        const popup = document.getElementById('enhancement-popup');
-        popup.innerHTML = `
-            <h2>New Enhancement Unlocked!</h2>
-            <h3>${enhancement.name}</h3>
-            <p>${enhancement.description}</p>
-            <button id="close-enhancement-popup">Close</button>
-        `;
-        popup.style.display = 'block';
-    
-        const closeButton = document.getElementById('close-enhancement-popup');
-        closeButton.addEventListener('click', () => {
-            popup.style.display = 'none';
+    checkAndApplyEnhancements() {
+        this.enhancements.forEach(enhancement => {
+            const level = this.meetsRequirements(enhancement);
+            if (level > 0) {
+                this.activeEnhancements[enhancement.name] = level;
+                this.applyEnhancement(enhancement, level);
+            } else if (this.activeEnhancements[enhancement.name]) {
+                delete this.activeEnhancements[enhancement.name];
+                this.removeEnhancement(enhancement);
+            }
         });
-    
-        // Automatically hide the popup after 5 seconds
-        setTimeout(() => {
-            popup.style.display = 'none';
-        }, 5000);
+        ActionModule.updateAllActions();
+    },
+
+    applyEnhancement(enhancement, level) {
+        ActionModule.applyEnhancementToActions(enhancement, level);
+    },
+
+    removeEnhancement(enhancement) {
+        ActionModule.removeEnhancementFromActions(enhancement);
+    },
+
+    getActiveEnhancements() {
+        return this.activeEnhancements;
     }
 };
 

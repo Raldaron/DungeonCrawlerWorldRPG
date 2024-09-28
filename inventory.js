@@ -9,6 +9,7 @@ const InventoryModule = {
         console.log('Initializing InventoryModule');
         await ItemDatabaseModule.init();
         this.loadPlayerInventory();
+        this.createItemDetailModal();
         this.setupEventListeners();
         this.displayInventory();
     },
@@ -16,6 +17,35 @@ const InventoryModule = {
     loadPlayerInventory() {
         // For now, we'll start with an empty inventory
         this.playerInventory = {};
+    },
+
+    createItemDetailModal() {
+        let modal = document.getElementById('item-detail-modal');
+        if (!modal) {
+            modal = document.createElement('div');
+            modal.id = 'item-detail-modal';
+            modal.className = 'modal';
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2 id="item-detail-title"></h2>
+                    <div id="item-detail-content"></div>
+                    <button id="equip-unequip-button"></button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+
+            const closeButton = modal.querySelector('.close');
+            closeButton.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            window.addEventListener('click', (event) => {
+                if (event.target == modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
     },
 
     setupEventListeners() {
@@ -80,8 +110,8 @@ const InventoryModule = {
         itemList.innerHTML = '';
     
         console.log('Current category:', this.currentCategory);
-        const items = ItemDatabaseModule.getItemsByType(this.currentCategory);
-        
+        const items = ItemDatabaseModule.getItemsByType(this.currentCategory === 'Crafting' ? 'CraftingComponents' : this.currentCategory);
+    
         if (!items || items.length === 0) {
             itemList.innerHTML = '<p>No items found in this category.</p>';
             return;
@@ -101,11 +131,11 @@ const InventoryModule = {
                 const addBtn = itemElement.querySelector('.add-item-btn');
                 addBtn.addEventListener('click', () => {
                     const quantity = parseInt(itemElement.querySelector('.item-quantity').value);
-                    this.addItem(item.key, quantity);  // Use item.key instead of item.name
+                    this.addItem(item.key, quantity);
                 });
     
                 const detailsBtn = itemElement.querySelector('.item-details-btn');
-                detailsBtn.addEventListener('click', () => this.showItemDetails(item.key));  // Use item.key instead of item.name
+                detailsBtn.addEventListener('click', () => this.showItemDetails(item.key));
     
                 itemList.appendChild(itemElement);
             }
@@ -119,9 +149,9 @@ const InventoryModule = {
     displayInventory() {
         const inventoryItems = document.getElementById('inventory-items');
         inventoryItems.innerHTML = '';
-    
+
         console.log('Displaying inventory:', this.playerInventory);
-    
+
         Object.entries(this.playerInventory).forEach(([itemKey, inventoryItem]) => {
             const item = ItemDatabaseModule.getItem(itemKey);
             console.log('Inventory item:', itemKey, item);
@@ -163,35 +193,129 @@ const InventoryModule = {
             console.error(`Item ${itemKey} not found in the database`);
             return;
         }
-    
+
         const modal = document.getElementById('item-detail-modal');
-        const modalItemName = document.getElementById('item-detail-title');
-        const modalItemDetails = document.getElementById('item-detail-content');
-    
-        if (!modal || !modalItemName || !modalItemDetails) {
-            console.error('One or more modal elements not found');
+        if (!modal) {
+            console.error('Item detail modal not found');
             return;
         }
-    
-        modalItemName.textContent = item.name;
-        modalItemDetails.innerHTML = '';
-    
-        for (const [key, value] of Object.entries(item)) {
-            if (key !== 'name') {
-                const detailElement = document.createElement('p');
-                detailElement.innerHTML = `<strong>${key}:</strong> ${value}`;
-                modalItemDetails.appendChild(detailElement);
+
+        // Populate general info
+        this.setElementText('item-detail-title', item.name || item.itemName);
+        this.setElementText('item-rarity', item.rarity);
+        this.setElementText('item-description', item.description);
+        this.setElementText('item-type', item.itemType, 'Type');
+        this.setElementText('item-subtype', item.weaponType || item.armorType, 'Subtype');
+
+        // Populate item-specific info
+        this.setElementText('item-effect', item.effect, 'Effect');
+        this.setElementText('item-duration', item.duration, 'Duration');
+        this.setElementText('item-range', item.range || item.Range, 'Range');
+        this.setElementText('item-damage', item.damage || item.damageAmount, 'Damage');
+        this.setElementText('item-damage-type', item.damageType, 'Damage Type');
+        this.setElementText('item-blast-radius', item.blastRadius, 'Blast Radius');
+        this.setElementText('item-trigger-mechanism', item.triggerMechanism, 'Trigger Mechanism');
+        this.setElementText('item-armor-rating', item.armorRating, 'Armor Rating');
+        this.setElementText('item-tank-modifier', item.tankModifier, 'Tank Modifier');
+        this.setElementText('item-hands-required', item.handsRequired, 'Hands Required');
+        this.setElementText('item-melee-ranged', item.meleeRanged, 'Melee/Ranged');
+        this.setElementText('item-magic-nonmagical', item.magicNonMagical, 'Magical/Non-Magical');
+        this.setElementText('item-casting-time', item.CastingTime, 'Casting Time');
+        this.setElementText('item-mana-cost', item.ManaPointCost, 'Mana Cost');
+        this.setElementText('item-cooldown', item.Cooldown, 'Cooldown');
+        this.setElementText('item-spell-casting-modifier', item.SpellCastingModifier, 'Spellcasting Modifier');
+
+        // Populate bonuses
+        this.populateBonuses('item-vital-bonuses', item.vitalBonus || item.statBuffs, 'Vital Bonuses');
+        this.populateBonuses('item-skill-bonuses', item.skillBonus || item.skillBuffs, 'Skill Bonuses');
+        this.setElementText('item-hp-bonus', item.hpBonus || (item.hpBuffs && item.hpBuffs[0]), 'HP Bonus');
+        this.setElementText('item-mp-bonus', item.mpBonus || (item.mpBuffs && item.mpBuffs[0]), 'MP Bonus');
+
+        // Populate special properties
+        this.setElementText('item-abilities', this.formatArray(item.abilities), 'Abilities');
+        this.setElementText('item-traits', this.formatArray(item.traits), 'Traits');
+        this.setElementText('item-spells-granted', this.formatArray(item.spellsGranted), 'Spells Granted');
+        this.setElementText('item-additional-effects', this.formatArray(item.additionalEffects), 'Additional Effects');
+
+        // Handle scroll-specific fields
+        if (item.itemType === 'Scroll') {
+            this.setElementText('item-scroll-scaling', item.Scaling, 'Scaling');
+        }
+
+        // Set up equip/unequip button
+        const equipButton = document.getElementById('equip-unequip-button');
+        if (equipButton) {
+            equipButton.textContent = this.isItemEquipped(itemKey) ? 'Unequip' : 'Equip';
+            equipButton.onclick = () => this.toggleEquipItem(itemKey);
+            equipButton.style.display = 'block';
+        }
+
+        this.hideEmptySections();
+
+        modal.style.display = 'block';
+    },
+
+    setElementText(elementId, value, label = '') {
+        const element = document.getElementById(elementId);
+        if (element) {
+            if (this.isValidValue(value)) {
+                element.textContent = label ? `${label}: ${value}` : value;
+                element.style.display = 'block';
+            } else {
+                element.style.display = 'none';
             }
         }
-    
-        // Add Equip/Unequip button
-        const equipButton = document.createElement('button');
-        equipButton.id = 'equip-unequip-button';
-        equipButton.textContent = this.isItemEquipped(itemKey) ? 'Unequip' : 'Equip';
-        equipButton.addEventListener('click', () => this.toggleEquipItem(itemKey));
-        modalItemDetails.appendChild(equipButton);
-    
-        modal.style.display = 'block';
+    },
+
+    populateBonuses(elementId, bonuses, label) {
+        const element = document.getElementById(elementId);
+        if (element) {
+            if (bonuses && typeof bonuses === 'object' && Object.keys(bonuses).length > 0) {
+                element.innerHTML = `<h4>${label}</h4><ul>` +
+                    Object.entries(bonuses)
+                        .filter(([key, value]) => this.isValidValue(value))
+                        .map(([key, value]) => `<li>${key}: +${value}</li>`)
+                        .join('') +
+                    '</ul>';
+                element.style.display = 'block';
+            } else {
+                element.style.display = 'none';
+            }
+        }
+    },
+
+    formatArray(arr) {
+        if (Array.isArray(arr) && arr.length > 0) {
+            return arr.filter(item => this.isValidValue(item)).join(', ');
+        }
+        return null;
+    },
+
+    isValidValue(value) {
+        return value !== undefined &&
+            value !== null &&
+            value !== '' &&
+            value !== 'N/A' &&
+            value !== 'None' &&
+            value !== 'Undefined' &&
+            value !== '0' &&
+            value !== 0 &&
+            !(Array.isArray(value) && value.length === 0) &&
+            !(typeof value === 'object' && Object.keys(value).length === 0);
+    },
+
+    hideEmptySections() {
+        const sections = document.querySelectorAll('.item-detail-section');
+        sections.forEach(section => {
+            const visibleChildren = Array.from(section.children).filter(child =>
+                child.tagName !== 'H3' && getComputedStyle(child).display !== 'none'
+            );
+            if (visibleChildren.length === 0) {
+                section.style.display = 'none';
+            } else {
+                section.style.display = 'block';
+            }
+        });
     },
 
     isItemEquipped(itemKey) {
@@ -231,135 +355,6 @@ const InventoryModule = {
         }
     },
 
-    getItemDetailsForCategory(item) {
-        switch (item.itemType.toLowerCase()) {
-            case 'armor':
-                return this.getArmorDetails(item);
-            case 'weapons':
-                return this.getWeaponDetails(item);
-            case 'potions':
-                return this.getPotionDetails(item);
-            case 'scrolls':
-                return this.getScrollDetails(item);
-            case 'throwables':
-                return this.getThrowableDetails(item);
-            case 'explosives':
-                return this.getExplosiveDetails(item);
-            case 'crafting components':
-                return this.getCraftingComponentDetails(item);
-            case 'ammunition':
-                return this.getAmmunitionDetails(item);
-            default:
-                return item;
-        }
-    },
-
-    getArmorDetails(item) {
-        return {
-            name: item.name,
-            armorType: item.armorType,
-            armorRating: item.armorRating,
-            tankModifier: item.tankModifier,
-            vitalBonus: item.vitalBonus,
-            skillBonus: item.skillBonus,
-            hpBonus: item.hpBonus,
-            mpBonus: item.mpBonus,
-            abilities: item.abilities,
-            traits: item.traits,
-            spellsGranted: item.spellsGranted,
-            description: item.description
-        };
-    },
-
-    getWeaponDetails(item) {
-        return {
-            name: item.name,
-            damageType: item.damageType,
-            damageAmount: item.damageAmount,
-            vitalBonus: item.vitalBonus,
-            skillBonus: item.skillBonus,
-            hpBonus: item.hpBonus,
-            mpBonus: item.mpBonus,
-            abilities: item.abilities,
-            traits: item.traits,
-            spellsGranted: item.spellsGranted,
-            description: item.description
-        };
-    },
-
-    getPotionDetails(item) {
-        return {
-            name: item.name,
-            description: item.description,
-            effect: item.effect,
-            duration: item.duration,
-            range: item.range,
-            vitalBonus: item.vitalBonus,
-            skillBonus: item.skillBonus,
-            hpBonus: item.hpBonus,
-            mpBonus: item.mpBonus,
-            abilities: item.abilities,
-            traits: item.traits,
-            spellsGranted: item.spellsGranted
-        };
-    },
-
-    getScrollDetails(item) {
-        return {
-            name: item.name,
-            description: item.description,
-            effect: item.effect,
-            range: item.range,
-            damageType: item.damageType,
-            damage: item.damage,
-            castingTime: item.castingTime,
-            abilityPointCost: item.abilityPointCost,
-            cooldown: item.cooldown,
-            scaling: item.scaling,
-            spellCastingModifier: item.spellCastingModifier
-        };
-    },
-
-    getThrowableDetails(item) {
-        return {
-            name: item.name,
-            description: item.description,
-            effect: item.effect,
-            duration: item.duration,
-            range: item.range
-        };
-    },
-
-    getExplosiveDetails(item) {
-        return {
-            name: item.name,
-            description: item.description,
-            effect: item.effect,
-            duration: item.duration,
-            range: item.range,
-            damageType: item.damageType,
-            damage: item.damage,
-            blastRadius: item.blastRadius,
-            triggerMechanism: item.triggerMechanism
-        };
-    },
-
-    getCraftingComponentDetails(item) {
-        return {
-            name: item.name,
-            description: item.description,
-            rarity: item.rarity
-        };
-    },
-
-    getAmmunitionDetails(item) {
-        return {
-            name: item.name,
-            effect: item.effect,
-            additionalEffects: item.additionalEffects
-        };
-    },
-
     formatKey(key) {
         return key.split(/(?=[A-Z])/).join(' ').replace(/\b\w/g, l => l.toUpperCase());
     },
@@ -379,13 +374,20 @@ const InventoryModule = {
             currentCategory: this.currentCategory
         };
     },
-    
+
     loadSavedData(data) {
         if (data) {
             this.playerInventory = data.playerInventory || {};
             this.currentCategory = data.currentCategory || 'Weapons';
             this.displayInventory();
         }
+    },
+
+    getInventoryItems() {
+        return Object.entries(this.playerInventory).map(([itemKey, inventoryItem]) => ({
+            name: itemKey,
+            quantity: inventoryItem.quantity
+        }));
     },
 };
 

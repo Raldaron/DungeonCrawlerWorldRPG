@@ -1,9 +1,12 @@
+// actionModule.js
+
+import EnhancementModule from './enhancementModule.js';
+
 const ActionModule = {
     actions: [],
 
     init() {
         console.log('Initializing ActionModule');
-        this.actions = [];
         this.displayActions();
     },
 
@@ -15,30 +18,17 @@ const ActionModule = {
             this.addScrollAction(item);
         } else if (item.itemType === 'Explosive') {
             this.addExplosiveAction(item);
-        } else if (item.itemType === 'Throwable' || item.itemType === 'throwable') {
+        } else if (item.itemType === 'Throwable') {
             this.addThrowableAction(item);
         } else if (item.itemType === 'Potion') {
             this.addPotionAction(item);
         } else if (item.itemType === 'Ammunition') {
             this.addAmmunitionAction(item);
-        } else if (item.itemType === 'Trap') {
-            this.addTrapAction(item);
         } else {
             console.warn('Unknown item type:', item.itemType);
             return;
         }
         this.displayActions();
-    },
-    
-    // Add this method to handle trap actions
-    addTrapAction(trap) {
-        this.actions.push({
-            type: 'trap',
-            name: trap.name,
-            effect: trap.effect,
-            duration: trap.duration,
-            range: trap.range
-        });
     },
 
     removeAction(itemName) {
@@ -59,16 +49,8 @@ const ActionModule = {
     addScrollAction(scroll) {
         this.actions.push({
             type: 'scroll',
-            name: scroll.Name,
-            description: scroll.Description,
-            effect: scroll.Effect,
-            range: scroll.Range,
-            damage: scroll.Damage,
-            damageType: scroll.DamageType,
-            castingTime: scroll.CastingTime,
-            manaCost: scroll.AbilityPointCost,
-            cooldown: scroll.Cooldown,
-            spellCastingModifier: scroll.SpellCastingModifier
+            name: scroll.name,
+            manaCost: scroll.AbilityPointCost
         });
     },
 
@@ -77,9 +59,7 @@ const ActionModule = {
             type: 'explosive',
             name: explosive.name,
             damage: explosive.damage,
-            damageType: explosive.damageType,
-            range: explosive.range,
-            effect: explosive.effect
+            damageType: explosive.damageType
         });
     },
 
@@ -87,9 +67,7 @@ const ActionModule = {
         this.actions.push({
             type: 'throwable',
             name: throwable.name,
-            effect: throwable.effect,
-            range: throwable.range,
-            duration: throwable.duration
+            effect: throwable.effect
         });
     },
 
@@ -105,9 +83,8 @@ const ActionModule = {
     addAmmunitionAction(ammunition) {
         this.actions.push({
             type: 'ammunition',
-            name: ammunition.name,
-            damage: ammunition.damage,
-            effect: ammunition.effect
+            name: ammunition.itemName,
+            damage: ammunition.damage
         });
     },
 
@@ -132,219 +109,60 @@ const ActionModule = {
     createActionCard(action) {
         const card = document.createElement('div');
         card.className = 'action-card';
-        
-        let cardContent = '';
-        
+
         switch (action.type) {
             case 'weapon':
-                cardContent = `
+                card.innerHTML = `
                     <h3>${action.name}</h3>
-                    <p>Type: Weapon</p>
-                    <p>Damage: ${action.damageAmount} ${action.damageType}</p>
+                    <p>${action.enhancedDamageAmount || action.damageAmount} - ${action.damageType}</p>
                 `;
                 break;
             case 'scroll':
-                cardContent = `
+                card.innerHTML = `
                     <h3>${action.name}</h3>
-                    <p>Type: Scroll</p>
-                    <p>Effect: ${this.truncateText(action.effect, 50)}</p>
                     <p>Mana Cost: ${action.manaCost}</p>
-                    <p>Cooldown: ${action.cooldown}</p>
                 `;
                 break;
             case 'explosive':
-                cardContent = `
+                card.innerHTML = `
                     <h3>${action.name}</h3>
-                    <p>Type: Explosive</p>
-                    <p>Damage: ${action.damage} ${action.damageType}</p>
-                    <p>Range: ${action.range}</p>
-                    <p>Effect: ${this.truncateText(action.effect, 50)}</p>
+                    <p>${action.enhancedDamage || action.damage} - ${action.damageType}</p>
                 `;
                 break;
             case 'throwable':
-                cardContent = `
+                card.innerHTML = `
                     <h3>${action.name}</h3>
-                    <p>Type: Throwable</p>
-                    <p>Effect: ${this.truncateText(action.effect, 50)}</p>
-                    <p>Range: ${action.range}</p>
-                    <p>Duration: ${action.duration}</p>
+                    <p>Effect: ${action.effect}</p>
                 `;
                 break;
             case 'potion':
-                cardContent = `
+                card.innerHTML = `
                     <h3>${action.name}</h3>
-                    <p>Type: Potion</p>
-                    <p>Effect: ${this.truncateText(action.effect, 50)}</p>
+                    <p>Effect: ${action.effect}</p>
                     <p>Duration: ${action.duration}</p>
                 `;
                 break;
             case 'ammunition':
-                cardContent = `
+                card.innerHTML = `
                     <h3>${action.name}</h3>
-                    <p>Type: Ammunition</p>
-                    <p>Damage: ${action.damage}</p>
-                    <p>Effect: ${this.truncateText(action.effect, 50)}</p>
+                    <p>Damage: ${action.enhancedDamage || action.damage}</p>
                 `;
                 break;
             default:
-                cardContent = `
-                    <h3>${action.name}</h3>
-                    <p>Type: ${action.type}</p>
-                `;
+                console.warn('Unknown action type:', action.type);
+                return null;
         }
-        
-        card.innerHTML = cardContent;
-        
+
         card.addEventListener('click', () => this.showActionDetails(action));
         return card;
     },
 
-    truncateText(text, maxLength) {
-        if (text.length <= maxLength) return text;
-        return text.substr(0, maxLength) + '...';
-    },
-
     showActionDetails(action) {
-        const modal = document.getElementById('action-detail-modal');
-        if (!modal) {
-            console.error('Action detail modal not found');
-            return;
+        if (['weapon', 'ammunition'].includes(action.type)) {
+            this.showWeaponDetails(action);
+        } else {
+            this.showUtilityItemDetails(action);
         }
-
-        const modalContent = modal.querySelector('.modal-content');
-        modalContent.innerHTML = `
-            <span class="close">&times;</span>
-            <h2>${action.name}</h2>
-            <p><strong>Type:</strong> ${action.type}</p>
-            ${this.getActionDetailsContent(action)}
-        `;
-
-        modal.style.display = 'block';
-
-        const closeButton = modal.querySelector('.close');
-        closeButton.onclick = () => {
-            modal.style.display = 'none';
-        };
-
-        window.onclick = (event) => {
-            if (event.target == modal) {
-                modal.style.display = 'none';
-            }
-        };
-    },
-
-    getActionDetailsContent(action) {
-        switch (action.type) {
-            case 'weapon':
-                return `
-                    <p><strong>Damage:</strong> ${action.damageAmount} ${action.damageType}</p>
-                `;
-            case 'scroll':
-                return `
-                    <p><strong>Effect:</strong> ${action.effect}</p>
-                    <p><strong>Range:</strong> ${action.range}</p>
-                    <p><strong>Damage:</strong> ${action.damage || 'N/A'}</p>
-                    <p><strong>Damage Type:</strong> ${action.damageType || 'N/A'}</p>
-                    <p><strong>Casting Time:</strong> ${action.castingTime}</p>
-                    <p><strong>Mana Cost:</strong> ${action.manaCost}</p>
-                    <p><strong>Cooldown:</strong> ${action.cooldown}</p>
-                    <p><strong>Spell Casting Modifier:</strong> ${action.spellCastingModifier}</p>
-                `;
-            case 'explosive':
-                return `
-                    <p><strong>Damage:</strong> ${action.damage} ${action.damageType}</p>
-                    <p><strong>Range:</strong> ${action.range}</p>
-                    <p><strong>Effect:</strong> ${action.effect}</p>
-                `;
-            case 'throwable':
-                return `
-                    <p><strong>Effect:</strong> ${action.effect}</p>
-                    <p><strong>Range:</strong> ${action.range}</p>
-                    <p><strong>Duration:</strong> ${action.duration}</p>
-                `;
-            case 'potion':
-                return `
-                    <p><strong>Effect:</strong> ${action.effect}</p>
-                    <p><strong>Duration:</strong> ${action.duration}</p>
-                `;
-            case 'ammunition':
-                return `
-                    <p><strong>Damage:</strong> ${action.damage}</p>
-                    <p><strong>Effect:</strong> ${action.effect}</p>
-                `;
-            default:
-                return '<p>No additional details available.</p>';
-        }
-    },
-
-    showUtilityItemDetails(action) {
-        const modal = document.getElementById('utility-item-detail-modal');
-        if (!modal) {
-            console.error('Utility item detail modal not found');
-            return;
-        }
-
-        document.getElementById('utility-item-detail-title').textContent = action.name;
-        document.getElementById('utility-item-rarity').textContent = action.rarity || 'N/A';
-        document.getElementById('utility-item-description').textContent = action.description || 'No description available';
-        document.getElementById('utility-item-type').textContent = `Type: ${action.type}`;
-        document.getElementById('utility-item-effect').textContent = `Effect: ${action.effect || 'N/A'}`;
-        document.getElementById('utility-item-duration').textContent = `Duration: ${action.duration || 'N/A'}`;
-        document.getElementById('utility-item-range').textContent = `Range: ${action.range || 'N/A'}`;
-
-        if (action.type === 'scroll') {
-            document.getElementById('utility-item-damage').textContent = `Damage: ${action.damage || 'N/A'}`;
-            document.getElementById('utility-item-damage-type').textContent = `Damage Type: ${action.damageType || 'N/A'}`;
-            document.getElementById('utility-item-casting-time').textContent = `Casting Time: ${action.castingTime || 'N/A'}`;
-            document.getElementById('utility-item-mana-cost').textContent = `Mana Cost: ${action.manaCost || 'N/A'}`;
-            document.getElementById('utility-item-cooldown').textContent = `Cooldown: ${action.cooldown || 'N/A'}`;
-            document.getElementById('utility-item-spell-modifier').textContent = `Spell Casting Modifier: ${action.spellCastingModifier || 'N/A'}`;
-        }
-
-        this.updateBonusesSection(action, 'utility-item-vital-bonuses', 'utility-item-skill-bonuses', 'utility-item-hp-bonus', 'utility-item-mp-bonus');
-
-        document.getElementById('utility-item-abilities').textContent = `Abilities: ${this.formatArray(action.abilities)}`;
-        document.getElementById('utility-item-traits').textContent = `Traits: ${this.formatArray(action.traits)}`;
-
-        const equipButton = document.getElementById('utility-equip-unequip-button');
-        equipButton.style.display = 'none';
-
-        modal.style.display = 'block';
-
-        this.setupModalCloseHandlers(modal);
-    },
-
-    showScrollDetails(scroll) {
-        const modal = document.getElementById('utility-item-detail-modal');
-        if (!modal) {
-            console.error('Utility item detail modal not found');
-            return;
-        }
-    
-        document.getElementById('utility-item-detail-title').textContent = scroll.name;
-        document.getElementById('utility-item-rarity').textContent = scroll.rarity || 'N/A';
-        document.getElementById('utility-item-description').textContent = scroll.description || 'No description available';
-        document.getElementById('utility-item-type').textContent = `Type: Scroll`;
-        document.getElementById('utility-item-effect').textContent = `Effect: ${scroll.effect || 'N/A'}`;
-        document.getElementById('utility-item-range').textContent = `Range: ${scroll.range || 'N/A'}`;
-        document.getElementById('utility-item-damage').textContent = `Damage: ${scroll.damage || 'N/A'}`;
-        document.getElementById('utility-item-damage-type').textContent = `Damage Type: ${scroll.damageType || 'N/A'}`;
-        document.getElementById('utility-item-casting-time').textContent = `Casting Time: ${scroll.castingTime || 'N/A'}`;
-        document.getElementById('utility-item-mana-cost').textContent = `Mana Cost: ${scroll.manaCost || 'N/A'}`;
-        document.getElementById('utility-item-cooldown').textContent = `Cooldown: ${scroll.cooldown || 'N/A'}`;
-        document.getElementById('utility-item-spell-modifier').textContent = `Spell Casting Modifier: ${scroll.spellCastingModifier || 'N/A'}`;
-    
-        this.updateBonusesSection(scroll, 'utility-item-vital-bonuses', 'utility-item-skill-bonuses', 'utility-item-hp-bonus', 'utility-item-mp-bonus');
-    
-        document.getElementById('utility-item-abilities').textContent = `Abilities: ${this.formatArray(scroll.abilities)}`;
-        document.getElementById('utility-item-traits').textContent = `Traits: ${this.formatArray(scroll.traits)}`;
-    
-        const equipButton = document.getElementById('utility-equip-unequip-button');
-        equipButton.style.display = 'none';
-    
-        modal.style.display = 'block';
-    
-        this.setupModalCloseHandlers(modal);
     },
 
     showWeaponDetails(action) {
@@ -359,7 +177,7 @@ const ActionModule = {
         document.getElementById('item-description').textContent = action.description || 'No description available';
         document.getElementById('item-type').textContent = `Type: ${action.type}`;
         document.getElementById('item-subtype').textContent = `Subtype: ${action.subtype || 'N/A'}`;
-        document.getElementById('item-damage').textContent = `Damage: ${action.damageAmount || 'N/A'}`;
+        document.getElementById('item-damage').textContent = `Damage: ${action.enhancedDamageAmount || action.damageAmount || 'N/A'}`;
         document.getElementById('item-damage-type').textContent = `Damage Type: ${action.damageType || 'N/A'}`;
         document.getElementById('item-range').textContent = `Range: ${action.range || 'N/A'}`;
         document.getElementById('item-hands-required').textContent = `Hands Required: ${action.handsRequired || 'N/A'}`;
@@ -380,10 +198,38 @@ const ActionModule = {
         this.setupModalCloseHandlers(modal);
     },
 
+    showUtilityItemDetails(action) {
+        const modal = document.getElementById('utility-item-detail-modal');
+        if (!modal) {
+            console.error('Utility item detail modal not found');
+            return;
+        }
+
+        document.getElementById('utility-item-detail-title').textContent = action.name;
+        document.getElementById('utility-item-rarity').textContent = action.rarity || 'N/A';
+        document.getElementById('utility-item-description').textContent = action.description || 'No description available';
+        document.getElementById('utility-item-type').textContent = `Type: ${action.type}`;
+        document.getElementById('utility-item-effect').textContent = `Effect: ${action.effect || 'N/A'}`;
+        document.getElementById('utility-item-duration').textContent = `Duration: ${action.duration || 'N/A'}`;
+        document.getElementById('utility-item-range').textContent = `Range: ${action.range || 'N/A'}`;
+
+        this.updateBonusesSection(action, 'utility-item-vital-bonuses', 'utility-item-skill-bonuses', 'utility-item-hp-bonus', 'utility-item-mp-bonus');
+
+        document.getElementById('utility-item-abilities').textContent = `Abilities: ${this.formatArray(action.abilities)}`;
+        document.getElementById('utility-item-traits').textContent = `Traits: ${this.formatArray(action.traits)}`;
+
+        const equipButton = document.getElementById('utility-equip-unequip-button');
+        equipButton.style.display = 'none';
+
+        modal.style.display = 'block';
+
+        this.setupModalCloseHandlers(modal);
+    },
+
     updateBonusesSection(item, vitalBonusesId, skillBonusesId, hpBonusId, mpBonusId) {
         const vitalBonusesElement = document.getElementById(vitalBonusesId);
         const skillBonusesElement = document.getElementById(skillBonusesId);
-        
+
         vitalBonusesElement.innerHTML = '<h4>Vital Bonuses:</h4>';
         if (item.vitalBonus && Object.keys(item.vitalBonus).length > 0) {
             for (const [vital, bonus] of Object.entries(item.vitalBonus)) {
@@ -441,25 +287,42 @@ const ActionModule = {
         return string.charAt(0).toUpperCase() + string.slice(1);
     },
 
-    loadSavedData(data) {
-        if (data && data.actions) {
-            this.actions = data.actions;
-            this.displayActions();
+    updateAllActions() {
+        this.actions.forEach(action => this.updateAction(action));
+        this.displayActions();
+    },
+
+    updateAction(action) {
+        const enhancements = EnhancementModule.getActiveEnhancements();
+        for (const [enhancementName, level] of Object.entries(enhancements)) {
+            const enhancement = EnhancementModule.enhancements.find(e => e.name === enhancementName);
+            if (enhancement) {
+                this.applyEnhancementToAction(action, enhancement, level);
+            }
         }
     },
 
-    getAllActionData() {
-        return {
-            actions: this.actions.map(action => {
-                // Create a copy of the action object
-                const actionCopy = { ...action };
-                
-                // Remove any circular references or functions
-                delete actionCopy.element;
-                
-                return actionCopy;
-            })
-        };
+    applyEnhancementToAction(action, enhancement, level) {
+        if (enhancement.name === "Pugilism" && action.damageType === "bare-knuckle") {
+            const damageIncrease = 1 + (level * 0.25);
+            action.enhancedDamageAmount = `${action.damageAmount} x ${damageIncrease.toFixed(2)}`;
+        }
+        // Add more enhancement applications here for different types of enhancements
+    },
+
+    applyEnhancementToActions(enhancement, level) {
+        this.actions.forEach(action => this.applyEnhancementToAction(action, enhancement, level));
+        this.displayActions();
+    },
+
+    removeEnhancementFromActions(enhancement) {
+        this.actions.forEach(action => {
+            if (action.enhancedDamageAmount && enhancement.name === "Pugilism" && action.damageType === "bare-knuckle") {
+                delete action.enhancedDamageAmount;
+            }
+            // Remove other enhancement effects as needed
+        });
+        this.displayActions();
     }
 };
 
