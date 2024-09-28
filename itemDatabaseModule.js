@@ -18,6 +18,7 @@ const ItemDatabaseModule = {
             'explosives.json',
             'scrolls.json',
             'crafting_components.json',
+            'traps.json',
             'ammunition.json'
         ];
     
