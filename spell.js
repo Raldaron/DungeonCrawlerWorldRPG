@@ -112,34 +112,6 @@ const SpellModule = {
             console.error(`Filter element not found: ${filterId}`);
         }
     },
-
-    displayKnownSpells() {
-        const container = document.getElementById('known-spells-container');
-        if (container) {
-            container.innerHTML = '';
-            this.knownSpells.forEach(spellKey => {
-                const spellCard = this.createKnownSpellCard(spellKey);
-                container.appendChild(spellCard);
-            });
-        } else {
-            console.error('Known spells container not found');
-        }
-    },
-
-    updateKnownSpells() {
-        console.log('Updating known spells in Spells subtab');
-        const container = document.getElementById('known-spells-container');
-        if (container) {
-            container.innerHTML = '';
-            const allKnownSpells = [...new Set([...this.learnedSpells, ...this.grantedSpells])];
-            allKnownSpells.forEach(spellKey => {
-                const spellCard = this.createKnownSpellCard(spellKey, this.learnedSpells.includes(spellKey));
-                container.appendChild(spellCard);
-            });
-        } else {
-            console.error('Known spells container not found');
-        }
-    },
     
     updateSpellsSubtab() {
         const spellsContainer = document.getElementById('known-spells-container');
@@ -168,6 +140,43 @@ const SpellModule = {
         this.updateKnownSpells();
     },
 
+    addEquipmentSpells(spells) {
+        console.log('Adding equipment spells:', spells);
+        spells.forEach(spellName => {
+            if (this.allSpells[spellName] && !this.grantedSpells.includes(spellName)) {
+                this.grantedSpells.push(spellName);
+            }
+        });
+        this.updateKnownSpells();
+    },
+
+    removeEquipmentSpells(spells) {
+        console.log('Removing equipment spells:', spells);
+        this.grantedSpells = this.grantedSpells.filter(spellName => !spells.includes(spellName));
+        this.updateKnownSpells();
+    },
+
+    updateKnownSpells() {
+        console.log('Updating known spells');
+        const allKnownSpells = [...new Set([...this.learnedSpells, ...this.grantedSpells])];
+        this.knownSpells = allKnownSpells;
+        this.displayKnownSpells();
+    },
+
+    displayKnownSpells() {
+        console.log('Displaying known spells');
+        const container = document.getElementById('known-spells-container');
+        if (container) {
+            container.innerHTML = '';
+            this.knownSpells.forEach(spellKey => {
+                const spellCard = this.createKnownSpellCard(spellKey, this.learnedSpells.includes(spellKey));
+                container.appendChild(spellCard);
+            });
+        } else {
+            console.error('Known spells container not found');
+        }
+    },
+
     createKnownSpellCard(spellKey, isLearned) {
         const spell = this.allSpells[spellKey];
         const card = document.createElement('div');
@@ -177,9 +186,7 @@ const SpellModule = {
             <div class="spell-cooldown">Cooldown: ${spell.Cooldown || 'N/A'}</div>
             <div class="spell-source">${isLearned ? 'Learned' : 'Granted'}</div>
         `;
-    
         card.addEventListener('click', () => this.showSpellDetails(spellKey, true));
-    
         return card;
     },
 

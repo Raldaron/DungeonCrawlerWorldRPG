@@ -65,7 +65,7 @@
         "Level 17: Targets under the spell’s effect can be commanded to perform one simple action during their hallucination (requires concentration).",
         "Level 18:",
         "Level 19: Duration extends to 10 minutes per failed save; psychic damage increases to 5d8 per minute.",
-        "Level 20: The illusion is so powerful that if a target remains under its effect for the full duration, they must succeed on a second DC 25 Wisdom saving throw or fall into a permanent catatonic state. Additionally, the Succubus becomes weakened (losing half of her maximum HP) for 24 hours after using this spell."
+        "Level 20: The illusion is so powerful that if a target remains under its effect for the full duration, they must succeed on a second DC 25 Wit saving throw or fall into a permanent catatonic state. Additionally, the Succubus becomes weakened (losing half of her maximum HP) for 24 hours after using this spell."
     ],
     "SpellCastingModifier": "Charisma",
     "Archetype": "Succubus"
@@ -73,7 +73,7 @@
 "Bewitching Kiss": {
     "Name": "Bewitching Kiss",
     "Description": "A dangerously seductive kiss that enchants the target, bending their will to the Succubus.",
-    "Effect": "Target must succeed on a Wisdom saving throw or be charmed by the Succubus for a short duration. While charmed, the target considers the Succubus a trusted ally.",
+    "Effect": "Target must succeed on a Wit saving throw or be charmed by the Succubus for a short duration. While charmed, the target considers the Succubus a trusted ally.",
     "Range": "Touch",
     "Damage": "N/A",
     "DamageType": "N/A",
@@ -81,7 +81,7 @@
     "AbilityPointCost": "4 AP",
     "Cooldown": "Once per short rest",
     "Scaling": [
-        "Level 1: Target must succeed on a DC 13 Wisdom saving throw or be charmed for 1 minute.",
+        "Level 1: Target must succeed on a DC 13 Wit saving throw or be charmed for 1 minute.",
         "Level 2:",
         "Level 3: Increase DC to 15 and duration to 2 minutes.",
         "Level 4:",
@@ -90,7 +90,7 @@
         "Level 7: Increase duration to 5 minutes.",
         "Level 8:",
         "Level 9: DC increases to 18, and the spell can target two additional creatures within 10 feet.",
-        "Level 10: Targets are charmed for 10 minutes and have disadvantage on Wisdom saving throws against suggestions.",
+        "Level 10: Targets are charmed for 10 minutes and have disadvantage on Wit saving throws against suggestions.",
         "Level 11:",
         "Level 12:",
         "Level 13: DC increases to 20, and the spell can affect targets up to 15 feet away.",
@@ -1259,6 +1259,36 @@
       ],
       "SpellCastingModifier": "Intelligence",
       "Archetype": "Wizard, Sorcerer"
+    },
+    "Flame": {
+      "Name": "Flame",
+      "Description": "Summon the chaotic flame of the lower planes to unleash a torrent of fiery destruction. However, the flames are uncontrollable, and even the caster is at risk. The raw power of this spell is capable of incinerating everything in its path, but misuse may lead to dire consequences.",
+      "Effect": "The caster releases a violent surge of hellfire in a 60-foot cone. All creatures, including the caster, must make a DC 18 Dexterity saving throw. On a failed save, creatures take 12d6 fire damage and 3d6 necrotic damage. On a successful save, they take half damage. The spell leaves a 20-foot radius of lingering hellfire for 1 minute, causing 3d6 fire damage to any creature that enters or ends its turn in the area.",
+      "Range": "Self (60-foot cone)",
+      "Damage": "12d6 fire damage, 3d6 necrotic damage",
+      "DamageType": "Fire, Necrotic",
+      "CastingTime": "Major Action",
+      "AbilityPointCost": "8 AP",
+      "Cooldown": "Once per day",
+      "Scaling": [
+        "Level 1:",
+        "Level 2:",
+        "Level 3:",
+        "Level 4:",
+        "Level 5: Increases cone size to 80 feet, fire damage increases to 14d6",
+        "Level 6:",
+        "Level 7:",
+        "Level 8:",
+        "Level 9:",
+        "Level 10: Necrotic damage increases to 4d6, caster has advantage on saving throw against their own spell",
+        "Level 11:",
+        "Level 12:",
+        "Level 13:",
+        "Level 14:",
+        "Level 15: Hellfire persists for 2 minutes, damage to creatures in the lingering fire increases to 5d6 per turn"
+      ],
+      "SpellCastingModifier": "Intelligence",
+      "Archetype": "Wizard, Sorcerer, Rogue"
     },
     "GetOutofJail": {
       "Name": "Get Out of Jail",

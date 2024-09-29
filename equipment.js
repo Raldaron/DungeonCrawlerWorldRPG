@@ -7,22 +7,17 @@ import TraitModule from './trait.js';
 import SpellModule from './spell.js';
 import EnhancementModule from './enhancementModule.js';
 
-let initialized = false;
+// Define the EquipmentModule
 const EquipmentModule = {
     items: {},
     equippedItems: {}, // Ensure the equippedItems is initialized here
 
-
     async init() {
-        if (initialized) {
-            console.log('EquipmentModule already initialized');
-            return;
-        }
         console.log('Initializing EquipmentModule');
         this.equippedItems = {
             // Weapons
-            'primary-weapon-slot': null,
-            'secondary-weapon-slot': null,
+            'primary-weapon': null,
+            'secondary-weapon': null,
 
             // Armor
             'head': null,
@@ -68,72 +63,64 @@ const EquipmentModule = {
         window.addEventListener('resize', this.resizeItemNames.bind(this));
     },
 
+    // Add equipItem functionality
     equipItem(itemKey, slotId) {
         console.log(`Attempting to equip item: ${itemKey} to slot ${slotId}`);
         const item = this.items[itemKey];
-    
+
         if (!item) {
             console.error(`Item not found: ${itemKey}`);
             return;
         }
-    
+
         if (slotId === undefined) {
             console.error('slotId is undefined. Cannot equip item without a slot.');
             return;
         }
-    
-        // Store the itemKey in the item object
-        item.key = itemKey; // Add this line
-    
-        // Check if the item is already equipped in this slot
-        if (this.equippedItems[slotId] && this.equippedItems[slotId].key === itemKey) {
-            console.log(`${item.name} is already equipped in ${slotId}`);
-            return;
-        }
-    
+
         const slot = document.getElementById(slotId);
-    
+
         if (!slot) {
             console.warn(`Slot element not found: ${slotId}. Proceeding with equip logic anyway.`);
-        } else {
-            // Update UI
-            this.updateSlotContent(slot, item);
-            slot.dataset.equippedItem = itemKey;
         }
-    
+
         // Unequip current item if there is one
-        if (this.equippedItems[slotId]) {
+        if (slot && slot.dataset.equippedItem) {
             this.unequipItem(slotId);
         }
-    
+
         // Update equippedItems
         this.equippedItems[slotId] = item;
-    
+
         console.log(`Item ${itemKey} equipped successfully to ${slotId}`);
         console.log('Updated equipped items:', this.equippedItems);
-    
+
         // Apply item bonuses
         this.applyItemBonuses(item);
-    
+
         // Handle equipment spells
         this.handleEquipmentSpells(item, true);
-    
+
         // Handle related module updates
         this.updateRelatedModules(item);
-    
+
         // Handle item actions
         if (item.itemType === 'Weapon') {
             ActionModule.addAction(item);
         }
-    
+
+        // Update UI if slot element exists
+        if (slot) {
+            this.updateSlotContent(slot, item);
+            slot.dataset.equippedItem = itemKey;
+        }
+
         this.closeModals();
         this.refreshDisplays();
         EnhancementModule.refreshEnhancements();
         this.calculateTotalArmorRating();
     },
-    
 
-    // Add unequipItem functionality
     unequipItem(slotId) {
         console.log(`Unequipping item from slot: ${slotId}`);
         const slot = document.getElementById(slotId);
@@ -144,7 +131,6 @@ const EquipmentModule = {
                 if (item) {
                     this.removeItemBonuses(item);
                     this.handleEquipmentSpells(item, false);
-                    delete item.key; // Remove the key property
                     if (item.itemType === 'Weapon') {
                         ActionModule.removeAction(item.name);
                     }
@@ -166,6 +152,22 @@ const EquipmentModule = {
             slot.addEventListener('click', () => this.handleSlotClick(slot));
         }
         this.calculateTotalArmorRating();
+    },
+
+    handleEquipmentSpells(item, isEquipping) {
+        console.log('handleEquipmentSpells called with item:', item, 'isEquipping:', isEquipping);
+        if (item.spellsGranted && Array.isArray(item.spellsGranted)) {
+            console.log('Item has spells to grant:', item.spellsGranted);
+            if (isEquipping) {
+                console.log('Adding equipment spells:', item.spellsGranted);
+                SpellModule.addEquipmentSpells(item.spellsGranted);
+            } else {
+                console.log('Removing equipment spells:', item.spellsGranted);
+                SpellModule.removeEquipmentSpells(item.spellsGranted);
+            }
+        } else {
+            console.log('Item does not have spells to grant');
+        }
     },
 
     // Add getEquippedItemKey method
@@ -190,16 +192,11 @@ const EquipmentModule = {
 
     setupEventListeners() {
         console.log('Setting up event listeners for EquipmentModule');
-    
-        // Remove existing listeners before adding new ones
-        document.querySelectorAll('.equipment-slot').forEach(slot => {
-            slot.removeEventListener('click', this.handleSlotClick);
-        });
-    
+
         // Equipment slot listeners
         document.querySelectorAll('.equipment-slot').forEach(slot => {
             if (!slot.id.startsWith('utility-slot-')) {
-                slot.addEventListener('click', (event) => this.handleSlotClick(event));
+                slot.addEventListener('click', event => this.handleSlotClick(event.currentTarget));
             }
         });
 
@@ -312,18 +309,13 @@ const EquipmentModule = {
         console.log('Event listeners set up for EquipmentModule');
     },
 
-    handleSlotClick(event) {
-        const slot = event.currentTarget;
+    handleSlotClick(slot) {
         console.log('Equipment slot clicked:', slot.id);
         this.selectedSlot = slot.id;
-        if (slot.id.startsWith('utility-slot-')) {
-            console.log('Utility slot clicked, ignoring in EquipmentModule');
-            return;
-        }
         const equippedItemKey = slot.dataset.equippedItem;
         const slotType = slot.dataset.slotType;
-        console.log('Slot type:', slotType);
-    
+        console.log('Slot type:', slotType, 'Equipped item:', equippedItemKey);
+
         if (equippedItemKey) {
             this.showItemDetails(equippedItemKey, slot.id);
         } else if (slotType) {
@@ -341,100 +333,140 @@ const EquipmentModule = {
             return;
         }
         console.log('Item found:', item);
-        const isEquipped = slotId !== null || this.isItemEquipped(itemKey);
-        const equippedSlotId = slotId || (isEquipped ? this.getEquippedSlot(itemKey) : null);
+        const isEquipped = slotId !== null;
+        this.displayItemDetailModal(item, isEquipped, slotId);
+    },
 
-        // Close the equipment modal if it's open
-        const equipmentModal = document.getElementById('equipment-modal');
-        if (equipmentModal) {
-            equipmentModal.style.display = 'none';
+    handleSlotClick(slot) {
+        console.log('Equipment slot clicked:', slot.id);
+        this.selectedSlot = slot.id;
+        const equippedItemKey = slot.dataset.equippedItem;
+        const slotType = slot.dataset.slotType;
+        console.log('Slot type:', slotType, 'Equipped item:', equippedItemKey);
+
+        if (equippedItemKey) {
+            this.showItemDetails(equippedItemKey, slot.id);
+        } else if (slotType) {
+            this.showEquipmentModal(slotType);
+        } else {
+            console.error('Slot type is undefined');
         }
+    },
 
-        console.log('Calling displayItemDetailModal with:', { item, isEquipped, equippedSlotId });
-        this.displayItemDetailModal(item, isEquipped, equippedSlotId);
+    showItemDetails(itemKey, slotId = null) {
+        console.log('showItemDetails called with:', { itemKey, slotId });
+        const item = this.items[itemKey];
+        if (!item) {
+            console.error(`Item with key ${itemKey} not found`);
+            return;
+        }
+        console.log('Item found:', item);
+        const isEquipped = slotId !== null;
+        this.displayItemDetailModal(item, isEquipped, slotId);
     },
 
     displayItemDetailModal(item, isEquipped, slotId) {
         console.log('Displaying item details:', item);
-
-        let modal = document.getElementById('item-detail-modal');
-        let content;
-
+        const modal = document.getElementById('item-detail-modal');
         if (!modal) {
-            console.warn('Item detail modal not found, creating dynamically');
-            modal = document.createElement('div');
-            modal.id = 'item-detail-modal';
-            modal.className = 'modal';
-            document.body.appendChild(modal);
-
-            const modalContent = document.createElement('div');
-            modalContent.className = 'modal-content';
-            modal.appendChild(modalContent);
-
-            const closeSpan = document.createElement('span');
-            closeSpan.className = 'close';
-            closeSpan.innerHTML = '&times;';
-            closeSpan.onclick = () => { modal.style.display = 'none'; };
-            modalContent.appendChild(closeSpan);
-
-            content = document.createElement('div');
-            content.id = 'item-detail-content';
-            modalContent.appendChild(content);
-        } else {
-            content = modal.querySelector('#item-detail-content');
-        }
-
-        if (!content) {
-            console.error('Modal content element not found and could not be created');
+            console.error('Item detail modal not found');
             return;
         }
 
-        content.innerHTML = `
-            <div class="item-detail-header">
-                <h2>${item.name}</h2>
-                <p id="item-rarity">${item.rarity || 'Common'}</p>
-            </div>
-            <div class="item-detail-body">
-                <div class="item-info">
-                    <p>${item.description || 'No description available.'}</p>
-                    <p><strong>Type:</strong> ${item.itemType || 'Unknown'}</p>
-                    <div class="item-stats">
-                        ${this.formatStat('Damage', item.damageAmount, item.damageType)}
-                        ${this.formatStat('Armor Rating', item.armorRating)}
-                        ${this.formatStat('HP Bonus', item.hpBonus)}
-                        ${this.formatStat('MP Bonus', item.mpBonus)}
-                    </div>
-                    ${this.formatCollapsibleSection('Vital Bonuses', item.vitalBonus)}
-                    ${this.formatCollapsibleSection('Skill Bonuses', item.skillBonus)}
-                    ${this.formatCollapsibleSection('Abilities', item.abilities)}
-                    ${this.formatCollapsibleSection('Traits', item.traits)}
-                    ${this.formatCollapsibleSection('Spells Granted', item.spellsGranted)}
-                </div>
-            </div>
-            <div class="item-actions">
-                <button id="equip-unequip-button">${isEquipped ? 'Unequip' : 'Equip'}</button>
-            </div>
-        `;
+        // Set title and rarity
+        document.getElementById('item-detail-title').textContent = item.name;
+        document.getElementById('item-rarity').textContent = item.rarity || 'Common';
 
-        // Set up event listener for equip/unequip button
-        const equipButton = content.querySelector('#equip-unequip-button');
+        // General Info
+        document.getElementById('item-description').textContent = item.description || 'No description available.';
+        document.getElementById('item-type').textContent = `Type: ${item.itemType || 'Unknown'}`;
+        document.getElementById('item-subtype').textContent = `Subtype: ${item.weaponType || item.armorType || 'N/A'}`;
+
+        // Item Details
+        this.setElementText('item-effect', item.effect, 'Effect');
+        this.setElementText('item-duration', item.duration, 'Duration');
+        this.setElementText('item-range', item.range, 'Range');
+        this.setElementText('item-damage', item.damageAmount, 'Damage');
+        this.setElementText('item-damage-type', item.damageType, 'Damage Type');
+        this.setElementText('item-blast-radius', item.blastRadius, 'Blast Radius');
+        this.setElementText('item-trigger-mechanism', item.triggerMechanism, 'Trigger Mechanism');
+        this.setElementText('item-armor-rating', item.armorRating, 'Armor Rating');
+        this.setElementText('item-tank-modifier', item.tankModifier, 'Tank Modifier');
+        this.setElementText('item-hands-required', item.handsRequired, 'Hands Required');
+        this.setElementText('item-melee-ranged', item.meleeRanged, 'Melee/Ranged');
+        this.setElementText('item-magic-nonmagical', item.magicNonMagical, 'Magical/Non-Magical');
+        this.setElementText('item-casting-time', item.CastingTime, 'Casting Time');
+        this.setElementText('item-mana-cost', item.ManaPointCost, 'Mana Cost');
+        this.setElementText('item-cooldown', item.Cooldown, 'Cooldown');
+        this.setElementText('item-spell-casting-modifier', item.SpellCastingModifier, 'Spellcasting Modifier');
+
+        // Bonuses
+        this.populateBonuses('item-vital-bonuses', item.vitalBonus, 'Vital Bonuses');
+        this.populateBonuses('item-skill-bonuses', item.skillBonus, 'Skill Bonuses');
+        this.setElementText('item-hp-bonus', item.hpBonus, 'HP Bonus');
+        this.setElementText('item-mp-bonus', item.mpBonus, 'MP Bonus');
+
+        // Special Properties
+        this.setElementText('item-abilities', this.formatArray(item.abilities), 'Abilities');
+        this.setElementText('item-traits', this.formatArray(item.traits), 'Traits');
+        this.setElementText('item-spells-granted', this.formatArray(item.spellsGranted), 'Spells Granted');
+        this.setElementText('item-additional-effects', this.formatArray(item.additionalEffects), 'Additional Effects');
+        
+        // Scroll-specific fields
+        if (item.itemType === 'Scroll') {
+            this.setElementText('item-scroll-scaling', item.Scaling, 'Scaling');
+        } else {
+            document.getElementById('item-scroll-scaling').style.display = 'none';
+        }
+
+        // Set up equip/unequip button
+        const equipButton = document.getElementById('equip-unequip-button');
+        equipButton.textContent = isEquipped ? 'Unequip' : 'Equip';
         equipButton.onclick = () => {
             if (isEquipped) {
                 this.unequipItem(slotId);
             } else {
-                if (this.selectedSlot === undefined) {
-                    console.error('No slot selected. Cannot equip item.');
-                    return;
-                }
                 this.equipItem(item.name, this.selectedSlot);
             }
             modal.style.display = 'none';
         };
 
-        // Set up collapsible sections
-        this.setupCollapsibles();
-
         modal.style.display = 'block';
+    },
+
+    setElementText(elementId, value, label = '') {
+        const element = document.getElementById(elementId);
+        if (element) {
+            if (value && value !== 'N/A') {
+                element.textContent = label ? `${label}: ${value}` : value;
+                element.style.display = 'block';
+            } else {
+                element.style.display = 'none';
+            }
+        }
+    },
+
+    populateBonuses(elementId, bonuses, label) {
+        const element = document.getElementById(elementId);
+        if (element) {
+            if (bonuses && typeof bonuses === 'object' && Object.keys(bonuses).length > 0) {
+                element.innerHTML = `<h4>${label}</h4><ul>` +
+                    Object.entries(bonuses)
+                        .map(([key, value]) => `<li>${key}: +${value}</li>`)
+                        .join('') +
+                    '</ul>';
+                element.style.display = 'block';
+            } else {
+                element.style.display = 'none';
+            }
+        }
+    },
+
+    formatArray(arr) {
+        if (Array.isArray(arr) && arr.length > 0) {
+            return arr.join(', ');
+        }
+        return null;
     },
 
     formatBonuses(bonuses) {
@@ -555,6 +587,7 @@ const EquipmentModule = {
         searchInput.value = '';
         container.innerHTML = '';
 
+        console.log('All items:', this.items);
         const filteredItems = Object.entries(this.items).filter(([key, item]) => {
             if (!item || !item.itemType) {
                 console.warn(`Item ${key} has no itemType:`, item);
@@ -562,11 +595,13 @@ const EquipmentModule = {
             }
             return item.itemType.toLowerCase() === slotType.toLowerCase();
         });
+        console.log('Filtered items:', filteredItems);
 
         if (filteredItems.length === 0) {
             container.innerHTML = '<p>No matching items found</p>';
         } else {
             filteredItems.forEach(([key, item]) => {
+                console.log('Creating card for item:', item);
                 const card = this.createItemCard(key, item);
                 container.appendChild(card);
             });
@@ -704,17 +739,6 @@ const EquipmentModule = {
         TraitModule.displayTraits();
         ActionModule.displayActions();
         this.updateAllEquipmentSlots();
-    },
-
-    // Add this method to the EquipmentModule object
-    handleEquipmentSpells(item, isEquipping) {
-        if (item.spellsGranted && Array.isArray(item.spellsGranted)) {
-            if (isEquipping) {
-                SpellModule.addEquipmentSpells(item.spellsGranted);
-            } else {
-                SpellModule.removeEquipmentSpells(item.spellsGranted);
-            }
-        }
     },
 
     // Format values for display
@@ -893,19 +917,13 @@ const EquipmentModule = {
 
     getEquippedWeapons() {
         const equippedWeapons = {};
-        const weaponSlots = ['primary-weapon-slot', 'secondary-weapon-slot'];
-    
-        weaponSlots.forEach(slotId => {
-            const weapon = this.equippedItems[slotId];
-            if (weapon) {
-                equippedWeapons[slotId] = weapon.key || weapon.name; // Use the weapon's key if available
+        for (const [slotId, item] of Object.entries(this.equippedItems)) {
+            if (item && (slotId === 'primary-weapon' || slotId === 'secondary-weapon')) {
+                equippedWeapons[slotId] = item.key || item.name; // Use key if available, otherwise use name
             }
-        });
-    
-        console.log('Equipped weapons in EquipmentModule:', equippedWeapons);
+        }
         return equippedWeapons;
     },
-       
 
     // Expose this module to the global scope for accessibility
     exposeToGlobalScope() {
